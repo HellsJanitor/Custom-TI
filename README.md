@@ -174,7 +174,7 @@ All commands are as configurable as vanilla commands, via integration's menu. **
 
 '#hard_mode'					Makes zombies **much** tougher
 
-'#bog_of_eternal_stench'		**Multiplayer only** Infects nearby players
+'#bog_of_eternal_stench'		**MULTIPLAYER ONLY** Infects nearby players
 
 '#walk_it_off'					Player must walk, or take damage
 
@@ -186,7 +186,7 @@ All commands are as configurable as vanilla commands, via integration's menu. **
 
 '#ring_of_love'					Heals all enemies in range
 
-'#ring_of_love_team'			**Multiplayer only** Heals all players in range
+'#ring_of_love_team'			**MULTIPLAYER ONLY** Heals all players in range
 
 '#high_stakes'					If the player dies with this effect active, they lose **all** their gear. Cannot be used while Sudden Death is active
 
@@ -202,9 +202,9 @@ All commands are as configurable as vanilla commands, via integration's menu. **
 
 '#fresh_meat'					Enrages nearby zombies and pulls the player to the closest one
 
-'#sneeze'						A series of short quick teleports
+'#sneeze'						A series of longer quick teleports
 
-'#hiccups'						Like Sneezes, but teleports further
+'#hiccups'						Like Sneezes, but teleports shorter
 
 '#banished'						Teleports the player, and removes all map data, backpacks, landclaims and spawn points
 
