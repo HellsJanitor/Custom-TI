@@ -34,7 +34,7 @@ All commands are as configurable as vanilla commands, via integration's menu. **
 
 '#give_up'						Chat command used by the streamer exclusively, to kill all spawns in a 150 block radius
 
-'#spawn_zombie_limo'			Spawns a passive aggressive zombie, which shoots explosive snowballs at the player
+'#spawn_zombie_limo'			Spawns a passive aggressive zombie, which spits explosive snowballs
 
 '#spawn_legendary_tourist' 		Spawns a Legendary Tourist zombie
 
@@ -58,13 +58,13 @@ All commands are as configurable as vanilla commands, via integration's menu. **
 
 '#spawn_desert_shaman'			Spawns a Desert Shaman, which revives all killed zombies while it's still alive
 
-'#spawn_rocket_robin'			Spawns Rocket Robin, a nasty version of Big Mama that shoots rockets at the player
+'#spawn_rocket_robin'			Spawns Rocket Robin, a nasty version of Big Mama that spits rockets
 
 '#spawn_zombie_decoy'			Spawns a decoy zombie, which turns all nearby zombies into "super" zombies
 
-'#spawn_patient_zero'			Spawns Patient Zero, a zombie with a polluting aura ...
+'#spawn_patient_zero'			Spawns Patient Zero. Causes radiation damage within range
 
-'#spawn_bone_buster'			Spawns the Bone Buster, a slow moving but hard hitting zombie
+'#spawn_bone_buster'			Spawns the Bone Buster. Breaks player's limbs when attacking
 
 '#spawn_magic_mike'				Spawns Magic Mike. Resets the player's attributes and skills when he attacks
 
@@ -80,9 +80,9 @@ All commands are as configurable as vanilla commands, via integration's menu. **
 
 '#spawn_wight_spider'			Spawns a nasty Spider Wight
 
-'#spawn_lucifer'				Spawns Lucifer, who has burning aura
+'#spawn_lucifer'				Spawns Lucifer. Causes burning damage within range
 
-'#spawn_mutant_cub'				Spawns a mutant Bear Cub
+'#spawn_mutant_cub'				Spawns a mutant Bear Cub. Little bear with big damage.
 
 '#spawn_killyote'				Spawns a nasty little coyote critter, with a very nasty bite
 
