@@ -1,0 +1,2508 @@
+<configs>
+	<append xpath="/buffs">
+		<!-- frozen (slow) debuff -->
+		<buff name="buffFrozen_Slow" showonhud="true" name_key="buffElementFreezingName" description_key="buffElementFreezingDesc" tooltip_key="buffElementFreezingTooltip" icon="ui_game_symbol_cold" icon_color="255,0,0" icon_blink="true">
+			<stack_type value="replace"/>
+			<duration value="2"/>
+			<effect_group>
+				<requirement name="EntityTagCompare" tags="player"/>
+				<!-- <passive_effect name="Mobility" operation="base_add" value="-.25"/> -->
+				<passive_effect name="WalkSpeed" operation="base_add" value="-1"/>
+				<passive_effect name="RunSpeed" operation="base_add" value="-1"/>
+				<passive_effect name="JumpStrength" operation="base_add" value="-1"/>
+				<passive_effect name="VehicleVelocityMaxPer" operation="perc_set" value="0.5"/>
+				<passive_effect name="VehicleMotorTorquePer" operation="perc_set" value="0.5"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="1" fade="3" effect_name="Cold2"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="3" effect_name="Cold2"/>
+			</effect_group>
+		</buff>
+		<!-- Elixir - Refill health, stamina, food and water -->
+		<buff name="buffTIElixir" name_key="buffTIElixirName" description_key="buffTIElixirDesc" icon="ui_game_symbol_water" icon_color="215,28,10">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<update_rate value=".5"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Health" operation="add" value="250"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Food" operation="add" value="250"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Water" operation="add" value="250"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Stamina" operation="add" value="250"/>
+
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Stamina" operation="add" value="250"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIBadTripMain"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIVenom"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIElixir"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Heal ailments - Remove negative ailments, near death trauma and exp debt -->
+		<!-- <buff name="buffTIHeal" name_key="buffTIHealName" description_key="buffTIHealDesc" icon="ui_game_symbol_medical" icon_color="215,28,10">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<update_rate value=".5"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveAllNegativeBuffs"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffNearDeathTrauma"/>
+
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIHeal"/>
+			</effect_group>
+		</buff> -->
+		
+		<!-- Regen - Gain life slowly over a period of time-->
+		<!-- <buff name="buffTIRegen" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIRegenMain"/>
+			</effect_group>
+		</buff>
+		<buff name="buffTIRegenMain" name_key="buffTIRegenName" description_key="buffTIRegenDesc" icon="ui_game_symbol_add" icon_color="215,28,10" icon_blink="true">
+			<display_value value=".buffTIRegenDuration"/><display_value_format value="time"/>
+			<stack_type value="effect"/><duration value="0"/>
+
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIRegenDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIRegenMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIRegenDuration" operation="set" value="30" />
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIRegenDuration" operation="add" value="30" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIRegenDuration" operation="add" value="-1" />
+			</effect_group>
+
+			<effect_group>
+				<passive_effect name="HealthChangeOT" operation="base_add" value="8" />
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Health" operation="add" value="20"/>
+			</effect_group>
+		</buff> -->
+		
+		<!-- Lost - huge teleport, and reset map data and waypoints -->
+		<buff name="buffTILost" hidden="true">
+			<duration value="1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="action_teleport_long" allow_client_call="true"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="action_lost" allow_client_call="true"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Brain Drain -->
+		<buff name="buffTIBrainDrain" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIBrainDrainMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIBrainDrainMain" name_key="buffTIBrainDrainName" description_key="buffTIBrainDrainDesc" icon="ui_game_symbol_subtract" icon_color="0, 240, 0" remove_on_death="false">
+			<display_value value=".buffTIBrainDrainDuration"/>
+			<display_value_format value="time"/>
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<tags value="twitch_bits"/>
+			<!-- Duration tracking -->
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIBrainDrainDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIBrainDrainMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIBrainDrainDuration" operation="set" value="120"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIBrainDrainDuration" operation="add" value="120"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIBrainDrainDuration" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="AttributeLevel" operation="base_set" value="1"/>
+				<passive_effect name="PerkLevel" operation="base_set" value="0"/>
+				<passive_effect name="HealthMax" operation="base_set" value="100"/>
+				<passive_effect name="StaminaMax" operation="base_set" value="100"/>
+			</effect_group>
+		</buff>
+		
+		<!-- End Game - maxes out the player's game stage -->
+		<buff name="buffTIEndGame" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIEndGameMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIEndGameMain" name_key="buffTIEndGameMainName" description_key="buffTIEndGameMainDesc" icon="ui_game_symbol_ping" icon_color="0, 240, 0" remove_on_death="false">
+			<display_value value=".buffTIEndGameDuration"/>
+			<display_value_format value="time"/>
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<tags value="twitch_bits"/>
+			<!-- Duration tracking -->
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIEndGameDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIEndGameMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIEndGameDuration" operation="set" value="300"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIEndGameDuration" operation="add" value="300"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIEndGameDuration" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="GameStage" operation="base_set" value="5778"/>				
+			</effect_group>
+		</buff>
+		
+		<!-- Amnesia -->
+		<buff name="buffTIAmnesia" hidden="true">
+			<stack_type value="duration"/>
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ResetProgression" reset_books="true"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Give XP -->
+		<buff name="buffTIGiveXP" hidden="true">
+			<stack_type value="duration"/>
+			<effect_group>
+
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="10000">
+					<requirement name="CVarCompare" cvar="_expdeficit" operation="GTE" value="10000"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="2500">
+					<requirement name="CVarCompare" cvar="_expdeficit" operation="GTE" value="2500"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="600">
+					<requirement name="CVarCompare" cvar="_expdeficit" operation="GTE" value="600"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="150">
+					<requirement name="CVarCompare" cvar="_expdeficit" operation="GTE" value="150"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="40">
+					<requirement name="CVarCompare" cvar="_expdeficit" operation="GTE" value="40"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="10">
+					<requirement name="CVarCompare" cvar="_expdeficit" operation="GT" value="0"/></triggered_effect>
+
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="40000">
+					<requirement name="PlayerLevel" operation="GT" value="150"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="20000">
+					<requirement name="PlayerLevel" operation="GT" value="100"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="10000">
+					<requirement name="PlayerLevel" operation="GT" value="75"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="5000">
+					<requirement name="PlayerLevel" operation="GT" value="50"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="2500">
+					<requirement name="PlayerLevel" operation="GT" value="25"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="2000">
+					<requirement name="PlayerLevel" operation="GT" value="10"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="500" />
+
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIGiveXP"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIRagdoll" hidden="true">
+			<damage_type value="knockdown"/>
+			<stack_type value="ignore"/>
+			<duration value="2"/>
+			<effect_group>
+				<passive_effect name="RunSpeed" operation="perc_set" value="0"/>
+				<passive_effect name="WalkSpeed" operation="perc_set" value="0"/>
+				<passive_effect name="CrouchSpeed" operation="perc_set" value="0"/>
+				<passive_effect name="JumpStrength" operation="perc_set" value="0"/>
+				<triggered_effect trigger="onSelfBuffStart" action="Ragdoll" duration="2.0"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Poke - Small damage -->
+		<buff name="buffTILightDamage" hidden="true">
+			<stack_type value="duration"/>
+			<duration value="1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Health" operation="subtract" value="1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Health" operation="subtract" value="16">
+					<requirement name="HasBuff" buff="buffTIDamageResistMain"/>
+					<requirement name="StatComparePercCurrentToModMax" stat="health" operation="GTE" value=".5"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Health" operation="subtract" value="18">
+					<requirement name="HasBuff" buff="buffTISuddenDeathMain"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Health" operation="subtract" value="30">
+					<requirement name="StatComparePercCurrentToMax" stat="health" operation="GTE" value=".99"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTILightDamage"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Small heal -->
+		<buff name="buffTILightHeal" hidden="true">
+			<stack_type value="duration"/>
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Health" operation="add" value="12"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Stamina" operation="add" value="24"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Health" operation="subtract" value="69">
+					<requirement name="HasBuff" buff="buffIsOnFire"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<!-- Eternal Bleeding -->
+		<buff name="buffTIEternalBleeding" name_key="buffTIEternalBleedingName" description_key="buffTIEternalBleedingDesc" tooltip_key="buffInternalBleedingTooltip" icon="ui_game_symbol_critical" icon_color="255,0,0" icon_blink="true">
+			<display_value_key value="∞"/>
+			<display_value value="xxx"/>
+			<damage_type value="bloodloss"/>
+			<stack_type value="ignore"/>
+			<update_rate value="1"/>
+			<tags value="twitch_bits"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="StopSound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfLeaveGame" action="StopSound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfEnteredGame" action="PlaySound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="subtract" value="1"/>
+				<triggered_effect trigger="onSelfDied" action="RemoveBuff" buff="buffTIEternalBleeding"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Sudden Death - One hit kill -->
+		<buff name="buffTISuddenDeath" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<requirement name="NotHasBuff" buff="buffTIHighStakesMain"/>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTISuddenDeathMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTISuddenDeathMain" name_key="buffTISuddenDeathName" description_key="buffTISuddenDeathDesc" icon="ui_game_symbol_skull" icon_color="215,28,10" icon_blink="true">
+			<display_value value=".buffTISuddenDeathDuration"/>
+			<display_value_format value="time"/>
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<tags value="twitch_bits"/>
+			<!-- Duration tracking -->
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTISuddenDeathDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTISuddenDeathMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTISuddenDeathDuration" operation="set" value="60"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTISuddenDeathDuration" operation="add" value="60"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTISuddenDeathDuration" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="PhysicalDamageResist" operation="base_add" value="-10000" tags="coredamageresist"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Damage Resist - Temporary invincibility -->
+		<buff name="buffTIDamageResist" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIDamageResistMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIDamageResistMain" name_key="buffTIDamageResistName" description_key="buffTIDamageResistDesc" icon="ui_game_symbol_diamond" icon_color="215,28,10" remove_on_death="false">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<display_value value=".buffTIDamageResistDuration"/>
+			<display_value_format value="time"/>
+			<tags value="twitch_bits"/>
+			<!-- Duration tracking -->
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIDamageResistDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIDamageResistMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIDamageResistDuration" operation="set" value="120"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIDamageResistDuration" operation="add" value="120"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIDamageResistDuration" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="PhysicalDamageResist" operation="base_add" value="1000" tags="coredamageresist"/>
+			</effect_group>
+			<effect_group name="Getting hit makes it worse">
+				<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" buff="buffTIDamageResistGetsWorse"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIDamageResistGetsWorse" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0.1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIDamageResistDuration" operation="add" value="-2"/>
+			</effect_group>
+		</buff>
+		<!-- Life Link - Damage gains you life -->
+		<buff name="buffTILifeLink" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTILifeLinkMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTILifeLinkMain" name_key="buffTILifeLinkName" description_key="buffTILifeLinkDesc" icon="ui_game_symbol_natural_healing" icon_color="215,28,10" remove_on_death="false">
+			<display_value value=".buffTILifeLinkDuration"/><display_value_format value="time"/>
+			<stack_type value="effect"/><duration value="0"/>
+
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTILifeLinkDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTILifeLinkMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTILifeLinkDuration" operation="set" value="120" />
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTILifeLinkDuration" operation="add" value="120" />
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTILifeLinkDuration" operation="add" value="-1" />
+			</effect_group>
+
+			<effect_group>
+				<passive_effect name="HealthSteal" operation="base_set" value="0.15"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Degradation - Increase degradation per use -->
+		<buff name="buffTIDegradation" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIDegradationMain"/>
+			</effect_group>
+		</buff>
+		<buff name="buffTIDegradationMain" name_key="buffTIDegradationName" description_key="buffTIDegradationDesc" icon="ui_game_symbol_assemble" icon_color="215,28,10" remove_on_death="false">
+			<display_value value=".buffTIDegradationDuration"/>
+			<display_value_format value="time"/>
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<tags value="twitch_bits"/>
+			<!-- Duration tracking -->
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIDegradationDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIDegradationMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIDegradationDuration" operation="set" value="120"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIDegradationDuration" operation="add" value="120"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIDegradationDuration" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="DegradationPerUse" operation="perc_add" value="16.0" tags="melee"/>
+				<passive_effect name="DegradationPerUse" operation="perc_add" value="12.0" tags="ranged"/>
+				<passive_effect name="DegradationPerUse" operation="perc_add" value="8.0" tags="tool"/>
+			</effect_group>
+			<effect_group name="Getting hit makes it worse">
+				<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" buff="buffTIDegradationGetsWorse"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIDegradationGetsWorse" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0.1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIDegradationDuration" operation="add" value="2"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Jonah's Rage - Increase brawling -->
+		<buff name="buffTIJonahRage" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIJonahRageMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIJonahRageMain" name_key="buffTIJonahRageName" description_key="buffTIJonahRageDesc" icon="ui_game_symbol_muscle" icon_color="0,240,0" remove_on_death="false">
+			<display_value value=".buffTIJonahRageDuration"/>
+			<display_value_format value="time"/>
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<tags value="twitch_bits"/>
+			<!-- Duration tracking -->
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIJonahRageDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIJonahRageMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIJonahRageDuration" operation="set" value="60"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIJonahRageDuration" operation="add" value="60"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIJonahRageDuration" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" cvar=".buffTIJonahRageDuration" operation="add" value="1"/>
+				<triggered_effect trigger="onSelfPrimaryActionRayMiss" action="ModifyCVar" cvar=".buffTIJonahRageDuration" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfSecondaryActionRayMiss" action="ModifyCVar" cvar=".buffTIJonahRageDuration" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Stamina" operation="add" value="100"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="EntityDamage" operation="perc_add" value="10" tags="melee,perkBrawler"/>
+				<passive_effect name="AttacksPerMinute" operation="perc_add" value="0.8" tags="melee,perkBrawler"/>
+				<passive_effect name="RunSpeed" operation="perc_add" value="2"/>
+				<passive_effect name="StaminaChangeOT" operation="base_add" value="10"/>
+				<passive_effect name="HealthChangeOT" operation="base_add" value="6"/>
+				<passive_effect name="DisableItem" operation="base_set" value="1" tags="ranged"/>
+			</effect_group>
+		</buff>
+		
+		<!-- High Stakes - if the player dies, they lose everything -->
+		<buff name="buffTIHighStakes" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIHighStakesMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIHighStakesMain" name_key="buffTIHighStakesMainName" description_key="buffTIHighStakesMainDesc" icon="ui_game_symbol_twitch_boss_overhead" icon_blink="true" remove_on_death="false">
+			<display_value value=".buffTIHighStakesDuration"/>
+			<display_value_format value="time"/>
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<tags value="twitch_bits"/>
+			<!-- Duration tracking -->
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIHighStakesDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIHighStakesMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIHighStakesDuration" operation="set" value="120"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIHighStakesDuration" operation="add" value="120"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIHighStakesDuration" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="StatCompareCurrent" target="self" stat="Health" operation="LT" value="1"/>
+				<requirement name="IsAlive" target="self"/>
+				<triggered_effect trigger="onOtherDamagedSelf" action="ModifyStats" stat="Health" operation="add" value="1"/>
+				<triggered_effect trigger="onOtherDamagedSelf" action="CallGameEvent" target="self" event="action_destroyinventory" allow_client_call="true"/>
+			</effect_group>			
+		</buff>
+		
+		<buff name="twitch_HSnopickup" name_key="TwitchBuff_NoPickup" description_key="TwitchBuff_NoPickupDesc" icon="ui_game_symbol_twitch_cant_pickup" icon_color="255,175,175" remove_on_death="false">
+			<stack_type value="replace"/>
+			<duration value="0"/>
+			<display_value value=".nopickup"/>
+			<display_value_format value="time"/>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".nopickup" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="twitch_HSnopickup"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".nopickup" operation="set" value="3725"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".nopickup" operation="add" value="3725"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".nopickup" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="DisableLoot" operation="base_set" value="1" tags="player_dropped"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Nerf - Lower stats on player -->
+		<buff name="buffTINerf" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTINerfMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTINerfMain" name_key="buffTINerfName" description_key="buffTINerfDesc" icon="ui_game_symbol_subtract" icon_color="215,28,10" icon_blink="true" remove_on_death="false">
+			<display_value value=".buffTINerfDuration"/>
+			<display_value_format value="time"/>
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<tags value="twitch_bits"/>
+			<!-- Duration tracking -->
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTINerfDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTINerfMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTINerfDuration" operation="set" value="120"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTINerfDuration" operation="add" value="120"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTINerfDuration" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="LandMineImmunity" operation="base_set" value="0"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="AttacksPerMinute" operation="perc_subtract" value="0.5"/>
+				<passive_effect name="ReloadSpeedMultiplier" operation="perc_subtract" value="0.15 "/>
+				<passive_effect name="EntityDamage" operation="perc_subtract" value="0.75"/>
+				<passive_effect name="SpreadMultiplierHip" operation="perc_add" value="0.75"/>
+				<passive_effect name="SpreadMultiplierAiming" operation="perc_add" value="0.75"/>
+				<passive_effect name="SpreadMultiplierRunning" operation="perc_add" value="0.75"/>
+				<passive_effect name="SpreadMultiplierWalking" operation="perc_add" value="0.75"/>
+				<passive_effect name="SpreadMultiplierCrouching" operation="perc_add" value="0.75"/>
+				<passive_effect name="SpreadMultiplierIdle" operation="perc_add" value="0.75"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="0.5" fade="1" effect_name="Vibrant"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="1" effect_name="Vibrant"/>
+				<triggered_effect trigger="onSelfPrimaryActionRayMiss" action="ModifyStats" stat="Stamina" operation="subtract" value="6"/>
+				<triggered_effect trigger="onSelfSecondaryActionRayMiss" action="ModifyStats" stat="Stamina" operation="subtract" value="6"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="subtract" value="1">
+					<requirement name="HasBuff" buff="buffInfectionMain"/>
+				</triggered_effect>
+			</effect_group>
+			<effect_group name="Getting hit makes it worse">
+				<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" buff="buffTINerfGetsWorse"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTINerfGetsWorse" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0.1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTINerfDuration" operation="add" value="2"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Smoker's Lungs - Descrease max stamina and health gain  -->
+		<buff name="buffTILowStamina" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTILowStaminaMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTILowStaminaMain" name_key="buffTILowStaminaName" description_key="buffTILowStaminaDesc" icon="ui_game_symbol_campfire" icon_color="215,28,10" remove_on_death="false">
+			<display_value value=".buffTILowStaminaDuration"/>
+			<display_value_format value="time"/>
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<tags value="twitch_bits"/>
+			<!-- Duration tracking -->
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTILowStaminaDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTILowStaminaMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTILowStaminaDuration" operation="set" value="120"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTILowStaminaDuration" operation="add" value="120"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTILowStaminaDuration" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="HealthGain" operation="perc_subtract" value="0.5"/>
+				<passive_effect name="StaminaMax" operation="base_set" value="20"/>
+			</effect_group>
+			<effect_group name="Getting hit makes it worse">
+				<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" buff="buffTILowStaminaGetsWorse"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTILowStaminaGetsWorse" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0.1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTILowStaminaDuration" operation="add" value="2"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Slow Reloader - Reduce reload speed and magazine size -->
+		<buff name="buffTISlowReload" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTISlowReloadMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTISlowReloadMain" name_key="buffTISlowReloadName" description_key="buffTISlowReloadDesc" icon="ui_game_symbol_clock" icon_color="215,28,10" remove_on_death="false">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<display_value value=".buffTISlowReloadDuration"/>
+			<display_value_format value="time"/>
+			<tags value="twitch_bits"/>
+			<!-- Duration triggers -->
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTISlowReloadDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTISlowReloadMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTISlowReloadDuration" operation="set" value="120"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTISlowReloadDuration" operation="add" value="120"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTISlowReloadDuration" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="ReloadSpeedMultiplier" operation="perc_subtract" value=".6"/>
+				<triggered_effect trigger="onReloadStop" action="ModifyCVar" cvar=".buffTISlowReloadDuration" operation="add" value="12"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="HoldingItemHasTags" tags="firingMode"/>
+				<passive_effect name="MagazineSize" operation="perc_subtract" value=".5"/>
+			</effect_group>
+			<effect_group name="Getting hit makes it worse">
+				<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" buff="buffTISlowReloadGetsWorse"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTISlowReloadGetsWorse" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0.1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTISlowReloadDuration" operation="add" value="2"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Bad Trip - Distort the screen  -->
+		<buff name="buffTIBadTrip" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIBadTripMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIBadTripMain" name_key="buffTIBadTripName" description_key="buffTIBadTripDesc" icon="ui_game_symbol_chemistry" icon_color="215,28,10" remove_on_death="false">
+			<display_value value=".buffTIBadTripDuration"/>
+			<display_value_format value="time"/>
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<!-- Duration tracking -->
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIBadTripDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIBadTripMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIBadTripDuration" operation="set" value="30"/>
+				<!-- <triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIBadTripDuration" operation="add" value="30" /> -->
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIBadTripDuration" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="infectionCounter" operation="add" value="25">
+					<requirement name="HasBuff" buff="buffInfectionMain"/>
+				</triggered_effect>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="1" fade="4" effect_name="Drunk"/>
+				<!-- <triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="0.5" fade="4" effect_name="Distortion"/> -->
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="1" fade="4" effect_name="Underwater"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="3" effect_name="Drunk"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="3" effect_name="Distortion"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="3" effect_name="Underwater"/>
+			</effect_group>
+			<effect_group name="Getting hit makes it worse">
+				<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" buff="buffTIBadTripGetsWorse"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIBadTripGetsWorse" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0.1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIBadTripDuration" operation="add" value="3"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Darken - Darken screen  -->
+		<buff name="buffTIDarken" hidden="true">
+			<stack_type value="duration"/>
+			<duration value="3"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Dark" intensity="1" fade=".1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Grayscale" intensity="0.5" fade=".1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Dying" intensity="1" fade=".1"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Dark" intensity="0" fade=".5"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Grayscale" intensity="0" fade=".5"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Dying" intensity="0" fade=".5"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Feel Bad - Slightly distort the screen  -->
+		<buff name="buffTIFeelBad" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIFeelBadMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIFeelBadMain" name_key="buffTIFeelBadName" description_key="buffTIFeelBadDesc" icon="ui_game_symbol_food_poisoning" icon_color="215,28,10" remove_on_death="false">
+			<display_value value=".buffTIFeelBadDuration"/>
+			<display_value_format value="time"/>
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<!-- Duration tracking -->
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIFeelBadDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIFeelBadMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIFeelBadDuration" operation="set" value="4"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIFeelBadDuration" operation="add" value="4"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIFeelBadDuration" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="infectionCounter" operation="add" value="25">
+					<requirement name="HasBuff" buff="buffInfectionMain"/>
+				</triggered_effect>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="WalkSpeed" operation="perc_add" value=".2"/>
+				<passive_effect name="RunSpeed" operation="perc_add" value=".2"/>
+				<passive_effect name="CrouchSpeed" operation="perc_add" value=".2"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="0.1" fade="4" effect_name="Distortion"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="4" effect_name="Distortion"/>
+			</effect_group>
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffInternalBleeding">
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="20"/>
+			</triggered_effect>
+		</buff>
+		
+		<!-- Snake venom - Applied when attacked by anacondas -->
+		<buff name="buffTIVenom" name_key="buffTIVenomName" description_key="buffTIVenomDesc" icon="ui_game_symbol_infection" icon_color="10,190,50" icon_blink="true">
+			<display_value value=".buffTIVenomDuration"/>
+			<display_value_format value="time"/>
+			<damage_type value="Infection"/>
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<!-- Duration tracking -->
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIVenomDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIVenom"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIVenomDuration" operation="set" value="6"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIVenomDuration" operation="add" value="6"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIVenomDuration" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="infectionCounter" operation="add" value="25">
+					<requirement name="HasBuff" buff="buffInfectionMain"/>
+				</triggered_effect>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" value="2"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Infected" intensity=".6" fade="2"/>
+				<triggered_effect trigger="onSelfDied" action="ModifyScreenEffect" effect_name="Infected" intensity="0" fade="0"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Infected" intensity="0" fade="2"/>
+			</effect_group>
+			<effect_group name="Getting hit makes it worse">
+				<triggered_effect trigger="onOtherAttackedSelf" action="AddBuff" buff="buffTIVenomGetsWorse"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIVenomGetsWorse" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0.1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIVenomDuration" operation="add" value="2"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Fumigation - Take radiation damage in a fumigation area -->
+		<buff name="buffTIRadiation" name_key="buffTIRadiationName" description_key="buffTIRadiationDesc" icon="ui_game_symbol_radiation" icon_color="215,28,10" icon_blink="true">
+			<damage_type value="radiation"/>
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<update_rate value=".5"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="subtract" value="1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Radiation" intensity=".45" fade="2"/>
+				<triggered_effect trigger="onSelfDied" action="ModifyScreenEffect" effect_name="Radiation" intensity="0" fade="0"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Radiation" intensity="0" fade="2"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="infectionCounter" operation="add" value="25">
+					<requirement name="HasBuff" buff="buffInfectionMain"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<!-- Toxic - Adds fumigation-like buff to surrounding players -->
+		<buff name="buffTIToxic">
+			<damage_type value="radiation"/>
+			<stack_type value="ignore"/>
+			<duration value="1000"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="40" buff="buffTIToxicEffect">
+					<requirement name="EntityTagCompare" target="other" tags="player"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIToxicEffect" name_key="buffTIToxicName" description_key="buffTIToxicDesc" icon="ui_game_symbol_radiation" icon_color="215,28,10" icon_blink="true">
+			<stack_type value="replace"/>
+			<duration value="5"/>
+			<update_rate value=".5"/>
+			<effect_group>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" value="1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Radiation" intensity=".45" fade="2"/>
+				<triggered_effect trigger="onSelfDied" action="ModifyScreenEffect" effect_name="Radiation" intensity="0" fade="0"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Radiation" intensity="0" fade="2"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="infectionCounter" operation="add" value="50">
+					<requirement name="HasBuff" buff="buffInfectionMain"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<!-- Starve - Reduce food and water and slow down until restored -->
+		<buff name="buffTIMunchies" name_key="buffTIMunchiesName" description_key="buffTIMunchiesDesc" icon="ui_game_symbol_cookware" icon_color="215,28,10" icon_blink="true">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Water" operation="set" value="1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Food" operation="set" value="1"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyStats" stat="Water" operation="set" value="1"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyStats" stat="Food" operation="set" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIMunchies">
+					<requirement name="StatComparePercCurrentToMax" stat="Food" operation="GT" value=".5"/>
+					<requirement name="StatComparePercCurrentToMax" stat="Water" operation="GT" value=".5"/>
+				</triggered_effect>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value=".25"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value=".25"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value=".25"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="Ragdoll" duration=".3">
+					<requirement name="!EntityTagCompare" tags="trader"/>
+					<requirement name="EntityHasMovementTag" tags="running"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="9"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="subtract" value="1">
+					<requirement name="StatComparePercCurrentToMax" stat="Health" operation="GTE" value=".05"/>
+					<requirement name="HasBuff" buff="buffDysenteryMain"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="0.1" fade="1" effect_name="Blur"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="1" effect_name="Blur"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Light shock - Quick version of shock -->
+		<buff name="buffTIShocked" name_key="buffShockedName" description_key="buffShockedDesc" tooltip_key="buffShockedTooltip" icon="ui_game_symbol_electric_power" icon_color="215,28,10">
+			<damage_type value="electrical"/>
+			<stack_type value="replace"/>
+			<duration value="1"/>
+			<effect_group>
+				<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3"/>
+				<passive_effect name="HealthChangeOT" operation="base_add" value="-3.8"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value="0.9,0" duration="0,9.2"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value="0.9,0" duration="0,9.2"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value="0.9,0" duration="0,9.2"/>
+				<passive_effect name="JumpStrength" operation="perc_subtract" value="0.9,0" duration="0,9.2"/>
+				<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_electric_shock" parent_transform="Spine1" local_offset="0,-.2,0"/>
+				<triggered_effect trigger="onSelfEnteredGame" action="AttachParticleEffectToEntity" particle="p_electric_shock" parent_transform="Spine1" local_offset="0,-.2,0"/>
+				<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="ETrapHit" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfLeaveGame" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="electric_fence_impact"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="FadeOutSound" sound="electric_fence_impact"/>
+				<triggered_effect trigger="onSelfLeaveGame" action="StopSound" sound="electric_fence_impact"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="subtract" value="50">
+					<requirement name="HasBuff" buff="buffTIElectrocuted"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<!-- Eletrocuted - Weaker version of shock -->
+		<buff name="buffTIElectrocuted" name_key="buffShockedName" description_key="buffShockedDesc" tooltip_key="buffShockedTooltip" icon="ui_game_symbol_electric_power" icon_color="215,28,10">
+			<damage_type value="electrical"/>
+			<stack_type value="replace"/>
+			<update_rate value="1"/>
+			<duration value="8"/>
+			<effect_group>
+				<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3"/>
+				<passive_effect name="HealthChangeOT" operation="base_add" value="-3.5"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value="0.9,0" duration="0,9.2"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value="0.9,0" duration="0,9.2"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value="0.9,0" duration="0,9.2"/>
+				<passive_effect name="JumpStrength" operation="perc_subtract" value="0.9,0" duration="0,9.2"/>
+				<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_electric_shock" parent_transform="Spine1" local_offset="0,-.2,0"/>
+				<triggered_effect trigger="onSelfEnteredGame" action="AttachParticleEffectToEntity" particle="p_electric_shock" parent_transform="Spine1" local_offset="0,-.2,0"/>
+				<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="ETrapHit" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfLeaveGame" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="electric_fence_impact"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="FadeOutSound" sound="electric_fence_impact"/>
+				<triggered_effect trigger="onSelfLeaveGame" action="StopSound" sound="electric_fence_impact"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Stun - Special stun that removes pain killers buff -->
+		<buff name="buffTIInjuryStunned" name_key="buffInjuryStunned01Name" description_key="buffInjuryStunned01Desc" icon="ui_game_symbol_stunned" icon_color="255,128,0">
+			<display_value value=".buffTIInjuryStunnedDuration"/>
+			<display_value_format value="time"/>
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<!-- Duration triggers -->
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIInjuryStunnedDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIInjuryStunned"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIInjuryStunnedDuration" operation="set" value="4"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIInjuryStunnedDuration" operation="add" value="4"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIInjuryStunnedDuration" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" tags="buffInjuryStunned02"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffDrugPainkillers"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffInjuryStunned00"/>
+				<triggered_effect trigger="onSelfBuffStack" action="RemoveBuff" buff="buffInjuryStunned00"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffInjuryStunned01"/>
+				<triggered_effect trigger="onSelfBuffStack" action="RemoveBuff" buff="buffInjuryStunned01"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffInjuryStunned02"/>
+				<triggered_effect trigger="onSelfBuffStack" action="RemoveBuff" buff="buffInjuryStunned02"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffInjuryStunned03"/>
+				<triggered_effect trigger="onSelfBuffStack" action="RemoveBuff" buff="buffInjuryStunned03"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value="0.8,.2" duration="0,8"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value="0.8,.2" duration="0,8"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value="0.8,.2" duration="0,8"/>
+				<passive_effect name="JumpStrength" operation="perc_subtract" value="0.8,.2" duration="0,8"/>
+				<passive_effect name="AttacksPerMinute" operation="perc_add" value="-.5,0" duration="0,8">
+					<requirement name="!EntityTagCompare" tags="player"/>
+				</passive_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="0.5" fade="1" effect_name="Blur"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="1" effect_name="Blur"/>
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="buff_stunned" play_in_head="true"/>
+				<triggered_effect trigger="onSelfEnteredGame" action="PlaySound" sound="buff_stunned" play_in_head="true"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="FadeOutSound" sound="buff_stunned" play_in_head="true"/>
+				<triggered_effect trigger="onSelfLeaveGame" action="StopSound" sound="buff_stunned" play_in_head="true"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Dark Night - Darken screen  -->
+		<buff name="buffTIDarkNight" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIDarkNightMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIDarkNightMain" name_key="buffTIDarkNightName" description_key="buffTIDarkNightDesc" icon="ui_game_symbol_star" icon_color="215,28,10" remove_on_death="false">
+			<display_value value=".buffTIDarkNightDuration"/>
+			<display_value_format value="time"/>
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<tags value="twitch_bits"/>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIDarkNightDuration" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIDarkNightMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIDarkNightDuration" operation="set" value="30"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIDarkNightDuration" operation="add" value="30"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIDarkNightDuration" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".buffTIDarkNightDuration" operation="set" value="0"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Dark" intensity="1.0" fade=".1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Vibrant" intensity="0.75" fade=".1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Dying" intensity="1.0" fade=".1"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Dark" intensity="0" fade=".5"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Vibrant" intensity="0" fade=".5"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Dying" intensity="0" fade=".5"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Thank TFP_Gazz for this buff. Copied here just to allow the duration to be increase if re-applied and to show the time remaining -->
+		<buff name="buffTIClumsyRunner" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIClumsyRunnerMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIClumsyRunnerMain" name_key="buffClumsyRunnerName" description_key="buffClumsyRunnerDesc" tooltip_key="buffClumsyRunnerTooltip" icon="ui_game_symbol_parkour" icon_color="255,128,0" remove_on_death="false">
+			<display_value value=".buffTIClumsyRunnerDuration"/>
+			<display_value_format value="time"/>
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIClumsyRunnerDuration" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIClumsyRunnerMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIClumsyRunnerDuration" operation="set" value="300"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIClumsyRunnerDuration" operation="add" value="300"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIClumsyRunnerDuration" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".buffTIClumsyRunnerDuration" operation="set" value="0"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" tags="buffClumsyRunner"/>
+				<passive_effect name="WalkSpeed" operation="perc_add" value=".4"/>
+				<passive_effect name="RunSpeed" operation="perc_add" value=".15"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="Ragdoll" duration=".3">
+					<requirement name="!EntityTagCompare" tags="trader"/>
+					<requirement name="EntityHasMovementTag" tags="running"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="9"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfFallImpact" action="Ragdoll" duration=".3">
+					<requirement name="!EntityTagCompare" tags="trader"/>
+					<requirement name="CVarCompare" cvar="_fallSpeed" operation="GTE" value=".02"/>
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="20"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<!-- Clumsy Fighter - Change to ragdoll on each missed shot -->
+		<buff name="buffTIClumsyFighter" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIClumsyFighterMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIClumsyFighterMain" name_key="buffTIClumsyFighterName" description_key="buffTIClumsyFighterDesc" icon="ui_game_symbol_drunk" icon_color="215,28,10" remove_on_death="false">
+			<display_value value=".buffTIClumsyFighterDuration"/>
+			<display_value_format value="time"/>
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<tags value="twitch_bits"/>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIClumsyFighterDuration" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIClumsyFighterMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIClumsyFighterDuration" operation="set" value="300"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIClumsyFighterDuration" operation="add" value="300"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIClumsyFighterDuration" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".buffTIClumsyFighterDuration" operation="set" value="0"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfPrimaryActionRayMiss" action="Ragdoll" duration=".3">
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="30"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfSecondaryActionRayMiss" action="Ragdoll" duration=".3">
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="30"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfDamagedBlock" action="Ragdoll" duration=".3">
+					<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="25"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<!-- Thank TFP_Gazz for this buff. Copied here just to allow the duration to be increase if re-applied and to show the time remaining -->
+		<buff name="buffTIMeleePreferred" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIMeleePreferredMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIMeleePreferredMain" name_key="buffMeleePreferredName" description_key="buffMeleePreferredDesc" tooltip_key="buffMeleePreferredTooltip" icon="ui_game_symbol_melee" icon_color="0,240,0" remove_on_death="false">
+			<display_value value=".buffTIMeleePreferredDuration"/>
+			<display_value_format value="time"/>
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIMeleePreferredDuration" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIMeleePreferredMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIMeleePreferredDuration" operation="set" value="300"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIMeleePreferredDuration" operation="add" value="300"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIMeleePreferredDuration" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".buffTIMeleePreferredDuration" operation="set" value="0"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" tags="buffMeleePreferred"/>
+				<passive_effect name="EntityDamage" operation="perc_add" value="1.5" tags="perkMiner69r,perkSalvageOperations,perkElectrocutioner,perkJavelinMaster,perkPummelPete,perkSkullCrusher,perkDeepCuts,perkBrawler,admin"/>
+				<passive_effect name="EntityDamage" operation="perc_add" value="-10" tags="perkGunslinger,perkBoomstick,perkDeadEye,perkMachineGunner,perkBookAutoWeapons,perkTurrets,perkArchery,admin"/>
+				<passive_effect name="HealthLoss" operation="perc_add" value="-.1"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Thank TFP_Gazz for this buff. Copied here just to allow the duration to be increase if re-applied and to show the time remaining -->
+		<buff name="buffTIHeadShotsOnly" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIHeadShotsOnlyMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIHeadShotsOnlyMain" name_key="buffHeadShotsOnlyName" description_key="buffHeadShotsOnlyDesc" tooltip_key="buffHeadShotsOnlyTooltip" icon="ui_game_symbol_head_shot" icon_color="215,28,10" remove_on_death="false">
+			<display_value value=".buffHeadShotsOnlyDuration"/>
+			<display_value_format value="time"/>
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<tags value="twitch_bits"/>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffHeadShotsOnlyDuration" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIHeadShotsOnlyMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffHeadShotsOnlyDuration" operation="set" value="300"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffHeadShotsOnlyDuration" operation="add" value="300"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffHeadShotsOnlyDuration" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".buffHeadShotsOnlyDuration" operation="set" value="0"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" tags="buffHeadShotsOnly"/>
+				<passive_effect name="HeadShotOnly" operation="base_set" value="1"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Hard Mode - Increase HP and damage of nearby zombies -->
+		<buff name="buffTISuperZombies" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTISuperZombiesMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTISuperZombiesMain" name_key="buffTISuperZombiesName" description_key="buffTISuperZombiesDesc" icon="ui_game_symbol_muscle" icon_color="215,28,10" remove_on_death="false">
+			<display_value value=".buffTISuperZombiesDuration"/>
+			<display_value_format value="time"/>
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<tags value="twitch_bits"/>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTISuperZombiesDuration" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTISuperZombiesMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTISuperZombiesDuration" operation="set" value="300"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTISuperZombiesDuration" operation="add" value="300"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTISuperZombiesDuration" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".buffTISuperZombiesDuration" operation="set" value="0"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" tags="buffVolatileAura"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="80" buff="buffTISuperZombiesEffect">
+					<requirement name="!EntityTagCompare" target="other" tags="player,trader,vehicle"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTISuperZombiesEffect">
+			<stack_type value="replace"/>
+			<duration value="10"/>
+			<effect_group>
+				<passive_effect name="HealthMax" operation="perc_set" value="2"/>
+				<passive_effect name="EntityDamage" operation="perc_add" value="3"/>
+				<passive_effect name="BlockDamage" operation="perc_add" value="10"/>
+				<passive_effect name="HealthChangeOT" operation="base_add" value="10"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Powerless - Increase damage resist of nearby zombies -->
+		<buff name="buffTIPowerless" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIPowerlessMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIPowerlessMain" name_key="buffTIPowerlessName" description_key="buffTIPowerlessDesc" icon="ui_game_symbol_hand" icon_color="215,28,10" remove_on_death="false">
+			<display_value value=".buffTIPowerlessDuration"/>
+			<display_value_format value="time"/>
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<tags value="twitch_bits"/>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIPowerlessDuration" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIPowerlessMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIPowerlessDuration" operation="set" value="120"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIPowerlessDuration" operation="add" value="120"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIPowerlessDuration" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".buffTIPowerlessDuration" operation="set" value="0"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" tags="buffVolatileAura"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="80" buff="buffTIPowerlessEffect">
+					<requirement name="!EntityTagCompare" target="other" tags="player,trader,vehicle"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIPowerlessEffect">
+			<stack_type value="replace"/>
+			<duration value="10"/>
+			<effect_group>
+				<passive_effect name="PhysicalDamageResist" operation="base_add" value="40"/>
+				<passive_effect name="PhysicalDamageResist" operation="base_add" value="40" tags="coredamageresist"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Bog of Eternal Stench - Infects nearby players -->
+		<buff name="buffTIBog" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIBogMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIBogMain" name_key="buffTIBogName" description_key="buffTIBogDesc" icon="ui_game_symbol_infection" icon_color="215,28,10" remove_on_death="false">
+			<display_value value=".buffTIBogDuration"/>
+			<display_value_format value="time"/>
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<tags value="twitch_bits"/>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIBogDuration" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIBogMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIBogDuration" operation="set" value="300"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIBogDuration" operation="add" value="300"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIBogDuration" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".buffTIBogDuration" operation="set" value="0"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" tags="buffVolatileAura"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="50" buff="buffTIBogEffect">
+					<requirement name="EntityTagCompare" target="other" tags="player"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIBogEffect" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="3"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="triggerInfection">
+					<requirement name="NotHasBuff" buff="buffInfectionMain"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="infectionCounter" operation="add" value="75">
+					<requirement name="HasBuff" buff="buffInfectionMain"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<!-- Walk it off - Take damage unless you walk. -->
+		<buff name="buffTIWalkItOff" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIWalkItOffMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIWalkItOffMain" name_key="buffTIWalkItOffName" description_key="buffTIWalkItOffDesc" icon="ui_game_symbol_splint" icon_color="215,28,10" remove_on_death="false">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<display_value value=".buffTIWalkItOffDuration"/>
+			<display_value_format value="time"/>
+			<tags value="twitch_bits"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIWalkItOffDuration" operation="add" value="60"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIWalkItOffDuration" operation="add" value="60"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIWalkItOffMain">
+					<requirement name="CVarCompare" cvar=".buffTIWalkItOffDuration" operation="LTE" value="1"/>
+				</triggered_effect>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value=".1"/>
+				<passive_effect name="CrouchSpeed" operation="perc_add" value="2"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="subtract" value="3">
+					<requirement name="EntityHasMovementTag" tags="idle"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="subtract" value="2">
+					<requirement name="EntityHasMovementTag" tags="running"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIWalkItOffDuration" operation="add" value="-1">
+					<requirement name="EntityHasMovementTag" tags="walking"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<!-- Slow Poke - Greatly reduce walking speed. -->
+		<buff name="buffTISlowPoke" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTISlowPokeMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTISlowPokeMain" name_key="buffTISlowPokeName" description_key="buffTISlowPokeDesc" icon="ui_game_symbol_splint" icon_color="0,240,0" remove_on_death="false">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<display_value value=".buffTISlowPokeDuration"/>
+			<display_value_format value="time"/>
+			<tags value="twitch_bits"/>
+			<!-- Duration triggers -->
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTISlowPokeDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTISlowPokeMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTISlowPokeDuration" operation="set" value="30"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTISlowPokeDuration" operation="add" value="30"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTISlowPokeDuration" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value=".6"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value=".6"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value=".6"/>
+				<passive_effect name="JumpStrength" operation="perc_subtract" value=".6"/>
+				<passive_effect name="StaminaChangeOT" operation="perc_subtract" value=".6"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Grasshopper - Increased jump height -->
+		<buff name="buffTIGrasshopper" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIGrasshopperMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIGrasshopperMain" name_key="buffTIGrasshopperName" description_key="buffTIGrasshopperDesc" icon="ui_game_symbol_block_upgrade" icon_color="215,28,10" remove_on_death="false">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<display_value value=".buffTIGrasshopperDuration"/>
+			<display_value_format value="time"/>
+			<tags value="twitch_bits"/>
+			<!-- Duration triggers -->
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIGrasshopperDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIGrasshopperMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIGrasshopperDuration" operation="set" value="60"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIGrasshopperDuration" operation="add" value="60"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIGrasshopperDuration" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfJump" action="ModifyCVar" cvar=".buffTIGrasshopperDuration" operation="add" value="1"/>
+				<triggered_effect trigger="onSelfJump" action="ModifyStats" stat="Stamina" operation="add" value="12"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="JumpStrength" operation="perc_add" value="1.75"/>
+				<passive_effect name="Mobility" operation="perc_add" value=".75"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Weak Knees - Reduce jump strength and take damage when jumping -->
+		<buff name="buffTIWeakKnees" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIWeakKneesMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIWeakKneesMain" name_key="buffTIWeakKneesName" description_key="buffTIWeakKneesDesc" icon="ui_game_symbol_weight" icon_color="215,28,10" remove_on_death="false">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<display_value value=".buffTIWeakKneesDuration"/>
+			<display_value_format value="time"/>
+			<tags value="twitch_bits"/>
+			<!-- Duration triggers -->
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIWeakKneesDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIWeakKneesMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIWeakKneesDuration" operation="set" value="120"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIWeakKneesDuration" operation="add" value="120"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIWeakKneesDuration" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="JumpStrength" operation="perc_subtract" value=".25"/>
+				<triggered_effect trigger="onSelfJump" action="ModifyStats" stat="Stamina" operation="subtract" value="4"/>
+				<triggered_effect trigger="onSelfFallImpact" action="ModifyStats" stat="Health" operation="subtract" value="3">
+					<requirement name="ProgressionLevel" progression_name="perkParkour" operation="Equals" value="0"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfFallImpact" action="ModifyStats" stat="Health" operation="subtract" value="6">
+					<requirement name="ProgressionLevel" progression_name="perkParkour" operation="Equals" value="1"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfFallImpact" action="ModifyStats" stat="Health" operation="subtract" value="9">
+					<requirement name="ProgressionLevel" progression_name="perkParkour" operation="Equals" value="2"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfFallImpact" action="ModifyStats" stat="Health" operation="subtract" value="12">
+					<requirement name="ProgressionLevel" progression_name="perkParkour" operation="Equals" value="3"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfFallImpact" action="ModifyStats" stat="Health" operation="subtract" value="15">
+					<requirement name="ProgressionLevel" progression_name="perkParkour" operation="Equals" value="4"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfFallImpact" action="ModifyStats" stat="Health" operation="subtract" value="50">
+					<requirement name="CVarCompare" cvar="_fallSpeed" operation="GTE" value=".07"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<!-- Hangover - Stun, blur and reduce food level -->
+		<buff name="buffTIHangover" name_key="buffTIHangoverName" description_key="buffTIHangoverDesc" icon="ui_game_symbol_beer" icon_color="215,28,10">
+			<damage_type value="Disease"/>
+			<stack_type value="replace"/>
+			<duration value="15"/>
+			<tags value="twitch_bits"/>
+			<effect_group>
+				<!-- <passive_effect name="StaminaMaxModifierOT" operation="base_add" value="-0.5"/> -->
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="water" operation="subtract" value="50"/>
+				<passive_effect name="WalkSpeed" operation="perc_add" duration="0,5,15" value="-.9,-.6,-.9"/>
+				<passive_effect name="RunSpeed" operation="perc_add" duration="0,5,15" value="-.9,-.6,-.9"/>
+				<passive_effect name="CrouchSpeed" operation="perc_add" duration="0,5,15" value="-.9,-.6,-.9"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$foodAmount" operation="set" value="15">
+					<requirement name="CVarCompare" cvar="$foodAmount" operation="GT" value="15"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="0.8" fade="4" effect_name="Drunk"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="4" effect_name="Drunk"/>
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="player#vomit" play_in_head="true"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Newbie penalty - Take damage on miss -->
+		<buff name="buffTINewbiePenalty" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTINewbiePenaltyMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTINewbiePenaltyMain" name_key="buffTINewbiePenalty" description_key="buffTINewbiePenaltyDesc" icon="ui_game_symbol_archery" icon_color="215,28,10" remove_on_death="false">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<display_value value=".buffTINewbiePenalty"/>
+			<display_value_format value="time"/>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTINewbiePenalty" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTINewbiePenaltyMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfPrimaryActionRayMiss" action="ModifyStats" stat="Health" operation="subtract" value="2"/>
+				<triggered_effect trigger="onSelfPrimaryActionRayMiss" action="ModifyCVar" cvar=".buffTINewbiePenalty" operation="add" value="1"/>
+				<triggered_effect trigger="onSelfSecondaryActionRayMiss" action="ModifyStats" stat="Health" operation="subtract" value="2"/>
+				<triggered_effect trigger="onSelfSecondaryActionRayMiss" action="ModifyCVar" cvar=".buffTINewbiePenalty" operation="add" value="1"/>
+				<triggered_effect trigger="onSelfDamagedBlock" action="ModifyStats" stat="Health" operation="subtract" value="2"/>
+				<triggered_effect trigger="onSelfDamagedBlock" action="ModifyCVar" cvar=".buffTINewbiePenalty" operation="add" value="1"/>
+				<triggered_effect trigger="onReloadStart" action="ModifyStats" stat="Health" operation="subtract" value="1"/>
+				<triggered_effect trigger="onReloadStart" action="ModifyCVar" cvar=".buffTINewbiePenalty" operation="add" value="2"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTINewbiePenalty" operation="set" value="60"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTINewbiePenalty" operation="add" value="60"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTINewbiePenalty" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTINewbiePenalty" operation="set" value="179">
+					<requirement name="CVarCompare" cvar=".buffTINewbiePenalty" operation="GTE" value="180"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<!-- Berserk - Increase run speed and attack damage -->
+		<buff name="buffTIBerserk" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIBerserkMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIBerserkMain" name_key="buffTIBerserkName" description_key="buffTIBerserkDesc" icon="ui_game_symbol_run" icon_color="215,28,10" remove_on_death="false">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<display_value value=".buffTIBerserkDuration"/>
+			<display_value_format value="time"/>
+			<tags value="twitch_bits"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIBerserkDuration" operation="add" value="60"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIBerserkDuration" operation="add" value="60"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIBerserkDuration" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIBerserkDuration" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIBerserkMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyStats" stat="Stamina" operation="add" value="100"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="EntityDamage" operation="perc_add" value="3"/>
+				<passive_effect name="BlockDamage" operation="perc_add" value="1"/>
+				<passive_effect name="StaminaLoss" operation="base_set" value="0" tags="primary,secondary"/>
+				<passive_effect name="StaminaChangeOT" operation="perc_add" value=".5"/>
+				<passive_effect name="WalkSpeed" operation="base_set" value="2.5"/>
+				<passive_effect name="RunSpeed" operation="base_set" value="3"/>
+				<passive_effect name="ReloadSpeedMultiplier" operation="perc_add" value=".5"/>
+				<passive_effect name="PhysicalDamageResist" operation="perc_add" value="1"/>
+				<passive_effect name="RoundsPerMinute" operation="perc_add" value=".5"/>
+				<passive_effect name="AttacksPerMinute" operation="perc_add" value=".5"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Ring of Fire - Set nearby zombies and animals on fire -->
+		<buff name="buffTIRingOfFire" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIRingOfFireMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIRingOfFireMain" name_key="buffTIRingOfFireName" description_key="buffTIRingOfFireDesc" icon="ui_game_symbol_fire" icon_color="215,28,10" icon_blink="true" remove_on_death="false">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<display_value value=".buffTIRingOfFire"/>
+			<display_value_format value="time"/>
+			<tags value="twitch_bits"/>
+			<update_rate value=".5"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIRingOfFire" operation="set" value="30"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIRingOfFire" operation="add" value="30"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIRingOfFire" operation="add" value="-0.5"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIRingOfFire" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIRingOfFireMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="10" buff="buffTIRingOfFireEffect">
+					<requirement name="!EntityTagCompare" target="other" tags="npc,vehicle,player,turret,drone"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="FireMediumLoop" play_in_head="true"/>
+				<triggered_effect trigger="onSelfBuffStart" action="FadeOutSound" sound="FireMediumLoop" play_in_head="true"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="PlaySound" sound="forge_fire_die" play_in_head="true"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIRingOfFireEffect">
+			<damage_type value="heat"/>
+			<stack_type value="ignore"/>
+			<duration value="4"/>
+			<update_rate value="1"/>
+			<effect_group>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" value="12"/>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffIsOnFire"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffIsOnFire"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Ring of Fire (Players) - Set nearby players on fire -->
+		<buff name="buffTIRingOfFirePlayers" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIRingOfFirePlayersMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIRingOfFirePlayersMain" name_key="buffTIRingOfFirePlayersName" description_key="buffTIRingOfFirePlayersDesc" icon="ui_game_symbol_fire" icon_color="76,115,255" icon_blink="true" remove_on_death="false">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<display_value value=".buffTIRingOfFirePlayersDuration"/>
+			<display_value_format value="time"/>
+			<tags value="twitch_bits"/>
+			<update_rate value=".5"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIRingOfFirePlayersDuration" operation="set" value="30"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIRingOfFirePlayersDuration" operation="add" value="30"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIRingOfFirePlayersDuration" operation="add" value="-0.5"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIRingOfFirePlayersDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIRingOfFirePlayersMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="20" buff="buffTIRingOfFirePlayersEffect">
+					<requirement name="EntityTagCompare" target="other" tags="player"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="FireMediumLoop" play_in_head="true"/>
+				<triggered_effect trigger="onSelfBuffStart" action="FadeOutSound" sound="FireMediumLoop" play_in_head="true"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="PlaySound" sound="forge_fire_die" play_in_head="true"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIRingOfFirePlayersEffect" icon="ui_game_symbol_fire" icon_color="255,0,0" icon_blink="true">
+			<damage_type value="heat"/>
+			<stack_type value="ignore"/>
+			<duration value="8"/>
+			<update_rate value="1.2"/>
+			<effect_group>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" duration="0,8" value="0,20"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Ring of Fire (Lucifer) - Set nearby players on fire -->
+		<buff name="buffTIRingOfFireLucifer">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<effect_group name="run particles, cleanup">
+				<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_onFire" local_offset="0,-.2,0" parent_transform="LOD0" shape_mesh="true"/>
+				<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" particle="p_onFire"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="6" buff="buffTIRingOfFireLuciferEffect">
+					<requirement name="EntityTagCompare" target="other" tags="player"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIRingOfFireLuciferEffect" icon="ui_game_symbol_fire" icon_color="255,0,0" icon_blink="true" remove_on_death="true">
+			<damage_type value="heat"/>
+			<stack_type value="ignore"/>
+			<duration value="8"/>
+			<effect_group>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" value="3"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Ring of Pain (Mummy) - slowly drain nearby player's health -->
+		<buff name="buffTIRingOfPainMummy">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="4" buff="buffTIRingOfPainMummyEffect">
+					<requirement name="EntityTagCompare" target="other" tags="player"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIRingOfPainMummyEffect" icon="ui_game_symbol_twitch_anti_leech" icon_color="255,0,0" icon_blink="true" remove_on_death="true">
+			<damage_type value="heat"/>
+			<stack_type value="ignore"/>
+			<duration value="4"/>
+			<effect_group>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" value="1"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Ring of Shock - Shock nearby zombies and animals -->
+		<buff name="buffTIRingOfShock" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIRingOfShockMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIRingOfShockMain" name_key="buffTIRingOfShockName" description_key="buffTIRingOfShockDesc" icon="ui_game_symbol_electric_max_power" icon_color="215,28,10" icon_blink="true" remove_on_death="false">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<display_value value=".buffTIRingOfShockDuration"/>
+			<display_value_format value="time"/>
+			<tags value="twitch_bits"/>
+			<update_rate value=".5"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIRingOfShockDuration" operation="set" value="30"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIRingOfShockDuration" operation="add" value="30"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIRingOfShockDuration" operation="add" value="-0.5"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIRingOfShockDuration" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIRingOfShockMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="10" buff="buffTIRingOfShockEffect">
+					<requirement name="!EntityTagCompare" target="other" tags="npc,vehicle,player,turret,drone"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="electric_fence_impact"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="FadeOutSound" sound="electric_fence_impact"/>
+				<triggered_effect trigger="onSelfLeaveGame" action="StopSound" sound="electric_fence_impact"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIRingOfShockEffect">
+			<damage_type value="electrical"/>
+			<stack_type value="ignore"/>
+			<duration value="4.5"/>
+			<effect_group>
+				<passive_effect name="HealthChangeOT" operation="base_add" value="-12"/>
+				<passive_effect name="RunSpeed" operation="perc_subtract" value="0.9,0" duration="0,4.3"/>
+				<passive_effect name="WalkSpeed" operation="perc_subtract" value="0.9,0" duration="0,4.3"/>
+				<passive_effect name="CrouchSpeed" operation="perc_subtract" value="0.9,0" duration="0,4.3"/>
+				<passive_effect name="JumpStrength" operation="perc_subtract" value="0.9,0" duration="0,4.3"/>
+				<triggered_effect trigger="onSelfBuffStart" action="AttachParticleEffectToEntity" particle="p_electric_shock" parent_transform="Spine1" local_offset="0,-.2,0"/>
+				<triggered_effect trigger="onSelfEnteredGame" action="AttachParticleEffectToEntity" particle="p_electric_shock" parent_transform="Spine1" local_offset="0,-.2,0"/>
+				<triggered_effect trigger="onSelfDied" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar="ETrapHit" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfLeaveGame" action="RemoveParticleEffectFromEntity" particle="p_electric_shock"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Ring of Shock (Players) - Shock nearby players -->
+		<buff name="buffTIRingOfShockPlayers" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIRingOfShockPlayersMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIRingOfShockPlayersMain" name_key="buffTIRingOfShockPlayersName" description_key="buffTIRingOfShockPlayersDesc" icon="ui_game_symbol_electric_max_power" icon_color="76,115,255" icon_blink="true" remove_on_death="false">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<display_value value=".buffTIRingOfShockPlayersDuration"/>
+			<display_value_format value="time"/>
+			<tags value="twitch_bits"/>
+			<update_rate value=".5"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIRingOfShockPlayersDuration" operation="set" value="30"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIRingOfShockPlayersDuration" operation="add" value="30"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIRingOfShockPlayersDuration" operation="add" value="-0.5"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIRingOfShockPlayersDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIRingOfShockPlayersMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="20" buff="buffTIRingOfShockEffect">
+					<requirement name="EntityTagCompare" target="other" tags="player"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="electric_fence_impact"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="FadeOutSound" sound="electric_fence_impact"/>
+				<triggered_effect trigger="onSelfLeaveGame" action="StopSound" sound="electric_fence_impact"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Ring of Love - Heal nearby zombies and animals -->
+		<buff name="buffTIRingOfLove" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIRingOfLoveMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIRingOfLoveMain" name_key="buffTIRingOfLoveName" description_key="buffTIRingOfLoveDesc" icon="ui_game_symbol_medical" icon_color="215,28,10" icon_blink="true" remove_on_death="false">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<display_value value=".buffTIRingOfLove"/>
+			<display_value_format value="time"/>
+			<tags value="twitch_bits"/>
+			<update_rate value=".5"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIRingOfLove" operation="set" value="120"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIRingOfLove" operation="add" value="120"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIRingOfLove" operation="add" value="-0.5"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIRingOfLove" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIRingOfLoveMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="20" buff="buffTIRingOfLoveEffect">
+					<requirement name="!EntityTagCompare" target="other" tags="npc,vehicle,player,turret,drone"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIRingOfLoveEffect">
+			<stack_type value="ignore"/>
+			<duration value="3"/>
+			<effect_group>
+				<passive_effect name="HealthChangeOT" operation="base_add" value="24"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Ring of Love (Players) - Heal nearby players -->
+		<buff name="buffTIRingOfLovePlayers" hidden="true">
+			<duration value=".1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTIRingOfLovePlayersMain"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIRingOfLovePlayersMain" name_key="buffTIRingOfLovePlayersName" description_key="buffTIRingOfLovePlayersDesc" icon="ui_game_symbol_medical" icon_color="76,115,255" icon_blink="true" remove_on_death="false">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<display_value value=".buffTIRingOfLovePlayersDuration"/>
+			<display_value_format value="time"/>
+			<tags value="twitch_bits"/>
+			<update_rate value=".5"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTIRingOfLovePlayersDuration" operation="set" value="120"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTIRingOfLovePlayersDuration" operation="add" value="120"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIRingOfLovePlayersDuration" operation="add" value="-0.5"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".buffTIRingOfLovePlayersDuration" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIRingOfLovePlayersMain"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="20" buff="buffTIRingOfLovePlayersEffect">
+					<requirement name="EntityTagCompare" target="other" tags="player"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIRingOfLovePlayersEffect" icon="ui_game_symbol_add" icon_color="255,0,0" icon_blink="true">
+			<stack_type value="replace"/>
+			<duration value="3"/>
+			<effect_group>
+				<passive_effect name="HealthChangeOT" operation="base_add" value="10"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Delete Inventory -->
+		<buff name="buffTIDeleteInventory" name_key="buffTIDeleteInventoryName" description_key="buffTIDeleteInventoryDesc" icon="ui_game_symbol_backpack" icon_color="215,28,10" icon_blink="true" remove_on_death="false">
+			<display_value_key value="Don't Die"/>
+			<display_value value="xxx"/>
+			<stack_type value="replace"/>
+			<update_rate value="40"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIDeleteInventory"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Horde Arena -->
+		<buff name="buffTIHordeArena1Trigger" name_key="buffTIHordeArenaName" description_key="buffTIHordeArenaDesc" icon="ui_game_symbol_marksmanship" icon_color="76,115,255" icon_blink="true" remove_on_death="false">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<display_value value=".arenacountdown"/>
+			<display_value_format value="time"/>
+			<tags value="twitch_bits"/>
+			<update_rate value="1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".arenacountdown" operation="set" value="5"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".arenacountdown" operation="add" value="5"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".arenacountdown" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="StopSound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfLeaveGame" action="StopSound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfEnteredGame" action="PlaySound" sound="buff_bleeding" play_in_head="true"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".arenacountdown" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIHordeArena1Trigger"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffTIHordeArena1"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="StatCompareCurrent" target="self" stat="Health" operation="LT" value="1"/>
+				<triggered_effect trigger="onOtherDamagedSelf" action="RemoveBuff" buff="buffTIHordeArena1Trigger"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffTIHordeArena1"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIHordeArena1" name_key="buffTIHordeArenaName" description_key="buffTIHordeArenaDesc" icon="ui_game_symbol_map_cursor" icon_color="215,28,10" icon_blink="true" remove_on_death="false">
+			<display_value value="hordeArenaStage"/>
+			<display_value_key value="Level {0}"/>
+			<duration value="30"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="hordeArenaStage" operation="set" value="1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="0.4" fade="2" effect_name="Dead"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="2" effect_name="Dead"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="0.3" fade="2" effect_name="Dying"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="2" effect_name="Dying"/>
+				<!-- <triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="round1_horde_arena_mainLoop" allow_client_call="true"/> -->
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="round1_horde_arena_mainLoop" allow_client_call="true"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".hordearena" operation="set" value="30"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".hordearena" operation="add" value="30"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".hordearena" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".hordearena" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".hordearena" operation="set" value="0"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="StatCompareCurrent" target="self" stat="Health" operation="LT" value="1"/>
+				<triggered_effect trigger="onOtherDamagedSelf" action="RemoveBuff" buff="buffTIHordeArena1"/>
+			</effect_group>			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffTIHordeArena2Trigger"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffTILightHeal"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" cvar="hordeArenaStage" operation="set" value="0"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="GameStage" operation="base_add" value="50"/>				
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIHordeArena2Trigger" name_key="buffTIHordeArenaName" description_key="buffTIHordeArenaDesc" icon="ui_game_symbol_marksmanship" icon_color="76,115,255" icon_blink="true" remove_on_death="false">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<display_value value=".arenacountdown"/>
+			<display_value_format value="time"/>
+			<tags value="twitch_bits"/>
+			<update_rate value="1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".arenacountdown" operation="set" value="10"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".arenacountdown" operation="add" value="10"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".arenacountdown" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="StopSound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfLeaveGame" action="StopSound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfEnteredGame" action="PlaySound" sound="buff_bleeding" play_in_head="true"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".arenacountdown" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIHordeArena2Trigger"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffTIHordeArena2"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="StatCompareCurrent" target="self" stat="Health" operation="LT" value="1"/>
+				<triggered_effect trigger="onOtherDamagedSelf" action="RemoveBuff" buff="buffTIHordeArena1Trigger"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffTIHordeArena2"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIHordeArena2" name_key="buffTIHordeArenaName" description_key="buffTIHordeArenaDesc" icon="ui_game_symbol_map_cursor" icon_color="215,28,10" icon_blink="true" remove_on_death="false">
+			<display_value value="hordeArenaStage"/>
+			<display_value_key value="Level {0}"/>
+			<duration value="45"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="hordeArenaStage" operation="set" value="2"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="0.4" fade="2" effect_name="Dead"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="2" effect_name="Dead"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="0.3" fade="2" effect_name="Dying"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="2" effect_name="Dying"/>
+				<!-- <triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="round2_horde_arena_mainLoop" allow_client_call="true"/> -->
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="round2_horde_arena_mainLoop" allow_client_call="true"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".hordearena" operation="set" value="45"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".hordearena" operation="add" value="45"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".hordearena" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".hordearena" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".hordearena" operation="set" value="0"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="StatCompareCurrent" target="self" stat="Health" operation="LT" value="1"/>
+				<triggered_effect trigger="onOtherDamagedSelf" action="RemoveBuff" buff="buffTIHordeArena2"/>
+			</effect_group>			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffTIHordeArena3Trigger"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffTILightHeal"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" cvar="hordeArenaStage" operation="set" value="0"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="GameStage" operation="base_add" value="100"/>				
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIHordeArena3Trigger" name_key="buffTIHordeArenaName" description_key="buffTIHordeArenaDesc" icon="ui_game_symbol_marksmanship" icon_color="76,115,255" icon_blink="true" remove_on_death="false">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<display_value value=".arenacountdown"/>
+			<display_value_format value="time"/>
+			<tags value="twitch_bits"/>
+			<update_rate value="1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".arenacountdown" operation="set" value="10"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".arenacountdown" operation="add" value="10"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".arenacountdown" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="StopSound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfLeaveGame" action="StopSound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfEnteredGame" action="PlaySound" sound="buff_bleeding" play_in_head="true"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".arenacountdown" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIHordeArena3Trigger"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffTIHordeArena3"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="StatCompareCurrent" target="self" stat="Health" operation="LT" value="1"/>
+				<triggered_effect trigger="onOtherDamagedSelf" action="RemoveBuff" buff="buffTIHordeArena3Trigger"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffTIHordeArena3"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIHordeArena3" name_key="buffTIHordeArenaName" description_key="buffTIHordeArenaDesc" icon="ui_game_symbol_map_cursor" icon_color="215,28,10" icon_blink="true" remove_on_death="false">
+			<display_value value="hordeArenaStage"/>
+			<display_value_key value="Level {0}"/>
+			<duration value="60"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="hordeArenaStage" operation="set" value="3"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="0.4" fade="2" effect_name="Dead"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="2" effect_name="Dead"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="0.3" fade="2" effect_name="Dying"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="2" effect_name="Dying"/>
+				<!-- <triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="round3_horde_arena_mainLoop" allow_client_call="true"/> -->
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="round3_horde_arena_mainLoop" allow_client_call="true"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".hordearena" operation="set" value="60"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".hordearena" operation="add" value="60"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".hordearena" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".hordearena" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".hordearena" operation="set" value="0"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="StatCompareCurrent" target="self" stat="Health" operation="LT" value="1"/>
+				<triggered_effect trigger="onOtherDamagedSelf" action="RemoveBuff" buff="buffTIHordeArena3"/>
+			</effect_group>			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffTIHordeArena4Trigger"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffTILightHeal"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" cvar="hordeArenaStage" operation="set" value="0"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="GameStage" operation="base_add" value="150"/>				
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIHordeArena4Trigger" name_key="buffTIHordeArenaName" description_key="buffTIHordeArenaDesc" icon="ui_game_symbol_marksmanship" icon_color="76,115,255" icon_blink="true" remove_on_death="false">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<display_value value=".arenacountdown"/>
+			<display_value_format value="time"/>
+			<tags value="twitch_bits"/>
+			<update_rate value="1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".arenacountdown" operation="set" value="10"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".arenacountdown" operation="add" value="10"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".arenacountdown" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="StopSound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfLeaveGame" action="StopSound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfEnteredGame" action="PlaySound" sound="buff_bleeding" play_in_head="true"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".arenacountdown" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIHordeArena4Trigger"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffTIHordeArena4"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="StatCompareCurrent" target="self" stat="Health" operation="LT" value="1"/>
+				<triggered_effect trigger="onOtherDamagedSelf" action="RemoveBuff" buff="buffTIHordeArena4Trigger"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffTIHordeArena4"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIHordeArena4" name_key="buffTIHordeArenaName" description_key="buffTIHordeArenaDesc" icon="ui_game_symbol_map_cursor" icon_color="215,28,10" icon_blink="true" remove_on_death="false">
+			<display_value value="hordeArenaStage"/>
+			<display_value_key value="Level {0}"/>
+			<duration value="75"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="hordeArenaStage" operation="set" value="4"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="0.4" fade="2" effect_name="Dead"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="2" effect_name="Dead"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="0.3" fade="2" effect_name="Dying"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="2" effect_name="Dying"/>
+				<!-- <triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="round4_horde_arena_mainLoop" allow_client_call="true"/> -->
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="round4_horde_arena_mainLoop" allow_client_call="true"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".hordearena" operation="set" value="75"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".hordearena" operation="add" value="75"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".hordearena" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".hordearena" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".hordearena" operation="set" value="0"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="StatCompareCurrent" target="self" stat="Health" operation="LT" value="1"/>
+				<triggered_effect trigger="onOtherDamagedSelf" action="RemoveBuff" buff="buffTIHordeArena4"/>
+			</effect_group>			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffTIHordeArena5Trigger"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffTILightHeal"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" cvar="hordeArenaStage" operation="set" value="0"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="GameStage" operation="base_add" value="200"/>				
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIHordeArena5Trigger" name_key="buffTIHordeArenaName" description_key="buffTIHordeArenaDesc" icon="ui_game_symbol_marksmanship" icon_color="76,115,255" icon_blink="true" remove_on_death="false">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<display_value value=".arenacountdown"/>
+			<display_value_format value="time"/>
+			<tags value="twitch_bits"/>
+			<update_rate value="1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".arenacountdown" operation="set" value="10"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".arenacountdown" operation="add" value="10"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".arenacountdown" operation="add" value="-1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="PlaySound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="StopSound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfLeaveGame" action="StopSound" sound="buff_bleeding" play_in_head="true"/>
+				<triggered_effect trigger="onSelfEnteredGame" action="PlaySound" sound="buff_bleeding" play_in_head="true"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".arenacountdown" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIHordeArena5Trigger"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffTIHordeArena5"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="StatCompareCurrent" target="self" stat="Health" operation="LT" value="1"/>
+				<triggered_effect trigger="onOtherDamagedSelf" action="RemoveBuff" buff="buffTIHordeArena5Trigger"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffTIHordeArena5"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIHordeArena5" name_key="buffTIHordeArenaName" description_key="buffTIHordeArenaDesc" icon="ui_game_symbol_map_cursor" icon_color="215,28,10" icon_blink="true" remove_on_death="false">
+			<display_value value="hordeArenaStage"/>
+			<display_value_key value="Level {0}"/>
+			<duration value="90"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="hordeArenaStage" operation="set" value="5"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="0.4" fade="2" effect_name="Dead"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="2" effect_name="Dead"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" intensity="0.3" fade="2" effect_name="Dying"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" intensity="0" fade="2" effect_name="Dying"/>
+				<!-- <triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="round5_horde_arena_mainLoop" allow_client_call="true"/> -->
+				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="round5_horde_arena_mainLoop" allow_client_call="true"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".hordearena" operation="set" value="90"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".hordearena" operation="add" value="90"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".hordearena" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".hordearena" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".hordearena" operation="set" value="0"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="StatCompareCurrent" target="self" stat="Health" operation="LT" value="1"/>
+				<triggered_effect trigger="onOtherDamagedSelf" action="RemoveBuff" buff="buffTIHordeArena5"/>
+			</effect_group>			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" cvar="hordeArenaStage" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="spawn_weapon3" allow_client_call="true"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="spawn_armor2" allow_client_call="true"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="spawn_medicine3" allow_client_call="true"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="spawn_foodwater4" allow_client_call="true"/>
+			</effect_group>
+			<effect_group>
+				<passive_effect name="GameStage" operation="base_add" value="250"/>				
+			</effect_group>
+		</buff>		
+		
+		<!-- Hunger Games -->
+		<buff name="buffTIHungerGames" name_key="buffTIHungerGamesName" description_key="buffTIHungerGamesDesc" icon="ui_game_symbol_rifle" icon_color="215,28,10" icon_blink="true" remove_on_death="false">
+			<display_value value="hungerGamesPoints"/>
+			<display_value_key value="{0}"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="hungerGamesPoints" operation="set" value="0"/>
+			</effect_group>
+		</buff>
+		
+		<!-- TI Enabled -->
+		<buff name="buffTIEnabled" name_key="buffTIEnabledName" description_key="buffTIEnabledDesc" icon="ui_game_symbol_quest" icon_color="215,28,10" remove_on_death="false">
+			<display_value_key value="TI On"/>
+			<display_value value="xxx"/>
+			<stack_type value="replace"/>
+			<update_rate value="40"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIEnabled"/>
+			</effect_group>
+		</buff>
+		
+		<!-- TI Whitelisted -->
+		<buff name="buffTIWhitelistEnabled" name_key="buffTIWhitelistEnabledName" description_key="buffTIWhitelistEnabledDesc" icon="ui_game_symbol_quest" icon_color="76,115,255" remove_on_death="false">
+			<display_value_key value="TI On"/>
+			<display_value value="xxx"/>
+			<stack_type value="replace"/>
+			<update_rate value="40"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIWhitelistEnabled"/>
+			</effect_group>
+		</buff>
+		
+		<!-- TI Disabled -->
+		<buff name="buffTIDisabled" name_key="buffTIDisabledName" description_key="buffTIDisabledDesc" icon="ui_game_symbol_quest" icon_color="150,150,150" remove_on_death="false">
+			<display_value_key value="TI Off"/>
+			<display_value value="xxx"/>
+			<stack_type value="replace"/>
+			<update_rate value="40"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTIEnabled"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIDisabled"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Safe Zone -->
+		<buff name="buffTISafezoneEnabled" name_key="buffTISafezoneEnabledName" description_key="buffTISafezoneEnabledDesc" icon="ui_game_symbol_defense" icon_color="150,150,150" remove_on_death="false">
+			<display_value_key value="Safe"/>
+			<display_value value="xxx"/>
+			<stack_type value="replace"/>
+			<update_rate value="40"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTISafezoneEnabled"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Safe Zone Restricted -->
+		<buff name="buffTISafezoneRestricted" name_key="buffTISafezoneRestrictedName" description_key="buffTISafezoneRestrictedDesc" icon="ui_game_symbol_defense" icon_color="215,28,10" remove_on_death="false" icon_blink="true">
+			<display_value_key value="Off Limits"/>
+			<display_value value="xxx"/>
+			<stack_type value="replace"/>
+			<update_rate value="40"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTISafezoneRestricted"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Teleport Disabled -->
+		<buff name="buffTITeleportDisabled" name_key="buffTITeleportDisabledName" description_key="buffTITeleportDisabledDesc" icon="ui_game_symbol_x" icon_color="150,150,150" remove_on_death="false">
+			<display_value_key value="TP Off"/>
+			<display_value value="xxx"/>
+			<stack_type value="replace"/>
+			<update_rate value="40"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTITeleportDisabled"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Quest Mode -->
+		<buff name="buffTIQuestMode" name_key="buffTIQuestModeName" description_key="buffTIQuestModeDesc" icon="ui_game_symbol_x" icon_color="150,150,150" remove_on_death="false">
+			<display_value_key value="Quest"/>
+			<display_value value="xxx"/>
+			<stack_type value="replace"/>
+			<duration value="0"/>
+		</buff>
+		
+		<!-- Status AFK -->
+		<buff name="buffTIAFKEnabled" name_key="buffTIAFKEnabledName" description_key="buffTIAFKEnabledDesc" icon="ui_game_symbol_defense" icon_color="150,150,150" remove_on_death="false">
+			<display_value_key value="AFK"/>
+			<display_value value="xxx"/>
+			<stack_type value="replace"/>
+			<duration value="0"/>
+		</buff>
+		
+		<!-- TI Throttled -->
+		<buff name="buffTIThrottled" name_key="buffTIThrottledName" description_key="buffTIThrottledDesc" icon="ui_game_symbol_defense" icon_color="150,150,150" remove_on_death="false">
+			<display_value_key value="Throttled"/>
+			<display_value value="xxx"/>
+			<stack_type value="replace"/>
+			<update_rate value="40"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIThrottled"/>
+			</effect_group>
+		</buff>
+		
+		<!-- TI Enabled Paused -->
+		<buff name="buffTIPaused" name_key="buffTIPausedName" description_key="buffTIPausedDesc" icon="ui_game_symbol_defense" icon_color="150,150,150" remove_on_death="false">
+			<display_value_key value="Paused"/>
+			<display_value value="xxx"/>
+			<stack_type value="replace"/>
+			<update_rate value="40"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIPaused"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTILandMine" hidden="true">
+			<stack_type value="duration"/>
+			<duration value="60"/>
+			<effect_group>
+				<passive_effect name="LandMineImmunity" operation="base_set" value="0"/>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTILandMineLong" hidden="true">
+			<stack_type value="duration"/>
+			<duration value="180"/>
+			<effect_group>
+				<passive_effect name="LandMineImmunity" operation="base_set" value="0"/>
+			</effect_group>
+		</buff>
+		
+		<!-- TI Status Remove -->
+		<buff name="buffTIStatusRemove" hidden="true">
+			<display_value_key value=""/>
+			<display_value value="xxx"/>
+			<stack_type value="ignore"/>
+			<duration value="1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTIEnabled"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTIWhitelistEnabled"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTIDisabled"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTIPaused"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTIThrottled"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTITeleportDisabled"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISafezoneEnabled"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISafezoneRestricted"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTIAFKEnabled"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTIQuestMode"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIStatusRemove"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Resurrection - Curse indicator -->
+		<buff name="buffTIResurrection" name_key="buffTIResurrectionName" description_key="buffTIResurrectionDesc" icon="ui_game_symbol_skull" icon_color="215,28,10" remove_on_death="false">
+			<display_value value="resurrectionCount"/>
+			<stack_type value="ignore"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="resurrectionCount" operation="set" value="0"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Shaman - Count indicator -->
+		<buff name="buffTIShaman" name_key="buffTIShamanName" description_key="buffTIShamanDesc" icon="ui_game_symbol_skull" icon_color="0,240,0" remove_on_death="false">
+			<display_value value="shamanCount"/>
+			<stack_type value="ignore"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="shamanCount" operation="set" value="1"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Shaman - resurrection for spawns -->
+		<buff name="buffResAOETrigger" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<!-- <update_rate value="1"/> -->
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="200" buff="buffShamanResurrect">
+					<requirement name="EntityTagCompare" target="other" tags="player"/>
+					<requirement name="!EntityTagCompare" target="other" tags="zombie,animal"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffShamanResurrect" name_key="Resurrect" description_key="ResurrectDesc" icon="ui_game_symbol_twitch_resurrect" icon_color="255,175,175" remove_on_death="false">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<display_value value="duration"/>
+			<effect_group>
+				<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" tags="buffShamanResurrect"/>
+				<triggered_effect trigger="onSelfEnteredGame" action="RemoveBuff" buff="buffShamanResurrect"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="PlaySound" sound="twitch_bad_buff_ended" play_in_head="true"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfKilledOther" action="CallGameEvent" target="other" event="buff_rez" sequence_link="resurrect" allow_client_call="true">
+					<requirement name="EntityTagCompare" target="other" tags="zombie,animal"/>
+				</triggered_effect>
+				<triggered_effect trigger="onSelfBuffRemove" action="UnregisterSequenceLink" sequence_link="resurrect"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfKilledOther" action="RemoveBuff" buff="buffShamanResurrect">
+					<requirement name="EntityTagCompare" target="other" tags="shaman"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<!-- Agony (vulture screamer) -->
+		<buff name="buffAgonyTrigger" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<update_rate value="1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".agonycounter" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".agony" operation="set" value="randomint(1,10)"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".agony" operation="Equals" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".agonycounter" operation="add" value="1"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".agony" operation="Equals" value="1"/>
+				<requirement name="CVarCompare" cvar=".agonycounter" operation="LTE" value="4"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="other" event="agony_horde_sequence" allow_client_call="true"/>			
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".agonycounter" operation="set" value="0"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Torment (TI screamer) -->
+		<buff name="buffTormentTrigger" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<update_rate value="1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".tormentcounter" operation="set" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".torment" operation="set" value="randomint(1,10)"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".torment" operation="Equals" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".tormentcounter" operation="add" value="1"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".torment" operation="Equals" value="1"/>
+				<requirement name="CVarCompare" cvar=".tormentcounter" operation="LTE" value="4"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="other" event="torment_horde_sequence" allow_client_call="true"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".tormentcounter" operation="set" value="0"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Demo Screamer -->
+		<buff name="buffDemoScreamerTrigger" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<update_rate value="1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".demoscreams" operation="set" value="randomint(1,10)"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".demoscreams" operation="Equals" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="other" event="demo_horde_sequence" allow_client_call="true"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Bat Witch -->
+		<buff name="buffBatWitchTrigger" hidden="true">
+			<stack_type value="ignore"/>
+			<duration value="0"/>
+			<update_rate value="1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".batwitchscreams" operation="set" value="randomint(1,10)"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".batwitchscreams" operation="Equals" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="other" event="bats_horde_sequence" allow_client_call="true"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Fresh Meat -->
+		<buff name="buffTIFreshMeat" name_key="buffTIFreshMeatName" description_key="buffTIFreshMeatDesc" icon="ui_game_symbol_smell" icon_color="215,28,10" remove_on_death="false">
+			<stack_type value="effect"/>
+			<duration value="0"/>
+			<display_value value=".freshmeat"/>
+			<display_value_format value="time"/>
+			<tags value="twitch_bits"/>
+			<update_rate value="1"/>
+			
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".freshmeat" operation="set" value="60"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".freshmeat" operation="add" value="60"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".freshmeat" operation="add" value="-1"/>
+			</effect_group>
+			<effect_group>
+				<requirement name="CVarCompare" cvar=".freshmeat" operation="LTE" value="1"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIFreshMeat"/>
+			</effect_group>	
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="fresh_meat" allow_client_call="true"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Delayed spawn indicator -->
+		<buff name="buffTIDelayedSpawn" name_key="buffTIDelayedSpawnName" description_key="buffTIDelayedSpawnDesc" icon="ui_game_symbol_zombie" icon_color="0,240,0" remove_on_death="false">
+			<display_value value="spawnCount"/>
+			<stack_type value="replace"/>
+			<update_rate value="40"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIDelayedSpawn"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Spawn Multiplier 2x -->
+		<buff name="buffTISpawnMultiplier2x" name_key="buffTISpawnMultiplier2xName" description_key="buffTISpawnMultiplier2xDesc" icon="ui_game_symbol_zombie" icon_color="215,28,10" remove_on_death="false">
+			<display_value_key value="2x"/>
+			<display_value value="xxx"/>
+			<stack_type value="replace"/>
+			<update_rate value="40"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier3x"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier4x"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier5x"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTISpawnMultiplier2x"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Spawn Multiplier 3x -->
+		<buff name="buffTISpawnMultiplier3x" name_key="buffTISpawnMultiplier3xName" description_key="buffTISpawnMultiplier3xDesc" icon="ui_game_symbol_zombie" icon_color="215,28,10" remove_on_death="false">
+			<display_value_key value="3x"/>
+			<display_value value="xxx"/>
+			<stack_type value="replace"/>
+			<update_rate value="40"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier2x"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier4x"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier5x"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTISpawnMultiplier3x"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Spawn Multiplier 4x -->
+		<buff name="buffTISpawnMultiplier4x" name_key="buffTISpawnMultiplier4xName" description_key="buffTISpawnMultiplier4xDesc" icon="ui_game_symbol_zombie" icon_color="215,28,10" remove_on_death="false">
+			<display_value_key value="4x"/>
+			<display_value value="xxx"/>
+			<stack_type value="replace"/>
+			<update_rate value="40"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier2x"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier3x"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier5x"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTISpawnMultiplier4x"/>
+			</effect_group>
+		</buff>
+		
+		<!-- Spawn Multiplier 5x -->
+		<buff name="buffTISpawnMultiplier5x" name_key="buffTISpawnMultiplier5xName" description_key="buffTISpawnMultiplier5xDesc" icon="ui_game_symbol_zombie" icon_color="215,28,10" remove_on_death="false">
+			<display_value_key value="5x"/>
+			<display_value value="xxx"/>
+			<stack_type value="replace"/>
+			<update_rate value="40"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier2x"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier3x"/>
+				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier4x"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTISpawnMultiplier5x"/>
+			</effect_group>
+		</buff>
+	</append>
+</configs>

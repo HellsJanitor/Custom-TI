@@ -1,0 +1,48 @@
+<HellsJanitor>
+
+	<append xpath="/Sounds">
+		<SoundDataNode name="zombieCanadianRoaming">
+			<AudioSource name="Sounds/AudioSource_Creatures" Volume="1.0"/>
+			<AudioClip ClipName="#@modfolder:Resources/sfxroaming.unity3d?Any_humans_aboot"/>
+			<AudioClip ClipName="#@modfolder:Resources/sfxroaming.unity3d?Mmm_Maple_Syrup"/>
+			<AudioClip ClipName="#@modfolder:Resources/sfxroaming.unity3d?Where_are_the_humans_eh"/>
+			<AudioClip ClipName="#@modfolder:Resources/sfxroaming.unity3d?Eh_-Wheres_my_hockey_stick"/>
+			<AudioClip ClipName="#@modfolder:Resources/sfxroaming.unity3d?Brains_Eh"/>
+			<Channel name="Mouth"/>
+			<Priority name="5"/>
+			<maxVoicesPerEntity value="1"/>
+			<LowestPitch name="0.95"/>
+			<HighestPitch name="1.05"/>
+			<LocalCrouchVolumeScale value="1.0"/><CrouchNoiseScale value="0.5"/><NoiseScale value="1"/><MaxVoices value="10"/><MaxRepeatRate value="3"/>
+		</SoundDataNode>
+		
+		<SoundDataNode name="zombieCanadianApologetic">
+			<AudioSource name="Sounds/AudioSource_Creatures" Volume="1.0"/>
+			<AudioClip ClipName="#@modfolder:Resources/sfxapologetic.unity3d?Apologetic_-_Normal_1"/>
+			<AudioClip ClipName="#@modfolder:Resources/sfxapologetic.unity3d?Apologetic_-_Normal_2"/>
+			<AudioClip ClipName="#@modfolder:Resources/sfxapologetic.unity3d?Apologetic_1"/>
+			<AudioClip ClipName="#@modfolder:Resources/sfxapologetic.unity3d?Apologetic_2 "/>
+			<AudioClip ClipName="#@modfolder:Resources/sfxapologetic.unity3d?Apologetic_3"/>
+			<Channel name="Mouth"/>
+			<Priority name="5"/>
+			<maxVoicesPerEntity value="1"/>
+			<LowestPitch name="0.95"/>
+			<HighestPitch name="1.05"/>
+			<LocalCrouchVolumeScale value="1.0"/><CrouchNoiseScale value="0.5"/><NoiseScale value="1"/><MaxVoices value="10"/><MaxRepeatRate value="3"/>
+		</SoundDataNode>
+		
+		<SoundDataNode name="zombieCanadianEh">
+			<AudioSource name="Sounds/AudioSource_Creatures" Volume="1.0"/>
+			<AudioClip ClipName="#@modfolder:Resources/sfxcanadianeh.unity3d?Eh_-_exlamation"/>
+			<AudioClip ClipName="#@modfolder:Resources/sfxcanadianeh.unity3d?Eh_-_question"/>
+			<AudioClip ClipName="#@modfolder:Resources/sfxcanadianeh.unity3d?Eh_-_sad"/>
+			<AudioClip ClipName="#@modfolder:Resources/sfxcanadianeh.unity3d?Eh_Brains"/>
+			<Channel name="Mouth"/>
+			<Priority name="5"/>
+			<maxVoicesPerEntity value="1"/>
+			<LowestPitch name="0.95"/>
+			<HighestPitch name="1.05"/>
+			<LocalCrouchVolumeScale value="1.0"/><CrouchNoiseScale value="0.5"/><NoiseScale value="1"/><MaxVoices value="10"/><MaxRepeatRate value="3"/>
+		</SoundDataNode>
+	</append>
+</HellsJanitor>

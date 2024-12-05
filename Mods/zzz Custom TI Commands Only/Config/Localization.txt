@@ -1,0 +1,439 @@
+Key,File,Type,English
+
+buffTIElixirName,buffs,Buff,"Elixir"
+buffTIElixirDesc,buffs,Buff,"Restore health, stamina, food and water."
+buffTIHealName,buffs,Buff,"Heal Ailments"
+buffTIHealDesc,buffs,Buff,"Remove negative status effects, near death trauma and experience debt."
+buffTIRegenName,buffs,Buff,"Regeneration"
+buffTIRegenDesc,buffs,Buff,"Slowly gain life."
+buffTISuddenDeathName,buffs,Buff,"Sudden Death"
+buffTISuddenDeathDesc,buffs,Buff,"Any hit from a zombie, animal or player will result in death."
+buffTIDamageResistName,buffs,Buff,"Diamond Skin"
+buffTIDamageResistDesc,buffs,Buff,"Reduce damage taken from zombies and animals.\n\nYou still take damage from status effects and other sources."
+buffTILifeLinkName,buffs,Buff,"Life Link"
+buffTILifeLinkDesc,buffs,Buff,"A small percentage of each hit will be added to your life."
+buffTIDegradationName,buffs,Buff,"Faulty Gear"
+buffTIDegradationDesc,buffs,Buff,"Weapons and tools will degrade quickly."
+buffTINerfName,buffs,Buff,"Nerfed"
+buffTINerfDesc,buffs,Buff,"Slower attacks, worse aim and less damage. If infected, you will slowly lose health.\n\nAbout time you gave those zombies a chance."
+buffTILowStaminaName,buffs,Buff,"Smoker's Lungs"
+buffTILowStaminaDesc,buffs,Buff,"Max stamina is reduced."
+buffTISlowReloadName,buffs,Buff,"Slow Reloader"
+buffTISlowReloadDesc,buffs,Buff,"Reduce reload speed and magazine size.\n\nReloading adds remaining time to this effect."
+buffTIBadTripName,buffs,Buff,"Bad Trip"
+buffTIBadTripDesc,buffs,Buff,"Distort the screen."
+buffTIFeelBadName,buffs,Buff,"Unwell"
+buffTIFeelBadDesc,buffs,Buff,"Feels Bad Man."
+buffTIVenomName,buffs,Buff,"Snake Venom"
+buffTIVenomDesc,buffs,Buff,"Be careful of those anacondas!"
+buffTIRadiationName,buffs,Buff,"Fumigation"
+buffTIRadiationDesc,buffs,Buff,"You are in an area designated for fumigation.\n\nLeave the toxic area as soon as possible!"
+buffTIToxicName,buffs,Buff,"Toxic Area"
+buffTIToxicDesc,buffs,Buff,"You are near Patient Zero. Leave the area or eliminate the zombie as soon as possible!"
+buffTIMunchiesName,buffs,Buff,"Munchies"
+buffTIMunchiesDesc,buffs,Buff,"Your food and water has been depleted and your mobility has decreased, vision blurred, and sometimes you are so hungry that you fall down. If you have dysentery, it will hurt.\n\nRestore food and water levels to remove this effect."
+buffTIClumsyFighterName,buffs,Buff,"Clumsy Fighter"
+buffTIClumsyFighterDesc,buffs,Buff,"Better watch those attacks. One miss and you might be eating dirt."
+buffTISuperZombiesName,buffs,Buff,"Super Zombies"
+buffTISuperZombiesDesc,buffs,Buff,"Increase health and damage of nearby zombies and also give them regen."
+buffTIWalkItOffName,buffs,Buff,"Walk it off"
+buffTIWalkItOffDesc,buffs,Buff,"You must walk, otherwise it will hurt."
+buffTIGrasshopperName,buffs,Buff,"Grasshopper"
+buffTIGrasshopperDesc,buffs,Buff,"Increase jumping strength."
+buffTIWeakKneesName,buffs,Buff,"Weak Knees"
+buffTIWeakKneesDesc,buffs,Buff,"Reduce jump height."
+buffTIHangoverName,buffs,Buff,"Hangover"
+buffTIHangoverDesc,buffs,Buff,"Drinking too much can make you sick."
+buffTINewbiePenalty,buffs,Buff,Newbie Penalty
+buffTINewbiePenaltyDesc,buffs,Buff,"Take a small amount of damage for each miss. This will also increase remaining time.\n\nBe careful with shotguns since each missed pellet will hurt you."
+buffTIBerserkName,buffs,Buff,"Berserk"
+buffTIBerserkDesc,buffs,Buff,"Increase movement speed, attack damage and stamina regen."
+buffTILegBrokenName,buffs,Buff,"Broken Leg"
+buffTILegBrokenDesc,buffs,Buff,"Just like the normal broken leg, only this one remains after death."
+buffTIRingOfFireName,buffs,Buff,"Ring of Fire"
+buffTIRingOfFireDesc,buffs,Buff,"AOE that set nearby zombies and animals on fire."
+buffTIRingOfFirePlayersName,buffs,Buff,"Ring of Fire (Players)"
+buffTIRingOfFirePlayersDesc,buffs,Buff,"AOE that set nearby players on fire."
+buffTIRingOfShockName,buffs,Buff,"Ring of Shock"
+buffTIRingOfShockDesc,buffs,Buff,"AOE that shocks nearby zombies and animals."
+buffTIRingOfShockPlayersName,buffs,Buff,"Ring of Shock (Players)"
+buffTIRingOfShockPlayersDesc,buffs,Buff,"AOE that shocks nearby players."
+buffTIRingOfLoveName,buffs,Buff,"Ring of Love"
+buffTIRingOfLoveDesc,buffs,Buff,"AOE that heals nearby zombies and animals."
+buffTIRingOfLovePlayersName,buffs,Buff,"Ring of Love (Players)"
+buffTIRingOfLovePlayersDesc,buffs,Buff,"AOE that heals nearby players."
+buffTIHordeArenaName,buffs,Buff,"Horde Arena"
+buffTIHordeArenaDesc,buffs,Buff,"Zombies will spawn in waves. Kill all the zombies from a wave to get the next stage level. How many stages can you clear?"
+buffTIDeleteInventoryName,buffs,Buff,"Delete Inventory"
+buffTIDeleteInventoryDesc,buffs,Buff,"If you die, your inventory and equipment will be deleted. But don't worry, you got this!"
+buffTIJonahRageName,buffs,Buff,"Jonah's Rage"
+buffTIJonahRageDesc,buffs,Buff,"Greatly increase brawling damage and extend duration on each hit."
+buffTIPowerlessName,buffs,Buff,"Powerless"
+buffTIPowerlessDesc,buffs,Buff,"Greatly increase damage resistance of nearby zombies."
+buffTIBogName,buffs,Buff,"Bog of Eternal Stench"
+buffTIBogDesc,buffs,Buff,"Infect nearby players."
+buffTIDarkNightName,buffs,Buff,"Dark Night"
+buffTIDarkNightDesc,buffs,Buff,"Someone just wanted to make things a bit more romantic."
+buffTIEternalBleedingName,buffs,Buff,"Eternal Bleeding"
+buffTIEternalBleedingDesc,buffs,Buff,"You will slowly bleed out until you die. Sometimes remedied by eating road kill."
+buffTIDecreaseLootGameStageName,buffs,Buff,"Unlucky Looter"
+buffTIDecreaseLootGameStageDesc,buffs,Buff,"Your game stage for looting purposes is greatly decreased."
+buffTIIncreaseLootGameStageName,buffs,Buff,"Lucky Charm"
+buffTIIncreaseLootGameStageDesc,buffs,Buff,"Your game stage for looting purposes is greatly increased."
+buffTISlowPokeMainName,buffs,Buff,"Slow Poke"
+buffTISlowPokeMainDesc,buffs,Buff,"Greatly reduce movement speed."
+buffTIBrainDrainName,buffs,Buff,"Brain Drain"
+buffTIBrainDrainDesc,buffs,Buff,"Removes all perks and reset base health."
+buffTIHighStakesMainName,buffs,Buff,"High Stakes"
+buffTIHighStakesMainDesc,buffs,Buff,"The stakes couldn't be higher ...\n\nIf you die, you lose everything!"
+buffTIFreshMeatName,buffs,Buff,"Fresh Meat"
+buffTIFreshMeatDesc,buffs,Buff,"You smell irrestible!\n\nAll zombies are enraged and will target you."
+
+thrownTIAmmoPipeBomb,items,Gun,"Pipe Bomb (Ammo)"
+thrownTIAmmoPipeBombDesc,items,Gun,"Make pipe bombs with gunpowder, pipes & mischief.\nLight with [action:local:Secondary]\nThrow with [action:local:Primary]"
+thrownTIDynamite,items,Gun,"Stick of Dynamite (Ammo)"
+thrownTIDynamiteDesc,items,Gun,"A stick of dynamite.\nLight with [action:local:Secondary]\nThrow with [action:local:Primary]\nThe mischief part is very important."
+thrownTIGrenade,items,Gun,"Grenade (Ammo)"
+thrownTIGrenadeDesc,items,Gun,"Pull pin. Cause mischief.\nArm with [action:local:Secondary]\nThrow with [action:local:Primary]"
+thrownTIGrenadeContact,items,Gun,"Contact Grenade (Ammo)"
+thrownTIGrenadeContactDesc,items,Gun,"Contact-fused grenades are mischievous devices that explode on contact when armed.\nArm with [action:local:Secondary]\nThrow with [action:local:Primary]"
+thrownTITimedCharge,items,Gun,"Timed Charge (Ammo)"
+thrownTITimedChargeDesc,items,Gun,"A shaped charge that applies highly concentrated mischief.\nArm with [action:local:Secondary]\nThrow with [action:local:Primary]"
+thrownTIAmmoMolotovCocktail,items,Gun,"Molotov Cocktail (Ammo)"
+thrownTIAmmoMolotovCocktailDesc,items,Gun,"Page one of the Mischief Cookbook.\nLight with [action:local:Secondary]\nThrow with [action:local:Primary]"
+foodTIRoadkill,items,food,"Roadkill"
+foodTIRoadkillDesc,items,food,"Seems edible but has a odd odor.\n\nChance to cure internal and eternal bleeding but may cause munchies."
+
+mm_MedicalSupplyCrate,entityclasses,Entity,"Medical Supply Crate"
+mm_FoodSupplyCrate,entityclasses,Entity,"Food Supply Crate"
+mm_AmmoSupplyCrate,entityclasses,Entity,"Ammo Supply Crate"
+mm_FakeSupplyCrate,entityclasses,Entity,"Supply Crate"
+mm_FakeMedicalSupplyCrate,entityclasses,Entity,"Medical Supply Crate"
+mm_FakeFoodSupplyCrate,entityclasses,Entity,"Food Supply Crate"
+mm_FakeAmmoSupplyCrate,entityclasses,Entity,"Ammo Supply Crate"
+TIVehicleBackpack,entityclasses,Entity,"Vehicle Backpack"
+EntityLootContainerTILuckyRabbit,entityclasses,Entity,"Lucky Backpack"
+
+zombieTILimo,entityclasses,Entity,"Canadian Eh?"
+legendaryTIFatHawaiian,entityclasses,Entity,"Legendary Fat Hawaiian"
+legendaryTIFatCop,entityclasses,Entity,"Legendary Fat Cop"
+legendaryTIBiker,entityclasses,Entity,"Legendary Biker"
+legendaryTIDemolition,entityclasses,Entity,"Legendary Demolition Man"
+legendaryTIDemolitionEpic,entityclasses,Entity,"Epic Demolition Man"
+legendaryTIDemolitionNuclear,entityclasses,Entity,"Nuclear Demolition Man"
+legendaryTIDemolitionFaulty,entityclasses,Entity,"Faulty Demolition Man"
+legendaryTIWight,entityclasses,Entity,"Legendary Wight"
+zombieTISkateboarderLeader,entityclasses,Entity,"Skater Punk Zombie"
+zombieTISkateboarderAltLeader,entityclasses,Entity,"Skater Punk Zombie"
+zombieTISkateboarder,entityclasses,Entity,"Skater Punk Zombie"
+zombieTILegendarySkateboarder,entityclasses,Entity,"Legendary Skater Punk Zombie"
+zombieTIArleneDecoy,entityclasses,Entity,"Zombie Decoy"
+zombieTIMarlene,entityclasses,Entity,"Teen Marlene"
+zombieTISteve,entityclasses,Entity,"Teen Steve"
+zombieTISteveCrawlerFeral,entityclasses,Entity,Lich
+zombieTIWightFeral,entityclasses,Entity,"Wight Spider"
+zombieTIBurnt,entityclasses,Entity,Lucifer
+zombieTIStripperCop,entityclasses,Entity,"Pukin' Paula"
+zombieTIWitch,entityclasses,Entity,"Bat Witch"
+zombieTIScreamerDemo,entityclasses,Entity,"Demolition Screamer"
+zombieTIFragGirl,entityclasses,Entity,"Rocket Robin"
+animalTIBearCub,entityclasses,Entity,"Mutant Bear Cub"
+animalTISnake,entityclasses,Entity,Anaconda
+animalTIGiantRabbit,entityclasses,Entity,"Killer Rabbit of Caerbannog"
+animalTIJackrabbit,entityclasses,Entity,"Jackrabbit"
+animalTIZombieVultureBat,entityclasses,Entity,"Itty Bitty Bat"
+zombieTIFarmerFeral,entityclasses,Entity,"Magic Mike"
+zombieTIMummy,entityclasses,Entity,"Zombie Mummy"
+zombieTIBoneBuster,entityclasses,Entity,"Bone Buster"
+zombieTIRadiatedRange,entityclasses,Entity,"Patient Zero"
+zombieTISwampThing,entityclasses,Entity,"Swamp Thing"
+zombieTISoldierRadiated,entityclasses,Entity,"Gung-Ho Joe"
+zombieTIShaman,entityclasses,Entity,"Desert Shaman"
+animalTIDireWolf,entityclasses,Entity,"Legendary Wolf"
+animalTIZombieVultureScreamer,entityclasses,Entity,"Vulture Screamer"
+animalTIZombieVultureLarge,entityclasses,Entity,"Vulture Dragon"
+animalTIZombieVultureDog,entityclasses,Entity,"Mad Mutt"
+animalTIZombieBear,entityclasses,Entity,"Legendary Bear"
+animalTIRabbit,entityclasses,Entity,"Peter Rabbit"
+animalTIStag,entityclasses,Entity,"Bambi's Dad"
+animalTIChicken,entityclasses,Entity,"Voided Chicken"
+animalTIMountainLion,entityclasses,Entity,"Thunder Cat"
+animalTIMountainLionSmall,entityclasses,Entity,"Killer Kitten"
+animalTICareBear,entityclasses,Entity,"Care Bear"
+animalTIFlyingSnake,entityclasses,Entity,"Danger Noodle"
+animalTILuckyRabbit,entityclasses,Entity,"Lucky Rabbit"
+zombieTIDeathCrawler,entityclasses,Entity,"Death Crawler"
+animalChickenHostile,entityclasses,Entity,"Murder Turkey"
+animalTICoyote,entityclasses,Entity,"Killyote"
+zombieTITormentScreamer,entityclasses,Entity,"Torment Witch"
+
+TwitchAction_SpawnZombieLimoCommand,twitch,Actions,#zombie_limo
+TwitchAction_SpawnZombieLimo,twitch,Actions,Canadian Eh?
+TwitchAction_SpawnZombieLimoDesc,twitch,Actions,Spawns a Legendary Canadian zombie.
+TwitchAction_SpawnLegendaryTouristCommand,twitch,Actions,#spawn_legendary_tourist
+TwitchAction_SpawnLegendaryTourist,twitch,Actions,Legendary Tourist
+TwitchAction_SpawnLegendaryTouristDesc,twitch,Actions,Spawns a Legendary Tourist zombie.
+TwitchAction_SpawnLegendaryCopCommand,twitch,Actions,#spawn_legendary_cop
+TwitchAction_SpawnLegendaryCop,twitch,Actions,Legendary Cop
+TwitchAction_SpawnLegendaryCopDesc,twitch,Actions,Spawns a Legendary Cop zombie.
+TwitchAction_SpawnPukingPaulaCommand,twitch,Actions,#spawn_puking_paula
+TwitchAction_SpawnPukingPaula,twitch,Actions,Pukin' Paula
+TwitchAction_SpawnPukingPaulaDesc,twitch,Actions,Spawns a nasty Party Girl zombie.
+TwitchAction_SpawnLegendaryBikerCommand,twitch,Actions,#spawn_legendary_biker
+TwitchAction_SpawnLegendaryBiker,twitch,Actions,Legendary Biker
+TwitchAction_SpawnLegendaryBikerDesc,twitch,Actions,Spawns a Legendary Biker zombie.
+TwitchAction_SpawnLegendaryDemoCommand,twitch,Actions,#spawn_legendary_demo
+TwitchAction_SpawnLegendaryDemo,twitch,Actions,Legendary Demolitionist
+TwitchAction_SpawnLegendaryDemoDesc,twitch,Actions,Spawns a Legendary Demoltionist zombie.
+TwitchAction_SpawnEpicDemoCommand,twitch,Actions,#spawn_epic_demo
+TwitchAction_SpawnEpicDemo,twitch,Actions,Epic Demolitionist
+TwitchAction_SpawnEpicDemoDesc,twitch,Actions,Spawns an Epic Demolitionist zombie.
+TwitchAction_SpawnNuclearDemoCommand,twitch,Actions,#spawn_nuclear_demo
+TwitchAction_SpawnNuclearDemo,twitch,Actions,Nuclear Demolitionist
+TwitchAction_SpawnNuclearDemoDesc,twitch,Actions,Spawns a Nuclear Demolitionist zombie.
+TwitchAction_SpawnLegendaryWightCommand,twitch,Actions,#spawn_legendary_wight
+TwitchAction_SpawnLegendaryWight,twitch,Actions,Wight Fright
+TwitchAction_SpawnLegendaryWightDesc,twitch,Actions,Spawns a spider Wight zombie.
+TwitchAction_SpawnDemoScreamerCommand,twitch,Actions,#spawn_demo_screamer
+TwitchAction_SpawnDemoScreamer,twitch,Actions,Screamer Demolitionist
+TwitchAction_SpawnDemoScreamerDesc,twitch,Actions,Spawns a Demolitionist Screamer zombie.
+TwitchAction_SpawnTormentScreamerCommand,twitch,Actions,#torment
+TwitchAction_SpawnTormentScreamer,twitch,Actions,Torment
+TwitchAction_SpawnTormentScreamerDesc,twitch,Actions,Spawns a special Screamer zombie that repeatedly spawns more screamers until it's killed.
+TwitchAction_SpawnSwampThingCommand,twitch,Actions,#spawn_swamp_thing
+TwitchAction_SpawnSwampThing,twitch,Actions,Swamp Thing
+TwitchAction_SpawnSwampThingDesc,twitch,Actions,Spawns a giant Swamp Thing zombie.
+TwitchAction_SpawnDesertShamanCommand,twitch,Actions,#spawn_desert_shaman
+TwitchAction_SpawnDesertShaman,twitch,Actions,Desert Shaman
+TwitchAction_SpawnDesertShamanDesc,twitch,Actions,Spawns a Shaman that will resurrect zombies until it's killed.
+TwitchAction_SpawnRocketRobinCommand,twitch,Actions,#spawn_rocket_robin
+TwitchAction_SpawnRocketRobin,twitch,Actions,Rocket Robin
+TwitchAction_SpawnRocketRobinDesc,twitch,Actions,Spawns a Big Mama that spits rockets.
+TwitchAction_SpawnZombieDecoyCommand,twitch,Actions,#spawn_zombie_decoy
+TwitchAction_SpawnZombieDecoy,twitch,Actions,Zombie Decoy
+TwitchAction_SpawnZombieDecoyDesc,twitch,Actions,Spawns a zombie that buffs all other zombies in range.
+TwitchAction_SpawnPatientZeroCommand,twitch,Actions,#spawn_patient_zero
+TwitchAction_SpawnPatientZero,twitch,Actions,Patient Zero
+TwitchAction_SpawnPatientZeroDesc,twitch,Actions,Spawns a zombie that irradiates the area around it.
+TwitchAction_SpawnBoneBusterCommand,twitch,Actions,#spawn_bone_buster
+TwitchAction_SpawnBoneBuster,twitch,Actions,Bone Buster
+TwitchAction_SpawnBoneBusterDesc,twitch,Actions,Spawns a zombie with bone crushing abilities.
+TwitchAction_SpawnMagicMikeCommand,twitch,Actions,#spawn_magic_mike
+TwitchAction_SpawnMagicMike,twitch,Actions,Magic Mike
+TwitchAction_SpawnMagicMikeDesc,twitch,Actions,Spawns a zombie that resets the player's skill points on hit.
+TwitchAction_SpawnMummyCommand,twitch,Actions,#spawn_mummy
+TwitchAction_SpawnMummy,twitch,Actions,Mummy
+TwitchAction_SpawnMummyDesc,twitch,Actions,Spawns a Mummy that heals itself over time.
+TwitchAction_SpawnGungHoJoeCommand,twitch,Actions,#spawn_gungho_joe
+TwitchAction_SpawnGungHoJoe,twitch,Actions,Gung-Ho Joe
+TwitchAction_SpawnGungHoJoeDesc,twitch,Actions,Spawns a legendary soldier zombie
+TwitchAction_SpawnDeathCrawlerCommand,twitch,Actions,#spawn_death_crawler
+TwitchAction_SpawnDeathCrawler,twitch,Actions,Death Crawler
+TwitchAction_SpawnDeathCrawlerDesc,twitch,Actions,Spawns a crawler zombie that will cause instant death to the player on hit.
+TwitchAction_SpawnLichCommand,twitch,Actions,#spawn_lich
+TwitchAction_SpawnLich,twitch,Actions,Lich
+TwitchAction_SpawnLichDesc,twitch,Actions,Spawns a Lich zombie. Heals over time and does massive damage on hit.
+TwitchAction_SpawnBatWitchCommand,twitch,Actions,#spawn_bat_witch
+TwitchAction_SpawnBatWitch,twitch,Actions,Bat Witch
+TwitchAction_SpawnBatWitchDesc,twitch,Actions,Spawns a screamer zombie and a cloud of itty bitty bats.
+TwitchAction_SpawnWightSpiderCommand,twitch,Actions,#spawn_wight_spider
+TwitchAction_SpawnWightSpider,twitch,Actions,Wight Spider
+TwitchAction_SpawnWightSpiderDesc,twitch,Actions,Spawns a legendary Wight zombie that moves like a spider.
+TwitchAction_SpawnLuciferCommand,twitch,Actions,#spawn_lucifer
+TwitchAction_SpawnLucifer,twitch,Actions,Lucifer
+TwitchAction_SpawnLuciferDesc,twitch,Actions,Spawns the King of Hell.
+TwitchAction_SpawnMutantCubCommand,twitch,Actions,#spawn_mutant_cub
+TwitchAction_SpawnMutantCub,twitch,Actions,Mutant Cub
+TwitchAction_SpawnMutantCubDesc,twitch,Actions,Spawns a small but deadly bear.
+TwitchAction_SpawnKillyoteCommand,twitch,Actions,#spawn_killyote
+TwitchAction_SpawnKillyote,twitch,Actions,Killyote
+TwitchAction_SpawnKillyoteDesc,twitch,Actions,"Spawns a small, fast and deadly coyote."
+TwitchAction_SpawnAnacondaCommand,twitch,Actions,#spawn_anaconda
+TwitchAction_SpawnAnaconda,twitch,Actions,Anaconda
+TwitchAction_SpawnAnacondaDesc,twitch,Actions,Spawns a huge snake
+TwitchAction_SpawnLegendaryWolfCommand,twitch,Actions,#spawn_legendary_wolf
+TwitchAction_SpawnLegendaryWolf,twitch,Actions,Legendary Wolf
+TwitchAction_SpawnLegendaryWolfDesc,twitch,Actions,Spawns a Legendary Wolf Zombie
+TwitchAction_SpawnVultureScreamerCommand,twitch,Actions,#agony
+TwitchAction_SpawnVultureScreamer,twitch,Actions,Agony
+TwitchAction_SpawnVultureScreamerDesc,twitch,Actions,"Spawns a Vulture Screamer that repeatedly spawns enemies until killed"
+TwitchAction_SpawnVultureDragonCommand,twitch,Actions,#spawn_vulture_dragon
+TwitchAction_SpawnVultureDragon,twitch,Actions,Vulture Dragon
+TwitchAction_SpawnVultureDragonDesc,twitch,Actions,Spawns a giant vulture that spits explosives
+TwitchAction_SpawnVultureDogCommand,twitch,Actions,#spawn_vulture_dog
+TwitchAction_SpawnVultureDog,twitch,Actions,Mad Mutt
+TwitchAction_SpawnVultureDogDesc,twitch,Actions,Spawns a flying zombie dog
+TwitchAction_SpawnDangerNoodleCommand,twitch,Actions,#spawn_danger_noodle
+TwitchAction_SpawnDangerNoodle,twitch,Actions,Danger Noodle
+TwitchAction_SpawnDangerNoodleDesc,twitch,Actions,Spawns a single flying snake
+TwitchAction_SpawnLegendaryBearCommand,twitch,Actions,#spawn_legendary_bear
+TwitchAction_SpawnLegendaryBear,twitch,Actions,Revenant Bear
+TwitchAction_SpawnLegendaryBearDesc,twitch,Actions,Spawns a very tough bear
+TwitchAction_SpawnCareBearCommand,twitch,Actions,#spawn_care_bear
+TwitchAction_SpawnCareBear,twitch,Actions,Care Bear
+TwitchAction_SpawnCareBearDesc,twitch,Actions,"Spawns a bear that will heal the player on hit, with side effects ..."
+TwitchAction_SpawnLuckyRabbitCommand,twitch,Actions,#spawn_lucky_rabbit
+TwitchAction_SpawnLuckyRabbit,twitch,Actions,Lucky Rabbit
+TwitchAction_SpawnLuckyRabbitDesc,twitch,Actions,Spawns a single lucky rabbit. Good loot if you can catch it.
+TwitchAction_SpawnJackRabbitCommand,twitch,Actions,#spawn_jack_rabbit
+TwitchAction_SpawnJackRabbit,twitch,Actions,Jack Rabbit
+TwitchAction_SpawnJackRabbitDesc,twitch,Actions,Spawns a particularly aggressive rabbit.
+TwitchAction_SpawnGiantRabbitCommand,twitch,Actions,#killer_rabbit_of_caerbannog
+TwitchAction_SpawnGiantRabbit,twitch,Actions,Killer Rabbit of Caerbannog
+TwitchAction_SpawnGiantRabbitDesc,twitch,Actions,Spawns an enormous and aggressive rabbit.
+TwitchAction_SpawnThunderCatCommand,twitch,Actions,#spawn_thunder_cat
+TwitchAction_SpawnThunderCat,twitch,Actions,Thunder Cat
+TwitchAction_SpawnThunderCatDesc,twitch,Actions,Spawns a mountain lion that shocks the player on hit.
+TwitchAction_SpawnKillerKittenCommand,twitch,Actions,#spawn_killer_kitten
+TwitchAction_SpawnKillerKitten,twitch,Actions,Killer Kitten
+TwitchAction_SpawnKillerKittenDesc,twitch,Actions,Spawns a small but deadly mountain lion.
+TwitchAction_SpawnGroupLuckyRabbitsCommand,twitch,Actions,#lucky_rabbits
+TwitchAction_SpawnGroupLuckyRabbits,twitch,Actions,Lucky Rabbits
+TwitchAction_SpawnGroupLuckyRabbitsDesc,twitch,Actions,Spawns a group of Lucky Rabbits.
+TwitchAction_SpawnGroupFlyingSnakesCommand,twitch,Actions,#high_snakes
+TwitchAction_SpawnGroupFlyingSnakes,twitch,Actions,High Snakes
+TwitchAction_SpawnGroupFlyingSnakesDesc,twitch,Actions,Spawns a group of flying snakes.
+TwitchAction_SpawnGroupBatsCommand,twitch,Actions,#itty_bitty_bats
+TwitchAction_SpawnGroupBats,twitch,Actions,Bats
+TwitchAction_SpawnGroupBatsDesc,twitch,Actions,Spawns a group of bats
+TwitchAction_SpawnGroupRaveCommand,twitch,Actions,#teen_rave
+TwitchAction_SpawnGroupRave,twitch,Actions,Teen Rave
+TwitchAction_SpawnGroupRaveDesc,twitch,Actions,"Spawns a group of unruly teens, and others ..."
+TwitchAction_SpawnGroupMaineForestCommand,twitch,Actions,#maine_forest
+TwitchAction_SpawnGroupMaineForest,twitch,Actions,Maine Forest
+TwitchAction_SpawnGroupMaineForestDesc,twitch,Actions,Spawns a group of hostile animals
+TwitchAction_SpawnGroupZooCommand,twitch,Actions,#legendary_zoo
+TwitchAction_SpawnGroupZoo,twitch,Actions,Legendary Zoo
+TwitchAction_SpawnGroupZooDesc,twitch,Actions,Spawns a group of legendary animals
+TwitchAction_SpawnGroupCustomDemosCommand,twitch,Actions,#demolition_derby
+TwitchAction_SpawnGroupCustomDemos,twitch,Actions,Demolition Derby
+TwitchAction_SpawnGroupCustomDemosDesc,twitch,Actions,Spawns a group of demolitionist zombies. One or two might be faulty.
+TwitchAction_SpawnGroupCopsandStrippersCommand,twitch,Actions,#cops_and_strippers
+TwitchAction_SpawnGroupCopsandStrippers,twitch,Actions,Cops and Strippers
+TwitchAction_SpawnGroupCopsandStrippersDesc,twitch,Actions,"Spawns a group of Cops, Party Girls, and Cop Strippers."
+TwitchAction_SpawnGroupPerditionCommand,twitch,Actions,#perdition
+TwitchAction_SpawnGroupPerdition,twitch,Actions,Perdition
+TwitchAction_SpawnGroupPerditionDesc,twitch,Actions,"Hell is unleashed ..."
+TwitchAction_SpawnGroupFurmidableFelinesCommand,twitch,Actions,#furmidable_felines
+TwitchAction_SpawnGroupFurmidableFelines,twitch,Actions,Furmidable Felines
+TwitchAction_SpawnGroupFurmidableFelinesDesc,twitch,Actions,"Spawns a group of Mountain Lions, Thunder Cats, and Killer Kittens."
+TwitchAction_WightFrightCommand,twitch,Actions,#wight_fright
+TwitchAction_WightFright,twitch,Actions,Wight Fright
+TwitchAction_WightFrightDesc,twitch,Actions,Turns all nearby zombies into zombie Wights.
+TwitchAction_BuffPokeCommand,twitch,Actions,#poke
+TwitchAction_BuffPoke,twitch,Actions,Poke
+TwitchAction_BuffPokeDesc,twitch,Actions,Takes a small amount of health from the player.
+TwitchAction_LightHealCommand,twitch,Actions,#warm_hug
+TwitchAction_LightHeal,twitch,Actions,Warm Hug
+TwitchAction_LightHealDesc,twitch,Actions,Restores a small amount of health to the player.
+TwitchAction_EternalBleedingCommand,twitch,Actions,#eternal_bleeding
+TwitchAction_EternalBleeding,twitch,Actions,Eternal Bleeding
+TwitchAction_EternalBleedingDesc,twitch,Actions,Causes Eternal Bleeding on the player. Can sometimes be remedied by eating roadkill.
+TwitchAction_SuddenDeathCommand,twitch,Actions,#sudden_death
+TwitchAction_SuddenDeath,twitch,Actions,Sudden Death
+TwitchAction_SuddenDeathDesc,twitch,Actions,Causes the player to die instantly from any damage.
+TwitchAction_DiamondSkinCommand,twitch,Actions,#diamond_skin
+TwitchAction_DiamondSkin,twitch,Actions,Diamond Skin
+TwitchAction_DiamondSkinDesc,twitch,Actions,Makes the player much tougher for a short time.
+TwitchAction_DegradationCommand,twitch,Actions,#faulty_gear
+TwitchAction_Degradation,twitch,Actions,Faulty Gear
+TwitchAction_DegradationDesc,twitch,Actions,Weapons and tools will degrade quickly.
+TwitchAction_JonahsRageCommand,twitch,Actions,#jonahs_rage
+TwitchAction_JonahsRage,twitch,Actions,Jonah's Rage
+TwitchAction_JonahsRageDesc,twitch,Actions,Greatly increases the players brawling damage and extends the timer with each hit.
+TwitchAction_SmokersLungsCommand,twitch,Actions,#smokers_lungs
+TwitchAction_SmokersLungs,twitch,Actions,Smoker's Lungs
+TwitchAction_SmokersLungsDesc,twitch,Actions,Greatly reduces the player's stamina.
+TwitchAction_SlowReloaderCommand,twitch,Actions,#slow_reloader
+TwitchAction_SlowReloader,twitch,Actions,Slow Reloader
+TwitchAction_SlowReloaderDesc,twitch,Actions,Greatly increases the time it takes to reload weapons.
+TwitchAction_MunchiesCommand,twitch,Actions,#munchies
+TwitchAction_Munchies,twitch,Actions,Munchies
+TwitchAction_MunchiesDesc,twitch,Actions,"Depletes the player's food and water. Reduces mobility, causes blurred vision, and makes you clumsy."
+TwitchAction_ElectrocutedCommand,twitch,Actions,#electrocuted
+TwitchAction_Electrocuted,twitch,Actions,Electrocuted
+TwitchAction_ElectrocutedDesc,twitch,Actions,Electrocutes the player.
+TwitchAction_ClumsyFighterCommand,twitch,Actions,#clumsy_fighter
+TwitchAction_ClumsyFighter,twitch,Actions,Clumsy Fighter
+TwitchAction_ClumsyFighterDesc,twitch,Actions,Every missed attack causes the player to fall down.
+TwitchAction_HardmodeCommand,twitch,Actions,#hard_mode
+TwitchAction_Hardmode,twitch,Actions,Hard Mode
+TwitchAction_HardmodeDesc,twitch,Actions,"Increases zombie health, and adds regen to all zombies in range."
+TwitchAction_BogOfEternalStenchCommand,twitch,Actions,#bog_of_eternal_stench
+TwitchAction_BogOfEternalStench,twitch,Actions,Bog of Eternal Stench
+TwitchAction_BogOfEternalStenchDesc,twitch,Actions,Infects nearby players
+TwitchAction_WalkItOffCommand,twitch,Actions,#walk_it_off
+TwitchAction_WalkItOff,twitch,Actions,Walk It Off
+TwitchAction_WalkItOffDesc,twitch,Actions,Causes the player to take damage when they move in any way other than walking.
+TwitchAction_WeakKneesCommand,twitch,Actions,#weak_knees
+TwitchAction_WeakKnees,twitch,Actions,Weak Knees
+TwitchAction_WeakKneesDesc,twitch,Actions,"Damages the player when they take any fall damage, and reduces jumping ability."
+TwitchAction_HangoverCommand,twitch,Actions,#hangover
+TwitchAction_Hangover,twitch,Actions,Hangover
+TwitchAction_HangoverDesc,twitch,Actions,Drinking too much makes you sick.
+TwitchAction_BerserkCommand,twitch,Actions,#berserk
+TwitchAction_Berserk,twitch,Actions,Berserk
+TwitchAction_BerserkDesc,twitch,Actions,"Increases player's movement speed, attack speed, and stamina regen"
+TwitchAction_RingOfShockCommand,twitch,Actions,#ring_of_shock
+TwitchAction_RingOfShock,twitch,Actions,Ring of Shock
+TwitchAction_RingOfShockDesc,twitch,Actions,AOE effect that shocks nearby zombies and animals.
+TwitchAction_RingOfLoveCommand,twitch,Actions,#ring_of_love
+TwitchAction_RingOfLove,twitch,Actions,Ring of Love
+TwitchAction_RingOfLoveDesc,twitch,Actions,AOE effect that heals nearby zombies and animals.
+TwitchAction_RingOfLoveTeamCommand,twitch,Actions,#ring_of_love_team
+TwitchAction_RingOfLoveteam,twitch,Actions,Ring of Love (Players)
+TwitchAction_RingOfLoveTeamDesc,twitch,Actions,AOE effect that heals nearby players.
+TwitchAction_GlitchCommand,twitch,Actions,#glitch
+TwitchAction_Glitch,twitch,Actions,Glitch
+TwitchAction_GlitchDesc,twitch,Actions,Removes a block or small amount of terrain under the player's feet.
+TwitchAction_HighStakesCommand,twitch,Actions,#high_stakes
+TwitchAction_HighStakes,twitch,Actions,High Stakes
+TwitchAction_HighStakesDesc,twitch,Actions,"If the player dies with this effect active, it resets the player's skills, quests, discovery, books, perks, bedrolls, and landclaims."
+TwitchAction_FlyCommand,twitch,Actions,#fly_like_a_bird
+TwitchAction_Fly,twitch,Actions,Fly Like a Bird
+TwitchAction_FlyDesc,twitch,Actions,"Teleports the player into the sky. Can't be used when the player is in a safe zone, on a quest, or in a vehicle."
+TwitchAction_JunkyardCommand,twitch,Actions,#junkyard
+TwitchAction_Junkyard,twitch,Actions,Junkyard
+TwitchAction_JunkyardDesc,twitch,Actions,"Places a mixture of explosive barrels and cars around the player"
+TwitchAction_EncumberanceCommand,twitch,Actions,#dead_weight
+TwitchAction_Encumberance,twitch,Actions,Dead Weight
+TwitchAction_EncumberanceDesc,twitch,Actions,"Fills the player's inventory with roadkill"
+TwitchAction_ReturnToOzCommand,twitch,Actions,#return_to_oz
+TwitchAction_ReturnToOz,twitch,Actions,Return to Oz
+TwitchAction_ReturnToOzDesc,twitch,Actions,"Surrounds the player with mannequins"
+TwitchAction_FreshMeatCommand,twitch,Actions,#fresh_meat
+TwitchAction_FreshMeat,twitch,Actions,Fresh Meat
+TwitchAction_FreshMeatDesc,twitch,Actions,"Enrages all nearby zombies and makes the player a target."
+TwitchAction_SpawnRandomAnimalCommand,twitch,Actions,#animal_grab_bag
+TwitchAction_SpawnRandomAnimal,twitch,Actions,Animal Grab Bag
+TwitchAction_SpawnRandomAnimalDesc,twitch,Actions,"Spawns a random hostile animal."
+TwitchAction_SneezeCommand,twitch,Actions,#sneeze
+TwitchAction_Sneeze,twitch,Actions,Sneeze
+TwitchAction_SneezeDesc,twitch,Actions,"Randomly teleports the player a medium distance over 30 seconds."
+TwitchAction_HiccupsCommand,twitch,Actions,#hiccups
+TwitchAction_Hiccups,twitch,Actions,Hiccups
+TwitchAction_HiccupsDesc,twitch,Actions,"Randomly teleports the player a short distance over 30 seconds."
+TwitchAction_BanishedCommand,twitch,Actions,#banished
+TwitchAction_Banished,twitch,Actions,Banished
+TwitchAction_BanishedDesc,twitch,Actions,"Teleports the player a huge distance and resets map data and waypoints."
+TwitchAction_GiveXPCommand,twitch,Actions,#touch_of_wisdom
+TwitchAction_GiveXP,twitch,Actions,Touch of Wisdom
+TwitchAction_GiveXPDesc,twitch,Actions,"Gives the player a small amount of XP."
+TwitchAction_SanctuaryCommand,twitch,Actions,#sanctuary
+TwitchAction_Sanctuary,twitch,Actions,Sanctuary
+TwitchAction_SanctuaryDesc,twitch,Actions,"Places a maze of glass blocks around the player."
+TwitchAction_ArenaCommand,twitch,Actions,#horde_arena
+TwitchAction_Arena,twitch,Actions,Horde Arena
+TwitchAction_ArenaDesc,twitch,Actions,"Zombies will spawn in waves. Kill all the zombies from a wave to get the next stage level. How many stages can you clear?"
+TwitchAction_BearScareCommand,twitch,Actions,#bear_scare
+TwitchAction_BearScare,twitch,Actions,Bear Scare
+TwitchAction_BearScareDesc,twitch,Actions,"Turns all nearby zombies into bears."
+TwitchAction_SpawnRandomZombieCommand,twitch,Actions,#zombie_grab_bag
+TwitchAction_SpawnRandomZombie,twitch,Actions,Zombie Grab Bag
+TwitchAction_SpawnRandomZombieDesc,twitch,Actions,"Spawns a horde of random zombies."
+TwitchAction_SpawnRandomLegendaryZombieCommand,twitch,Actions,#legendary_zombie_grab_bag
+TwitchAction_SpawnRandomLegendaryZombie,twitch,Actions,Legendary Zombie Grab Bag
+TwitchAction_SpawnRandomLegendaryZombieDesc,twitch,Actions,"Spawns a random Legendary zombie."
+
+cntTIBarrel,blocks,Container,"Lucky Barrel"
+cntTICar,blocks,Container,"Lucky Car Wreck"

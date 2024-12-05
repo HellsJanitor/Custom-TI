@@ -1,0 +1,17 @@
+<configs>
+	<append xpath="/nav_object_classes" >
+
+		<nav_object_class name="mm_shaman">
+			<onscreen_settings>
+				<property name="sprite_name" value="ui_game_symbol_zombie"/>
+				<property name="min_distance" value="50"/>
+				<property name="max_distance" value="200"/>
+				<property name="color" value="0,240,0,255"/>
+				<property name="has_pulse" value="true"/>
+				<!-- <property name="use_head_offset" value="true"/>
+				<property name="offset" value="0,0.75,0" /> -->
+			</onscreen_settings>
+		</nav_object_class>
+
+	</append>
+</configs>

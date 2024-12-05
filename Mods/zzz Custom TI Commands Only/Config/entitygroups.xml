@@ -1,0 +1,36 @@
+<configs>
+	<append xpath="/entitygroups">
+
+    	<entitygroup name="TIZombiesDemo1">
+    		zombieDemolition
+    		legendaryTIDemolition, 0.2
+    	</entitygroup>
+
+    	<entitygroup name="TIZombiesDemo2">
+    		zombieDemolition
+    		legendaryTIDemolition, 0.4
+    		legendaryTIDemolitionEpic, 0.2
+    	</entitygroup>
+
+    	<entitygroup name="TIZombiesDemo3">
+    		zombieDemolition
+    		legendaryTIDemolition, 0.6
+    		legendaryTIDemolitionEpic, 0.4
+    		legendaryTIDemolitionNuclear, 0.2
+    	</entitygroup>
+
+		<entitygroup name="ZombieAnimalsAllGroup">
+			animalZombieDog
+			animalZombieBear, 0.05
+			animalWolf
+			animalDireWolf, 0.05
+			animalZombieVulture, 0.5
+			animalZombieVultureRadiated , 0.01
+			animalBoar
+			animalCoyote
+			animalSnake
+			animalMountainLion, 0.1
+			animalBear, 0.1
+		</entitygroup>
+	</append>
+</configs>

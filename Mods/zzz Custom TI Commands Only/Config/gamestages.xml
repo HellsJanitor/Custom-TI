@@ -1,0 +1,9 @@
+<HellsJanitor>
+	<append xpath="/gamestages">
+		<spawner name="AnimalHorde">
+			<gamestage stage="01">
+				<spawn group="ZombieAnimalsAllGroup" num="05" maxAlive="05" duration="09"/>
+			</gamestage>
+		</spawner>
+	</append>
+</HellsJanitor>

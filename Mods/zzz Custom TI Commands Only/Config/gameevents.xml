@@ -1,0 +1,2971 @@
+<HellsJanitor>
+
+	<setattribute xpath="//gameevents" name="max_entities">100</setattribute>
+	
+	<!-- *** keeps everything "alive" after player death *** -->
+	<set xpath="//action_sequence[@name='action_ondeath']">
+		<property name="allow_user_trigger" value="true"/>
+		<property name="allow_while_dead" value="true"/>
+		<action class="AddBuff">
+			<property name="buff_name" value="twitch_pausedbuffs"/>
+			<property name="check_already_exists" value="false"/>
+			<requirement class="HasBuffByTag">
+				<property name="buff_tags" value="twitch_bits"/>
+			</requirement>
+		</action>
+		<action class="PauseBuff">
+			<property name="phase" value="0"/>
+			<property name="check_already_exists" value="false"/>
+			<property name="buff_tags" value="twitch_bits"/>
+			<property name="state" value="true"/>
+			<requirement class="HasBuffByTag">
+				<property name="buff_tags" value="twitch_bits"/>
+			</requirement>
+		</action>
+		<action class="AddChatMessage">
+			<property name="phase" value="0"/>
+			<property name="text" value="[[6441a5]Twitch[-]] The Bit Buffs that were active will resume after death cooldown."/>
+			<requirement class="HasBuffByTag">
+				<property name="buff_tags" value="twitch_bits"/>
+			</requirement>
+		</action>
+	</set>	
+	
+	<!-- *** sets "time_alive" from all trap spawns to 8 hours *** -->
+	<set xpath="//action_sequence/action[@class='BlockReplaceAttack']//property[@name='time_alive']/@value">28800</set>
+	
+	<!-- *** replaces the vehicle parts crate with an actual vehicle *** -->
+	<remove xpath="//action_sequence[@name='spawn_bicycle']"/>
+	<remove xpath="//action_sequence[@name='spawn_minibike']"/>
+	<remove xpath="//action_sequence[@name='spawn_motorcycle']"/>
+	<remove xpath="//action_sequence[@name='spawn_4x4']"/>
+	
+	<!-- *** spawns *** -->
+	<append xpath="/gameevents">
+		<action_sequence name="spawn_zombie_limo" template="spawn_single">
+			<variable name="zombiename" value="zombieTILimo"/>
+			<variable name="alertsound" value="zombieferalalert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_legendary_tourist" template="spawn_single">
+			<variable name="zombiename" value="legendaryTIFatHawaiian"/>
+			<variable name="alertsound" value="zombieferalalert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_legendary_cop" template="spawn_single">
+			<variable name="zombiename" value="legendaryTIFatCop"/>
+			<variable name="alertsound" value="hulkalert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_puking_paula" template="spawn_single">
+			<variable name="zombiename" value="zombieTIStripperCop"/>
+			<variable name="alertsound" value="zombiefemale2alert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_legendary_biker" template="spawn_single">
+			<variable name="zombiename" value="legendaryTIBiker"/>
+			<variable name="alertsound" value="zombieferalalert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_legendary_demo" template="spawn_single">
+			<variable name="zombiename" value="legendaryTIDemolition"/>
+			<variable name="alertsound" value="hulkalert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_epic_demo" template="spawn_single">
+			<variable name="zombiename" value="legendaryTIDemolitionEpic"/>
+			<variable name="alertsound" value="hulkalert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_nuclear_demo" template="spawn_single">
+			<variable name="zombiename" value="legendaryTIDemolitionNuclear"/>
+			<variable name="alertsound" value="hulkalert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_faulty_demo" template="spawn_single">
+			<variable name="zombiename" value="legendaryTIDemolitionFaulty"/>
+			<variable name="alertsound" value="hulkalert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_legendary_wight" template="spawn_single">
+			<variable name="zombiename" value="legendaryTIWight"/>
+			<variable name="alertsound" value="zombieferalalert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_demo_screamer" template="spawn_single">
+			<variable name="zombiename" value="zombieTIScreamerDemo"/>
+			<variable name="alertsound" value="zombieferalalert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_swamp_thing" template="spawn_single">
+			<variable name="zombiename" value="zombieTISwampThing"/>
+			<variable name="alertsound" value="zombieferalalert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_desert_shaman">
+			<property name="action_type" value="TwitchAction" />
+			<property name="category" value="twitch_actions" />
+			<property name="allow_while_dead" value="false" />			
+
+			<action class="SpawnEntity">
+				<property name="entity_names" value="zombieTIShaman" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="add_to_group" value="zombies" />
+				<property name="safe_spawn" value="true" />
+				<property name="min_distance" value="50" />
+				<property name="max_distance" value="70" />
+				<property name="spawn_type" value="Position" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="zombiemalealert" param1="alertsound" />
+				<property name="phase" value="1" />
+			</action>
+		</action_sequence>
+		
+		<action_sequence name="spawn_rocket_robin" template="spawn_single">
+			<variable name="zombiename" value="zombieTIFragGirl"/>
+			<variable name="alertsound" value="zombiefemale2alert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_zombie_decoy" template="spawn_single">
+			<variable name="zombiename" value="zombieTIArleneDecoy"/>
+			<variable name="alertsound" value="zombiefemale2alert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_patient_zero" template="spawn_single">
+			<variable name="zombiename" value="zombieTIRadiatedRange"/>
+			<variable name="alertsound" value="zombiemalealert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_bone_buster" template="spawn_single">
+			<variable name="zombiename" value="zombieTIBoneBuster"/>
+			<variable name="alertsound" value="zombiemalealert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_magic_mike" template="spawn_single">
+			<variable name="zombiename" value="zombieTIFarmerFeral"/>
+			<variable name="alertsound" value="zombiemalealert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_mummy" template="spawn_single">
+			<variable name="zombiename" value="zombieTIMummy"/>
+			<variable name="alertsound" value="zombieferalalert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_gungho_joe" template="spawn_single">
+			<variable name="zombiename" value="zombieTISoldierRadiated"/>
+			<variable name="alertsound" value="zombieferalalert"/>
+		</action_sequence>		
+		
+		<action_sequence name="spawn_death_crawler">
+			<property name="action_type" value="TwitchAction" />
+			<property name="category" value="twitch_actions" />
+			<property name="allow_while_dead" value="false" />			
+
+			<action class="SpawnEntity">
+				<property name="entity_names" value="zombieTIDeathCrawler" />
+				<property name="spawn_count" value="1"  />
+				<property name="air_spawn" value="false" />
+				<property name="add_to_group" value="zombies" />
+				<property name="safe_spawn" value="false" />
+				<property name="min_distance" value="0" />
+				<property name="max_distance" value="1" />
+				<property name="spawn_type" value="Position" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="crawler_alert" param1="alertsound" />
+				<property name="phase" value="1" />
+			</action>
+		</action_sequence>
+		
+		<action_sequence name="spawn_lich" template="spawn_single">
+			<variable name="zombiename" value="zombieTISteveCrawlerFeral"/>
+			<variable name="alertsound" value="zombieferalalert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_bat_witch" template="spawn_single">
+			<variable name="zombiename" value="zombieTIWitch"/>
+			<variable name="alertsound" value="zombiefemale2alert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_wight_spider" template="spawn_single">
+			<variable name="zombiename" value="zombieTIWightFeral"/>
+			<variable name="alertsound" value="spideralert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_lucifer" template="spawn_single">
+			<variable name="zombiename" value="zombieTIBurnt"/>
+			<variable name="alertsound" value="spideralert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_mutant_cub" template="spawn_single">
+			<variable name="zombiename" value="animalTIBearCub"/>
+			<variable name="alertsound" value="bearalert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_killyote" template="spawn_single">
+			<variable name="zombiename" value="animalTICoyote"/>
+			<variable name="alertsound" value="wolfalert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_anaconda" template="spawn_single">
+			<variable name="zombiename" value="animalTISnake"/>
+			<variable name="alertsound" value="snakealert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_legendary_wolf" template="spawn_single">
+			<variable name="zombiename" value="animalTIDireWolf"/>
+			<variable name="alertsound" value="wolfalert"/>
+		</action_sequence>
+		
+		<!-- <action_sequence name="spawn_vulture_screamer" template="spawn_single">
+			<variable name="zombiename" value="animalTIZombieVultureScreamer"/>
+			<variable name="alertsound" value="vulturealert"/>
+		</action_sequence> -->
+		
+		<action_sequence name="spawn_vulture_screamer">
+			<property name="allow_user_trigger" value="true" />
+			<property name="category" value="twitch_actions" />
+
+			<action class="SpawnEntity">
+				<property name="entity_names" value="animalTIZombieVultureScreamer" param1="zombiename" />
+				<property name="spawn_count" value="1" param1="spawncount" />
+				<property name="party_addition" value="2" param1="partyaddition" />
+				<property name="air_spawn" value="true" param1="airspawn" />
+				<property name="ignore_multiplier" value="true" param1="ignoremultiplier" />
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_names" value="animalTIZombieVultureScreamer" param1="zombiename" />
+				<property name="spawn_count" value="1" param1="spawncount" />
+				<property name="air_spawn" value="true" param1="airspawn" />
+				<property name="ignore_multiplier" value="false" param1="ignoremultiplier" />
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_names" value="animalTIZombieVultureScreamer" param1="zombiename" />
+				<property name="spawn_count" value="1" param1="spawncount" />
+				<property name="air_spawn" value="true" param1="airspawn" />
+				<property name="ignore_multiplier" value="false" param1="ignoremultiplier" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="twitch_bad_spawn" />
+				<property name="phase" value="1" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="vulturealert" param1="alertsound" />
+				<property name="phase" value="1" />
+			</action>
+		</action_sequence>
+		
+		<action_sequence name="spawn_torment_screamer" template="spawn_single">
+			<variable name="zombiename" value="zombieTITormentScreamer"/>
+			<variable name="alertsound" value="zombiefemalescoutroam"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_vulture_dragon" template="spawn_single">
+			<variable name="zombiename" value="animalTIZombieVultureLarge"/>
+			<variable name="alertsound" value="vulturealert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_vulture_dog" template="spawn_single">
+			<variable name="zombiename" value="animalTIZombieVultureDog"/>
+			<variable name="alertsound" value="zombiedogalert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_danger_noodle" template="spawn_single">
+			<variable name="zombiename" value="animalTIFlyingSnake"/>
+			<variable name="alertsound" value="snakealert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_legendary_bear" template="spawn_single">
+			<variable name="zombiename" value="animalTIZombieBear"/>
+			<variable name="alertsound" value="bearalert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_care_bear" template="spawn_single">
+			<variable name="zombiename" value="animalTICareBear"/>
+			<variable name="alertsound" value="bearalert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_lucky_rabbit" template="spawn_single">
+			<variable name="zombiename" value="animalTILuckyRabbit"/>
+			<variable name="alertsound" value="twitch_good_buff"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_jack_rabbit" template="spawn_single">
+			<variable name="zombiename" value="animalTIJackrabbit"/>
+			<variable name="alertsound" value="twitch_bad_buff"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_giant_rabbit" template="spawn_single">
+			<variable name="zombiename" value="animalTIGiantRabbit"/>
+			<variable name="alertsound" value="twitch_bad_buff"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_thunder_cat" template="spawn_single">
+			<variable name="zombiename" value="animalTIMountainLion"/>
+			<variable name="alertsound" value="mlionalert"/>
+		</action_sequence>
+		
+		<action_sequence name="spawn_killer_kitten" template="spawn_single">
+			<variable name="zombiename" value="animalTIMountainLionSmall"/>
+			<variable name="alertsound" value="mlionalert"/>
+		</action_sequence>
+		
+		<!-- *** group spawns *** -->
+		<action_sequence name="group_lucky_rabbits" template="spawn_group">
+			<variable name="spawncount" value="3"/>
+			<variable name="airspawn" value="false"/>
+			<variable name="zombiename" value="animalTILuckyRabbit"/>
+			<variable name="alertsound" value="rabbitpain"/>
+			<variable name="gamestage_extra1" value="30"/>
+			<variable name="spawncount_extra1" value="1"/>
+			<variable name="gamestage_extra2" value="150"/>
+			<variable name="spawncount_extra2" value="1"/>
+		</action_sequence>
+		
+		<action_sequence name="group_flying_snakes" template="spawn_group">
+			<variable name="spawncount" value="5"/>
+			<variable name="airspawn" value="false"/>
+			<variable name="zombiename" value="animalTIFlyingSnake"/>
+			<variable name="alertsound" value="snakealert"/>
+			<variable name="gamestage_extra1" value="30"/>
+			<variable name="spawncount_extra1" value="2"/>
+			<variable name="gamestage_extra2" value="50"/>
+			<variable name="spawncount_extra2" value="3"/>
+		</action_sequence>
+		
+		<action_sequence name="group_bats" template="spawn_group">
+			<variable name="spawncount" value="5"/>
+			<variable name="airspawn" value="false"/>
+			<variable name="zombiename" value="animalTIZombieVultureBat"/>
+			<variable name="alertsound" value="vulturealert"/>
+			<variable name="gamestage_extra1" value="30"/>
+			<variable name="spawncount_extra1" value="2"/>
+			<variable name="gamestage_extra2" value="50"/>
+			<variable name="spawncount_extra2" value="3"/>
+		</action_sequence>
+		
+		<!-- <action_sequence name="group_teen_rave" template="spawn_group">
+			<variable name="zombiename" value="zombieTIMarlene,zombieTISteve,zombieTIMarlene,zombieTISteve,zombieTISkateboarderLeader"/>
+			<variable name="spawncount" value="5"/>
+			<variable name="alertsound" value="twitch_bad_buff"/>
+		</action_sequence> -->
+		
+		<action_sequence name="group_teen_rave" >
+			<property name="allow_user_trigger" value="true" />
+			<property name="category" value="twitch_actions" />			
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="buffTIBadTrip" />
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_names" value="zombieTIMarlene" />
+				<property name="spawn_count" value="3" param1="spawncount" />
+				<property name="air_spawn" value="false" param1="airspawn" />
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_names" value="zombieTISteve" />
+				<property name="spawn_count" value="3" param1="spawncount" />
+				<property name="air_spawn" value="false" param1="airspawn" />
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_names" value="zombieTISkateboarderLeader" />
+				<property name="spawn_count" value="1" param1="spawncount" />
+				<property name="air_spawn" value="false" param1="airspawn" />
+			</action>
+
+			<action class="SpawnEntity">
+				<property name="entity_names" value="zombieTISkateboarderAltLeader" />
+				<property name="spawn_count" value="1" param1="spawncount" />
+				<property name="air_spawn" value="false" param1="airspawn" />
+			</action>
+
+			<action class="SpawnEntity">
+				<property name="entity_names" value="zombieTISkateboarder" />
+				<property name="spawn_count" value="1" param1="spawncount" />
+				<property name="air_spawn" value="false" param1="airspawn" />
+			</action>			
+			
+			<action class="PlaySound">
+				<property name="sound" value="twitch_bad_buff" />
+				<property name="phase" value="1" />
+			</action>
+		</action_sequence>
+		
+		<action_sequence name="group_maine_forest" template="spawn_group">
+			<variable name="zombiename" value="animalTIStag,animalTIJackrabbit,animalWolf,animalChickenHostile,animalCoyote,animalSnake,animalBoar"/>
+			<variable name="spawncount" value="10"/>
+			<variable name="alertsound" value="twitch_bad_buff"/>
+		</action_sequence>
+				
+		<action_sequence name="group_zoo" >
+			<property name="allow_user_trigger" value="true" />
+			<property name="category" value="twitch_actions" />
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="buffTIRingOfLove" />
+				
+				<requirement class="HasBuff">
+					<property name="buff_name" value="buffTIRingOfLoveMain" />
+					<property name="invert" value="true" />
+				</requirement>
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_names" value="animalTIBearCub" />
+				<property name="spawn_count" value="1" param1="spawncount" />
+				<property name="air_spawn" value="false" param1="airspawn" />
+				<!-- <property name="ignore_multiplier" value="false" param1="ignoremultiplier" /> -->
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_names" value="animalTICoyote" />
+				<property name="spawn_count" value="1" param1="spawncount" />
+				<property name="air_spawn" value="false" param1="airspawn" />
+				<!-- <property name="ignore_multiplier" value="false" param1="ignoremultiplier" /> -->
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_names" value="animalTISnake" />
+				<property name="spawn_count" value="1" param1="spawncount" />
+				<property name="air_spawn" value="false" param1="airspawn" />
+				<!-- <property name="ignore_multiplier" value="false" param1="ignoremultiplier" /> -->
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_names" value="animalTIDireWolf" />
+				<property name="spawn_count" value="1" param1="spawncount" />
+				<property name="air_spawn" value="false" param1="airspawn" />
+				<!-- <property name="ignore_multiplier" value="false" param1="ignoremultiplier" /> -->
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_names" value="animalTIZombieBear" />
+				<property name="spawn_count" value="1" param1="spawncount" />
+				<property name="air_spawn" value="false" param1="airspawn" />
+				<!-- <property name="ignore_multiplier" value="false" param1="ignoremultiplier" /> -->
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_names" value="animalTIGiantRabbit" />
+				<property name="spawn_count" value="1" param1="spawncount" />
+				<property name="air_spawn" value="false" param1="airspawn" />
+				<!-- <property name="ignore_multiplier" value="false" param1="ignoremultiplier" /> -->
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_names" value="animalTIMountainLion" />
+				<property name="spawn_count" value="1" param1="spawncount" />
+				<property name="air_spawn" value="false" param1="airspawn" />
+				<!-- <property name="ignore_multiplier" value="false" param1="ignoremultiplier" /> -->
+			</action>			
+
+			<action class="PlaySound">
+				<property name="sound" value="twitch_bad_buff" />
+				<property name="phase" value="1" />
+			</action>
+		</action_sequence>
+		
+		<action_sequence name="group_perdition" template="spawn_group">
+			<property name="allow_user_trigger" value="true" />
+			<property name="category" value="twitch_actions" />			
+			
+			<action class="SpawnEntity">
+				<!-- Lucifer -->
+				<property name="entity_names" value="zombieTIBurnt" />
+				<property name="spawn_count" value="1" param1="spawncount" />
+				<property name="air_spawn" value="false" param1="airspawn" />
+				<!-- <property name="ignore_multiplier" value="false" param1="ignoremultiplier" /> -->
+			</action>
+			
+			<action class="SpawnEntity">
+				<!-- Lich -->
+				<property name="entity_names" value="zombieTISteveCrawlerFeral" />
+				<property name="spawn_count" value="1" param1="spawncount" />
+				<property name="air_spawn" value="false" param1="airspawn" />
+				<!-- <property name="ignore_multiplier" value="false" param1="ignoremultiplier" /> -->
+			</action>
+			
+			<action class="SpawnEntity">
+				<!-- Mummy -->
+				<property name="entity_names" value="zombieTIMummy" />
+				<property name="spawn_count" value="1" param1="spawncount" />
+				<property name="air_spawn" value="false" param1="airspawn" />
+				<!-- <property name="ignore_multiplier" value="false" param1="ignoremultiplier" /> -->
+			</action>
+			
+			<action class="SpawnEntity">
+				<!-- Wendigo (decoy) -->
+				<property name="entity_names" value="zombieTIArleneDecoy" />
+				<property name="spawn_count" value="1" param1="spawncount" />
+				<property name="air_spawn" value="false" param1="airspawn" />
+				<!-- <property name="ignore_multiplier" value="false" param1="ignoremultiplier" /> -->
+			</action>
+			
+			<action class="SpawnEntity">
+				<!-- Shaman -->
+				<property name="entity_names" value="zombieTIShaman" />
+				<property name="spawn_count" value="1" param1="spawncount" />
+				<property name="air_spawn" value="false" param1="airspawn" />
+				<!-- <property name="ignore_multiplier" value="false" param1="ignoremultiplier" /> -->
+			</action>
+			
+			<action class="SpawnEntity">
+				<!-- Swamp Thing -->
+				<property name="entity_names" value="zombieTISwampThing" />
+				<property name="spawn_count" value="1" param1="spawncount" />
+				<property name="air_spawn" value="false" param1="airspawn" />
+				<!-- <property name="ignore_multiplier" value="false" param1="ignoremultiplier" /> -->
+			</action>
+			
+			<action class="PlaySound">
+				<property name="sound" value="twitch_bad_buff" />
+				<property name="phase" value="1" />
+			</action>
+		</action_sequence>
+		
+		<action_sequence name="group_custom_demos" template="spawn_group">
+			<variable name="zombiename" value="legendaryTIDemolition,legendaryTIDemolitionEpic,legendaryTIDemolitionNuclear,legendaryTIDemolitionFaulty,zombieTIScreamerDemo"/>
+			<variable name="spawncount" value="10"/>
+			<variable name="alertsound" value="hulkalert"/>
+		</action_sequence>
+		
+		<action_sequence name="group_cops_and_strippers" template="spawn_group">
+			<variable name="zombiename" value="zombiePartyGirl,zombieFatCop"/>
+			<variable name="spawncount" value="6"/>
+			<variable name="alertsound" value="hulkalert"/>
+		</action_sequence>
+		
+		<action_sequence name="group_furmidable_felines" template="spawn_group">
+			<variable name="zombiename" value="animalTIMountainLion,animalTIMountainLion,animalMountainLion,animalMountainLion,animalTIMountainLionSmall"/>
+			<variable name="spawncount" value="6"/>
+			<variable name="alertsound" value="mlionalert"/>
+		</action_sequence>
+		
+		<!-- *** Buffs/Debuffs *** -->
+		<action_sequence name="buff_poke" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="addbuff" value="buffTILightDamage"/>
+			<variable name="twitch_negative" value="true"/>
+		</action_sequence>
+		
+		<action_sequence name="buff_lightheal" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_buff"/>
+			<variable name="addbuff" value="buffTILightHeal"/>
+			<variable name="twitch_negative" value="false"/>
+		</action_sequence>		
+		
+		<action_sequence name="buff_eternalbleeding">
+			<property name="category" value="twitch_actions" />
+			<property name="action_type" value="Game" />
+			
+			<requirement class="HasBuff">
+				<property name="buff_name" value="buffTIHighStakesMain" />
+				<property name="invert" value="true" />
+			</requirement>
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="buffTIEternalBleeding" />
+			</action>
+			
+			<action class="PlaySound">
+				<property name="sound" value="twitch_no_help" />
+			</action>
+		</action_sequence>		
+		
+		<action_sequence name="buff_suddendeath">
+			<property name="category" value="twitch_actions" />
+			<property name="action_type" value="Game" />
+			
+			<requirement class="HasBuff">
+				<property name="buff_name" value="buffTIHighStakesMain" />
+				<property name="invert" value="true" />
+			</requirement>
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="buffTISuddenDeath" />
+			</action>
+			
+			<action class="PlaySound">
+				<property name="sound" value="twitch_no_help" />
+			</action>
+		</action_sequence>
+		
+		<action_sequence name="buff_diamondskin" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_good_buff"/>
+			<variable name="addbuff" value="buffTIDamageResist"/>
+			<variable name="removebuff" value="twitch_buffToughness"/>
+			<variable name="twitch_negative" value="false"/>
+		</action_sequence>
+		
+		<action_sequence name="buff_degradation" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_bad_buff"/>
+			<variable name="addbuff" value="buffTIDegradation"/>
+			<variable name="twitch_negative" value="true"/>
+		</action_sequence>
+		
+		<action_sequence name="buff_JonahsRage" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_good_buff"/>
+			<variable name="addbuff" value="buffTIJonahRage"/>
+			<variable name="removebuff" value="buff_berserk"/>
+			<variable name="twitch_negative" value="false"/>
+		</action_sequence>
+		
+		<action_sequence name="buff_nerf" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_bad_buff"/>
+			<variable name="addbuff" value="buffTINerf"/>
+			<variable name="twitch_negative" value="true"/>
+		</action_sequence>
+		
+		<action_sequence name="buff_smokerslungs" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_bad_buff"/>
+			<variable name="addbuff" value="buffTILowStamina"/>
+			<variable name="twitch_negative" value="true"/>
+		</action_sequence>
+		
+		<action_sequence name="buff_slowreloader" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_bad_buff"/>
+			<variable name="addbuff" value="buffTISlowReload"/>
+			<variable name="twitch_negative" value="true"/>
+		</action_sequence>
+		
+		<action_sequence name="buff_munchies" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_bad_buff"/>
+			<variable name="addbuff" value="buffTIMunchies"/>
+			<variable name="twitch_negative" value="true"/>
+		</action_sequence>
+		
+		<action_sequence name="buff_electrocuted" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_bad_buff"/>
+			<variable name="addbuff" value="buffTIElectrocuted"/>
+			<variable name="twitch_negative" value="true"/>
+		</action_sequence>
+		
+		<action_sequence name="buff_clumsyfighter" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_bad_buff"/>
+			<variable name="addbuff" value="buffTIClumsyFighter"/>
+			<variable name="twitch_negative" value="true"/>
+		</action_sequence>
+		
+		<action_sequence name="buff_hardmode" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_bad_buff"/>
+			<variable name="addbuff" value="buffTISuperZombies"/>
+			<variable name="twitch_negative" value="true"/>
+		</action_sequence>
+		
+		<action_sequence name="buff_bog" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_bad_buff"/>
+			<variable name="addbuff" value="buffTIBog"/>
+			<variable name="twitch_negative" value="true"/>
+		</action_sequence>
+		
+		<action_sequence name="buff_walkitoff" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_bad_buff"/>
+			<variable name="addbuff" value="buffTIWalkItOff"/>
+			<variable name="twitch_negative" value="true"/>
+		</action_sequence>
+		
+		<action_sequence name="buff_weakknees" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_bad_buff"/>
+			<variable name="addbuff" value="buffTIWeakKnees"/>
+			<variable name="twitch_negative" value="true"/>
+		</action_sequence>
+		
+		<action_sequence name="buff_hangover" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_bad_buff"/>
+			<variable name="addbuff" value="buffTIHangover"/>
+			<variable name="twitch_negative" value="true"/>
+		</action_sequence>
+		
+		<action_sequence name="buff_berserk" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_good_buff"/>
+			<variable name="addbuff" value="buffTIBerserk"/>
+			<variable name="removebuff" value="buff_JonahsRage"/>
+			<variable name="twitch_negative" value="false"/>
+		</action_sequence>
+		
+		<action_sequence name="buff_ringofshock" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_good_buff"/>
+			<variable name="addbuff" value="buffTIRingOfShock"/>
+			<variable name="twitch_negative" value="false"/>
+		</action_sequence>
+		
+		<action_sequence name="buff_ringoflove" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_bad_buff"/>
+			<variable name="addbuff" value="buffTIRingOfLove"/>
+			<variable name="twitch_negative" value="true"/>
+		</action_sequence>
+		
+		<action_sequence name="buff_ringofloveplayers" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_good_buff"/>
+			<variable name="addbuff" value="buffTIRingOfLovePlayers"/>
+			<variable name="twitch_negative" value="false"/>
+		</action_sequence>	
+
+		<action_sequence name="buff_endgame" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_good_buff"/>
+			<variable name="addbuff" value="buffTIEndGame"/>
+			<variable name="twitch_negative" value="true"/>
+		</action_sequence>
+		
+		<action_sequence name="buff_givexp" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_good_buff"/>
+			<variable name="addbuff" value="buffTIGiveXP"/>
+			<variable name="twitch_negative" value="false"/>
+		</action_sequence>
+		
+		<action_sequence name="action_glitch">
+			<action class="BlockReplace">
+				<property name="min_offset" value="-1,-1,-1"/>
+				<property name="max_offset" value="1,1,1"/>
+				<property name="block_to" value="air"/>
+				<property name="allow_terrain" value="true"/>
+			</action>
+			<action class="BlockReplace">
+				<property name="target_position" value="0, 0, 0"/>
+				<property name="offset_type" value="Relative"/>
+				<property name="min_offset" value="-1,-1,-1"/>
+				<property name="max_offset" value="1,1,1"/>
+				<property name="block_to" value="air"/>
+			</action>
+		</action_sequence>
+		
+		<action_sequence name="action_sneeze">
+			<property name="category" value="twitch_actions" />
+
+			<requirement class="InQuestZone">
+				<property name="invert" value="true" />
+			</requirement>
+
+			<action class="RandomTeleport">
+				<property name="phase" value="1"/>
+				<property name="min_distance" value="400" />
+				<property name="max_distance" value="800" />
+			</action>
+			
+			<action class="Delay">
+				<property name="phase" value="2"/>
+				<property name="time" value="5" />
+			</action>
+			
+			<action class="RandomTeleport">
+				<property name="phase" value="3"/>
+				<property name="min_distance" value="410" />
+				<property name="max_distance" value="810" />
+			</action>
+			
+			<action class="Delay">
+				<property name="phase" value="4"/>
+				<property name="time" value="5" />
+			</action>
+			
+			<action class="RandomTeleport">
+				<property name="phase" value="5"/>
+				<property name="min_distance" value="420" />
+				<property name="max_distance" value="820" />
+			</action>
+			
+			<action class="Delay">
+				<property name="phase" value="6"/>
+				<property name="time" value="5" />
+			</action>
+			
+			<action class="RandomTeleport">
+				<property name="phase" value="7"/>
+				<property name="min_distance" value="430" />
+				<property name="max_distance" value="830" />
+			</action>
+			
+			<action class="Delay">
+				<property name="phase" value="8"/>
+				<property name="time" value="5" />
+			</action>
+			
+			<action class="RandomTeleport">
+				<property name="phase" value="9"/>
+				<property name="min_distance" value="440" />
+				<property name="max_distance" value="850" />
+			</action>
+			
+			<action class="Delay">
+				<property name="phase" value="10"/>
+				<property name="time" value="5" />
+			</action>
+			
+			<action class="RandomTeleport">
+				<property name="phase" value="11"/>
+				<property name="min_distance" value="450" />
+				<property name="max_distance" value="850" />
+			</action>
+			
+			<action class="Delay">
+				<property name="phase" value="12"/>
+				<property name="time" value="5" />
+			</action>
+			
+			<action class="RandomTeleport">
+				<property name="phase" value="13"/>
+				<property name="min_distance" value="460" />
+				<property name="max_distance" value="860" />
+			</action>
+		</action_sequence>
+		
+		<action_sequence name="action_hiccups">
+			<property name="category" value="twitch_actions" />
+
+			<requirement class="InQuestZone">
+				<property name="invert" value="true" />
+			</requirement>
+
+			<action class="RandomTeleport">
+				<property name="phase" value="1"/>
+				<property name="min_distance" value="100" />
+				<property name="max_distance" value="125" />
+			</action>
+			
+			<action class="Delay">
+				<property name="phase" value="2"/>
+				<property name="time" value="5" />
+			</action>
+			
+			<action class="RandomTeleport">
+				<property name="phase" value="3"/>
+				<property name="min_distance" value="125" />
+				<property name="max_distance" value="150" />
+			</action>
+			
+			<action class="Delay">
+				<property name="phase" value="4"/>
+				<property name="time" value="5" />
+			</action>
+			
+			<action class="RandomTeleport">
+				<property name="phase" value="5"/>
+				<property name="min_distance" value="150" />
+				<property name="max_distance" value="175" />
+			</action>
+			
+			<action class="Delay">
+				<property name="phase" value="6"/>
+				<property name="time" value="5" />
+			</action>
+			
+			<action class="RandomTeleport">
+				<property name="phase" value="7"/>
+				<property name="min_distance" value="200" />
+				<property name="max_distance" value="225" />
+			</action>
+			
+			<action class="Delay">
+				<property name="phase" value="8"/>
+				<property name="time" value="5" />
+			</action>
+			
+			<action class="RandomTeleport">
+				<property name="phase" value="9"/>
+				<property name="min_distance" value="225" />
+				<property name="max_distance" value="250" />
+			</action>
+			
+			<action class="Delay">
+				<property name="phase" value="10"/>
+				<property name="time" value="5" />
+			</action>
+			
+			<action class="RandomTeleport">
+				<property name="phase" value="11"/>
+				<property name="min_distance" value="250" />
+				<property name="max_distance" value="275" />
+			</action>
+			
+			<action class="Delay">
+				<property name="phase" value="12"/>
+				<property name="time" value="5" />
+			</action>
+			
+			<action class="RandomTeleport">
+				<property name="phase" value="13"/>
+				<property name="min_distance" value="275" />
+				<property name="max_distance" value="300" />
+			</action>
+		</action_sequence>
+		
+		<action_sequence name="buff_lost" template="buff_template">
+			<variable name="buffsound" value="twitch_mind_wipe"/>
+			<variable name="twitchsound" value="twitch_mind_wipe"/>
+			<variable name="addbuff" value="buffTILost"/>
+			<variable name="twitch_negative" value="true"/>
+		</action_sequence>	
+		
+		<action_sequence name="action_lost">
+			<property name="category" value="twitch_actions" />
+
+			<requirement class="InQuestZone">
+				<property name="invert" value="true" />
+			</requirement>			
+			
+			<action class="ResetMap">
+				<property name="phase" value="3"/>
+				<property name="remove_discovery" value="true" />
+				<property name="remove_waypoints" value="true" />
+				<property name="remove_landclaims" value="true" />
+				<property name="remove_bedroll" value="true" />
+				<property name="remove_quests" value="true" />
+				<property name="remove_backpack" value="true" />
+			</action>
+			
+			<action class="ResetPlayerData">
+				<property name="phase" value="4"/>
+				<property name="remove_landclaims" value="true" />
+				<property name="remove_bedroll" value="true" />
+				<property name="remove_quests" value="true" />
+				<property name="remove_backpack" value="true" />
+			</action>			
+		</action_sequence>			
+		
+		<action_sequence name="buff_highstakes">
+			<property name="category" value="twitch_actions" />
+			<property name="action_type" value="Game" />
+			
+			<requirement class="HasBuff">
+				<property name="buff_name" value="buffTISuddenDeathMain" />
+				<property name="invert" value="true" />
+			</requirement>
+
+			<requirement class="HasBuff">
+				<property name="buff_name" value="buffTIEternalBleeding" />
+				<property name="invert" value="true" />
+			</requirement>
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="buffTIHighStakes" />
+			</action>
+			
+			<action class="PlaySound">
+				<property name="sound" value="twitch_bad_buff" />
+			</action>
+		</action_sequence>
+		
+		<action_sequence name="action_destroyinventory">
+			<property name="action_type" value="Game"/>
+			<property name="allow_while_dead" value="true"/>			
+			
+			<action class="ModifyEntityStat">
+				<property name="phase" value="1"/>
+				<property name="stat" value="Health"/>
+				<property name="operation" value="SetMax"/>
+			</action>
+			<action class="RemoveItems">
+				<property name="phase" value="2"/>
+				<property name="items_location" value="Toolbelt,Backpack,Equipment"/>
+			</action>
+			<action class="PlaySound">
+				<property name="phase" value="3"/>
+				<property name="sound" value="itembreak"/>
+			</action>
+			<action class="ModifyEntityStat">
+				<property name="phase" value="4"/>
+				<property name="stat" value="Health"/>
+				<property name="value" value="0"/>
+				<property name="operation" value="Set"/>
+			</action>
+		</action_sequence>
+		
+		<!-- *** Fresh Meat *** -->
+		<action_sequence name="buff_freshmeat" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_good_buff"/>
+			<variable name="addbuff" value="buffTIFreshMeat"/>
+			<variable name="twitch_negative" value="false"/>
+		</action_sequence>
+		
+		<action_sequence name="fresh_meat">	
+			<requirement class="NearbyEntities">
+				<property name="max_distance" value="150" />
+			</requirement>
+			
+			<action class="AddSpawnedEntitiesToGroup">
+				<property name="phase" value="1"/>
+				<property name="group_name" value="zombies"/>
+				<property name="entity_tags" value="entity"/>
+				<property name="max_distance" value="150"/>
+				<property name="target_only" value="false"/>
+			</action>
+			<action class="AddEntitiesToGroup">
+				<property name="phase" value="2"/>
+				<property name="group_name" value="zombies"/>
+				<property name="entity_tags" value="entity"/>
+				<property name="max_distance" value="150"/>
+				<property name="target_only" value="false"/>
+			</action>			
+			<action class="PlaySound">
+				<property name="phase" value="3"/>
+				<property name="sound" value="zombieferalalert"/>
+			</action>			
+			<action class="RageZombies">
+				<property name="phase" value="4"/>
+				<property name="time" value="30"/>
+				<property name="speed_percent" value=".25"/>
+				<property name="target_group" value="zombies"/>
+			</action>
+			<action class="TwitchAddEntitiesToSpawned">
+				<property name="target_group" value="zombies" />
+			</action>			
+		</action_sequence>
+
+		<!-- Fatal Attraction -->
+		<action_sequence name="action_fatal_attraction">
+			<property name="category" value="twitch_actions" />
+			
+			<requirement class="HasSpawnedEntities">
+				<property name="entity_tags" value="entity,zombie" />
+			</requirement>
+			
+			<action class="AddSpawnedEntitiesToGroup">
+				<property name="phase" value="0" />
+				<property name="group_name" value="targetEntities" />
+				<!-- <property name="entity_tags" value="entity,zombie" /> -->
+			</action>
+			
+			<action class="AddEntitiesToGroup">
+				<property name="phase" value="0"/>
+				<property name="group_name" value="targetEntities"/>
+				<!-- <property name="entity_tags" value="entity,zombie"/> -->
+				<property name="target_only" value="false"/>
+			</action>	
+			
+			<action class="TeleportToTarget">
+				<property name="phase" value="0" />
+				<property name="min_distance" value="5" />
+				<property name="max_distance" value="150" />
+				<property name="teleport_to_group" value="targetEntities" />
+				<property name="pull_sound" value="twitch_pull" />
+			</action>
+			
+			<action class="SetScreenEffect">
+				<property name="phase" value="1" />
+				<property name="screen_effect" value="FadeToBlack" />
+				<property name="intensity" value="1" />
+				<property name="fade_time" value="0.05" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="twitch_bad_action" />
+				<property name="phase" value="1" />
+			</action>
+
+			<action class="Delay">
+				<property name="time" value=".5" />
+				<property name="phase" value="2" />
+			</action>
+			
+			<action class="RandomizeRotation">
+				<property name="phase" value="3" />
+			</action>
+			
+			<action class="SetScreenEffect">
+				<property name="phase" value="3" />
+				<property name="screen_effect" value="FadeToBlack" />
+				<property name="intensity" value="0" />
+				<property name="fade_time" value="0.1" />
+			</action>
+		</action_sequence>
+		
+		<!-- <action_sequence name="action_ragequit">
+			<property name="category" value="twitch_actions" />
+			
+			<action class="GetNearbyPoint">
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="50" />
+				<property name="safe_spawn" value="true" />
+			</action>
+			
+			<action class="PlaySound">
+				<property name="sound" value="twitch_bad_action" />
+				<property name="phase" value="1" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="phase" value="1" />
+				<property name="sound" value="twitch_destroy_base" />
+				<property name="max_distance" value="15" />
+			</action>
+			
+			<action class="DestroySafeZone">
+				<property name="phase" value="2" />
+				<property name="destruction_type" value="Sphere" />
+			</action>
+		</action_sequence> -->
+		
+		<!-- *** Fly Like a Bird *** -->
+		<action_sequence name="action_fly_like_a_bird">
+			<property name="category" value="twitch_actions"/>
+			
+			<requirement class="InVehicle">
+				<property name="invert" value="true"/>
+			</requirement>
+			
+			<requirement class="InSafeZone">
+				<property name="invert" value="true"/>
+			</requirement>
+			
+			<requirement class="InQuestZone">
+				<property name="invert" value="true"/>
+			</requirement>
+			
+			<requirement class="HasBuff">
+				<property name="buff_name" value="buffTIHighStakesMain" />
+				<property name="invert" value="true" />
+			</requirement>
+			
+			<action class="Teleport">
+				<property name="target_position" value="0, 100, 0"/>
+				<property name="offset_type" value="Relative"/>
+				<property name="teleport_delay" value="0.1"/>
+				
+				<requirement class="RandomRoll">
+					<property name="min_max" value="0,100" />
+					<property name="operation" value="GT" />
+					<property name="value" value="75" />
+				</requirement>
+			</action>
+			
+			<action class="Teleport">
+				<property name="target_position" value="0, 50, 0"/>
+				<property name="offset_type" value="Relative"/>
+				<property name="teleport_delay" value="0.1"/>
+				
+				<requirement class="RandomRoll">
+					<property name="min_max" value="0,100" />
+					<property name="operation" value="GT" />
+					<property name="value" value="50" />
+				</requirement>
+			</action>
+			
+			<action class="Teleport">
+				<property name="target_position" value="0, 25, 0"/>
+				<property name="offset_type" value="Relative"/>
+				<property name="teleport_delay" value="0.1"/>
+				
+				<requirement class="RandomRoll">
+					<property name="min_max" value="0,100" />
+					<property name="operation" value="GT" />
+					<property name="value" value="0" />
+				</requirement>
+			</action>
+			
+			<action class="PlaySound">
+				<property name="sound" value="twitch_pull"/>
+			</action>
+			
+			<!-- <action class="AddBuff">
+				<property name="phase" value="1" />
+				<property name="buff_name" value="buffTwitchDontBreakLeg" />
+			</action> -->
+			
+			<action class="SetScreenEffect">
+				<property name="phase" value="1"/>
+				<property name="screen_effect" value="FadeToBlack"/>
+				<property name="intensity" value="1"/>
+				<property name="fade_time" value="0.05"/>
+			</action>
+			<action class="Delay">
+				<property name="time" value="1" param1="delay_time"/>
+				<property name="phase" value="2"/>
+			</action>
+			<action class="SetScreenEffect">
+				<property name="phase" value="3"/>
+				<property name="screen_effect" value="FadeToBlack"/>
+				<property name="intensity" value="0"/>
+				<property name="fade_time" value="0.1"/>
+			</action>
+		</action_sequence>
+		
+		<!-- *** Junkyard *** -->
+		<action_sequence name="action_junkyard">
+		<property name="category" value="twitch_actions"/>
+			<requirement class="InVehicle">
+				<property name="invert" value="true"/>
+			</requirement>
+			<action class="BlockReplaceAttack">
+				<property name="phase" value="1"/>
+				<property name="inner_offset" value="1"/>
+				<property name="min_offset" value="-5,-3,-5"/>
+				<property name="max_offset" value="5,5,5"/>
+				<property name="spacing" value="1"/>
+				<property name="safe_allowed" value="false"/>
+				<property name="random_chance" value=".5"/>
+				<property name="block_to" value="cntTIBarrel,cntTICar"/>
+				<property name="block_tags" value="air,twitchReplace"/>
+				<property name="remove_sound" value="twitch_event_blocks_remove"/>
+			</action>
+			<action class="PlaySound">
+				<property name="sound" value="twitch_event_blocks_add"/>
+				<property name="phase" value="2"/>
+			</action>
+		</action_sequence>
+		
+		<!-- *** Sanctuary *** -->
+		<action_sequence name="action_sanctuary">
+		<property name="category" value="twitch_actions"/>
+			<requirement class="InVehicle">
+				<property name="invert" value="true"/>
+			</requirement>
+			<action class="BlockReplaceAttack">
+				<property name="phase" value="1"/>
+				<property name="inner_offset" value="0"/>
+				<property name="min_offset" value="-5,-3,-5"/>
+				<property name="max_offset" value="5,5,5"/>
+				<property name="spacing" value="0"/>
+				<property name="safe_allowed" value="false"/>
+				<property name="random_chance" value=".5"/>
+				<property name="block_to" value="glassTIBusinessBlock1,glassTIBusinessBlock2,glassTIBusinessBlock3"/>
+				<property name="block_tags" value="air,twitchReplace"/>
+				<property name="remove_sound" value="twitch_event_blocks_remove"/>
+			</action>
+			<action class="BlockReplaceAttack">
+				<property name="phase" value="2"/>
+				<property name="inner_offset" value="0"/>
+				<property name="min_offset" value="-5,-3,-5"/>
+				<property name="max_offset" value="5,5,5"/>
+				<property name="spacing" value="0"/>
+				<property name="safe_allowed" value="false"/>
+				<property name="random_chance" value=".5"/>
+				<property name="block_to" value="glassTIBusinessBlock1,glassTIBusinessBlock2,glassTIBusinessBlock3"/>
+				<property name="block_tags" value="air,twitchReplace"/>
+				<property name="remove_sound" value="twitch_event_blocks_remove"/>
+			</action>
+			<action class="BlockReplaceAttack">
+				<property name="phase" value="3"/>
+				<property name="inner_offset" value="0"/>
+				<property name="min_offset" value="-5,-3,-5"/>
+				<property name="max_offset" value="5,5,5"/>
+				<property name="spacing" value="0"/>
+				<property name="safe_allowed" value="false"/>
+				<property name="random_chance" value=".5"/>
+				<property name="block_to" value="glassTIBusinessBlock1,glassTIBusinessBlock2,glassTIBusinessBlock3"/>
+				<property name="block_tags" value="air,twitchReplace"/>
+				<property name="remove_sound" value="twitch_event_blocks_remove"/>
+			</action>
+			<action class="BlockReplaceAttack">
+				<property name="phase" value="4"/>
+				<property name="inner_offset" value="0"/>
+				<property name="min_offset" value="-5,-3,-5"/>
+				<property name="max_offset" value="5,5,5"/>
+				<property name="spacing" value="0"/>
+				<property name="safe_allowed" value="false"/>
+				<property name="random_chance" value=".5"/>
+				<property name="block_to" value="glassTIBusinessBlock1,glassTIBusinessBlock2,glassTIBusinessBlock3"/>
+				<property name="block_tags" value="air,twitchReplace"/>
+				<property name="remove_sound" value="twitch_event_blocks_remove"/>
+			</action>
+			<!-- <action class="BlockReplaceAttack">
+				<property name="phase" value="5"/>
+				<property name="inner_offset" value="0"/>
+				<property name="min_offset" value="-5,-3,-5"/>
+				<property name="max_offset" value="5,5,5"/>
+				<property name="spacing" value="0"/>
+				<property name="safe_allowed" value="false"/>
+				<property name="random_chance" value=".5"/>
+				<property name="block_to" value="water"/>
+				<property name="block_tags" value="air,twitchReplace"/>
+				<property name="remove_sound" value="twitch_event_blocks_remove"/>
+			</action> -->
+			<action class="PlaySound">
+				<property name="sound" value="twitch_event_blocks_add"/>
+				<property name="phase" value="6"/>
+			</action>
+		</action_sequence>
+		
+		<!-- *** Return to Oz *** -->
+		<action_sequence name="action_return_to_oz">
+		<property name="category" value="twitch_actions"/>
+			<requirement class="InVehicle">
+				<property name="invert" value="true"/>
+			</requirement>
+			<action class="BlockReplaceAttack">
+				<property name="phase" value="1"/>
+				<property name="inner_offset" value="0"/>
+				<property name="min_offset" value="-5,-3,-5"/>
+				<property name="max_offset" value="5,5,5"/>
+				<property name="spacing" value="0"/>
+				<property name="safe_allowed" value="false"/>
+				<property name="random_chance" value=".5"/>
+				<property name="block_to" value="decoMannequinMale,decoMannequinFemale,decoMannequinMilitaryCommando"/>
+				<property name="block_tags" value="air,twitchReplace"/>
+				<property name="remove_sound" value="twitch_event_blocks_remove"/>
+			</action>
+			<action class="PlaySound">
+				<property name="sound" value="twitch_event_blocks_add"/>
+				<property name="phase" value="2"/>
+			</action>
+		</action_sequence>
+		
+		<!-- *** fill inventory *** -->
+		<action_sequence name="action_fill_inventory">	
+		<property name="category" value="twitch_actions"/>		
+			<action class="AddItems">
+				<property name="phase" value="1"/>
+				<property name="added_items" value="foodTIRoadkill" />
+				<property name="added_item_counts" value="45" />
+			</action>
+			<action class="PlaySound">
+				<property name="phase" value="2"/>
+				<property name="sound" value="twitch_fill_base"/>				
+			</action>
+		</action_sequence>
+		
+		<!-- *** sequences for "special" spawns *** -->
+		<!-- Wight Fright -->
+		<action_sequence name="wight_fright">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="buffResAOETrigger"/>
+				<property name="invert" value="true"/>
+			</requirement>
+			<action class="AddSpawnedEntitiesToGroup">
+				<property name="phase" value="0"/>
+				<property name="group_name" value="wightfright"/>
+				<property name="entity_tags" value="zombie"/>
+				<property name="target_only" value="false"/>
+			</action>
+			<action class="AddEntitiesToGroup">
+				<property name="phase" value="0"/>
+				<property name="group_name" value="wightfright"/>
+				<property name="entity_tags" value="zombie"/>
+				<property name="max_distance" value="150"/>
+				<property name="target_only" value="false"/>
+			</action>
+			<action class="Delay">
+				<property name="time" value="1"/>
+				<property name="phase" value="1"/>
+			</action>
+			<action class="ReplaceEntities">
+				<property name="time" value="5"/>
+				<property name="phase" value="2"/>
+				<property name="entity_names" value="zombieTIWightFeral"/>
+				<property name="single_choice" value="true"/>
+				<property name="target_group" value="wightfright"/>
+			</action>
+			<action class="PlaySound">
+				<property name="phase" value="5"/>
+				<property name="sound" value="zombieferalalert"/>
+			</action>
+			<action class="Delay">
+				<property name="time" value="1"/>
+				<property name="phase" value="6"/>
+			</action>
+			<action class="RemoveBuff">
+				<property name="phase" value="7"/>
+				<property name="buff_name" value="buffShamanResurrect"/>
+			</action>
+			<action class="RageZombies">
+				<property name="time" value="30"/>
+				<property name="speed_percent" value=".10"/>
+				<property name="target_group" value="wightfright"/>
+			</action>
+			<action class="BeltTooltip">
+				<property name="text" value="Wight Fright Activated!"/>
+				<property name="phase" value="8"/>
+			</action>
+		</action_sequence>
+		
+		<!-- Bear Scare -->
+		<action_sequence name="bear_scare">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="buffResAOETrigger"/>
+				<property name="invert" value="true"/>
+			</requirement>
+			<action class="AddSpawnedEntitiesToGroup">
+				<property name="phase" value="0"/>
+				<property name="group_name" value="bearscare"/>
+				<property name="entity_tags" value="zombie"/>
+				<property name="target_only" value="false"/>
+			</action>
+			<action class="AddEntitiesToGroup">
+				<property name="phase" value="0"/>
+				<property name="group_name" value="bearscare"/>
+				<property name="entity_tags" value="zombie"/>
+				<property name="max_distance" value="150"/>
+				<property name="target_only" value="false"/>
+			</action>
+			<action class="Delay">
+				<property name="time" value="1"/>
+				<property name="phase" value="1"/>
+			</action>
+			<action class="ReplaceEntities">
+				<property name="time" value="5"/>
+				<property name="phase" value="2"/>
+				<property name="entity_names" value="animalBear"/>
+				<property name="single_choice" value="true"/>
+				<property name="target_group" value="bearscare"/>
+			</action>
+			<action class="PlaySound">
+				<property name="phase" value="5"/>
+				<property name="sound" value="bearalert"/>
+			</action>
+			<action class="Delay">
+				<property name="time" value="1"/>
+				<property name="phase" value="6"/>
+			</action>
+			<action class="RemoveBuff">
+				<property name="phase" value="7"/>
+				<property name="buff_name" value="buffShamanResurrect"/>
+			</action>
+			<action class="RageZombies">
+				<property name="time" value="30"/>
+				<property name="speed_percent" value=".10"/>
+				<property name="target_group" value="bearscare"/>
+			</action>
+			<action class="BeltTooltip">
+				<property name="text" value="Bear Scare Activated!"/>
+				<property name="phase" value="8"/>
+			</action>
+		</action_sequence>
+		
+		<!-- Agony -->
+		<action_sequence name="agony_horde_sequence">
+			<property name="allow_user_trigger" value="true"/>
+			<property name="action_type" value="Game"/>
+			<property name="category" value="twitch_actions"/>
+			<action class="PlaySound">
+				<property name="sound" value="zombiefemalescoutalert"/>
+			</action>
+			<action class="Delay">
+				<property name="time" value="2"/>
+				<property name="phase" value="0"/>
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_names" value="animalTIZombieVultureScreamer"/>
+				<property name="single_choice" value="true"/>
+				<property name="spawn_count" value="1"/>
+				<property name="phase" value="0"/>
+				<property name="add_to_group" value="zombies"/>
+				<property name="safe_spawn" value="true"/>
+				<property name="min_distance" value="10"/>
+				<property name="max_distance" value="20"/>
+				<property name="spawn_type" value="WanderingHorde"/>
+				
+				<requirement class="RandomRoll">
+					<property name="min_max" value="0,100" />
+					<property name="operation" value="LTE" />
+					<property name="value" value="25" />
+				</requirement>
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="AnimalHorde"/>
+				<property name="spawn_count" value="3"/>
+				<property name="air_spawn" value="false"/>
+				<property name="add_to_group" value="zombies"/>
+				<property name="safe_spawn" value="true"/>
+				<property name="min_distance" value="20"/>
+				<property name="max_distance" value="30"/>
+				<property name="spawn_type" value="WanderingHorde"/>
+			</action>
+			<action class="AddEntitiesToGroup">
+				<property name="phase" value="0"/>
+				<property name="group_name" value="zombies"/>
+				<property name="max_distance" value="30"/>
+			</action>
+			<action class="RageZombies">
+				<property name="time" value="30"/>
+				<property name="speed_percent" value=".10"/>
+				<property name="target_group" value="zombies"/>
+			</action>
+		</action_sequence>
+		
+		<!-- Torment -->
+		<action_sequence name="torment_horde_sequence">
+			<property name="allow_user_trigger" value="true"/>
+			<property name="action_type" value="Game"/>
+			<property name="category" value="twitch_actions"/>
+			<action class="PlaySound">
+				<property name="sound" value="zombiefemalescoutalert"/>
+			</action>
+			<action class="Delay">
+				<property name="time" value="2"/>
+				<property name="phase" value="0"/>
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_names" value="zombieTITormentScreamer"/>
+				<property name="single_choice" value="true"/>
+				<property name="spawn_count" value="1"/>
+				<property name="phase" value="0"/>
+				<property name="add_to_group" value="zombies"/>
+				<property name="safe_spawn" value="true"/>
+				<property name="min_distance" value="10"/>
+				<property name="max_distance" value="20"/>
+				<property name="spawn_type" value="WanderingHorde"/>
+				
+				<requirement class="RandomRoll">
+					<property name="min_max" value="0,100" />
+					<property name="operation" value="LTE" />
+					<property name="value" value="50" />
+				</requirement>
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ScoutGSList"/>
+				<property name="spawn_count" value="5"/>
+				<property name="air_spawn" value="false"/>
+				<property name="add_to_group" value="zombies"/>
+				<property name="safe_spawn" value="true"/>
+				<property name="min_distance" value="20"/>
+				<property name="max_distance" value="30"/>
+				<property name="spawn_type" value="WanderingHorde"/>
+			</action>
+			<action class="AddEntitiesToGroup">
+				<property name="phase" value="0"/>
+				<property name="group_name" value="zombies"/>
+				<property name="max_distance" value="30"/>
+			</action>
+			<action class="RageZombies">
+				<property name="time" value="30"/>
+				<property name="speed_percent" value=".10"/>
+				<property name="target_group" value="zombies"/>
+			</action>
+		</action_sequence>
+		
+		<!-- demo screamer sequence -->
+		<action_sequence name="demo_horde_sequence">
+			<property name="allow_user_trigger" value="true"/>
+			<property name="action_type" value="Game"/>
+			<property name="category" value="twitch_actions"/>
+			<action class="PlaySound">
+				<property name="sound" value="zombiefemalescoutalert"/>
+			</action>
+			<action class="Delay">
+				<property name="time" value="2"/>
+				<property name="phase" value="0"/>
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_names" value="legendaryTIDemolitionFaulty"/>
+				<property name="single_choice" value="true"/>
+				<property name="spawn_count" value="2"/>
+				<property name="phase" value="0"/>
+				<property name="add_to_group" value="zombies"/>
+				<property name="safe_spawn" value="true"/>
+				<property name="min_distance" value="10"/>
+				<property name="max_distance" value="20"/>
+				<property name="spawn_type" value="WanderingHorde"/>
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_names" value="legendaryTIDemolitionEpic" param1="zombiename"/>
+				<property name="spawn_count" value="2" param1="spawncount_extra1"/>
+				<property name="ignore_multiplier" value="false" param1="ignoremultiplier"/>
+				<requirement class="Gamestage">
+					<property name="operation" value="GTE"/>
+					<property name="game_stage" value="15" param1="gamestage_extra1"/>
+				</requirement>
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_names" value="legendaryTIDemolition" param1="zombiename"/>
+				<property name="spawn_count" value="2" param1="spawncount_extra2"/>
+				<property name="ignore_multiplier" value="false" param1="ignoremultiplier"/>
+				<requirement class="Gamestage">
+					<property name="operation" value="GTE"/>
+					<property name="game_stage" value="25" param1="gamestage_extra2"/>
+				</requirement>
+			</action>
+			<action class="SpawnEntity">
+				<property name="entity_names" value="legendaryTIDemolitionNuclear" param1="zombiename"/>
+				<property name="spawn_count" value="1" param1="spawncount_extra3"/>
+				<property name="ignore_multiplier" value="false" param1="ignoremultiplier"/>
+				<requirement class="Gamestage">
+					<property name="operation" value="GTE"/>
+					<property name="game_stage" value="35" param1="gamestage_extra3"/>
+				</requirement>
+			</action>
+			<action class="AddEntitiesToGroup">
+				<property name="phase" value="0"/>
+				<property name="group_name" value="zombies"/>
+				<property name="max_distance" value="30"/>
+			</action>
+			<action class="RageZombies">
+				<property name="time" value="30"/>
+				<property name="speed_percent" value=".10"/>
+				<property name="target_group" value="zombies"/>
+			</action>
+		</action_sequence>
+		
+		<!-- random game event -->
+		<action_sequence name="random_animal">
+			<property name="allow_user_trigger" value="true"/>
+			<property name="action_type" value="Game"/>
+			<property name="category" value="twitch_actions"/>
+			
+			<action class="CallGameEvent">
+				<property name="game_events" value="spawn_snake,spawn_coyote,spawn_vulture,spawn_radvulture,spawn_boar,spawn_grace,spawn_dog,spawn_wolf,spawn_mountainlion,spawn_direwolf,spawn_bear,spawn_chicken,spawn_zombiebear,spawn_mutant_cub,spawn_anaconda,spawn_legendary_wolf,spawn_vulture_dog,spawn_danger_noodle,spawn_jack_rabbit,spawn_killer_kitten,spawn_legendary_bear"/>
+			</action>
+		</action_sequence>
+		
+		<action_sequence name="random_zombie_horde_legendary">
+			<property name="allow_user_trigger" value="true"/>
+			<property name="action_type" value="Game"/>
+			<property name="category" value="twitch_actions"/>
+			
+			<action class="CallGameEvent">
+				<property name="game_events" value="spawn_legendary_wight,spawn_legendary_biker,spawn_legendary_cop,spawn_legendary_tourist,spawn_zombie_limo"/>
+			</action>
+		</action_sequence>
+		
+		<action_sequence name="random_zombie_horde">
+			<property name="allow_user_trigger" value="true"/>
+			<property name="action_type" value="Game"/>
+			<property name="category" value="twitch_actions"/>
+			
+			<action class="CallGameEvent">
+				<property name="game_events" value="random_zombie_horde1,random_zombie_horde2,random_zombie_horde3,group_cops_and_strippers,group_teen_rave"/>
+			</action>
+		</action_sequence>
+		
+		<action_sequence name="random_zombie_horde1">
+			<property name="allow_user_trigger" value="true"/>
+			<property name="action_type" value="Game"/>
+			<property name="category" value="twitch_actions"/>
+			<property name="allow_while_dead" value="false" />
+			
+			<action class="SpawnEntity">
+				<property name="entity_group" value="ScoutGSList"/>
+				<property name="spawn_count" value="7"/>
+				<property name="air_spawn" value="false"/>
+				<property name="add_to_group" value="zombies"/>
+				<property name="safe_spawn" value="true"/>
+				<property name="min_distance" value="10"/>
+				<property name="max_distance" value="15"/>
+				<property name="spawn_type" value="WanderingHorde"/>
+			</action>
+		</action_sequence>
+		
+		<action_sequence name="random_zombie_horde2">
+			<property name="allow_user_trigger" value="true"/>
+			<property name="action_type" value="Game"/>
+			<property name="category" value="twitch_actions"/>
+			<property name="allow_while_dead" value="false" />
+			
+			<action class="SpawnEntity">
+				<property name="entity_group" value="BloodMoonHorde"/>
+				<property name="spawn_count" value="7"/>
+				<property name="air_spawn" value="false"/>
+				<property name="add_to_group" value="zombies"/>
+				<property name="safe_spawn" value="true"/>
+				<property name="min_distance" value="10"/>
+				<property name="max_distance" value="15"/>
+				<property name="spawn_type" value="WanderingHorde"/>
+			</action>
+		</action_sequence>
+		
+		<action_sequence name="random_zombie_horde3">
+			<property name="allow_user_trigger" value="true"/>
+			<property name="action_type" value="Game"/>
+			<property name="category" value="twitch_actions"/>
+			<property name="allow_while_dead" value="false" />
+			
+			<action class="SpawnEntity">
+				<property name="entity_group" value="SleeperGSList"/>
+				<property name="spawn_count" value="7"/>
+				<property name="air_spawn" value="false"/>
+				<property name="add_to_group" value="zombies"/>
+				<property name="safe_spawn" value="true"/>
+				<property name="min_distance" value="10"/>
+				<property name="max_distance" value="15"/>
+				<property name="spawn_type" value="WanderingHorde"/>
+			</action>
+		</action_sequence>
+		
+		<!-- *** give vehicle(s) *** -->
+		<action_sequence name="spawn_bicycle">
+			<property name="action_type" value="Game"/>
+			<action class="AddItems">
+				<property name="added_items" value="vehicleBicyclePlaceable"/>
+				<property name="added_item_counts" value="1"/>
+			</action>
+		</action_sequence>
+		<action_sequence name="spawn_minibike">
+			<property name="action_type" value="Game"/>
+			<action class="AddItems">
+				<property name="added_items" value="vehicleMinibikePlaceable"/>
+				<property name="added_item_counts" value="1"/>
+			</action>
+			<action class="AddItems">
+				<property name="added_items" value="ammoGasCan"/>
+				<property name="added_item_counts" value="200"/>
+			</action>
+		</action_sequence>
+		<action_sequence name="spawn_motorcycle">
+			<property name="action_type" value="Game"/>
+			<action class="AddItems">
+				<property name="added_items" value="vehicleMotorcyclePlaceable"/>
+				<property name="added_item_counts" value="1"/>
+			</action>
+			<action class="AddItems">
+				<property name="added_items" value="ammoGasCan"/>
+				<property name="added_item_counts" value="500"/>
+			</action>
+		</action_sequence>
+		<action_sequence name="spawn_4x4">
+			<property name="action_type" value="Game"/>
+			<action class="AddItems">
+				<property name="added_items" value="vehicleTruck4x4Placeable"/>
+				<property name="added_item_counts" value="1"/>
+			</action>
+			<action class="AddItems">
+				<property name="added_items" value="ammoGasCan"/>
+				<property name="added_item_counts" value="1000"/>
+			</action>
+		</action_sequence>
+		
+		<!-- *** Bat Witch bats sequence *** -->
+		<action_sequence name="bats_horde_sequence">
+			<property name="allow_user_trigger" value="true"/>
+			<property name="action_type" value="Game"/>			
+			
+			<action class="SpawnEntity">
+				<property name="phase" value="0"/>
+				<property name="entity_names" value="animalTIZombieVultureBat"/>
+				<property name="spawn_count" value="5"/>
+				<property name="air_spawn" value="true"/>
+				<property name="add_to_group" value="zombies"/>
+				<property name="safe_spawn" value="true"/>
+				<property name="min_distance" value="10"/>
+				<property name="max_distance" value="20"/>
+				<property name="spawn_type" value="Position"/>
+			</action>
+			
+			<action class="AddSpawnedEntitiesToGroup">
+				<property name="phase" value="1"/>
+				<property name="group_name" value="zombies"/>
+				<property name="max_distance" value="20"/>
+				<property name="entity_tags" value="bat"/>
+				<property name="target_only" value="false"/>
+			</action>
+			
+			<action class="RageZombies">
+				<property name="time" value="30"/>
+				<property name="speed_percent" value=".40"/>
+				<property name="target_group" value="zombies"/>
+			</action>
+		</action_sequence>
+		
+		<action_sequence name="bats_transform_sequence">
+			<property name="allow_user_trigger" value="true"/>
+			<property name="action_type" value="Game"/>
+			
+			<action class="AddSpawnedEntitiesToGroup">
+				<property name="phase" value="0"/>
+				<property name="group_name" value="batwitch"/>
+				<property name="entity_tags" value="witch"/>
+				<property name="target_only" value="false"/>
+			</action>
+			
+			<action class="ReplaceEntities">
+				<property name="time" value="5"/>
+				<property name="phase" value="0"/>
+				<property name="entity_names" value="animalTIZombieVultureBat"/>
+				<property name="single_choice" value="true"/>
+				<property name="target_group" value="batwitch"/>
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="phase" value="1"/>
+				<property name="entity_names" value="animalTIZombieVultureBat"/>
+				<property name="spawn_count" value="5"/>
+				<property name="air_spawn" value="true"/>
+				<property name="add_to_group" value="batwitch"/>
+				<property name="safe_spawn" value="true"/>
+				<property name="min_distance" value="10"/>
+				<property name="max_distance" value="20"/>
+				<property name="spawn_type" value="Position"/>
+			</action>
+			
+			<action class="AddEntitiesToGroup">
+				<property name="phase" value="1"/>
+				<property name="group_name" value="batwitch"/>
+				<property name="max_distance" value="20"/>
+			</action>
+			
+			<action class="RageZombies">
+				<property name="time" value="30"/>
+				<property name="speed_percent" value=".40"/>
+				<property name="target_group" value="batwitch"/>
+			</action>
+		</action_sequence>
+		
+		<!-- *** Horde Arena *** -->
+		<action_sequence name="buff_horde_arena" template="buff_template">
+			<variable name="buffsound" value=""/>
+			<variable name="addbuff" value="buffTIHordeArena1Trigger"/>
+			<variable name="twitch_negative" value="true"/>
+		</action_sequence>
+		
+		<!-- TIER 1 start -->		
+		<action_sequence name="round1_horde_arena_mainLoop">
+			<!-- refund_inactivity "true" will stop gameevent after 40-50 seconds - set to "false" to make it run forever -->
+			<property name="refund_inactivity" value="false"/>			
+			
+			<action class="SpawnEntity">
+				<property name="phase" value="2"/>
+				<property name="entity_group" value="BloodMoonHorde"/>
+				<property name="spawn_count" value="4"/>
+				<property name="air_spawn" value="false"/>
+				<property name="add_to_group" value="hordearena1"/>
+				<property name="safe_spawn" value="true"/>
+				<property name="attack_target" value="true"/>
+			</action>
+			
+			<action class="Delay">
+				<property name="phase" value="3"/>
+				<property name="time" value="5"/>
+			</action>
+			
+			<loop class="While">
+				<property name="phase" value="4"/>
+				<requirement class="HasBuff">
+					<property name="buff_name" value="buffTIHordeArena1"/>
+				</requirement>				
+				<!-- spawn more if less than 3 alive -->
+				<decision class="If">
+					<requirement class="GroupLiveCount">
+						<property name="target_group" value="hordearena1"/>
+						<property name="operation" value="LessThan"/>
+						<property name="count" value="3"/>
+					</requirement>
+					<action class="SpawnEntity">
+						<property name="phase" value="5"/>
+						<property name="entity_group" value="BloodMoonHorde"/>
+						<property name="spawn_count" value="1"/>
+						<property name="air_spawn" value="false"/>
+						<property name="add_to_group" value="hordearena1"/>
+						<property name="safe_spawn" value="true"/>
+						<property name="attack_target" value="true"/>
+					</action>
+					<action class="PlaySound">
+						<property name="sound" value="zombiemalealert" param1="alertsound"/>
+						<property name="phase" value="6"/>
+					</action>
+					<action class="Delay">
+						<property name="phase" value="7"/>
+						<property name="time" value="3"/>
+					</action>
+					<action class="RageZombies">
+						<property name="phase" value="8"/>
+						<property name="time" value="10"/>
+						<property name="speed_percent" value="1"/>
+						<property name="target_group" value="hordearena1"/>
+					</action>
+				</decision>
+			</loop>
+		</action_sequence>	
+		
+		<!-- Tier 2 -->
+		<action_sequence name="round2_horde_arena_mainLoop">
+			<!-- refund_inactivity "true" will stop gameevent after 40-50 seconds - set to "false" to make it run forever -->
+			<property name="refund_inactivity" value="false"/>			
+			
+			<action class="SpawnEntity">
+				<property name="phase" value="2"/>
+				<property name="entity_group" value="BloodMoonHorde"/>
+				<property name="spawn_count" value="5"/>
+				<property name="air_spawn" value="false"/>
+				<property name="add_to_group" value="hordearena2"/>
+				<property name="safe_spawn" value="true"/>
+				<property name="attack_target" value="true"/>
+			</action>
+			
+			<action class="Delay">
+				<property name="phase" value="3"/>
+				<property name="time" value="5"/>
+			</action>
+			
+			<loop class="While">
+				<property name="phase" value="4"/>
+				<requirement class="HasBuff">
+					<property name="buff_name" value="buffTIHordeArena2"/>
+				</requirement>				
+				<!-- spawn more if less than 3 alive -->
+				<decision class="If">
+					<requirement class="GroupLiveCount">
+						<property name="target_group" value="hordearena2"/>
+						<property name="operation" value="LessThan"/>
+						<property name="count" value="3"/>
+					</requirement>
+					<action class="SpawnEntity">
+						<property name="phase" value="5"/>
+						<property name="entity_group" value="BloodMoonHorde"/>
+						<property name="spawn_count" value="2"/>
+						<property name="air_spawn" value="false"/>
+						<property name="add_to_group" value="hordearena2"/>
+						<property name="safe_spawn" value="true"/>
+						<property name="attack_target" value="true"/>
+					</action>
+					<action class="PlaySound">
+						<property name="sound" value="zombiemalealert" param1="alertsound"/>
+						<property name="phase" value="6"/>
+					</action>
+					<action class="Delay">
+						<property name="phase" value="7"/>
+						<property name="time" value="3"/>
+					</action>
+					<action class="RageZombies">
+						<property name="phase" value="8"/>
+						<property name="time" value="10"/>
+						<property name="speed_percent" value="1"/>
+						<property name="target_group" value="hordearena2"/>
+					</action>
+				</decision>
+			</loop>
+		</action_sequence>
+
+		<!-- Tier 3 -->
+		<action_sequence name="round3_horde_arena_mainLoop">
+			<!-- refund_inactivity "true" will stop gameevent after 40-50 seconds - set to "false" to make it run forever -->
+			<property name="refund_inactivity" value="false"/>			
+			
+			<action class="SpawnEntity">
+				<property name="phase" value="2"/>
+				<property name="entity_group" value="BloodMoonHorde"/>
+				<property name="spawn_count" value="5"/>
+				<property name="air_spawn" value="false"/>
+				<property name="add_to_group" value="hordearena3"/>
+				<property name="safe_spawn" value="true"/>
+				<property name="attack_target" value="true"/>
+			</action>
+			
+			<action class="Delay">
+				<property name="phase" value="3"/>
+				<property name="time" value="5"/>
+			</action>
+			
+			<loop class="While">
+				<property name="phase" value="4"/>
+				<requirement class="HasBuff">
+					<property name="buff_name" value="buffTIHordeArena3"/>
+				</requirement>				
+				<!-- spawn more if less than 3 alive -->
+				<decision class="If">
+					<requirement class="GroupLiveCount">
+						<property name="target_group" value="hordearena3"/>
+						<property name="operation" value="LessThan"/>
+						<property name="count" value="3"/>
+					</requirement>
+					<action class="SpawnEntity">
+						<property name="phase" value="5"/>
+						<property name="entity_group" value="BloodMoonHorde"/>
+						<property name="spawn_count" value="3"/>
+						<property name="air_spawn" value="false"/>
+						<property name="add_to_group" value="hordearena3"/>
+						<property name="safe_spawn" value="true"/>
+						<property name="attack_target" value="true"/>
+					</action>
+					<action class="PlaySound">
+						<property name="sound" value="zombiemalealert" param1="alertsound"/>
+						<property name="phase" value="6"/>
+					</action>
+					<action class="Delay">
+						<property name="phase" value="7"/>
+						<property name="time" value="3"/>
+					</action>
+					<action class="RageZombies">
+						<property name="phase" value="8"/>
+						<property name="time" value="10"/>
+						<property name="speed_percent" value="1"/>
+						<property name="target_group" value="hordearena3"/>
+					</action>
+				</decision>
+			</loop>
+		</action_sequence>
+		
+		<!-- Tier 4 -->
+		<action_sequence name="round4_horde_arena_mainLoop">
+			<!-- refund_inactivity "true" will stop gameevent after 40-50 seconds - set to "false" to make it run forever -->
+			<property name="refund_inactivity" value="false"/>			
+			
+			<action class="SpawnEntity">
+				<property name="phase" value="2"/>
+				<property name="entity_group" value="BloodMoonHorde"/>
+				<property name="spawn_count" value="6"/>
+				<property name="air_spawn" value="false"/>
+				<property name="add_to_group" value="hordearena4"/>
+				<property name="safe_spawn" value="true"/>
+				<property name="attack_target" value="true"/>
+			</action>
+			
+			<action class="Delay">
+				<property name="phase" value="3"/>
+				<property name="time" value="5"/>
+			</action>
+			
+			<loop class="While">
+				<property name="phase" value="4"/>
+				<requirement class="HasBuff">
+					<property name="buff_name" value="buffTIHordeArena4"/>
+				</requirement>				
+				<!-- spawn more if less than 3 alive -->
+				<decision class="If">
+					<requirement class="GroupLiveCount">
+						<property name="target_group" value="hordearena4"/>
+						<property name="operation" value="LessThan"/>
+						<property name="count" value="3"/>
+					</requirement>
+					<action class="SpawnEntity">
+						<property name="phase" value="5"/>
+						<property name="entity_group" value="BloodMoonHorde"/>
+						<property name="spawn_count" value="4"/>
+						<property name="air_spawn" value="false"/>
+						<property name="add_to_group" value="hordearena4"/>
+						<property name="safe_spawn" value="true"/>
+						<property name="attack_target" value="true"/>
+					</action>
+					<action class="PlaySound">
+						<property name="sound" value="zombiemalealert" param1="alertsound"/>
+						<property name="phase" value="6"/>
+					</action>
+					<action class="Delay">
+						<property name="phase" value="7"/>
+						<property name="time" value="3"/>
+					</action>
+					<action class="RageZombies">
+						<property name="phase" value="8"/>
+						<property name="time" value="10"/>
+						<property name="speed_percent" value="1"/>
+						<property name="target_group" value="hordearena4"/>
+					</action>
+				</decision>
+			</loop>
+		</action_sequence>
+		
+		<!-- Tier 5 -->
+		<action_sequence name="round5_horde_arena_mainLoop">
+			<!-- refund_inactivity "true" will stop gameevent after 40-50 seconds - set to "false" to make it run forever -->
+			<property name="refund_inactivity" value="false"/>			
+			
+			<action class="SpawnEntity">
+				<property name="phase" value="2"/>
+				<property name="entity_group" value="BloodMoonHorde"/>
+				<property name="spawn_count" value="7"/>
+				<property name="air_spawn" value="false"/>
+				<property name="add_to_group" value="hordearena5"/>
+				<property name="safe_spawn" value="true"/>
+				<property name="attack_target" value="true"/>
+			</action>
+			
+			<action class="Delay">
+				<property name="phase" value="3"/>
+				<property name="time" value="5"/>
+			</action>
+			
+			<loop class="While">
+				<property name="phase" value="4"/>
+				<requirement class="HasBuff">
+					<property name="buff_name" value="buffTIHordeArena5"/>
+				</requirement>				
+				<!-- spawn more if less than 3 alive -->
+				<decision class="If">
+					<requirement class="GroupLiveCount">
+						<property name="target_group" value="hordearena5"/>
+						<property name="operation" value="LessThan"/>
+						<property name="count" value="3"/>
+					</requirement>
+					<action class="SpawnEntity">
+						<property name="phase" value="5"/>
+						<property name="entity_group" value="BloodMoonHorde"/>
+						<property name="spawn_count" value="5"/>
+						<property name="air_spawn" value="false"/>
+						<property name="add_to_group" value="hordearena5"/>
+						<property name="safe_spawn" value="true"/>
+						<property name="attack_target" value="true"/>
+					</action>
+					<action class="PlaySound">
+						<property name="sound" value="zombiemalealert" param1="alertsound"/>
+						<property name="phase" value="6"/>
+					</action>
+					<action class="Delay">
+						<property name="phase" value="7"/>
+						<property name="time" value="3"/>
+					</action>
+					<action class="RageZombies">
+						<property name="phase" value="8"/>
+						<property name="time" value="10"/>
+						<property name="speed_percent" value="1"/>
+						<property name="target_group" value="hordearena5"/>
+					</action>
+				</decision>
+			</loop>
+		</action_sequence>
+		
+		<!-- Alternative Horde Arena Spawns -->
+		<action_sequence name="vote_horde_arena1">
+			<property name="allow_user_trigger" value="false" />
+			<property name="action_type" value="TwitchVote" />
+			<property name="refund_inactivity" value="false" />
+			<property name="category" value="twitch_votes" />
+
+			<action class="AddPartyToGroup">
+				<property name="phase" value="0" />
+				<property name="group_name" value="party" />
+				<property name="twitch_negative" value="false" />
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="5" param1="zombiecount" />
+				<property name="party_addition" value="2" />
+				<property name="phase" value="0" />
+				<property name="safe_spawn" value="true" />
+				<property name="add_to_group" value="zombies,minions" />
+				<property name="add_buffs" value="twitch_minion,twitch_minion_nav" param1="minionbuff" />
+				<property name="spawn_type" value="Position" />
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+
+			<action class="SpawnEntity">
+				<property name="entity_names" value="zombieTILegendarySkateboarder" param1="zombiename" />
+				<property name="spawn_count" value="1" />
+				<property name="phase" value="0" />
+				<property name="safe_spawn" value="true" />
+				<property name="add_to_group" value="zombies,boss" />
+				<property name="add_buffs" value="twitch_boss" param1="bossbuff" />
+				<property name="spawn_type" value="Position" />
+				<property name="ignore_multiplier" value="true" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="zombiemalealert" param1="alertsound" />
+				<property name="phase" value="1" />
+			</action>
+			
+			<action class="Delay">
+				<property name="time" value="1" />
+				<property name="phase" value="2" />
+			</action>
+			
+			<action class="SetupBossGroup">
+				<property name="minion_group_name" value="minions" />
+				<property name="boss_group_name" value="boss" />
+				<property name="boss_icon1" value="" param1="bossicon1" />
+				<property name="phase" value="3" />
+			</action>
+
+			<action class="AddBuff">
+				<property name="buff_name" value="twitch_minion_nav" />
+				<property name="phase" value="3" />
+				<property name="target_group" value="minions" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="twitch_boss_nav" />
+				<property name="phase" value="3" />
+				<property name="target_group" value="boss" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="twitch_give_navobject" />
+				<property name="phase" value="3" />
+				<property name="target_group" value="zombies" />
+			</action>
+			
+			<action class="RageZombies">
+				<property name="target_group" value="zombies" />
+				<property name="time" value="600" />
+				<property name="speed_percent" value="1.25" />
+				<property name="phase" value="3" />
+			</action>
+			
+			<action class="WaitForDead">
+				<property name="target_group" value="zombies" />
+				<property name="phase_on_despawn" value="8" />
+				<property name="phase" value="4" />
+			</action>
+
+			<action class="Delay">
+				<property name="time" value="5" />
+				<property name="phase" value="5" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="open_supply_crate" />
+				<property name="phase" value="6" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="twitch_vote_horde_success" />
+				<property name="phase" value="6" />
+				<property name="inside_head" value="true" />
+				<property name="target_group" value="party" />
+			</action>
+			
+			<action class="RemoveBuff">
+				<property name="phase" value="6" />
+				<property name="buff_name" value="buffTIHordeArena1" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="phase" value="6" />
+				<property name="buff_name" value="buffTIHordeArena2Trigger" />
+			</action>
+			
+			<action class="SpawnContainer">
+				<property name="entity_names" value="TwitchAction_VoteRewardT1" param1="cratename" />
+				<property name="safe_spawn" value="true" />
+				<property name="phase" value="7" />
+				<property name="phase_on_complete" value="9" />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="Position" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="twitch_vote_horde_failed" />
+				<property name="phase" value="8" />
+				<property name="inside_head" value="true" />
+				<property name="target_group" value="party" />
+			</action>
+			
+			<action class="RemoveBuff">
+				<property name="phase" value="8" />
+				<property name="buff_name" value="buffTIHordeArena1" />
+			</action>
+
+			<action class="BeltTooltip">
+				<property name="text_key" value="BossEventFailedDespawn" />
+				<property name="phase" value="8" />
+			</action>
+			
+			<action class="RemoveEntities">
+				<property name="target_group" value="zombies" />
+				<property name="phase" value="8" />
+			</action>
+			
+		</action_sequence>
+
+		<action_sequence name="vote_horde_arena2">
+			<property name="allow_user_trigger" value="false" />
+			<property name="action_type" value="TwitchVote" />
+			<property name="refund_inactivity" value="false" />
+			<property name="category" value="twitch_votes" />
+			
+			<action class="AddPartyToGroup">
+				<property name="phase" value="0" />
+				<property name="group_name" value="party" />
+				<property name="twitch_negative" value="false" />
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="10" param1="zombiecount" />
+				<property name="party_addition" value="2" />
+				<property name="phase" value="0" />
+				<property name="safe_spawn" value="true" />
+				<property name="add_to_group" value="zombies,minions" />
+				<property name="add_buffs" value="twitch_tough1,twitch_minion,twitch_minion_nav" param1="minionbuff" />
+				<property name="spawn_type" value="Position" />
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+
+			<action class="SpawnEntity">
+				<property name="entity_names" value="legendaryTIFatHawaiian" param1="zombiename" />
+				<property name="spawn_count" value="1" />
+				<property name="phase" value="0" />
+				<property name="safe_spawn" value="true" />
+				<property name="add_to_group" value="zombies,boss" />
+				<property name="add_buffs" value="twitch_boss_nav" param1="bossbuff" />
+				<property name="spawn_type" value="Position" />
+				<property name="ignore_multiplier" value="true" />
+			</action>			
+			
+			<action class="AddRandomBuff">
+				<property name="buff_names" value="twitch_enemyshock,twitch_enemyrad,twitch_enemyburn" />
+				<property name="phase" value="1" />
+				<property name="target_group" value="zombies" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="zombiemalealert" param1="alertsound" />
+				<property name="phase" value="1" />
+			</action>
+			
+			<action class="Delay">
+				<property name="time" value="1" />
+				<property name="phase" value="2" />
+			</action>
+			
+			<action class="SetupBossGroup">
+				<property name="minion_group_name" value="minions" />
+				<property name="boss_group_name" value="boss" />
+				<property name="boss_icon1" value="" param1="bossicon1" />
+				<property name="phase" value="3" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="twitch_minion_nav" />
+				<property name="phase" value="3" />
+				<property name="target_group" value="minions" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="twitch_boss_nav" />
+				<property name="phase" value="3" />
+				<property name="target_group" value="boss" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="twitch_give_navobject" />
+				<property name="phase" value="3" />
+				<property name="target_group" value="zombies" />
+			</action>
+			
+			<action class="RageZombies">
+				<property name="target_group" value="zombies" />
+				<property name="time" value="600" />
+				<property name="speed_percent" value="1.25" />
+				<property name="phase" value="3" />
+			</action>
+			
+			<action class="WaitForDead">
+				<property name="target_group" value="zombies" />
+				<property name="phase_on_despawn" value="8" />
+				<property name="phase" value="4" />
+			</action>
+
+			<action class="Delay">
+				<property name="time" value="5" />
+				<property name="phase" value="5" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="open_supply_crate" />
+				<property name="phase" value="6" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="twitch_vote_horde_success" />
+				<property name="phase" value="6" />
+				<property name="inside_head" value="true" />
+				<property name="target_group" value="party" />
+			</action>
+			
+			<action class="RemoveBuff">
+				<property name="phase" value="6" />
+				<property name="buff_name" value="buffTIHordeArena2" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="phase" value="6" />
+				<property name="buff_name" value="buffTIHordeArena3Trigger" />
+			</action>
+			
+			<action class="SpawnContainer">
+				<property name="entity_names" value="TwitchAction_VoteRewardT1" param1="cratename" />
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="4" />
+				<property name="safe_spawn" value="true" />
+				<property name="phase" value="7" />
+				<property name="phase_on_complete" value="9" />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="Position" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="twitch_vote_horde_failed" />
+				<property name="phase" value="8" />
+				<property name="inside_head" value="true" />
+				<property name="target_group" value="party" />
+			</action>
+			
+			<action class="RemoveBuff">
+				<property name="phase" value="8" />
+				<property name="buff_name" value="buffTIHordeArena2" />
+			</action>
+			
+			<action class="BeltTooltip">
+				<property name="text" value="Boss Event Failed: You let some enemies get away!" />
+				<property name="phase" value="8" />
+			</action>
+			
+			<action class="RemoveEntities">
+				<property name="target_group" value="zombies" />
+				<property name="phase" value="8" />
+			</action>
+			
+		</action_sequence>
+		
+		<action_sequence name="vote_horde_arena3">
+			<!-- <property name="allow_user_trigger" value="false" /> -->
+			<property name="action_type" value="TwitchVote" />
+			<property name="refund_inactivity" value="false" />
+			<property name="category" value="twitch_votes" />
+			
+			<action class="AddPartyToGroup">
+				<property name="phase" value="0" />
+				<property name="group_name" value="party" />
+				<property name="twitch_negative" value="false" />
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="15" param1="zombiecount" />
+				<property name="party_addition" value="2" />
+				<property name="phase" value="0" />
+				<property name="safe_spawn" value="true" />
+				<property name="add_to_group" value="zombies,minions" />
+				<property name="add_buffs" value="twitch_tough1,twitch_minion" param1="minionbuff" />
+				<property name="spawn_type" value="Position" />
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+
+			<action class="SpawnEntity">
+				<property name="entity_names" value="legendaryTIFatCop" param1="zombiename" />
+				<property name="spawn_count" value="1" />
+				<property name="phase" value="0" />
+				<property name="safe_spawn" value="true" />
+				<property name="add_to_group" value="zombies,boss" />
+				<property name="add_buffs" value="twitch_boss" param1="bossbuff" />
+				<property name="spawn_type" value="Position" />
+				<property name="ignore_multiplier" value="true" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="twitch_boss" />
+				<property name="phase" value="1" />
+				<property name="target_group" value="boss" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="twitch_minion" />
+				<property name="phase" value="1" />
+				<property name="target_group" value="minions" />
+			</action>
+			
+			<action class="AddRandomBuff">
+				<property name="buff_names" value="twitch_weapon_pistols,twitch_weapon_shotguns,twitch_weapon_rifles,twitch_weapon_bows,twitch_weapon_machinegunner" />
+				<property name="phase" value="1" />
+				<property name="target_group" value="zombies" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="zombiemalealert" param1="alertsound" />
+				<property name="phase" value="1" />
+			</action>
+			
+			<action class="Delay">
+				<property name="time" value="1" />
+				<property name="phase" value="2" />
+			</action>
+			
+			<action class="SetupBossGroup">
+				<property name="minion_group_name" value="minions" />
+				<property name="boss_group_name" value="boss" />
+				<property name="boss_icon1" value="ui_game_symbol_twitch_boss_bar_ammotype_weakness" />
+				<property name="phase" value="3" />
+				<property name="group_type" value="Specialized" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="twitch_give_navobject" />
+				<property name="phase" value="3" />
+				<property name="target_group" value="zombies" />
+			</action>
+			
+			<action class="RageZombies">
+				<property name="target_group" value="zombies" />
+				<property name="time" value="600" />
+				<property name="speed_percent" value="1.25" />
+				<property name="phase" value="3" />
+			</action>
+			
+			<action class="WaitForDead">
+				<property name="target_group" value="zombies" />
+				<property name="phase_on_despawn" value="8" />
+				<property name="phase" value="4" />
+			</action>
+
+			<action class="Delay">
+				<property name="time" value="5" />
+				<property name="phase" value="5" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="open_supply_crate" />
+				<property name="phase" value="6" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="twitch_vote_horde_success" />
+				<property name="phase" value="6" />
+				<property name="inside_head" value="true" />
+				<property name="target_group" value="party" />
+			</action>
+			
+			<action class="RemoveBuff">
+				<property name="phase" value="6" />
+				<property name="buff_name" value="buffTIHordeArena3" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="phase" value="6" />
+				<property name="buff_name" value="buffTIHordeArena4Trigger" />
+			</action>
+			
+			<action class="SpawnContainer">
+				<property name="entity_names" value="TwitchAction_VoteRewardT1" param1="cratename" />
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="4" />
+				<property name="safe_spawn" value="true" />
+				<property name="phase" value="7" />
+				<property name="phase_on_complete" value="9" />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="Position" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="twitch_vote_horde_failed" />
+				<property name="phase" value="8" />
+				<property name="inside_head" value="true" />
+				<property name="target_group" value="party" />
+			</action>
+			
+			<action class="RemoveBuff">
+				<property name="phase" value="8" />
+				<property name="buff_name" value="buffTIHordeArena3" />
+			</action>
+			
+			<action class="BeltTooltip">
+				<property name="text" value="Boss Event Failed: You let some enemies get away!" />
+				<property name="phase" value="8" />
+			</action>
+			
+			<action class="RemoveEntities">
+				<property name="target_group" value="zombies" />
+				<property name="phase" value="8" />
+			</action>
+			
+		</action_sequence>
+		
+		<action_sequence name="vote_horde_arena4">
+			<property name="allow_user_trigger" value="false" />
+			<property name="action_type" value="TwitchVote" />
+			<property name="refund_inactivity" value="false" />
+			<property name="category" value="twitch_votes" />
+			
+			<action class="AddPartyToGroup">
+				<property name="phase" value="0" />
+				<property name="group_name" value="party" />
+				<property name="twitch_negative" value="false" />
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="15" param1="zombiecount" />
+				<property name="party_addition" value="2" />
+				<property name="phase" value="0" />
+				<property name="safe_spawn" value="true" />
+				<property name="add_to_group" value="zombies,minions" />
+				<property name="add_buffs" value="twitch_tough2,twitch_minion,twitch_minion_nav" param1="minionbuff" />
+				<property name="spawn_type" value="Position" />
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+
+			<action class="SpawnEntity">
+				<property name="entity_names" value="legendaryTIWight" param1="zombiename" />
+				<property name="spawn_count" value="1" />
+				<property name="phase" value="0" />
+				<property name="safe_spawn" value="true" />
+				<property name="add_to_group" value="zombies,boss" />
+				<property name="add_buffs" value="twitch_boss,twitch_immortal_boss" param1="bossbuff" />
+				<property name="spawn_type" value="Position" />
+				<property name="ignore_multiplier" value="true" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="zombiemalealert" param1="alertsound" />
+				<property name="phase" value="1" />
+			</action>
+			
+			<action class="Delay">
+				<property name="time" value="1" />
+				<property name="phase" value="2" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="twitch_minion_nav" />
+				<property name="phase" value="3" />
+				<property name="target_group" value="minions" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="twitch_immortal_boss" />
+				<property name="phase" value="3" />
+				<property name="target_group" value="boss" />
+			</action>
+			
+			<action class="SetupBossGroup">
+				<property name="minion_group_name" value="minions" />
+				<property name="boss_group_name" value="boss" />
+				<property name="boss_icon1" value="" param1="bossicon1" />
+				<property name="phase" value="3" />
+				<property name="group_type" value="ImmortalBoss" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="twitch_give_navobject" />
+				<property name="phase" value="3" />
+				<property name="target_group" value="zombies" />
+			</action>
+			
+			<action class="RageZombies">
+				<property name="target_group" value="zombies" />
+				<property name="time" value="600" />
+				<property name="speed_percent" value="1.25" />
+				<property name="phase" value="3" />
+			</action>
+			
+			<action class="WaitForDead">
+				<property name="target_group" value="minions" />
+				<property name="phase_on_despawn" value="10" />
+				<property name="phase" value="4" />
+			</action>
+			
+			<action class="ReplaceBuff">
+				<property name="replace_buff" value="twitch_immortal_boss" />
+				<property name="replace_with_buff" value="twitch_boss_nav" />
+				<property name="phase" value="5" />
+				<property name="target_group" value="boss" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="twitch_give_navobject" />
+				<property name="phase" value="6" />
+				<property name="target_group" value="zombies" />
+			</action>
+			
+			<action class="WaitForDead">
+				<property name="target_group" value="boss" />
+				<property name="phase_on_despawn" value="10" />
+				<property name="phase" value="6" />
+			</action>
+
+			<action class="Delay">
+				<property name="time" value="5" />
+				<property name="phase" value="7" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="open_supply_crate" />
+				<property name="phase" value="8" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="twitch_vote_horde_success" />
+				<property name="phase" value="8" />
+				<property name="inside_head" value="true" />
+				<property name="target_group" value="party" />
+			</action>
+			
+			<action class="RemoveBuff">
+				<property name="phase" value="8" />
+				<property name="buff_name" value="buffTIHordeArena4" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="phase" value="8" />
+				<property name="buff_name" value="buffTIHordeArena5Trigger" />
+			</action>
+			
+			<action class="SpawnContainer">
+				<property name="entity_names" value="TwitchAction_VoteRewardT1" param1="cratename" />
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="4" />
+				<property name="safe_spawn" value="true" />
+				<property name="phase" value="9" />
+				<property name="phase_on_complete" value="11" />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="Position" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="twitch_vote_horde_failed" />
+				<property name="phase" value="10" />
+				<property name="inside_head" value="true" />
+				<property name="target_group" value="party" />
+			</action>
+			
+			<action class="RemoveBuff">
+				<property name="phase" value="8" />
+				<property name="buff_name" value="buffTIHordeArena4" />
+			</action>
+			
+			<action class="BeltTooltip">
+				<property name="text" value="Boss Event Failed: You let some enemies get away!" />
+				<property name="phase" value="10" />
+			</action>
+			
+			<action class="RemoveBuff">
+				<property name="buff_name" value="twitch_immortal_boss" />
+				<property name="phase" value="10" />
+				<property name="target_group" value="boss" />
+			</action>
+			
+			<action class="RemoveEntities">
+				<property name="target_group" value="zombies" />
+				<property name="phase" value="10" />
+			</action>
+			
+		</action_sequence>
+		
+		<action_sequence name="vote_horde_arena5">
+			<property name="allow_user_trigger" value="false" />
+			<property name="action_type" value="TwitchVote" />
+			<property name="refund_inactivity" value="false" />
+			<property name="category" value="twitch_votes" />
+			
+			<action class="AddPartyToGroup">
+				<property name="phase" value="0" />
+				<property name="group_name" value="party" />
+				<property name="twitch_negative" value="false" />
+			</action>
+			
+			<action class="SpawnEntity">
+				<property name="entity_group" value="SleeperGSList" />
+				<property name="spawn_count" value="20" param1="zombiecount" />
+				<property name="party_addition" value="2" />
+				<property name="phase" value="0" />
+				<property name="add_to_group" value="zombies,minions" />
+				<property name="safe_spawn" value="true" />
+				<property name="add_buffs" value="twitch_tough2,twitch_minion,twitch_immortal_minion" param1="minionbuff" />
+				<property name="spawn_type" value="Position" />
+				<property name="clear_position_on_complete" value="true" />
+			</action>
+
+			<action class="SpawnEntity">
+				<property name="entity_names" value="legendaryTIBiker" param1="zombiename" />
+				<property name="spawn_count" value="1" />
+				<property name="min_distance" value="1" />
+				<property name="max_distance" value="4" />
+				<property name="phase" value="0" />
+				<property name="add_to_group" value="zombies,boss" />
+				<property name="safe_spawn" value="true" />
+				<property name="add_buffs" value="twitch_boss_nav" param1="bossbuff" />
+				<property name="spawn_type" value="Position" />
+				<property name="ignore_multiplier" value="true" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="zombiemalealert" param1="alertsound" />
+				<property name="phase" value="1" />
+			</action>
+			
+			<action class="Delay">
+				<property name="time" value="1" />
+				<property name="phase" value="2" />
+			</action>
+			
+			<action class="SetupBossGroup">
+				<property name="minion_group_name" value="minions" />
+				<property name="boss_group_name" value="boss" />
+				<property name="boss_icon1" value="" param1="bossicon1" />
+				<property name="phase" value="3" />
+				<property name="group_type" value="ImmortalMinions" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="twitch_immortal_minion" />
+				<property name="phase" value="3" />
+				<property name="target_group" value="minions" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="twitch_boss_nav" />
+				<property name="phase" value="3" />
+				<property name="target_group" value="boss" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="twitch_give_navobject" />
+				<property name="phase" value="3" />
+				<property name="target_group" value="zombies" />
+			</action>
+			
+			<action class="RageZombies">
+				<property name="target_group" value="zombies" />
+				<property name="time" value="600" />
+				<property name="speed_percent" value="1.25" />
+				<property name="phase" value="3" />
+			</action>
+			
+			<action class="WaitForDead">
+				<property name="target_group" value="boss" />
+				<property name="phase_on_despawn" value="10" />
+				<property name="phase" value="4" />
+			</action>
+			
+			<action class="ReplaceBuff">
+				<property name="replace_buff" value="twitch_immortal_minion" />
+				<property name="replace_with_buff" value="twitch_minion_nav" />
+				<property name="phase" value="5" />
+				<property name="target_group" value="minions" />
+			</action>
+			
+			<action class="AddBuff">
+				<property name="buff_name" value="twitch_give_navobject" />
+				<property name="phase" value="6" />
+				<property name="target_group" value="zombies" />
+			</action>
+			
+			<action class="WaitForDead">
+				<property name="target_group" value="minions" />
+				<property name="phase_on_despawn" value="10" />
+				<property name="phase" value="6" />
+			</action>
+
+			<action class="Delay">
+				<property name="time" value="5" />
+				<property name="phase" value="7" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="open_supply_crate" />
+				<property name="phase" value="8" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="twitch_vote_horde_success" />
+				<property name="phase" value="8" />
+				<property name="inside_head" value="true" />
+				<property name="target_group" value="party" />
+			</action>
+			
+			<action class="RemoveBuff">
+				<property name="phase" value="8" />
+				<property name="buff_name" value="buffTIHordeArena5" />
+			</action>			
+			
+			<action class="GetNearbyPoint">
+				<property name="phase" value="8" />
+				<property name="safe_spawn" value="true" />
+			</action>
+			
+			<action class="SpawnContainer">
+				<property name="entity_names" value="TwitchAction_SupplyWeapon4" param1="cratename" />
+				<property name="safe_spawn" value="true" />
+				<property name="phase" value="9" />
+				<property name="phase_on_complete" value="11" />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="Position" />
+			</action>
+			
+			<action class="SpawnContainer">
+				<property name="entity_names" value="TwitchAction_SupplyMedicine3" param1="cratename" />
+				<property name="safe_spawn" value="true" />
+				<property name="phase" value="9" />
+				<property name="phase_on_complete" value="11" />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="Position" />
+			</action>
+			
+			<action class="SpawnContainer">
+				<property name="entity_names" value="TwitchAction_SupplyAmmo4" param1="cratename" />
+				<property name="safe_spawn" value="true" />
+				<property name="phase" value="9" />
+				<property name="phase_on_complete" value="11" />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="Position" />
+			</action>
+			
+			<action class="SpawnContainer">
+				<property name="entity_names" value="TwitchAction_SupplyArmor3" param1="cratename" />
+				<property name="safe_spawn" value="true" />
+				<property name="phase" value="9" />
+				<property name="phase_on_complete" value="11" />
+				<property name="target_group" value="party" />
+				<property name="spawn_type" value="Position" />
+			</action>
+
+			<action class="PlaySound">
+				<property name="sound" value="twitch_vote_horde_failed" />
+				<property name="phase" value="10" />
+				<property name="inside_head" value="true" />
+				<property name="target_group" value="party" />
+			</action>
+			
+			<action class="RemoveBuff">
+				<property name="phase" value="8" />
+				<property name="buff_name" value="buffTIHordeArena5" />
+			</action>
+			
+			<action class="BeltTooltip">
+				<property name="text" value="Boss Event Failed: You let some enemies get away!" />
+				<property name="phase" value="10" />
+			</action>
+			
+			<action class="RemoveBuff">
+				<property name="buff_name" value="twitch_immortal_minion" />
+				<property name="phase" value="10" />
+				<property name="target_group" value="minions" />
+			</action>
+			
+			<action class="RemoveEntities">
+				<property name="target_group" value="zombies" />
+				<property name="phase" value="10" />
+			</action>			
+		</action_sequence>
+	
+		<!-- *** give up *** -->
+		<action_sequence name="give_up">	
+			<requirement class="NearbyEntities">
+				<property name="max_distance" value="150" />
+			</requirement>
+			
+			<action class="AddSpawnedEntitiesToGroup">
+				<property name="phase" value="1"/>
+				<property name="group_name" value="zombies"/>
+				<property name="entity_tags" value="entity"/>
+				<property name="max_distance" value="150"/>
+				<property name="target_only" value="false"/>
+			</action>
+			
+			<action class="AddEntitiesToGroup">
+				<property name="phase" value="2"/>
+				<property name="group_name" value="zombies"/>
+				<property name="entity_tags" value="entity"/>
+				<property name="max_distance" value="150"/>
+				<property name="target_only" value="false"/>
+			</action>			
+			
+			<action class="TwitchAddEntitiesToSpawned">
+				<property name="target_group" value="zombies" />
+			</action>
+
+			<action class="Kill">
+				<property name="phase" value="3" />
+				<property name="target_group" value="zombies" />
+			</action>
+		</action_sequence>
+	</append>
+</HellsJanitor>

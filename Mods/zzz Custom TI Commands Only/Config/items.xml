@@ -1,0 +1,825 @@
+<configs>
+	<append xpath="/items" >
+
+	<item name="meleeHandTIAnimalZombieChicken">
+		<property name="Extends" value="meleeHandMaster"/>
+		<property name="CreativeMode" value="None"/>
+		<property name="HoldType" value="35"/>
+		<property class="Action0">
+			<property name="Delay" value=".25"/>
+			<property name="DamageEntity" value="4"/>
+			<property name="DamageBlock" value="175"/>
+		</property>
+		<effect_group name="meleeHandTIAnimalZombieChicken" tiered="false">
+			<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="20"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffInjuryUnconscious" />
+		</effect_group>
+	</item>
+
+	<item name="meleeHandTIZombieBurningCrawler">
+		<property name="Extends" value="meleeHandMaster"/>
+		<property name="CreativeMode" value="None"/>
+		<property name="HoldType" value="24"/>
+		<property class="Action0">
+			<property name="DamageEntity" value="20"/>
+			<property name="DamageBlock" value="240"/>
+			<property name="Delay" value="1.0"/> <!-- obsolete if rounds per minute exists -->
+			<!--<property name="Buff" value="buffInfectionCatch,buffBurningZombie"/>-->
+		</property>
+		<effect_group name="meleeHandTIZombieBurningCrawler" tiered="false">
+			<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="40"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffShocked" />
+		</effect_group>
+	</item>
+
+	<item name="meleeHandTIZombieDeathCrawler">
+		<property name="Extends" value="meleeHandMaster"/>
+		<property name="CreativeMode" value="None"/>
+		<property name="HoldType" value="24"/>
+		<property class="Action0">
+			<property name="DamageEntity" value="9999"/>
+			<property name="DamageBlock" value="9999"/>
+			<property name="Delay" value="1.25"/>
+		</property>
+	</item>
+
+	<item name="meleeHandTIZombieBurningFeral">
+		<property name="Extends" value="meleeHandZombieBurning"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action0">
+			<property name="DamageEntity" value="32"/>
+			<property name="DamageBlock" value="24"/>
+			<property name="Range" value="2.2"/>
+		</property>
+		<effect_group name="meleeHandTIZombieBurningFeral" tiered="false">
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<!--<passive_effect name="AttacksPerMinute" operation="base_set" value="75"/>  A16 .8 -->
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" fireOneBuff="true"
+				buff="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo"
+				weights=".11,.07,.07,.05,.29,.36,.11"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="infectionCounter" operation="add" value="15"><!--InfectionFeral-->
+				<requirement name="CVarCompare" target="other" cvar="infectionCounter" operation="GT" value="0"/></triggered_effect>
+			<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="abrasionZombieHit" operation="set" value="2400"/><!--AbrasionFeral-->
+		</effect_group>
+	</item>
+
+	<item name="meleeTIHandZombieFeral">
+		<property name="Extends" value="meleeHandZombieFeral"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action0">
+			<property name="DamageEntity" value="28"/>
+			<property name="DamageBlock" value="36"/>
+			<property name="Range" value="1.85"/>
+		</property>
+		<effect_group name="meleeTIHandZombieFeral" tiered="false">
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<!--<passive_effect name="AttacksPerMinute" operation="base_set" value="75"/>  A16 .8 -->
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" fireOneBuff="true"
+				buff="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo"
+				weights=".22,.14,.14,.10,.58,.72,.22"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="infectionCounter" operation="add" value="150"><!--InfectionFeral-->
+				<requirement name="CVarCompare" target="other" cvar="infectionCounter" operation="GT" value="0"/></triggered_effect>
+			<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="abrasionZombieHit" operation="set" value="2400"/><!--AbrasionFeral-->
+		</effect_group>
+	</item>
+
+	<item name="meleeTIHandZombieStrong">
+		<property name="Extends" value="meleeHandZombieFeral"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action0">
+			<property name="DamageEntity" value="46"/>
+			<property name="DamageBlock" value="88"/>
+			<property name="Range" value="1.85"/>
+		</property>
+		<effect_group name="meleeTIHandZombieFeral" tiered="false">
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<!--<passive_effect name="AttacksPerMinute" operation="base_set" value="75"/>  A16 .8 -->
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" fireOneBuff="true"
+				buff="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo"
+				weights=".22,.14,.14,.10,.58,.72,.22"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="infectionCounter" operation="add" value="150"><!--InfectionFeral-->
+				<requirement name="CVarCompare" target="other" cvar="infectionCounter" operation="GT" value="0"/></triggered_effect>
+			<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="abrasionZombieHit" operation="set" value="2400"/><!--AbrasionFeral-->
+		</effect_group>
+	</item>
+
+	<item name="meleeTIHandZombieDemolition">
+		<property name="Extends" value="meleeHandMaster"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action0">
+			<property name="DamageEntity" value="40"/>
+			<property name="DamageBlock" value="1000"/>
+			<property name="Range" value="1.85"/>
+		</property>
+		<effect_group name="meleeHandZombieStrong" tiered="false">
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<!--<passive_effect name="AttacksPerMinute" operation="base_set" value="75"/>  A16 .8 -->
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" fireOneBuff="true"
+				buff="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo"
+				weights=".11,.07,.07,.05,.29,.36,.11"/>
+		</effect_group>
+	</item>
+
+	<item name="meleeTIHandZombieCopFeral">
+		<property name="Extends" value="meleeHandZombieCop"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action0">
+			<property name="DamageEntity" value="48"/>
+			<property name="DamageBlock" value="500"/>
+			<property name="Range" value="2.0"/>
+		</property>
+		<property class="Action1"> <!-- Fire action -->
+			<property name="Magazine_items" value="ammoProjectileZombieVomitFeral"/>
+		</property>
+		<effect_group name="meleeHandZombieCopFeral" tiered="false">
+			<!--<passive_effect name="AttacksPerMinute" operation="base_set" value="75"/>  A16 .8 -->
+			<passive_effect name="MagazineSize" operation="base_set" value="1"/>
+			<passive_effect name="BurstRoundCount" operation="base_set" value="3"/>
+			<passive_effect name="SpreadDegreesVertical" operation="base_set" value="4"/>
+			<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="10"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" fireOneBuff="true"
+				buff="buffFatiguedTrigger,buffArmSprainedCHTrigger,buffLegSprainedCHTrigger,buffLaceration,buffAbrasionCatch,buffInjuryStunned01CHTrigger,buffInjuryBleedingTwo"
+				weights=".11,.07,.07,.05,.29,.36,.11"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="infectionCounter" operation="add" value="15"><!--InfectionFeral-->
+				<requirement name="CVarCompare" target="other" cvar="infectionCounter" operation="GT" value="0"/></triggered_effect>
+			<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="abrasionZombieHit" operation="set" value="2400"/><!--AbrasionFeral-->
+		</effect_group>
+	</item>
+
+	<item name="meleeTIHandAnimalStag">
+		<property name="Extends" value="meleeHandMaster"/>
+		<property name="CreativeMode" value="None"/>
+		<property name="HoldType" value="35"/>
+		<property class="Action0">
+			<property name="Delay" value=".3"/> <!-- obsolete if rounds per minute exists -->
+			<property name="Range" value="1.8"/>
+			<property name="DamageEntity" value="14"/>
+			<property name="DamageBlock" value="16"/>
+		</property>
+		<effect_group name="meleeTIHandAnimalStag" tiered="false">
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="triggerLaceration">
+				<requirement name="RandomRoll" seed_type="Random" target="self" min_max="0,100" operation="LTE" value="50"/>
+			</triggered_effect>
+		</effect_group>
+	</item>
+
+	<item name="meleeHandTIAnimalSnake">
+		<property name="Extends" value="meleeHandMaster"/>
+		<property name="CreativeMode" value="None"/>
+		<!-- <property name="HoldType" value="55"/> -->
+		<property class="Action0">
+			<property name="Delay" value="0.75"/>
+			<property name="Range" value="2.75"/>
+			<property name="DamageEntity" value="6"/>
+			<property name="DamageBlock" value="8"/>
+		</property>
+		<effect_group name="meleeHandTIAnimalSnake" tiered="false">
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffTIVenom">
+				<requirement name="RandomRoll" seed_type="Random" target="self" min_max="0,100" operation="LTE" value="75"/>
+			</triggered_effect>
+		</effect_group>
+	</item>
+
+	<item name="meleeHandTIAnimalZombieVultureRadiated">
+		<property name="Extends" value="meleeHandAnimalZombieVulture"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action0">
+			<property name="Range" value="5.5"/>
+			<property name="Sphere" value=".15"/>
+			<property name="DamageEntity" value="40"/>
+			<property name="DamageBlock" value="60"/>
+		</property>
+		<property class="Action1">
+			<property name="Class" value="Vomit"/>
+			<property name="Hitmask_override" value="Arrow"/>
+			<property name="Delay" value=".5"/>
+			<property name="Infinite_ammo" value="true"/>
+			<property name="Magazine_items" value="ammoTIProjectileVultureVomit"/>
+			<property name="Sound_warning" value="vulturevomitwarning"/>
+			<property name="Sound_start" value="vulturevomitattack"/>
+			<property name="Sound_repeat" value=""/>
+			<property name="Sound_end" value=""/>
+			<property name="Sound_empty" value=""/>
+			<property name="Sound_reload" value=""/>
+		</property>
+		<effect_group name="meleeHandTIAnimalZombieVultureRadiated" tiered="false">
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<passive_effect name="MagazineSize" operation="base_set" value="1"/>
+			<passive_effect name="BurstRoundCount" operation="base_set" value="1"/>
+			<passive_effect name="SpreadDegreesVertical" operation="base_set" value="6"/>
+			<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="15"/>
+			<passive_effect name="SpreadMultiplierIdle" operation="base_set" value="1"/>
+			<passive_effect name="DamageFalloffRange" operation="base_set" value="100"/>
+			<passive_effect name="MaxRange" operation="base_set" value="100"/>
+
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffBurningZombie" >
+				<requirement name="EntityTagCompare" tags="player"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/>
+			</triggered_effect>
+		</effect_group>
+	</item>
+
+	<item name="ammoTIProjectileVultureVomit">
+		<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/RocketLauncher/rocketPrefab.prefab"/>
+		<property name="Material" value="Mlead_scrap"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action1">
+			<property name="Class" value="Projectile"/>
+			<property name="Explosion.ParticleIndex" value="5"/> <!-- which Prefab/particle is used -->
+			<property name="Explosion.RadiusBlocks" value="5"/> <!-- damage radius for blocks -->
+			<property name="Explosion.RadiusEntities" value="8"/> <!-- damage radius for entities -->
+			<property name="Explosion.DamageBonus.stone" value="5"/>
+			<property name="Explosion.DamageBonus.metal" value="3"/>
+			<property name="Explosion.DamageBonus.earth" value="9"/>
+			<property name="Explosion.DamageBonus.wood" value="8"/>
+			<property name="Explosion.DamageBonus.water" value="0"/>
+			<property name="Velocity" value="36"/>
+			<property name="FlyTime" value=".2"/>
+			<property name="LifeTime" value="20"/>
+
+			<property name="Explosion.BlockDamage" value="1500"/> <!-- workaround, not affected by perks at all -->
+			<property name="Explosion.EntityDamage" value="150"/> <!-- workaround, not affected by perks at all -->
+		</property>
+		<effect_group name="ammoTIProjectileVultureVomit" tiered="false">
+			<passive_effect name="ProjectileVelocity" operation="base_set" value="36"/>
+			<triggered_effect trigger="onProjectileImpact" action="AddBuff" target="positionAOE" range="4.3" buff="buffBurningMolotov"/>
+		</effect_group>
+	</item>
+
+	<item name="meleeHandTIFragGirl">
+		<property name="Extends" value="meleeHandZombieCop"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action0">
+			<property name="DamageEntity" value="24"/>
+			<property name="DamageBlock" value="60"/>
+			<property name="Range" value="1.85"/>
+		</property>
+		<property class="Action1">
+			<property name="Magazine_items" value="ammoTIProjectileFragGirl"/>
+		</property>
+		<effect_group name="meleeHandTIFragGirl" tiered="false">
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<passive_effect name="MagazineSize" operation="base_set" value="1"/>
+			<passive_effect name="BurstRoundCount" operation="base_set" value="1"/>
+			<passive_effect name="SpreadDegreesVertical" operation="base_set" value="1"/>
+			<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="2"/>
+		</effect_group>
+	</item>
+
+	<item name="ammoTIProjectileFragGirl">
+		<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/RocketLauncher/rocketPrefab.prefab"/>
+		<property name="Material" value="MDynamite"/>
+		<property name="CreativeMode" value="None"/>
+
+		<property class="Action1">
+			<property name="Class" value="Projectile"/>
+			<property name="Explosion.ParticleIndex" value="5"/>
+			<property name="Explosion.BlockDamage" value="1200"/>
+			<property name="Explosion.EntityDamage" value="200"/>
+			<property name="Explosion.RadiusBlocks" value="4"/>
+			<property name="Explosion.RadiusEntities" value="4"/>
+			<property name="Explosion.DamageBonus.stone" value="3"/>
+			<property name="Explosion.DamageBonus.metal" value="3"/>
+			<property name="Explosion.DamageBonus.earth" value="5"/>
+			<property name="Explosion.DamageBonus.wood" value="5"/>
+			<property name="Explosion.DamageBonus.water" value="0"/>
+			<property name="Velocity" value="20"/>
+			<property name="FlyTime" value="1"/>
+			<property name="LifeTime" value="20"/>
+			<property name="Gravity" value="-10"/>
+			<property name="CollisionRadius" value=".5"/>
+		</property>
+	</item>
+	
+	<item name="meleeHandTILimo">
+		<property name="Extends" value="meleeHandZombieCop"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action0">
+			<property name="DamageEntity" value="24"/>
+			<property name="DamageBlock" value="60"/>
+			<property name="Range" value="1.85"/>
+		</property>
+		<property class="Action1">
+			<property name="Magazine_items" value="ammoTIProjectileLimo"/>
+		</property>
+		<effect_group name="meleeHandTIFragGirl" tiered="false">
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<passive_effect name="MagazineSize" operation="base_set" value="1"/>
+			<passive_effect name="BurstRoundCount" operation="base_set" value="1"/>
+			<passive_effect name="SpreadDegreesVertical" operation="base_set" value="1"/>
+			<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="2"/>
+		</effect_group>
+	</item>
+
+	<item name="ammoTIProjectileLimo">
+		<property name="Meshfile" value="@:Other/Items/Misc/snowballPrefab.prefab"/>
+		<property name="Material" value="MresourceSnowBall"/>
+		<property name="CreativeMode" value="None"/>
+
+		<property class="Action1">
+			<property name="Class" value="Projectile"/>
+			<!-- <property name="Explosion.ParticleIndex" value="5"/> -->
+			<!-- <property name="Explosion.BlockDamage" value="1200"/> -->
+			<property name="Explosion.EntityDamage" value="25"/>
+			<!-- <property name="Explosion.RadiusBlocks" value="4"/> -->
+			<!-- <property name="Explosion.RadiusEntities" value="4"/> -->
+			<!-- <property name="Explosion.DamageBonus.stone" value="3"/> -->
+			<!-- <property name="Explosion.DamageBonus.metal" value="3"/> -->
+			<!-- <property name="Explosion.DamageBonus.earth" value="5"/> -->
+			<!-- <property name="Explosion.DamageBonus.wood" value="5"/> -->
+			<!-- <property name="Explosion.DamageBonus.water" value="0"/> -->
+			<property name="Velocity" value="20"/>
+			<property name="FlyTime" value="1"/>
+			<property name="LifeTime" value="20"/>
+			<property name="Gravity" value="-10"/>
+			<property name="CollisionRadius" value=".5"/>
+		</property>
+	</item>
+
+	<item name="meleeHandTIZombieStripperCopFeral">
+		<property name="Extends" value="meleeHandZombieCop"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action0">
+			<property name="DamageEntity" value="80"/>
+			<property name="DamageBlock" value="400"/>
+			<property name="Range" value="1.85"/>
+		</property>
+		<property class="Action1"> <!-- Fire action -->
+			<property name="Magazine_items" value="ammoProjectileTIZombieStripperVomitFeral"/>
+		</property>
+		<effect_group name="meleeHandZombieCopFeral" tiered="false">
+			<!--<passive_effect name="AttacksPerMinute" operation="base_set" value="75"/>  A16 .8 -->
+			<passive_effect name="MagazineSize" operation="base_set" value="1"/>
+			<passive_effect name="BurstRoundCount" operation="base_set" value="5"/>
+			<passive_effect name="SpreadDegreesVertical" operation="base_set" value="4"/>
+			<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="8"/>
+		</effect_group>
+	</item>
+
+	<item name="ammoProjectileTIZombieStripperVomitFeral">
+		<property name="Extends" value="ammoProjectileZombieVomit"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action1">
+			<property name="DamageEntity" value="40"/>
+			<property name="DamageBlock" value="280"/>
+			<property name="Velocity" value="24"/>
+			<property name="FlyTime" value="2"/>
+			<property name="LifeTime" value="10"/>
+			<property name="Explosion.ParticleIndex" value="7"/>
+			<property name="Explosion.RadiusBlocks" value="5"/>
+			<property name="Explosion.RadiusEntities" value="3"/>
+			<property name="Explosion.DamageBonus.water" value="0"/>
+			<property name="Explosion.DamageBonus.earth" value="0"/>
+		</property>
+		<effect_group name="ammoProjectileTIZombieStripperVomitFeral" tiered="false">
+			<passive_effect name="DamageModifier" operation="perc_set" value="0" tags="earth"/>
+			<passive_effect name="DamageModifier" operation="perc_set" value="0.5" tags="stone"/>
+			<passive_effect name="DamageModifier" operation="perc_add" value="1.2" tags="metal"/>
+			<passive_effect name="BuffProcChance" operation="base_set" value=".40" tags="buffInfectionCatch"/>
+			<passive_effect name="BlockDamage" operation="base_set" value="205"/>
+			<passive_effect name="EntityDamage" operation="base_set" value="1"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="infectionCounter" operation="add" value="15"><!--InfectionFeral-->
+				<requirement name="CVarCompare" target="other" cvar="infectionCounter" operation="GT" value="0"/></triggered_effect>
+			<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="abrasionZombieHit" operation="set" value="2400"/><!--AbrasionFeral-->
+		</effect_group>
+	</item>
+
+	<item name="meleeHandZombieSwampThing">
+		<property name="Extends" value="meleeHandMaster"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action0">
+			<property name="Range" value="4"/>
+			<property name="DamageEntity" value="20"/>
+			<property name="DamageBlock" value="2000"/>
+		</property>
+		<effect_group name="meleeHandZombieSwampThing" tiered="false">
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffInfectionCatch"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="infectionCounter" operation="add" value="250">
+				<requirement name="CVarCompare" target="other" cvar="infectionCounter" operation="GT" value="0"/></triggered_effect>
+			<triggered_effect trigger="onSelfAttackedOther" action="ModifyCVar" target="other" cvar="abrasionZombieHit" operation="set" value="1800"/><!--AbrasionRegular-->
+		</effect_group>
+	</item>
+
+	<item name="meleeHandZombieMummy">
+		<property name="Extends" value="meleeHandMaster"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action0">
+			<property name="DamageEntity" value="80"/>
+			<property name="DamageBlock" value="2000"/>
+			<property name="Range" value="2.8"/>
+		</property>
+		<effect_group name="meleeHandZombieMummy" tiered="false">
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffTIInjuryStunned"/>
+		</effect_group>
+	</item>
+
+	<item name="meleeHandZombieRave">
+		<property name="Extends" value="meleeHandZombie01"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action0">
+			<property name="DamageEntity" value="20"/>
+			<property name="DamageBlock" value="240"/>
+		</property>
+		<effect_group name="meleeHandZombieRave" tiered="false">
+			<requirement name="NotHasBuff" buff="buffTIBadTripMain"/>
+
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffTIBadTrip" >
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="25"/>
+			</triggered_effect>
+		</effect_group>
+	</item>
+
+	<item name="meleeHandZombieBat">
+		<property name="Extends" value="meleeHandZombie01"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action0">
+			<property name="Range" value="8"/>
+			<property name="DamageEntity" value="4"/>
+		</property>
+		<effect_group name="meleeHandZombieBat" tiered="false">
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffTIDarken" />
+		</effect_group>
+	</item>
+
+	<item name="meleeHandZombieBoneBuster">
+		<property name="Extends" value="meleeHandZombie01"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action0">
+			<property name="DamageEntity" value="15"/>
+			<property name="DamageBlock" value="120"/>
+			<property name="Range" value="3.5"/>
+		</property>
+		<effect_group name="meleeHandZombieBoneBuster" tiered="false">
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="triggerBrokenLeg" >
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,10" operation="LTE" value="8"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="triggerBrokenArm" >
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,10" operation="LTE" value="4"/>
+			</triggered_effect>
+		</effect_group>
+	</item>
+
+	<item name="meleeHandZombieFarmer">
+		<property name="Extends" value="meleeHandZombie01"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action0">
+			<property name="DamageEntity" value="5"/>
+			<property name="DamageBlock" value="30"/>
+		</property>
+		<effect_group name="meleeHandZombieFarmer" tiered="false">
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffTIBrainDrain" />
+		</effect_group>
+	</item>
+
+	<item name="meleeTIHandZombieDecoy">
+		<property name="Extends" value="meleeHandZombie01"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action0">
+			<property name="DamageEntity" value="4"/>
+			<property name="DamageBlock" value="240"/>
+		</property>
+	</item>
+
+	<item name="meleeHandAnimalCareBear">
+		<property name="Extends" value="meleeHandAnimalBear"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action0">
+			<property name="Range" value="3.6"/>
+			<property name="DamageEntity" value="0"/>
+			<property name="DamageBlock" value="0"/>
+		</property>
+		<effect_group name="meleeHandAnimalCareBear">
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffTILightHeal" />
+
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffTIEternalBleeding" >
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="8"/>
+			</triggered_effect>
+
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffTIRegen" >
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="18"/>
+			</triggered_effect>
+
+		</effect_group>
+	</item>
+
+	<item name="meleeHandTIThunderCat">
+		<property name="Extends" value="meleeHandAnimalWolf"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action0">
+			<property name="Delay" value=".2"/> <!-- obsolete if rounds per minute exists -->
+			<property name="Range" value="2.2"/>
+			<property name="DamageEntity" value="18"/>
+			<property name="DamageBlock" value="28"/>
+		</property>
+		<effect_group name="meleeHandAnimalWolf" tiered="false">
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffTIShocked" />
+		</effect_group>
+	</item>
+
+	<item name="meleeHandTIKillerKitten">
+		<property name="Extends" value="meleeHandAnimalWolf"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action0">
+			<property name="Delay" value=".1"/> <!-- obsolete if rounds per minute exists -->
+			<property name="Range" value="1.5"/>
+			<property name="DamageEntity" value="60"/>
+			<property name="DamageBlock" value="8"/>
+		</property>
+		<effect_group name="meleeHandAnimalWolf" tiered="false">
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="triggerBleeding" />
+		</effect_group>
+	</item>
+
+	<!-- Pipe bombs - Longer fuse time. Mostly block damage. -->
+	<item name="thrownTIAmmoPipeBomb" name_key="thrownTIAmmoPipeBomb" desc_key="thrownTIAmmoPipeBombDesc">
+		<property name="CustomIcon" value="thrownAmmoPipeBomb"/>
+		<property name="Extends" value="thrownAmmoPipeBomb"/>
+		<property name="FuseStartOnDrop" value="true"/>
+		<property name="ExplodeOnHit" value="true"/>
+
+		<property name="Explosion.DamageBonus.stone" value="5"/>
+		<property name="Explosion.DamageBonus.metal" value="5"/>
+		<property name="Explosion.DamageBonus.earth" value="5"/>
+		<property name="Explosion.DamageBonus.wood" value="5"/>
+		<property name="Explosion.DamageBonus.water" value="0"/>
+
+		<effect_group tiered="false">
+			<passive_effect name="BlockDamage" operation="base_set" value="600"/><display_value name="dExDamageBlock" value="5"/>
+			<passive_effect name="EntityDamage" operation="base_set" value="180"/><display_value name="dExDamageEntity" value="230"/>
+			<display_value name="dExRadius" value="4"/>
+			<display_value name="dFuseTime" value="4"/>
+		</effect_group>
+	</item>
+
+	<!-- Grenade - Long fuse time. Generally useless. -->
+	<item name="thrownTIGrenade" name_key="thrownTIGrenade" desc_key="thrownTIGrenadeDesc">
+		<property name="CustomIcon" value="thrownGrenade"/>
+		<property name="Extends" value="thrownGrenade"/>
+		<property name="FuseTime" value="6"/>
+		<property name="FuseStartOnDrop" value="true"/>
+		<property name="ExplodeOnHit" value="true"/>
+
+		<effect_group tiered="false">
+			<passive_effect name="BlockDamage" operation="base_set" value="10"/><display_value name="dExDamageBlock" value="10"/>
+			<passive_effect name="EntityDamage" operation="base_set" value="10"/><display_value name="dExDamageEntity" value="310"/>
+			<display_value name="dExRadius" value="5"/>
+			<display_value name="dFuseTime" value="3"/>
+		</effect_group>
+	</item>
+
+	<!-- Contact Grenade - Delay after hitting something. Block damage. -->
+	<item name="thrownTIGrenadeContact" name_key="thrownTIGrenadeContact" desc_key="thrownTIGrenadeContactDesc">
+		<property name="CustomIcon" value="thrownGrenadeContact"/>
+		<property name="Extends" value="thrownGrenadeContact"/>
+
+		<property name="FuseTime" value="3"/>
+		<property name="FusePrimeOnActivate" value="true"/>
+		<property name="ExplodeOnHit" value="false"/>
+		<property name="StickPercent" value="1"/>
+		<property name="FuseStartOnDrop" value="true"/>
+
+		<property name="Explosion.DamageBonus.stone" value="3"/>
+		<property name="Explosion.DamageBonus.metal" value="3"/>
+		<property name="Explosion.DamageBonus.earth" value="3"/>
+		<property name="Explosion.DamageBonus.wood" value="3"/>
+		<property name="Explosion.DamageBonus.water" value="0"/>
+
+		<effect_group tiered="false">
+			<passive_effect name="BlockDamage" operation="base_set" value="250"/><display_value name="dExDamageBlock" value="10"/>
+			<passive_effect name="EntityDamage" operation="base_set" value="141"/><display_value name="dExDamageEntity" value="310"/>
+			<display_value name="dExRadius" value="5"/>
+			<display_value name="dFuseTime" value="3"/>
+		</effect_group>
+	</item>
+
+	<!-- Timed Charge used for air raids. -->
+	<item name="thrownTITimedChargeRaid">
+		<property name="Tags" value="ammo,weapon,attPerception,perkDemolitionsExpert"/>
+		<property name="ItemTypeIcon" value="explosion"/>
+		<property name="DisplayType" value="ammoGrenadeTimedCharge"/>
+		<property name="Class" value="ItemClassTimeBomb"/>
+		<property name="HoldType" value="62"/>
+		<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/TimedCharge/timedChargePrefab.prefab"/>
+	  <property name="ActivationTransformToHide" value="Armed"/>
+	  <property name="DropScale" value="1.8"/>
+		<property name="Material" value="Mmetal"/>
+		<property name="Weight" value="0"/>
+		<property name="Explosion.BlockTags" value="door,safes"/>
+		<property name="Explosion.DamageBonus.tags" value="38"/>
+		<property name="Explosion.ParticleIndex" value="12"/>
+		<property name="Explosion.RadiusBlocks" value="2.8"/>
+		<property name="Explosion.RadiusEntities" value="2.8"/>
+		<property name="Explosion.DamageBonus.stone" value="10"/>
+		<property name="Explosion.DamageBonus.metal" value="10"/>
+		<property name="Explosion.DamageBonus.earth" value="1"/>
+		<property name="Explosion.DamageBonus.wood" value="10"/>
+		<property name="Explosion.DamageBonus.water" value="0"/>
+		<property name="Explosion.BlastPower" value="100"/> <!-- (int,100) how far ragdolls and such are flung -->
+		<property name="FuseStartOnDrop" value="true"/>
+		<property name="FuseTime" value="2"/> <!-- End: Needed for  time in sec, max 6 -->
+		<property name="StickPercent" value="1"/>
+		<property name="SoundUnholster" value="charge_unholster"/>
+		<property name="SoundStick" value="charge_stick"/>
+		<property name="SoundTick" value="charge_beep,.8"/>
+	  <property name="ThrowableDecoy" value="true"/>
+		<effect_group tiered="false">
+			<passive_effect name="BlockDamage" operation="base_set" value="600" tags="perkDemolitionsExpert"/>
+			<passive_effect name="EntityDamage" operation="base_set" value="100" tags="perkDemolitionsExpert"/>
+		</effect_group>
+	</item>
+
+	<!-- Timed Charge used for air raids. -->
+	<item name="thrownTITimedChargeShower">
+		<property name="Tags" value="ammo,weapon,attPerception,perkDemolitionsExpert"/>
+		<property name="ItemTypeIcon" value="explosion"/>
+		<property name="DisplayType" value="ammoGrenadeTimedCharge"/>
+		<property name="Class" value="ItemClassTimeBomb"/>
+		<property name="HoldType" value="62"/>
+		<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/TimedCharge/timedChargePrefab.prefab"/>
+	  <property name="ActivationTransformToHide" value="Armed"/>
+	  <property name="DropScale" value="1.8"/>
+		<property name="Material" value="Mmetal"/>
+		<property name="Weight" value="0"/>
+		<property name="Explosion.BlockTags" value="door,safes"/>
+		<property name="Explosion.DamageBonus.tags" value="38"/>
+		<property name="Explosion.ParticleIndex" value="12"/>
+		<property name="Explosion.RadiusBlocks" value="3.8"/>
+		<property name="Explosion.RadiusEntities" value="2.8"/>
+		<property name="Explosion.DamageBonus.stone" value="10"/>
+		<property name="Explosion.DamageBonus.metal" value="10"/>
+		<property name="Explosion.DamageBonus.earth" value="3"/>
+		<property name="Explosion.DamageBonus.wood" value="10"/>
+		<property name="Explosion.DamageBonus.water" value="0"/>
+		<property name="Explosion.BlastPower" value="100"/> <!-- (int,100) how far ragdolls and such are flung -->
+		<property name="FuseStartOnDrop" value="true"/>
+		<property name="FuseTime" value="2"/> <!-- End: Needed for  time in sec, max 6 -->
+		<property name="StickPercent" value="1"/>
+		<property name="SoundUnholster" value="charge_unholster"/>
+		<property name="SoundStick" value="charge_stick"/>
+		<property name="SoundTick" value="charge_beep,.8"/>
+	  <property name="ThrowableDecoy" value="true"/>
+		<effect_group tiered="false">
+			<passive_effect name="BlockDamage" operation="base_set" value="800" tags="perkDemolitionsExpert"/>
+			<passive_effect name="EntityDamage" operation="base_set" value="300" tags="perkDemolitionsExpert"/>
+		</effect_group>
+	</item>
+
+	<!-- Timed Charge - Extend block blast, reduce entity damage and shortened fuse time. -->
+	<item name="thrownTITimedCharge" name_key="thrownTITimedCharge" desc_key="thrownTITimedChargeDesc">
+		<property name="CustomIcon" value="thrownTimedCharge"/>
+		<property name="Tags" value="ammo,weapon,attPerception,perkDemolitionsExpert"/>
+		<property name="ItemTypeIcon" value="explosion"/>
+		<property name="DisplayType" value="ammoGrenadeTimedCharge"/>
+		<property name="Class" value="ItemClassTimeBomb"/>
+		<property name="HoldType" value="62"/>
+		<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/TimedCharge/timedChargePrefab.prefab"/>
+	  <property name="ActivationTransformToHide" value="Armed"/>
+	  <property name="DropScale" value="1.8"/>
+		<property name="Material" value="Mmetal"/>
+		<property name="Stacknumber" value="10"/>
+		<property name="EconomicValue" value="41"/>
+		<property name="Weight" value="0"/>
+		<property name="Explosion.BlockTags" value="door,safes"/>
+		<property name="Explosion.DamageBonus.tags" value="38"/>
+		<property name="Explosion.ParticleIndex" value="12"/>
+		<property name="Explosion.RadiusBlocks" value="1.8"/>
+		<property name="Explosion.RadiusEntities" value="3.8"/>
+		<property name="Explosion.DamageBonus.stone" value="5"/>
+		<property name="Explosion.DamageBonus.metal" value="5"/>
+		<property name="Explosion.DamageBonus.earth" value="5"/>
+		<property name="Explosion.DamageBonus.wood" value="5"/>
+		<property name="Explosion.DamageBonus.water" value="0"/>
+		<property name="Explosion.BlastPower" value="100"/> <!-- (int,100) how far ragdolls and such are flung -->
+		<property name="FuseStartOnDrop" value="true"/>
+		<property name="FuseTime" value="2"/> <!-- End: Needed for  time in sec, max 6 -->
+		<property name="StickPercent" value="1"/>
+		<property name="ExplodeOnHit" value="true"/>
+		<property name="UnlockedBy" value="perkDemolitionsExpert,bookGreatHeistTimedCharge"/>
+		<property name="Group" value="Ammo/Weapons,Ammo"/>
+		<property name="SoundUnholster" value="charge_unholster"/>
+		<property name="SoundStick" value="charge_stick"/>
+		<property name="SoundTick" value="charge_beep,.8"/>
+		<property class="Action0">
+			<property name="Class" value="ThrowAway"/>
+			<property name="Delay" value="1.2"/>
+			<property name="Throw_strength_default" value="15"/>
+			<property name="Max_strain_time" value="0"/>
+			<property name="Sound_start" value="charge_throw"/>
+			<requirement name="CVarCompare" cvar="_underwater" operation="LT" value=".98"/>
+		</property>
+	  <property class="Action1">
+	    <!-- UseAction -->
+	    <property name="Class" value="Activate"/>
+	    <property name="Delay" value="1"/>
+	    <!-- obsolete if rounds per minute exists -->
+	  </property>
+	  <property name="ThrowableDecoy" value="true"/>
+		<effect_group tiered="false">
+			<passive_effect name="BlockDamage" operation="base_set" value="500" tags="perkDemolitionsExpert"/>
+			<display_value name="dExDamageBlock" value="3000"/>
+			<passive_effect name="EntityDamage" operation="base_set" value="800" tags="perkDemolitionsExpert"/>
+			<display_value name="dExRadius" value="1"/>
+			<display_value name="dFuseTime" value="4"/>
+		</effect_group>
+	</item>
+
+	<!-- Dynamite - Shortened fuse time. -->
+	<item name="thrownTIDynamite" name_key="thrownTIDynamite" desc_key="thrownTIDynamiteDesc">
+		<property name="Extends" value="thrownDynamite"/>
+		<property name="CustomIcon" value="thrownDynamite"/>
+		<property name="FuseTime" value="2"/> <!-- End: Needed for  time in sec, max 6 -->
+		<property name="FuseStartOnDrop" value="true"/>
+		<property name="ExplodeOnHit" value="true"/>
+
+		<effect_group tiered="false">
+			<passive_effect name="BlockDamage" operation="base_set" value="3000"/><display_value name="dExDamageBlock" value="3000"/>
+			<passive_effect name="EntityDamage" operation="base_set" value="550"/><display_value name="dExDamageEntity" value="500"/>
+			<display_value name="dExRadius" value="6"/>
+			<display_value name="dFuseTime" value="4"/>
+		</effect_group>
+	</item>
+
+	<!-- Molotov - Deals block damage. -->
+	<item name="thrownTIAmmoMolotovCocktail" name_key="thrownTIAmmoMolotovCocktail" desc_key="thrownTIAmmoMolotovCocktailDesc">
+		<property name="Extends" value="thrownAmmoMolotovCocktail"/>
+		<property name="CustomIcon" value="thrownAmmoMolotovCocktail"/>
+		<property name="FuseTime" value="1"/>
+		<property name="FusePrimeOnActivate" value="true"/>
+		<property name="FuseStartOnDrop" value="true"/>
+		<property name="ExplodeOnHit" value="true"/>
+		<property name="ThrowableDecoy" value="false"/>
+
+		<property name="Explosion.DamageBonus.stone" value="5"/>
+		<property name="Explosion.DamageBonus.metal" value="5"/>
+		<property name="Explosion.DamageBonus.earth" value="5"/>
+		<property name="Explosion.DamageBonus.water" value="5"/>
+		<property name="Explosion.DamageBonus.wood" value="6"/>
+
+		<effect_group tiered="false">
+			<triggered_effect trigger="onProjectileImpact" action="ModifyCVar" target="positionAOE" range="5.7" cvar="buffBurningMolotovDuration" operation="set" value="16" />
+			<triggered_effect trigger="onProjectileImpact" action="AddBuff" target="positionAOE" range="5.7" buff="buffBurningMolotov"/>
+
+			<passive_effect name="BlockDamage" operation="base_set" value="500"/><display_value name="dExDamageBlock" value="5"/>
+			<display_value name="dExDamageFire" value="250"/>
+			<passive_effect name="EntityDamage" operation="base_set" value="5"/><display_value name="dExDamageEntity" value="5"/>
+			<display_value name="dExRadius" value="3"/>
+			<display_value name="dDuration" value="16"/>
+		</effect_group>
+	</item>
+
+	<item name="foodTIRoadkill">
+		<property name="CustomIcon" value="foodRottingFlesh"/>
+		<property name="HoldType" value="31"/>
+		<property name="DisplayType" value="foodRaw"/>
+		<property name="Meshfile" value="@:Other/Items/Misc/parcelPrefab.prefab"/>
+		<property name="DropMeshfile" value="@:Other/Items/Misc/sack_droppedPrefab.prefab"/>
+		<property name="Material" value="MfoodRawMeat"/>
+		<property name="Stacknumber" value="1"/> <!-- STK food -->
+		<property name="EconomicValue" value="1"/>
+		<property name="EconomicBundleSize" value="1"/>
+		<property name="SellableToTrader" value="false"/>
+		<property class="Action0">
+			<property name="Class" value="Eat"/>
+			<property name="Delay" value="1.0"/>
+			<property name="Use_time" value="..."/>
+			<property name="Sound_start" value="player_eating"/>
+		</property>
+
+		<effect_group tiered="false" name="Food Tier 0">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyCVar" cvar="$foodAmountAdd" operation="add" value="12"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="ModifyStats" stat="Health" operation="add" value="32"/><display_value name="foodHealthAmount" value="32"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffProcessConsumables"/>
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffTIFeelBad" />
+		</effect_group>
+
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffInternalBleeding">
+						<requirement name="RandomRoll" seed_type="Random" min_max="1,100" operation="LTE" value="60"/>
+			</triggered_effect>
+		</effect_group>
+
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="RemoveBuff" buff="buffTIEternalBleeding">
+						<requirement name="RandomRoll" seed_type="Random" min_max="1,100" operation="LTE" value="40"/>
+			</triggered_effect>
+		</effect_group>
+
+		<effect_group tiered="false">
+			<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffTIMunchies">
+					<requirement name="RandomRoll" seed_type="Random" min_max="1,100" operation="LTE" value="10"/>
+			</triggered_effect>
+		</effect_group>
+	</item>
+
+	</append>
+</configs>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+    <Name value="Custom_TI_Only" /> 
+    <DisplayName value="Custom TI Actions Only" />
+    <Version value="1.0.0" /> 
+    <Description value="removes most vanilla actions, replaces them with custom actions" /> 
+    <Author value="HellsJanitor" /> 
+    <Website value="" /> 
+</xml>

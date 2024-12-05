@@ -1,0 +1,51 @@
+<configs>
+	<append xpath="/lootcontainers">
+
+		<!-- Medical -->
+	  <lootcontainer id="781" name="mm_MedicalSupplyCrate" count="1" size="8,4" destroy_on_close="true" sound_open="SupplyDrops/open_supply_crate" sound_close="SupplyDrops/close_supply_crate" loot_quality_template="qualBaseTemplate">
+			<item group="groupQuestMedical" count="4"/>
+	  </lootcontainer>
+
+		<!-- Food -->
+	  <lootcontainer id="782" name="mm_FoodSupplyCrate" count="4" size="8,4" destroy_on_close="true" sound_open="SupplyDrops/open_supply_crate" sound_close="SupplyDrops/close_supply_crate" loot_quality_template="qualBaseTemplate">
+			<item group="groupFoodMed01"/>
+			<item group="groupDrinksMed01"/>
+	  </lootcontainer>
+
+		<!-- Ammo -->
+	  <lootcontainer id="783" name="mm_AmmoSupplyCrate" count="3" size="8,4" destroy_on_close="true" sound_open="SupplyDrops/open_supply_crate" sound_close="SupplyDrops/close_supply_crate" loot_quality_template="qualBaseTemplate">
+			<item group="groupQuestAmmo"/>
+	  </lootcontainer>
+
+		<!-- Fake General -->
+		<lootcontainer id="784" name="mm_FakeSupplyCrate" count="3" size="8,4" destroy_on_close="true" sound_open="SupplyDrops/open_supply_crate" sound_close="SupplyDrops/close_supply_crate" loot_quality_template="qualBaseTemplate">
+				<item name="resourceBrokenGlass"/>
+				<item name="resourceCropGoldenrodPlant"/>
+				<item name="meleeWpnBladeT0BoneKnife"/>
+		</lootcontainer>
+
+		<!-- Fake Medical -->
+	  <lootcontainer id="785" name="mm_FakeMedicalSupplyCrate" count="3" size="8,4" destroy_on_close="true" sound_open="SupplyDrops/open_supply_crate" sound_close="SupplyDrops/close_supply_crate" loot_quality_template="qualBaseTemplate">
+			<item name="foodTIRoadkill"/>
+	  </lootcontainer>
+
+		<!-- Fake Food -->
+	  <lootcontainer id="786" name="mm_FakeFoodSupplyCrate" count="2" size="8,4" destroy_on_close="true" sound_open="SupplyDrops/open_supply_crate" sound_close="SupplyDrops/close_supply_crate" loot_quality_template="qualBaseTemplate">
+			<item name="foodShamSandwich"/>
+			<item name="drinkJarRiverWater"/>
+	  </lootcontainer>
+
+		<!-- Fake Ammo -->
+	  <lootcontainer id="787" name="mm_FakeAmmoSupplyCrate" count="2" size="8,4" destroy_on_close="true" sound_open="SupplyDrops/open_supply_crate" sound_close="SupplyDrops/close_supply_crate" loot_quality_template="qualBaseTemplate">
+			<item name="ammoCrossbowBoltStone"/>
+			<item name="ammoJunkTurretRegular"/>
+	  </lootcontainer>
+
+		<!-- Junk barrel -->
+	  <lootcontainer id="788" name="mm_JunkContainer" count="2" size="8,4" destroy_on_close="true" sound_open="SupplyDrops/open_supply_crate" sound_close="SupplyDrops/close_supply_crate" loot_quality_template="qualBaseTemplate">
+			<item name="foodTIRoadkill"/>
+			<item name="resourceRepairKit" count="2"/>
+	  </lootcontainer>
+
+	</append>
+</configs>
