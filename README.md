@@ -66,15 +66,15 @@ All commands are as configurable as vanilla commands, via integration's menu. **
 
 '#spawn_bone_buster'			Spawns the Bone Buster, a slow moving but hard hitting zombie
 
-'#spawn_magic_mike'				Spawns Magic Mike. He just wants a hug ...
+'#spawn_magic_mike'				Spawns Magic Mike. Resets the player's attributes and skills when he attacks
 
 '#spawn_mummy'					Spawns the Mummy. Don't get too close ...
 
-'#spawn_gungho_joe'				Spawns Gung-ho Joe.
+'#spawn_gungho_joe'				Spawns Gung-ho Joe, a nasty radiated Soldier zombie
 
 '#spawn_death_crawler'			Spawns a Death Crawler. Kills the player with one hit
 
-'#spawn_lich'					Spawns the Lich. Tough enemy, with passive regen.
+'#spawn_lich'					Spawns the Lich. Tough enemy, with passive regen, and a chance to shock the player when attacking
 
 '#spawn_bat_witch'				Spawns the Bat Witch. She summons a horde of bats, and she turns into bats when killed
 
