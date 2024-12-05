@@ -708,7 +708,7 @@
 		<property name="command_key" value="TwitchAction_BuffConfuseCommand" />
 		<property name="title_key" value="TwitchAction_BuffConfuse" />
 		<property name="description_key" value="TwitchAction_BuffConfuseDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Debuffs" />
 		<property name="start_gamestage" value="35" />
 		<property name="event_name" value="buff_confuse" />
 		<property name="point_type" value="Bits" />
@@ -813,7 +813,7 @@
 		<property name="command_key" value="TwitchAction_ActionUnloadAmmoCommand" />
 		<property name="title_key" value="TwitchAction_ActionUnloadAmmo" />
 		<property name="description_key" value="TwitchAction_ActionUnloadAmmoDesc" />
-		<property name="category" value="Special" />
+		<property name="category" value="Debuffs" />
 		<property name="display_category" value="Extras" />
 		<property name="start_gamestage" value="10" />
 		<property name="event_name" value="action_unload_ammo" />
@@ -828,7 +828,7 @@
 		<property name="command_key" value="TwitchAction_BuffInfiniteAmmoCommand" />
 		<property name="title_key" value="TwitchAction_BuffInfiniteAmmo" />
 		<property name="description_key" value="TwitchAction_BuffInfiniteAmmoDesc" />
-		<property name="category" value="Special,Buffs" />
+		<property name="category" value="Buffs" />
 		<property name="start_gamestage" value="5" />
 		<property name="event_name" value="buff_infiniteammo" />
 		<property name="point_type" value="Bits" />
@@ -1001,7 +1001,7 @@
 		<property name="command_key" value="TwitchAction_ClumsyRunnerCommand" />
 		<property name="title_key" value="TwitchAction_ClumsyRunner" />
 		<property name="description_key" value="TwitchAction_ClumsyRunnerDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Debuffs" />
 		<property name="display_category" value="Extras" />
 		<property name="start_gamestage" value="10" />
 		<property name="event_name" value="buff_clumsyrunner" />
@@ -1134,6 +1134,72 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="ignore_discount" value="true" />
 		<property name="streamer_only" value="true" />
+	</action>
+	
+	<action name="twitch_buffLeech">
+		<property name="command" value="#leech" />
+		<property name="command_key" value="TwitchAction_BuffLeechCommand" />
+		<property name="title_key" value="TwitchAction_BuffLeech" />
+		<property name="description_key" value="TwitchAction_BuffLeechDesc" />
+		<property name="category" value="Buffs" />
+		<property name="start_gamestage" value="15" />
+		<property name="event_name" value="buff_leech" />
+		<property name="default_cost" value="50" />
+		<property name="is_positive" value="true" />
+		<property name="cooldown" value="360" />
+		<property name="random_group" value="buffs" />
+		<property name="presets" value="casual,standard,hardcore" />
+	</action>
+	
+	<action name="twitch_buffAntiLeech">
+		<property name="command" value="#antileech" />
+		<property name="command_key" value="TwitchAction_BuffAntiLeechCommand" />
+		<property name="title_key" value="TwitchAction_BuffAntiLeech" />
+		<property name="description_key" value="TwitchAction_BuffAntiLeechDesc" />
+		<property name="category" value="Buffs,Debuffs" />
+		<property name="start_gamestage" value="15" />
+		<property name="event_name" value="buff_antileech" />
+		<property name="default_cost" value="100" />
+		<property name="cooldown" value="360" />
+		<property name="random_group" value="hurt_attacks" />
+		<property name="cooldown_blocked" value="true" />
+		<property name="presets" value="standard,hardcore" />
+		
+		<cooldown_addition name="twitch_buffWeakenRanged" time="60" />
+		<cooldown_addition name="twitch_buffNoRanged" time="60" />
+		<cooldown_addition name="twitch_buffWeakenMelee" time="60" />
+		<cooldown_addition name="twitch_buffNoMelee" time="60" />
+		<cooldown_addition name="twitch_buffHeadshotOnly" time="60" />
+		<cooldown_addition name="twitch_DontMiss" time="60" />
+		<cooldown_addition name="twitch_ShieldEnemies" time="60" />
+		<cooldown_addition name="twitch_buffEncumbered" time="60" />
+		
+	</action>
+	
+	<action name="twitch_DontMiss">
+		<property name="command" value="#dont_miss" />
+		<property name="command_key" value="TwitchAction_BuffDontMissCommand" />
+		<property name="title_key" value="TwitchAction_BuffDontMiss" />
+		<property name="description_key" value="TwitchAction_BuffDontMissDesc" />
+		<property name="category" value="Buffs,Debuffs" />
+		<property name="start_gamestage" value="15" />
+		<property name="event_name" value="buff_dontmiss" />
+		<property name="default_cost" value="100" />
+		<property name="cooldown" value="360" />
+		<property name="random_group" value="hurt_attacks" />
+		<property name="cooldown_blocked" value="true" />
+		<property name="presets" value="standard,hardcore" />
+		
+		<cooldown_addition name="twitch_buffBlur" time="60" />
+		<cooldown_addition name="twitch_buffTrippy" time="60" />
+		<cooldown_addition name="twitch_buffDistort" time="60" />
+		<cooldown_addition name="twitch_buffGreyscale" time="60" />
+		<cooldown_addition name="twitch_buffPainting" time="60" />
+		<cooldown_addition name="twitch_buffAntiLeech" time="60" />
+		<cooldown_addition name="twitch_buffWeakenRanged" time="60" />
+		<cooldown_addition name="twitch_buffNoRanged" time="60" />
+		<cooldown_addition name="twitch_buffHeadshotOnly" time="60" />
+		<cooldown_addition name="twitch_buffBlind" time="60" />
 	</action>
 	
 	<!-- *** all custom spawns - singles & groups *** -->	
@@ -1652,7 +1718,8 @@
 		<property name="event_name" value="spawn_lucky_rabbit" />
 		<property name="point_type" value="Bits" />
 		<property name="enabled" value="true" />
-		<property name="default_cost" value="100" />
+		<property name="default_cost" value="50" />
+		<property name="is_positive" value="true" />
 	</action>
 	
 	<action name="twitch_jack_rabbit" extends="twitch_normalZombie">
@@ -2049,7 +2116,7 @@
 		<property name="command_key" value="TwitchAction_BuffPokeCommand" />
 		<property name="title_key" value="TwitchAction_BuffPoke" />
 		<property name="description_key" value="TwitchAction_BuffPokeDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Debuffs" />
 		<property name="event_name" value="buff_poke" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="1" />
@@ -2065,7 +2132,7 @@
 		<property name="command_key" value="TwitchAction_LightHealCommand" />
 		<property name="title_key" value="TwitchAction_LightHeal" />
 		<property name="description_key" value="TwitchAction_LightHealDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Buffs" />
 		<property name="event_name" value="buff_lightheal" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="50" />
@@ -2081,7 +2148,7 @@
 		<property name="command_key" value="TwitchAction_GiveXPCommand" />
 		<property name="title_key" value="TwitchAction_GiveXP" />
 		<property name="description_key" value="TwitchAction_GiveXPDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Buffs" />
 		<property name="event_name" value="buff_givexp" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="50" />
@@ -2097,7 +2164,7 @@
 		<property name="command_key" value="TwitchAction_EternalBleedingCommand" />
 		<property name="title_key" value="TwitchAction_EternalBleeding" />
 		<property name="description_key" value="TwitchAction_EternalBleedingDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Debuffs" />
 		<property name="event_name" value="buff_eternalbleeding" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="300" />
@@ -2113,7 +2180,7 @@
 		<property name="command_key" value="TwitchAction_SuddenDeathCommand" />
 		<property name="title_key" value="TwitchAction_SuddenDeath" />
 		<property name="description_key" value="TwitchAction_SuddenDeathDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Debuffs" />
 		<property name="event_name" value="buff_suddendeath" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="300" />
@@ -2129,7 +2196,7 @@
 		<property name="command_key" value="TwitchAction_DiamondSkinCommand" />
 		<property name="title_key" value="TwitchAction_DiamondSkin" />
 		<property name="description_key" value="TwitchAction_DiamondSkinDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Buffs" />
 		<property name="event_name" value="buff_diamondskin" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="300" />
@@ -2145,7 +2212,7 @@
 		<property name="command_key" value="TwitchAction_DegradationCommand" />
 		<property name="title_key" value="TwitchAction_Degradation" />
 		<property name="description_key" value="TwitchAction_DegradationDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Debuffs" />
 		<property name="event_name" value="buff_degradation" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="300" />
@@ -2161,7 +2228,7 @@
 		<property name="command_key" value="TwitchAction_JonahsRageCommand" />
 		<property name="title_key" value="TwitchAction_JonahsRage" />
 		<property name="description_key" value="TwitchAction_JonahsRageDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Buffs" />
 		<property name="event_name" value="buff_JonahsRage" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="600" />
@@ -2177,7 +2244,7 @@
 		<property name="command_key" value="TwitchAction_SmokersLungsCommand" />
 		<property name="title_key" value="TwitchAction_SmokersLungs" />
 		<property name="description_key" value="TwitchAction_SmokersLungsDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Debuffs" />
 		<property name="event_name" value="buff_smokerslungs" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="300" />
@@ -2193,7 +2260,7 @@
 		<property name="command_key" value="TwitchAction_SlowReloaderCommand" />
 		<property name="title_key" value="TwitchAction_SlowReloader" />
 		<property name="description_key" value="TwitchAction_SlowReloaderDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Debuffs" />
 		<property name="event_name" value="buff_slowreloader" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="300" />
@@ -2209,7 +2276,7 @@
 		<property name="command_key" value="TwitchAction_MunchiesCommand" />
 		<property name="title_key" value="TwitchAction_Munchies" />
 		<property name="description_key" value="TwitchAction_MunchiesDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Debuffs" />
 		<property name="event_name" value="buff_munchies" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="400" />
@@ -2225,7 +2292,7 @@
 		<property name="command_key" value="TwitchAction_ElectrocutedCommand" />
 		<property name="title_key" value="TwitchAction_Electrocuted" />
 		<property name="description_key" value="TwitchAction_ElectrocutedDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Debuffs" />
 		<property name="event_name" value="buff_electrocuted" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="300" />
@@ -2241,7 +2308,7 @@
 		<property name="command_key" value="TwitchAction_ClumsyFighterCommand" />
 		<property name="title_key" value="TwitchAction_ClumsyFighter" />
 		<property name="description_key" value="TwitchAction_ClumsyFighterDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Debuffs" />
 		<property name="event_name" value="buff_clumsyfighter" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="500" />
@@ -2257,7 +2324,7 @@
 		<property name="command_key" value="TwitchAction_HardmodeCommand" />
 		<property name="title_key" value="TwitchAction_Hardmode" />
 		<property name="description_key" value="TwitchAction_HardmodeDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Debuffs" />
 		<property name="event_name" value="buff_hardmode" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="300" />
@@ -2273,7 +2340,7 @@
 		<property name="command_key" value="TwitchAction_BogOfEternalStenchCommand" />
 		<property name="title_key" value="TwitchAction_BogOfEternalStench" />
 		<property name="description_key" value="TwitchAction_BogOfEternalStenchDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Debuffs" />
 		<property name="event_name" value="buff_bog" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="300" />
@@ -2289,7 +2356,7 @@
 		<property name="command_key" value="TwitchAction_WalkItOffCommand" />
 		<property name="title_key" value="TwitchAction_WalkItOff" />
 		<property name="description_key" value="TwitchAction_WalkItOffDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Debuffs" />
 		<property name="event_name" value="buff_walkitoff" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="300" />
@@ -2305,7 +2372,7 @@
 		<property name="command_key" value="TwitchAction_WeakKneesCommand" />
 		<property name="title_key" value="TwitchAction_WeakKnees" />
 		<property name="description_key" value="TwitchAction_WeakKneesDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Debuffs" />
 		<property name="event_name" value="buff_weakknees" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="300" />
@@ -2321,7 +2388,7 @@
 		<property name="command_key" value="TwitchAction_HangoverCommand" />
 		<property name="title_key" value="TwitchAction_Hangover" />
 		<property name="description_key" value="TwitchAction_HangoverDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Debuffs" />
 		<property name="event_name" value="buff_hangover" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="300" />
@@ -2337,7 +2404,7 @@
 		<property name="command_key" value="TwitchAction_BerserkCommand" />
 		<property name="title_key" value="TwitchAction_Berserk" />
 		<property name="description_key" value="TwitchAction_BerserkDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Buffs" />
 		<property name="event_name" value="buff_berserk" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="300" />
@@ -2367,7 +2434,7 @@
 		<property name="command_key" value="TwitchAction_RingOfLoveCommand" />
 		<property name="title_key" value="TwitchAction_RingOfLove" />
 		<property name="description_key" value="TwitchAction_RingOfLoveDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Debuffs" />
 		<property name="event_name" value="buff_ringoflove" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="300" />
@@ -2383,13 +2450,13 @@
 		<property name="command_key" value="TwitchAction_RingOfLoveTeamCommand" />
 		<property name="title_key" value="TwitchAction_RingOfLoveteam" />
 		<property name="description_key" value="TwitchAction_RingOfLoveTeamDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Buffs" />
 		<property name="event_name" value="buff_ringofloveplayers" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="300" />
 		<property name="cooldown" value="300" />
 		<property name="cooldown_blocked" value="false" />
-		<property name="is_positive" value="false" />
+		<property name="is_positive" value="true" />
 		<property name="presets" value="casual,standard,hardcore" />		
 	</action>
 	
@@ -2415,7 +2482,7 @@
 		<property name="command_key" value="TwitchAction_HighStakesCommand" />
 		<property name="title_key" value="TwitchAction_HighStakes" />
 		<property name="description_key" value="TwitchAction_HighStakesDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Debuffs" />
 		<property name="event_name" value="buff_highstakes" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="2000" />
@@ -2495,7 +2562,7 @@
 		<property name="command_key" value="TwitchAction_EncumberanceCommand" />
 		<property name="title_key" value="TwitchAction_Encumberance" />
 		<property name="description_key" value="TwitchAction_EncumberanceDesc" />
-		<property name="category" value="Special" />
+		<property name="category" value="Debuffs" />
 		<property name="event_name" value="action_fill_inventory" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="250" />
@@ -2511,7 +2578,7 @@
 		<property name="command_key" value="TwitchAction_FreshMeatCommand" />
 		<property name="title_key" value="TwitchAction_FreshMeat" />
 		<property name="description_key" value="TwitchAction_FreshMeatDesc" />
-		<property name="category" value="Buffs,Debuffs" />
+		<property name="category" value="Debuffs" />
 		<property name="event_name" value="buff_freshmeat" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="250" />
