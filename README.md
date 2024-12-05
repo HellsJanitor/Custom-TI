@@ -184,9 +184,9 @@ All commands are as configurable as vanilla commands, via integration's menu. **
 
 '#berserk'						Increases player's run speed and attack damage. Removes Jonah's Rage if active
 
-'#ring_of_love'					Heals all enemies in ranged
+'#ring_of_love'					Heals all enemies in range
 
-'#ring_of_love_team'			**Multiplayer only** Heals all players in ranged
+'#ring_of_love_team'			**Multiplayer only** Heals all players in range
 
 '#high_stakes'					If the player dies with this effect active, they lose **all** their gear. Cannot be used while Sudden Death is active
 
