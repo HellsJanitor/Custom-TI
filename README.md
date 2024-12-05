@@ -32,7 +32,7 @@ All commands are as configurable as vanilla commands, via integration's menu. **
 
 ## Spawns
 
-'#give_up'.						Chat command used by the streamer exclusively, to kill all spawns in a 150 block radius
+'#give_up'						Chat command used by the streamer exclusively, to kill all spawns in a 150 block radius
 
 '#spawn_zombie_limo'			Spawns a passive aggressive zombie, which shoots explosive snowballs at the player
 
