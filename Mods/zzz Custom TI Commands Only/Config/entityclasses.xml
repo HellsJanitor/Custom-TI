@@ -1340,24 +1340,32 @@
 		</entity_class>
 		
 		<entity_class name="animalTIJackrabbit" extends="animalTemplateHostile">
-			<property name="UserSpawnType" value="Menu"/>
+			<property name="UserSpawnType" value="Menu"/>			
+			<property name="Class" value="EntityZombieDog"/>
 			<property name="Tags" value="entity,animal,rabbit,perkAT01,perkAT02,perkAT03"/>
 			<property name="MapIcon" value="ui_game_symbol_tracking_rabbit"/>
 			<property name="TrackerIcon" value="ui_game_symbol_tracking_rabbit"/>
-			<property name="Class" value="EntityZombieDog"/>
-			<property name="Prefab" value="/Entities/Animals/Rabbit/RABBIT"/>
+			<property name="AvatarController" value="AvatarAnimalController"/>
+			<property name="ModelType" value="Standard"/>
+			<property name="Prefab" value="/Entities/Animals/Rabbit/animalRabbitPrefab"/>
+			<property name="Parent" value="Animals"/>
+			<property name="Faction" value="animals"/>
 			<property name="PhysicsBody" value="rabbit"/>
-			<property name="Mass" value="12"/>
-			<property name="Weight" value="10"/>
-			<property name="SoundHurt" value="Animals/rabbitpain"/>
-			<property name="SoundDeath" value="Animals/rabbitdeath"/>
+			<property name="Mass" value="33"/>
+			<property name="Weight" value="11"/>
+			<property name="SoundHurt" value="rabbitpain"/>
+			<property name="SoundDeath" value="rabbitdeath"/>
 			<property name="SwimOffset" value="2"/>
-			<property name="HasRagdoll" value="false"/>
+			<property name="HasDeathAnim" value="true"/>
+			<property name="HasRagdoll" value="true"/>
+			<property name="CanBigHead" value="false" />			
 			<property name="HandItem" value="meleeHandAnimalZombieDog"/>
+			
 			<!-- Gameplay -->
 			<property name="MaxTurnSpeed" value="250"/>
 			<property name="MoveSpeed" value="1.15"/>
 			<property name="MoveSpeedAggro" value="0.85, 1.5"/>
+			
 			<!-- chasing a target min/max (like day or night)-->
 			<property name="MoveSpeedPanic" value="1.55"/>
 			<property name="CanClimbLadders" value="true"/>
@@ -1365,6 +1373,7 @@
 			<property name="PainResistPerHit" value=".5"/>
 			<property name="ExperienceGain" value="100"/>
 			<property name="DeadBodyHitPoints" value="25"/>
+			
 			<drop event="Harvest" name="foodRawMeat" count="0" tool_category="Butcher"/>
 			<drop event="Harvest" name="foodRawMeat" tag="butcherHarvest" count="2"/>
 			<!-- animalRabbit -->
