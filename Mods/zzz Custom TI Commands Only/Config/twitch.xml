@@ -1178,6 +1178,154 @@
 		
 	</action>
 	
+	<action name="twitch_BuffNoHelp">
+		<property name="command" value="#no_help" />
+		<property name="command_key" value="TwitchAction_BuffNoHelpCommand" />
+		<property name="title_key" value="TwitchAction_BuffNoHelp" />
+		<property name="description_key" value="TwitchAction_BuffNoHelpDesc" />
+		<property name="category" value="Special,Debuffs" />
+		<property name="start_gamestage" value="15" />
+		<property name="event_name" value="action_nohelp" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="500" />
+		<property name="is_positive" value="false" />
+		<property name="cooldown" value="600" />
+		<property name="cooldown_blocked" value="true" />
+		<property name="vote_cooldown_add" value="60" />
+		<property name="presets" value="standard,hardcore" />
+		<property name="streamer_only" value="true" />
+	</action>
+	
+	<action name="twitch_WeakenBlocks">
+		<property name="command" value="#weaken_blocks" />
+		<property name="command_key" value="TwitchAction_ActionWeakenBlocksCommand" />
+		<property name="title_key" value="TwitchAction_ActionWeakenBlocks" />
+		<property name="description_key" value="TwitchAction_ActionWeakenBlocksDesc" />
+		<property name="category" value="Special,Blocks" />
+		<property name="display_category" value="Extras" />
+		<property name="start_gamestage" value="10" />
+		<property name="event_name" value="action_weaken_blocks" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="200" />
+		<property name="special_requirement" value="NotSafe" />
+		<property name="is_positive" value="false" />
+		<property name="cooldown" value="300" />
+		<property name="cooldown_blocked" value="true" />
+	</action>
+	
+	<action name="twitch_BuffSilentActions">
+		<property name="command" value="#silent_actions" />
+		<property name="command_key" value="TwitchAction_BuffSilentActionsCommand" />
+		<property name="title_key" value="TwitchAction_BuffSilentActions" />
+		<property name="description_key" value="TwitchAction_BuffSilentActionsDesc" />
+		<property name="category" value="Special,Debuffs" />
+		<property name="display_category" value="Extras" />
+		<property name="start_gamestage" value="20" />
+		<property name="event_name" value="buff_silentactions" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="200" />
+		<property name="is_positive" value="false" />
+		<property name="cooldown" value="600" />
+		<property name="cooldown_blocked" value="true" />
+		<property name="vote_cooldown_add" value="60" />
+		<property name="streamer_only" value="true" />
+	</action>
+	
+	<action name="twitch_buffJump">
+		<property name="command" value="#jump" />
+		<property name="command_key" value="TwitchAction_BuffJumpCommand" />
+		<property name="title_key" value="TwitchAction_BuffJump" />
+		<property name="description_key" value="TwitchAction_BuffJumpDesc" />
+		<property name="category" value="Buffs" />
+		<property name="event_name" value="buff_jump" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="50" />
+		<property name="is_positive" value="true" />
+		<property name="cooldown" value="90" />
+		<property name="presets" value="casual,standard,hardcore" />
+		
+		<cooldown_addition name="twitch_WeakJump" time="90" />
+	</action>
+	
+	<action name="twitch_NoTrader">
+		<property name="command" value="#no_trader" />
+		<property name="command_key" value="TwitchAction_BuffNoTraderCommand" />
+		<property name="title_key" value="TwitchAction_BuffNoTrader" />
+		<property name="description_key" value="TwitchAction_BuffNoTraderDesc" />
+		<property name="category" value="Buffs,Debuffs" />
+		<property name="display_category" value="Extras" />
+		<property name="start_gamestage" value="10" />
+		<property name="event_name" value="buff_notrader" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="500" />
+		<property name="is_positive" value="false" />
+		<property name="cooldown" value="420" />
+		<property name="cooldown_blocked" value="true" />
+	</action>
+	
+	<action name="twitch_JumpScare">
+		<property name="command_key" value="TwitchAction_ActionJumpScareCommand" />
+		<property name="command" value="#jump_scare" />
+		<property name="title_key" value="TwitchAction_ActionJumpScare" />
+		<property name="description_key" value="TwitchAction_ActionJumpScareDesc" />
+		<property name="category" value="Special" />
+		<property name="start_gamestage" value="5" />
+		<property name="event_name" value="action_jumpscare" />
+		<property name="default_cost" value="200" />
+		<property name="point_type" value="Bits" />
+		<property name="is_positive" value="false" />
+		<property name="cooldown" value="180" />
+		<property name="cooldown_blocked" value="true" />
+		<property name="delay_notify" value="true" />
+		<property name="presets" value="casual,standard,hardcore" />
+		<property name="streamer_only" value="true" />
+	</action>
+	
+	<action name="twitch_buffRegen">
+		<property name="command" value="#regen" />
+		<property name="command_key" value="TwitchAction_BuffRegenCommand" />
+		<property name="title_key" value="TwitchAction_BuffRegen" />
+		<property name="description_key" value="TwitchAction_BuffRegenDesc" />
+		<property name="category" value="Buffs" />
+		<property name="event_name" value="buff_regen" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="500" />
+		<property name="is_positive" value="true" />
+		<property name="cooldown" value="120" />
+		<property name="presets" value="casual,standard" />
+	</action>
+	
+	<action name="twitch_EmptyFuel">
+		<property name="command" value="#empty_fuel" />
+		<property name="command_key" value="TwitchAction_EmptyFuelCommand" />
+		<property name="title_key" value="TwitchAction_EmptyFuel" />
+		<property name="description_key" value="TwitchAction_EmptyFuelDesc" />
+		<property name="category" value="Special" />
+		<property name="display_category" value="Extras" />
+		<property name="start_gamestage" value="20" />
+		<property name="event_name" value="action_removefuel" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="500" />
+		<property name="is_positive" value="false" />
+		<property name="cooldown" value="120" />
+		<property name="cooldown_blocked" value="true" />
+	</action>
+	
+	<action name="twitch_AddFuel">
+		<property name="command" value="#add_fuel" />
+		<property name="command_key" value="TwitchAction_AddFuelCommand" />
+		<property name="title_key" value="TwitchAction_AddFuel" />
+		<property name="description_key" value="TwitchAction_AddFuelDesc" />
+		<property name="category" value="Special" />
+		<property name="display_category" value="Extras" />
+		<property name="start_gamestage" value="20" />
+		<property name="event_name" value="action_addfuel" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="200" />
+		<property name="is_positive" value="true" />
+		<property name="cooldown" value="120" />
+	</action>
+	
 	<action name="twitch_DontMiss">
 		<property name="command" value="#dont_miss" />
 		<property name="command_key" value="TwitchAction_BuffDontMissCommand" />

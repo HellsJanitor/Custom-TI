@@ -192,8 +192,8 @@ TwitchAction_SpawnNuclearDemoCommand,twitch,Actions,#spawn_nuclear_demo
 TwitchAction_SpawnNuclearDemo,twitch,Actions,Nuclear Demolitionist
 TwitchAction_SpawnNuclearDemoDesc,twitch,Actions,Spawns a Nuclear Demolitionist zombie.
 TwitchAction_SpawnLegendaryWightCommand,twitch,Actions,#spawn_legendary_wight
-TwitchAction_SpawnLegendaryWight,twitch,Actions,Wight Fright
-TwitchAction_SpawnLegendaryWightDesc,twitch,Actions,Spawns a spider Wight zombie.
+TwitchAction_SpawnLegendaryWight,twitch,Actions,Legendary Wight
+TwitchAction_SpawnLegendaryWightDesc,twitch,Actions,Spawns a Legendary Wight zombie.
 TwitchAction_SpawnDemoScreamerCommand,twitch,Actions,#spawn_demo_screamer
 TwitchAction_SpawnDemoScreamer,twitch,Actions,Screamer Demolitionist
 TwitchAction_SpawnDemoScreamerDesc,twitch,Actions,Spawns a Demolitionist Screamer zombie.
