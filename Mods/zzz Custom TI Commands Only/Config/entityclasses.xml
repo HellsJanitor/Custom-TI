@@ -1318,7 +1318,8 @@
 			<drop event="Harvest" name="resourceLeather" count="1" tag="WasteTreasuresCompleteHarvest"/>
 			<drop event="Harvest" name="resourceBone" count="1" tag="WasteTreasuresCompleteHarvest"/>
 			<effect_group name="Base Effects">
-				<triggered_effect trigger="onSelfFirstSpawn" action="ReplaceMaterial, MaterialModifier" target_material_name="RABBIT_diff_spec" replace_material="@:Entities/Zombies/Zombies/Materials/HD_Crawler_Radiated.mat"/>
+				<triggered_effect trigger="onSelfFirstSpawn" action="ReplaceMaterial, MaterialModifier" target_material_name="Rabbit" replace_material="@:Entities/Zombies/Zombies/Materials/HD_Crawler_Radiated.mat"/>
+				<!-- <triggered_effect trigger="onSelfFirstSpawn" action="AttachParticleEffectToEntity" particle="RadiatedParticlesOnMesh" parent_transform="LOD0" shape_mesh="true"/> -->
 				<passive_effect name="HealthMax" operation="base_set" value="80"/>
 				<passive_effect name="HealthMax" operation="perc_add" value="0"/>
 				<!-- Animal HP scale -->
