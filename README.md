@@ -212,7 +212,7 @@ All commands are as configurable as vanilla commands, via integration's menu. **
 
 ## Credits
 
-Huge thanks to Voided Pigeon for allowing the use of their XML, to redbeard for the TICore, Zilox for the Material Modifier, and Jonah Birch for continued playing, testing and suggestions.
+Huge thanks to Voided Pigeon for allowing the use of their XML, to redbeard for the TICore, Zilox for the Material Modifier, Khaine for the HP bars and Trader Always Open, and Jonah Birch for continued playing, testing and suggestions.
 
 
 
