@@ -553,6 +553,13 @@
 		</action_sequence>
 		
 		<!-- *** Buffs/Debuffs *** -->
+		<action_sequence name="buff_powerless" template="buff_template">
+			<variable name="buffsound" value="twitch_leech_debuff"/>
+			<variable name="twitchsound" value="twitch_bad_buff"/>
+			<variable name="addbuff" value="buffTIPowerless"/>
+			<variable name="twitch_negative" value="true"/>
+		</action_sequence>
+		
 		<action_sequence name="buff_poke" template="buff_template">
 			<variable name="buffsound" value="twitch_leech_debuff"/>
 			<variable name="addbuff" value="buffTILightDamage"/>
@@ -1452,6 +1459,177 @@
 			</action>
 		</action_sequence>
 		
+		<!-- Chicken Out -->
+		<action_sequence name="chicken_out">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="buffResAOETrigger"/>
+				<property name="invert" value="true"/>
+			</requirement>
+			<action class="AddSpawnedEntitiesToGroup">
+				<property name="phase" value="0"/>
+				<property name="group_name" value="chickenout"/>
+				<property name="entity_tags" value="zombie"/>
+				<property name="target_only" value="false"/>
+			</action>
+			<action class="AddEntitiesToGroup">
+				<property name="phase" value="0"/>
+				<property name="group_name" value="chickenout"/>
+				<property name="entity_tags" value="zombie"/>
+				<property name="max_distance" value="150"/>
+				<property name="target_only" value="false"/>
+			</action>
+			<action class="Delay">
+				<property name="time" value="1"/>
+				<property name="phase" value="1"/>
+			</action>
+			<action class="ReplaceEntities">
+				<property name="time" value="5"/>
+				<property name="phase" value="2"/>
+				<property name="entity_names" value="animalChicken"/>
+				<property name="single_choice" value="true"/>
+				<property name="target_group" value="chickenout"/>
+			</action>
+			<action class="PlaySound">
+				<property name="phase" value="5"/>
+				<property name="sound" value="chickenpain"/>
+			</action>
+			<action class="Delay">
+				<property name="time" value="1"/>
+				<property name="phase" value="6"/>
+			</action>
+			<action class="RemoveBuff">
+				<property name="phase" value="7"/>
+				<property name="buff_name" value="buffShamanResurrect"/>
+			</action>			
+			<action class="BeltTooltip">
+				<property name="text" value="Streamer Chickened Out ..."/>
+				<property name="phase" value="8"/>
+			</action>
+		</action_sequence>
+		
+		<!-- Fowl Play -->
+		<action_sequence name="fowl_play">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="buffResAOETrigger"/>
+				<property name="invert" value="true"/>
+			</requirement>
+			<action class="AddPartyToGroup">
+				<property name="phase" value="0" />
+				<property name="group_name" value="party" />
+			</action>
+			<action class="AddSpawnedEntitiesToGroup">
+				<property name="phase" value="0"/>
+				<property name="group_name" value="fowlplay"/>
+				<property name="entity_tags" value="chickenpassive"/>
+				<property name="target_only" value="false"/>
+			</action>
+			<action class="AddEntitiesToGroup">
+				<property name="phase" value="0"/>
+				<property name="group_name" value="fowlplay"/>
+				<property name="entity_tags" value="chickenpassive"/>
+				<property name="max_distance" value="4000"/>
+				<property name="target_only" value="false"/>
+			</action>
+			<action class="Delay">
+				<property name="time" value="1"/>
+				<property name="phase" value="1"/>
+			</action>
+			<action class="ReplaceEntities">
+				<property name="time" value="5"/>
+				<property name="phase" value="2"/>
+				<property name="entity_names" value="animalChickenHostile"/>
+				<property name="single_choice" value="true"/>
+				<property name="target_group" value="fowlplay"/>
+			</action>
+			<!-- <action class="AddBuff"> -->
+				<!-- <property name="phase" value="3" /> -->
+				<!-- <property name="buff_name" value="buffFowlPlay" /> -->
+				<!-- <property name="target_group" value="party" /> -->
+				
+				<!-- <requirement class="GroupLiveCount"> -->
+					<!-- <property name="target_group" value="fowlplay"/> -->
+					<!-- <property name="operation" value="LTE"/> -->
+					<!-- <property name="count" value="5"/> -->
+				<!-- </requirement> -->
+			<!-- </action> -->
+			<action class="PlaySound">
+				<property name="phase" value="5"/>
+				<property name="sound" value="chickendeath"/>
+			</action>
+			<action class="Delay">
+				<property name="time" value="1"/>
+				<property name="phase" value="6"/>
+			</action>
+			<action class="RemoveBuff">
+				<property name="phase" value="7"/>
+				<property name="buff_name" value="buffShamanResurrect"/>
+			</action>			
+			<action class="BeltTooltip">
+				<property name="text" value="Chickens are evolving ..."/>
+				<property name="phase" value="8"/>
+			</action>
+		</action_sequence>
+		
+		<action_sequence name="fowl_play_spawner">
+			<requirement class="HasBuff">
+				<property name="buff_name" value="buffResAOETrigger"/>
+				<property name="invert" value="true"/>
+			</requirement>
+			<action class="AddPartyToGroup">
+				<property name="phase" value="0" />
+				<property name="group_name" value="party" />
+			</action>
+			<!-- <action class="AddSpawnedEntitiesToGroup"> -->
+				<!-- <property name="phase" value="0"/> -->
+				<!-- <property name="group_name" value="fowlplay"/> -->
+				<!-- <property name="entity_tags" value="chickenpassive"/> -->
+				<!-- <property name="target_only" value="false"/> -->
+			<!-- </action> -->
+			<action class="AddEntitiesToGroup">
+				<property name="phase" value="0"/>
+				<property name="group_name" value="fowlplay"/>
+				<property name="entity_tags" value="chickenpassive"/>
+				<property name="max_distance" value="4000"/>
+				<property name="target_only" value="false"/>
+			</action>
+			<action class="Delay">
+				<property name="time" value="1"/>
+				<property name="phase" value="1"/>
+			</action>
+			<action class="ReplaceEntities">
+				<property name="time" value="5"/>
+				<property name="phase" value="2"/>
+				<property name="entity_names" value="animalChickenHostile"/>
+				<property name="single_choice" value="true"/>
+				<property name="target_group" value="fowlplay"/>
+			</action>			
+			<action class="PlaySound">
+				<property name="phase" value="5"/>
+				<property name="sound" value="chickendeath"/>
+			</action>
+			<action class="Delay">
+				<property name="time" value="1"/>
+				<property name="phase" value="6"/>
+			</action>
+			<action class="RemoveBuff">
+				<property name="phase" value="7"/>
+				<property name="buff_name" value="buffShamanResurrect"/>
+			</action>			
+			<action class="BeltTooltip">
+				<property name="text" value="Chickens are evolving ..."/>
+				<property name="phase" value="8"/>
+			</action>
+			<action class="ClearGroup">
+				<property name="group_name" value="fowlplay"/>
+				
+				<requirement class="GroupLiveCount">
+					<property name="target_group" value="fowlplay"/>
+					<property name="operation" value="GTE"/>
+					<property name="count" value="5"/>
+				</requirement>
+			</action>
+		</action_sequence>
+		
 		<!-- Agony -->
 		<action_sequence name="agony_horde_sequence">
 			<property name="allow_user_trigger" value="true"/>
@@ -1817,6 +1995,64 @@
 				<property name="speed_percent" value=".40"/>
 				<property name="target_group" value="batwitch"/>
 			</action>
+		</action_sequence>
+		
+		<!-- *** explode loot bags *** -->
+		<action_sequence name="pillage_explode">
+			<property name="category" value="twitch_actions" />
+			<property name="allow_while_dead" value="true" />
+			
+			<action class="RemoveBuff">
+				<property name="buff_name" value="buffPillage"/>				
+			</action>
+			
+		</action_sequence>
+		
+		<action_sequence name="pillage_explode_lootbags">
+			<property name="category" value="twitch_actions" />
+			<property name="allow_while_dead" value="true" />
+			<property name="target_type" value="Entity" />
+			
+			<action class="AddSpawnedEntitiesToGroup">
+				<property name="phase" value="0" />
+				<property name="group_name" value="lootbags" />
+				<property name="entity_tags" value="pillage" />
+				<property name="target_only" value="false"/>
+			</action>
+			
+			<action class="AddEntitiesToGroup">
+				<property name="phase" value="0" />
+				<property name="group_name" value="lootbags" />
+				<property name="entity_tags" value="pillage" />
+				<property name="target_only" value="false"/>
+			</action>
+			
+			<action class="ExplodeTarget">
+				<property name="phase" value="1"/>
+				<property name="blast_power" value="75"/>
+				<property name="block_damage" value="300"/>
+				<property name="block_radius" value="10"/>
+				<property name="entity_damage" value="50"/>
+				<property name="entity_radius" value="6"/>
+			</action>
+			
+			<!-- <action class="Kill"> -->
+				<!-- <property name="phase" value="2"/> -->
+			<!-- </action> -->
+			
+			<!-- <action class="RemoveEntities"> -->
+				<!-- <property name="phase" value="3" /> -->
+				<!-- <property name="target_group" value="lootbags" /> -->
+			<!-- </action> -->
+			
+			<action class="ReplaceEntities">
+				<property name="time" value="5" />
+				<property name="phase" value="2" />
+				<property name="entity_names" value="animalRabbit" />
+				<property name="single_choice" value="true" />
+				<property name="target_group" value="lootbags" />
+			</action>
+			
 		</action_sequence>
 		
 		<!-- *** Horde Arena *** -->

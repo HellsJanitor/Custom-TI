@@ -428,6 +428,15 @@ TwitchAction_ArenaDesc,twitch,Actions,"Zombies will spawn in waves. Kill all the
 TwitchAction_BearScareCommand,twitch,Actions,#bear_scare
 TwitchAction_BearScare,twitch,Actions,Bear Scare
 TwitchAction_BearScareDesc,twitch,Actions,"Turns all nearby zombies into bears."
+TwitchAction_ChickenOutCommand,twitch,Actions,#chicken_out
+TwitchAction_ChickenOut,twitch,Actions,Chicken Out
+TwitchAction_ChickenOutDesc,twitch,Actions,"Turns all nearby zombies into chickens"
+TwitchAction_FowlPlayCommand,twitch,Actions,#fowl_play
+TwitchAction_FowlPlay,twitch,Actions,Fowl Play
+TwitchAction_FowlPlayDesc,twitch,Actions,"Evolves all chickens into murder turkeys"
+TwitchAction_BuffPowerlessCommand,twitch,Actions,#powerless
+TwitchAction_BuffPowerless,twitch,Actions,Powerless
+TwitchAction_BuffPowerlessDesc,twitch,Actions,"All nearby zombies are more resistant to damage"
 TwitchAction_SpawnRandomZombieCommand,twitch,Actions,#zombie_grab_bag
 TwitchAction_SpawnRandomZombie,twitch,Actions,Zombie Grab Bag
 TwitchAction_SpawnRandomZombieDesc,twitch,Actions,"Spawns a horde of random zombies."

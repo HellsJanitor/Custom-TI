@@ -703,6 +703,38 @@
 		<cooldown_addition name="twitch_buffEncumbered" time="240" />
 	</action>
 	
+	<action name="twitch_buffHeadshotOnly">
+		<property name="command" value="#headshot" />
+		<property name="command_key" value="TwitchAction_BuffHeadshotOnlyCommand" />
+		<property name="title_key" value="TwitchAction_BuffHeadshotOnly" />
+		<property name="description_key" value="TwitchAction_BuffHeadshotOnlyDesc" />
+		<property name="category" value="Buffs,Debuffs" />
+		<property name="start_gamestage" value="65" />
+		<property name="event_name" value="buff_headshotonly" />
+		<property name="default_cost" value="100" />
+		<property name="cooldown" value="300" />
+		<property name="cooldown_blocked" value="true" />
+		<property name="random_group" value="debuffs" />
+		<property name="presets" value="standard,hardcore" />
+		
+		<cooldown_addition name="twitch_buffBlur" time="60" />
+		<cooldown_addition name="twitch_buffTrippy" time="60" />
+		<cooldown_addition name="twitch_buffDistort" time="60" />
+		<cooldown_addition name="twitch_buffGreyscale" time="60" />
+		<cooldown_addition name="twitch_buffPainting" time="60" />
+		<cooldown_addition name="twitch_buffAntiLeech" time="60" />
+		<cooldown_addition name="twitch_buffWeakenRanged" time="60" />
+		<cooldown_addition name="twitch_buffWeakenMelee" time="60" />
+		<cooldown_addition name="twitch_buffNoRanged" time="60" />
+		<cooldown_addition name="twitch_buffNoMelee" time="60" />
+		<cooldown_addition name="twitch_DontMiss" time="60" />
+		<cooldown_addition name="twitch_BigHead" time="90" />
+		<cooldown_addition name="twitch_ShieldEnemies" time="60" />
+		<cooldown_addition name="twitch_BucketHead" time="60" />
+		<cooldown_addition name="twitch_buffBlind" time="60" />
+		
+	</action>
+	
 	<action name="twitch_buffConfuse">
 		<property name="command" value="#confuse" />
 		<property name="command_key" value="TwitchAction_BuffConfuseCommand" />
@@ -2313,7 +2345,69 @@
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
-	<!-- buffs/debuffs -->
+	<action name="twitch_chicken_out">
+		<property name="title" value="Chicken Out" />
+		<property name="command" value="#chicken_out" />
+		<property name="command_key" value="TwitchAction_ChickenOutCommand" />
+		<property name="title_key" value="TwitchAction_ChickenOut" />
+		<property name="description_key" value="TwitchAction_ChickenOutDesc" />
+		<property name="category" value="Special" />
+		<property name="start_gamestage" value="1" />
+		<property name="event_name" value="chicken_out" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="500" />
+		<property name="is_positive" value="true" />
+		<property name="add_cooldown" value="true" />
+		<property name="cooldown_add_amount" value="50" />
+		<property name="cooldown" value="30" />
+		<property name="cooldown_blocked" value="true" />
+		<property name="waiting_blocked" value="true" />
+		<property name="vote_cooldown_add" value="30" />
+		<property name="min_respawn_count" value="0" />
+		<property name="max_respawn_count" value="0" />
+		<property name="presets" value="casual,standard,hardcore" />
+	</action>
+	
+	<action name="twitch_fowl_play">
+		<property name="title" value="Fowl Play" />
+		<property name="command" value="#fowl_play" />
+		<property name="command_key" value="TwitchAction_FowlPlayCommand" />
+		<property name="title_key" value="TwitchAction_FowlPlay" />
+		<property name="description_key" value="TwitchAction_FowlPlayDesc" />
+		<property name="category" value="Special" />
+		<property name="start_gamestage" value="1" />
+		<property name="event_name" value="fowl_play" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="500" />
+		<property name="is_positive" value="false" />
+		<property name="add_cooldown" value="true" />
+		<property name="cooldown_add_amount" value="50" />
+		<property name="cooldown" value="30" />
+		<property name="cooldown_blocked" value="true" />
+		<property name="waiting_blocked" value="true" />
+		<property name="vote_cooldown_add" value="30" />
+		<property name="min_respawn_count" value="0" />
+		<property name="max_respawn_count" value="0" />
+		<property name="presets" value="casual,standard,hardcore" />
+	</action>
+	
+	<!-- *** buffs/debuffs *** -->
+	<action name="twitch_buffPowerless">
+		<property name="title" value="Powerless" />
+		<property name="command" value="#powerless" />
+		<property name="command_key" value="TwitchAction_BuffPowerlessCommand" />
+		<property name="title_key" value="TwitchAction_BuffPowerless" />
+		<property name="description_key" value="TwitchAction_BuffPowerlessDesc" />
+		<property name="category" value="Debuffs" />
+		<property name="event_name" value="buff_powerless" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="250" />
+		<property name="cooldown" value="1" />
+		<property name="cooldown_blocked" value="false" />
+		<property name="is_positive" value="false" />
+		<property name="presets" value="casual,standard,hardcore" />		
+	</action>
+	
 	<action name="twitch_buffPoke">
 		<property name="title" value="Poke" />
 		<property name="command" value="#poke" />

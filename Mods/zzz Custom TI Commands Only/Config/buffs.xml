@@ -140,7 +140,7 @@
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTIEndGameDuration" operation="add" value="-1"/>
 			</effect_group>
 			<effect_group>
-				<passive_effect name="GameStage" operation="base_set" value="5778"/>				
+				<passive_effect name="GameStage" operation="base_set" value="5778"/>
 			</effect_group>
 		</buff>
 		
@@ -183,7 +183,7 @@
 					<requirement name="PlayerLevel" operation="GT" value="25"/></triggered_effect>
 				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="2000">
 					<requirement name="PlayerLevel" operation="GT" value="10"/></triggered_effect>
-				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="500" />
+				<triggered_effect trigger="onSelfBuffStart" action="GiveExp" exp="500"/>
 
 				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIGiveXP"/>
 			</effect_group>
@@ -339,9 +339,9 @@
 				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTILifeLinkMain"/>
 			</effect_group>
 			<effect_group>
-				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTILifeLinkDuration" operation="set" value="120" />
-				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTILifeLinkDuration" operation="add" value="120" />
-				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTILifeLinkDuration" operation="add" value="-1" />
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".buffTILifeLinkDuration" operation="set" value="120"/>
+				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTILifeLinkDuration" operation="add" value="120"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTILifeLinkDuration" operation="add" value="-1"/>
 			</effect_group>
 
 			<effect_group>
@@ -461,7 +461,7 @@
 				<requirement name="IsAlive" target="self"/>
 				<triggered_effect trigger="onOtherDamagedSelf" action="ModifyStats" stat="Health" operation="add" value="1"/>
 				<triggered_effect trigger="onOtherDamagedSelf" action="CallGameEvent" target="self" event="action_destroyinventory" allow_client_call="true"/>
-			</effect_group>			
+			</effect_group>
 		</buff>
 		
 		<buff name="twitch_HSnopickup" name_key="TwitchBuff_NoPickup" description_key="TwitchBuff_NoPickupDesc" icon="ui_game_symbol_twitch_cant_pickup" icon_color="255,175,175" remove_on_death="false">
@@ -1853,14 +1853,14 @@
 			<effect_group>
 				<requirement name="StatCompareCurrent" target="self" stat="Health" operation="LT" value="1"/>
 				<triggered_effect trigger="onOtherDamagedSelf" action="RemoveBuff" buff="buffTIHordeArena1"/>
-			</effect_group>			
+			</effect_group>
 			<effect_group>
 				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffTIHordeArena2Trigger"/>
 				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffTILightHeal"/>
 				<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" cvar="hordeArenaStage" operation="set" value="0"/>
 			</effect_group>
 			<effect_group>
-				<passive_effect name="GameStage" operation="base_add" value="50"/>				
+				<passive_effect name="GameStage" operation="base_add" value="50"/>
 			</effect_group>
 		</buff>
 		
@@ -1919,14 +1919,14 @@
 			<effect_group>
 				<requirement name="StatCompareCurrent" target="self" stat="Health" operation="LT" value="1"/>
 				<triggered_effect trigger="onOtherDamagedSelf" action="RemoveBuff" buff="buffTIHordeArena2"/>
-			</effect_group>			
+			</effect_group>
 			<effect_group>
 				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffTIHordeArena3Trigger"/>
 				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffTILightHeal"/>
 				<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" cvar="hordeArenaStage" operation="set" value="0"/>
 			</effect_group>
 			<effect_group>
-				<passive_effect name="GameStage" operation="base_add" value="100"/>				
+				<passive_effect name="GameStage" operation="base_add" value="100"/>
 			</effect_group>
 		</buff>
 		
@@ -1985,14 +1985,14 @@
 			<effect_group>
 				<requirement name="StatCompareCurrent" target="self" stat="Health" operation="LT" value="1"/>
 				<triggered_effect trigger="onOtherDamagedSelf" action="RemoveBuff" buff="buffTIHordeArena3"/>
-			</effect_group>			
+			</effect_group>
 			<effect_group>
 				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffTIHordeArena4Trigger"/>
 				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffTILightHeal"/>
 				<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" cvar="hordeArenaStage" operation="set" value="0"/>
 			</effect_group>
 			<effect_group>
-				<passive_effect name="GameStage" operation="base_add" value="150"/>				
+				<passive_effect name="GameStage" operation="base_add" value="150"/>
 			</effect_group>
 		</buff>
 		
@@ -2051,14 +2051,14 @@
 			<effect_group>
 				<requirement name="StatCompareCurrent" target="self" stat="Health" operation="LT" value="1"/>
 				<triggered_effect trigger="onOtherDamagedSelf" action="RemoveBuff" buff="buffTIHordeArena4"/>
-			</effect_group>			
+			</effect_group>
 			<effect_group>
 				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffTIHordeArena5Trigger"/>
 				<triggered_effect trigger="onSelfBuffFinish" action="AddBuff" buff="buffTILightHeal"/>
 				<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" cvar="hordeArenaStage" operation="set" value="0"/>
 			</effect_group>
 			<effect_group>
-				<passive_effect name="GameStage" operation="base_add" value="200"/>				
+				<passive_effect name="GameStage" operation="base_add" value="200"/>
 			</effect_group>
 		</buff>
 		
@@ -2117,7 +2117,7 @@
 			<effect_group>
 				<requirement name="StatCompareCurrent" target="self" stat="Health" operation="LT" value="1"/>
 				<triggered_effect trigger="onOtherDamagedSelf" action="RemoveBuff" buff="buffTIHordeArena5"/>
-			</effect_group>			
+			</effect_group>
 			<effect_group>
 				<triggered_effect trigger="onSelfBuffFinish" action="ModifyCVar" cvar="hordeArenaStage" operation="set" value="0"/>
 				<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="spawn_weapon3" allow_client_call="true"/>
@@ -2126,158 +2126,7 @@
 				<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="spawn_foodwater4" allow_client_call="true"/>
 			</effect_group>
 			<effect_group>
-				<passive_effect name="GameStage" operation="base_add" value="250"/>				
-			</effect_group>
-		</buff>		
-		
-		<!-- Hunger Games -->
-		<buff name="buffTIHungerGames" name_key="buffTIHungerGamesName" description_key="buffTIHungerGamesDesc" icon="ui_game_symbol_rifle" icon_color="215,28,10" icon_blink="true" remove_on_death="false">
-			<display_value value="hungerGamesPoints"/>
-			<display_value_key value="{0}"/>
-			<effect_group>
-				<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="hungerGamesPoints" operation="set" value="0"/>
-			</effect_group>
-		</buff>
-		
-		<!-- TI Enabled -->
-		<buff name="buffTIEnabled" name_key="buffTIEnabledName" description_key="buffTIEnabledDesc" icon="ui_game_symbol_quest" icon_color="215,28,10" remove_on_death="false">
-			<display_value_key value="TI On"/>
-			<display_value value="xxx"/>
-			<stack_type value="replace"/>
-			<update_rate value="40"/>
-			<effect_group>
-				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIEnabled"/>
-			</effect_group>
-		</buff>
-		
-		<!-- TI Whitelisted -->
-		<buff name="buffTIWhitelistEnabled" name_key="buffTIWhitelistEnabledName" description_key="buffTIWhitelistEnabledDesc" icon="ui_game_symbol_quest" icon_color="76,115,255" remove_on_death="false">
-			<display_value_key value="TI On"/>
-			<display_value value="xxx"/>
-			<stack_type value="replace"/>
-			<update_rate value="40"/>
-			<effect_group>
-				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIWhitelistEnabled"/>
-			</effect_group>
-		</buff>
-		
-		<!-- TI Disabled -->
-		<buff name="buffTIDisabled" name_key="buffTIDisabledName" description_key="buffTIDisabledDesc" icon="ui_game_symbol_quest" icon_color="150,150,150" remove_on_death="false">
-			<display_value_key value="TI Off"/>
-			<display_value value="xxx"/>
-			<stack_type value="replace"/>
-			<update_rate value="40"/>
-			<effect_group>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTIEnabled"/>
-				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIDisabled"/>
-			</effect_group>
-		</buff>
-		
-		<!-- Safe Zone -->
-		<buff name="buffTISafezoneEnabled" name_key="buffTISafezoneEnabledName" description_key="buffTISafezoneEnabledDesc" icon="ui_game_symbol_defense" icon_color="150,150,150" remove_on_death="false">
-			<display_value_key value="Safe"/>
-			<display_value value="xxx"/>
-			<stack_type value="replace"/>
-			<update_rate value="40"/>
-			<effect_group>
-				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTISafezoneEnabled"/>
-			</effect_group>
-		</buff>
-		
-		<!-- Safe Zone Restricted -->
-		<buff name="buffTISafezoneRestricted" name_key="buffTISafezoneRestrictedName" description_key="buffTISafezoneRestrictedDesc" icon="ui_game_symbol_defense" icon_color="215,28,10" remove_on_death="false" icon_blink="true">
-			<display_value_key value="Off Limits"/>
-			<display_value value="xxx"/>
-			<stack_type value="replace"/>
-			<update_rate value="40"/>
-			<effect_group>
-				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTISafezoneRestricted"/>
-			</effect_group>
-		</buff>
-		
-		<!-- Teleport Disabled -->
-		<buff name="buffTITeleportDisabled" name_key="buffTITeleportDisabledName" description_key="buffTITeleportDisabledDesc" icon="ui_game_symbol_x" icon_color="150,150,150" remove_on_death="false">
-			<display_value_key value="TP Off"/>
-			<display_value value="xxx"/>
-			<stack_type value="replace"/>
-			<update_rate value="40"/>
-			<effect_group>
-				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTITeleportDisabled"/>
-			</effect_group>
-		</buff>
-		
-		<!-- Quest Mode -->
-		<buff name="buffTIQuestMode" name_key="buffTIQuestModeName" description_key="buffTIQuestModeDesc" icon="ui_game_symbol_x" icon_color="150,150,150" remove_on_death="false">
-			<display_value_key value="Quest"/>
-			<display_value value="xxx"/>
-			<stack_type value="replace"/>
-			<duration value="0"/>
-		</buff>
-		
-		<!-- Status AFK -->
-		<buff name="buffTIAFKEnabled" name_key="buffTIAFKEnabledName" description_key="buffTIAFKEnabledDesc" icon="ui_game_symbol_defense" icon_color="150,150,150" remove_on_death="false">
-			<display_value_key value="AFK"/>
-			<display_value value="xxx"/>
-			<stack_type value="replace"/>
-			<duration value="0"/>
-		</buff>
-		
-		<!-- TI Throttled -->
-		<buff name="buffTIThrottled" name_key="buffTIThrottledName" description_key="buffTIThrottledDesc" icon="ui_game_symbol_defense" icon_color="150,150,150" remove_on_death="false">
-			<display_value_key value="Throttled"/>
-			<display_value value="xxx"/>
-			<stack_type value="replace"/>
-			<update_rate value="40"/>
-			<effect_group>
-				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIThrottled"/>
-			</effect_group>
-		</buff>
-		
-		<!-- TI Enabled Paused -->
-		<buff name="buffTIPaused" name_key="buffTIPausedName" description_key="buffTIPausedDesc" icon="ui_game_symbol_defense" icon_color="150,150,150" remove_on_death="false">
-			<display_value_key value="Paused"/>
-			<display_value value="xxx"/>
-			<stack_type value="replace"/>
-			<update_rate value="40"/>
-			<effect_group>
-				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIPaused"/>
-			</effect_group>
-		</buff>
-		
-		<buff name="buffTILandMine" hidden="true">
-			<stack_type value="duration"/>
-			<duration value="60"/>
-			<effect_group>
-				<passive_effect name="LandMineImmunity" operation="base_set" value="0"/>
-			</effect_group>
-		</buff>
-		
-		<buff name="buffTILandMineLong" hidden="true">
-			<stack_type value="duration"/>
-			<duration value="180"/>
-			<effect_group>
-				<passive_effect name="LandMineImmunity" operation="base_set" value="0"/>
-			</effect_group>
-		</buff>
-		
-		<!-- TI Status Remove -->
-		<buff name="buffTIStatusRemove" hidden="true">
-			<display_value_key value=""/>
-			<display_value value="xxx"/>
-			<stack_type value="ignore"/>
-			<duration value="1"/>
-			<effect_group>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTIEnabled"/>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTIWhitelistEnabled"/>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTIDisabled"/>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTIPaused"/>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTIThrottled"/>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTITeleportDisabled"/>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISafezoneEnabled"/>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISafezoneRestricted"/>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTIAFKEnabled"/>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTIQuestMode"/>
-				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIStatusRemove"/>
+				<passive_effect name="GameStage" operation="base_add" value="250"/>
 			</effect_group>
 		</buff>
 		
@@ -2350,7 +2199,7 @@
 			<effect_group>
 				<requirement name="CVarCompare" cvar=".agony" operation="Equals" value="1"/>
 				<requirement name="CVarCompare" cvar=".agonycounter" operation="LTE" value="4"/>
-				<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="other" event="agony_horde_sequence" allow_client_call="true"/>			
+				<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" target="other" event="agony_horde_sequence" allow_client_call="true"/>
 			</effect_group>
 			<effect_group>
 				<triggered_effect trigger="onSelfBuffRemove" action="ModifyCVar" cvar=".agonycounter" operation="set" value="0"/>
@@ -2425,84 +2274,46 @@
 			<effect_group>
 				<requirement name="CVarCompare" cvar=".freshmeat" operation="LTE" value="1"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIFreshMeat"/>
-			</effect_group>	
+			</effect_group>
 			<effect_group>
 				<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="fresh_meat" allow_client_call="true"/>
 			</effect_group>
 		</buff>
 		
-		<!-- Delayed spawn indicator -->
-		<buff name="buffTIDelayedSpawn" name_key="buffTIDelayedSpawnName" description_key="buffTIDelayedSpawnDesc" icon="ui_game_symbol_zombie" icon_color="0,240,0" remove_on_death="false">
-			<display_value value="spawnCount"/>
-			<stack_type value="replace"/>
-			<update_rate value="40"/>
+		<buff name="buffPillage" hidden="true" remove_on_death="true">
+			<stack_type value="ignore"/>
+			<update_rate value="1"/>
+			<duration value="2"/>
 			<effect_group>
-				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTIDelayedSpawn"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="CallGameEvent" event="pillage_explode"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="AddBuff" target="positionAOE" range="300" buff="buffPillageExplodeBags">
+					<requirement name="EntityTagCompare" target="other" tags="pillage"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+	
+		<buff name="buffPillageExplodeBags" hidden="true" remove_on_death="true">
+			<stack_type value="ignore"/>
+			<duration value="1"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffRemove" action="CallGameEvent" event="pillage_explode_lootbags"/>
 			</effect_group>
 		</buff>
 		
-		<!-- Spawn Multiplier 2x -->
-		<buff name="buffTISpawnMultiplier2x" name_key="buffTISpawnMultiplier2xName" description_key="buffTISpawnMultiplier2xDesc" icon="ui_game_symbol_zombie" icon_color="215,28,10" remove_on_death="false">
-			<display_value_key value="2x"/>
-			<display_value value="xxx"/>
-			<stack_type value="replace"/>
-			<update_rate value="40"/>
+		<buff name="buffFowlPlay" hidden="true" remove_on_death="false">
+			<duration value="0"/>
+			
 			<effect_group>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier3x"/>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier4x"/>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier5x"/>
-			</effect_group>
-			<effect_group>
-				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTISpawnMultiplier2x"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="1000" buff="buffFowlPlaySpawner"/>
 			</effect_group>
 		</buff>
 		
-		<!-- Spawn Multiplier 3x -->
-		<buff name="buffTISpawnMultiplier3x" name_key="buffTISpawnMultiplier3xName" description_key="buffTISpawnMultiplier3xDesc" icon="ui_game_symbol_zombie" icon_color="215,28,10" remove_on_death="false">
-			<display_value_key value="3x"/>
-			<display_value value="xxx"/>
+		<buff name="buffFowlPlaySpawner" hidden="true" >
 			<stack_type value="replace"/>
-			<update_rate value="40"/>
-			<effect_group>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier2x"/>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier4x"/>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier5x"/>
-			</effect_group>
-			<effect_group>
-				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTISpawnMultiplier3x"/>
-			</effect_group>
-		</buff>
-		
-		<!-- Spawn Multiplier 4x -->
-		<buff name="buffTISpawnMultiplier4x" name_key="buffTISpawnMultiplier4xName" description_key="buffTISpawnMultiplier4xDesc" icon="ui_game_symbol_zombie" icon_color="215,28,10" remove_on_death="false">
-			<display_value_key value="4x"/>
-			<display_value value="xxx"/>
-			<stack_type value="replace"/>
-			<update_rate value="40"/>
-			<effect_group>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier2x"/>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier3x"/>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier5x"/>
-			</effect_group>
-			<effect_group>
-				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTISpawnMultiplier4x"/>
-			</effect_group>
-		</buff>
-		
-		<!-- Spawn Multiplier 5x -->
-		<buff name="buffTISpawnMultiplier5x" name_key="buffTISpawnMultiplier5xName" description_key="buffTISpawnMultiplier5xDesc" icon="ui_game_symbol_zombie" icon_color="215,28,10" remove_on_death="false">
-			<display_value_key value="5x"/>
-			<display_value value="xxx"/>
-			<stack_type value="replace"/>
-			<update_rate value="40"/>
-			<effect_group>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier2x"/>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier3x"/>
-				<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffTISpawnMultiplier4x"/>
-			</effect_group>
-			<effect_group>
-				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffTISpawnMultiplier5x"/>
-			</effect_group>
+			<duration value="0.1"/>
+			<effect_group>				
+				<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="fowl_play_spawner" allow_client_call="true"/>
+			</effect_group>			
 		</buff>
 	</append>
 </configs>

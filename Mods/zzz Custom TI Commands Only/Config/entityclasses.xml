@@ -3,6 +3,13 @@
 		<property name="Tags" value="player_dropped"/>
 	</insertafter>
 	
+	<insertafter xpath="//entity_class[starts-with(@name,'EntityLootContainer')]/property[@name='Class']">
+		<property name="Tags" value="pillage"/>
+		<property name="EntityFlags" value="pillage"/>
+	</insertafter>
+	
+	<append xpath="/entity_classes/entity_class[@name='animalChicken']/property[@name='Tags']/@value">,chickenpassive</append>
+	
 	<append xpath="/entity_classes">
 		<entity_class name="mm_MedicalSupplyCrate" extends="sc_General">
 			<property name="LootListAlive" value="mm_MedicalSupplyCrate"/>
