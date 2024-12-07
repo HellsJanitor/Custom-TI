@@ -170,15 +170,12 @@ zombieTITormentScreamer,entityclasses,Entity,"Torment Witch"
 TwitchAction_SpawnToughCommand,twitch,Actions,#spawn_tough
 TwitchAction_SpawnTough,twitch,Actions,Tough Zombie
 TwitchAction_SpawnToughDesc,twitch,Actions,Spawns a random tough zombie.
-
 TwitchAction_SpawnFeralCommand,twitch,Actions,#spawn_feral
 TwitchAction_SpawnFeral,twitch,Actions,Feral Zombie
 TwitchAction_SpawnFeralDesc,twitch,Actions,Spawns a random feral zombie.
-
 TwitchAction_SpawnRadCommand,twitch,Actions,#spawn_rad
 TwitchAction_SpawnRad,twitch,Actions,Radiated Zombie
 TwitchAction_SpawnRadDesc,twitch,Actions,Spawns a random radiated zombie.
-
 TwitchAction_SpawnZombieLimoCommand,twitch,Actions,#zombie_limo
 TwitchAction_SpawnZombieLimo,twitch,Actions,Canadian Eh?
 TwitchAction_SpawnZombieLimoDesc,twitch,Actions,Spawns a Legendary Canadian zombie.
@@ -455,6 +452,13 @@ TwitchAction_SpawnRandomZombieDesc,twitch,Actions,"Spawns a horde of random zomb
 TwitchAction_SpawnRandomLegendaryZombieCommand,twitch,Actions,#legendary_zombie_grab_bag
 TwitchAction_SpawnRandomLegendaryZombie,twitch,Actions,Legendary Zombie Grab Bag
 TwitchAction_SpawnRandomLegendaryZombieDesc,twitch,Actions,"Spawns a random Legendary zombie."
+
+TwitchAction_GiveUpCommand,twitch,Actions,#give_up
+TwitchAction_GiveUp,twitch,Actions,Give Up
+TwitchAction_GiveUpDesc,twitch,Actions,"type #give_up in chat to remove all zombies."
+TwitchAction_HardResetCommand,twitch,Actions,#playerreset
+TwitchAction_HardReset,twitch,Actions,Player Reset
+TwitchAction_HardResetDesc,twitch,Actions,"type #playerreset in chat to fully reset your character."
 
 cntTIBarrel,blocks,Container,"Lucky Barrel"
 cntTICar,blocks,Container,"Lucky Car Wreck"

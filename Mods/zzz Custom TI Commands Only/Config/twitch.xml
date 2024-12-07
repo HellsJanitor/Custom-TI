@@ -732,6 +732,7 @@
 		<property name="category" value="Buffs,Debuffs" />
 		<property name="start_gamestage" value="65" />
 		<property name="event_name" value="buff_headshotonly" />
+		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="100" />
 		<property name="cooldown" value="300" />
 		<property name="cooldown_blocked" value="true" />
@@ -1459,7 +1460,7 @@
 		<cooldown_addition name="twitch_hordeZombiesRad" time="30" />
 	</action>
 	
-	<!-- *** all custom spawns - singles & groups *** -->	
+	<!-- *** streamer chat commands *** -->	
 	<action name="twitch_give_up" >
 		<property name="start_gamestage" value="1" />
 		<property name="title" value="Give Up" />
@@ -1474,6 +1475,21 @@
 		<property name="show_in_action_list" value="false" />
 	</action>
 	
+	<action name="twitch_hard_reset" >
+		<property name="start_gamestage" value="1" />
+		<property name="title" value="Hard Reset" />
+		<property name="command" value="#playerreset" />
+		<property name="command_key" value="TwitchAction_HardResetCommand" />
+		<property name="title_key" value="TwitchAction_HardReset" />
+		<property name="description_key" value="TwitchAction_HardResetDesc" />
+		<property name="category" value="Special" />
+		<property name="event_name" value="player_hard_reset" />
+		<property name="only_usable_type" value="Broadcaster" />
+		<property name="enabled" value="true" />
+		<property name="show_in_action_list" value="false" />
+	</action>
+	
+	<!-- *** all custom spawns - singles & groups *** -->
 	<action name="twitch_zombie_limo" extends="twitch_normalZombie">
 		<property name="start_gamestage" value="1" />
 		<property name="title" value="Zombie Limo" />
