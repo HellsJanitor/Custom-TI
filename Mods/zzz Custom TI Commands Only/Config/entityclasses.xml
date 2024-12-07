@@ -85,7 +85,7 @@
 				<passive_effect name="HealthMax" operation="perc_set" value="1"/>
 				<!-- Zombie HP scale -->
 				<triggered_effect trigger="onSelfFirstSpawn" action="ModifyCVar" target="self" cvar="EntityBoss" operation="set" value="1"/>
-			</effect_group>			
+			</effect_group>
 		</entity_class>
 		
 		<entity_class name="legendaryTIFatHawaiian" extends="zombieFatHawaiian">
@@ -477,7 +477,7 @@
 			<property name="SizeScale" value="0.6"/>
 			<property name="AIPathCostScale" value="100, 100"/>
 			<property name="AITask-1" value="RunawayFromEntity" data="class=EntityPlayer,EntityZombie,EntityEnemyAnimal"/>
-			<property name="AITask-2" value="RunawayWhenHurt"/>			
+			<property name="AITask-2" value="RunawayWhenHurt"/>
 			<property name="AITask-3" value="Look"/>
 			<property name="AITask-4" value="Wander"/>
 			<property name="AITarget-1" value=""/>
@@ -773,7 +773,7 @@
 			<property name="AITask-9" value="Wander"/>
 			<property name="AITask-10" value=""/>
 			<effect_group name="Base Effects">
-				<passive_effect name="HealthMax" operation="base_set" value="442"/>				
+				<passive_effect name="HealthMax" operation="base_set" value="442"/>
 			</effect_group>
 			<effect_group>
 				<triggered_effect trigger="onSelfFirstSpawn" action="CallGameEvent" event="bats_horde_sequence"/>
@@ -806,7 +806,7 @@
 			<property name="AITask-9" value="Wander"/>
 			<property name="AITask-10" value=""/>
 			<effect_group name="Base Effects">
-				<passive_effect name="HealthMax" operation="base_set" value="250"/>				
+				<passive_effect name="HealthMax" operation="base_set" value="250"/>
 			</effect_group>
 			<effect_group>
 				<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" target="self" buff="buffTormentTrigger"/>
@@ -1325,7 +1325,7 @@
 			<drop event="Harvest" name="resourceLeather" count="1" tag="WasteTreasuresCompleteHarvest"/>
 			<drop event="Harvest" name="resourceBone" count="1" tag="WasteTreasuresCompleteHarvest"/>
 			<effect_group name="Base Effects">
-				<triggered_effect trigger="onSelfFirstSpawn" action="ReplaceMaterial, MaterialModifier" target_material_name="Rabbit" replace_material="@:Entities/Zombies/Zombies/Materials/HD_Crawler_Radiated.mat"/>
+				<triggered_effect trigger="onSelfFirstSpawn" action="ReplaceMaterial, MaterialModifier" target_material_name="" replace_material="@:Entities/Zombies/Zombies/Materials/HD_Crawler_Radiated.mat"/>
 				<!-- <triggered_effect trigger="onSelfFirstSpawn" action="AttachParticleEffectToEntity" particle="RadiatedParticlesOnMesh" parent_transform="LOD0" shape_mesh="true"/> -->
 				<passive_effect name="HealthMax" operation="base_set" value="80"/>
 				<passive_effect name="HealthMax" operation="perc_add" value="0"/>
@@ -1333,6 +1333,8 @@
 			</effect_group>
 			<property name="NavObject" value="animaltracking_rabbit"/>
 		</entity_class>
+		
+		
 		
 		<entity_class name="EntityLootContainerTILuckyRabbit">
 			<property name="HideInSpawnMenu" value="true"/>
@@ -1348,14 +1350,14 @@
 		</entity_class>
 		
 		<entity_class name="animalTIJackrabbit" extends="animalTemplateHostile">
-			<property name="UserSpawnType" value="Menu"/>			
+			<property name="UserSpawnType" value="Menu"/>
 			<property name="Class" value="EntityZombieDog"/>
 			<property name="Tags" value="entity,animal,rabbit,perkAT01,perkAT02,perkAT03"/>
 			<property name="MapIcon" value="ui_game_symbol_tracking_rabbit"/>
 			<property name="TrackerIcon" value="ui_game_symbol_tracking_rabbit"/>
 			<property name="AvatarController" value="AvatarAnimalController"/>
 			<property name="ModelType" value="Standard"/>
-			<property name="Prefab" value="/Entities/Animals/Rabbit/animalRabbitPrefab"/>
+			<property name="Prefab" value="/Entities/Animals/Rabbit/RABBIT"/>
 			<property name="Parent" value="Animals"/>
 			<property name="Faction" value="animals"/>
 			<property name="PhysicsBody" value="rabbit"/>
@@ -1366,7 +1368,7 @@
 			<property name="SwimOffset" value="2"/>
 			<property name="HasDeathAnim" value="true"/>
 			<property name="HasRagdoll" value="true"/>
-			<property name="CanBigHead" value="false" />			
+			<property name="CanBigHead" value="false"/>
 			<property name="HandItem" value="meleeHandAnimalZombieDog"/>
 			
 			<!-- Gameplay -->
@@ -1398,6 +1400,8 @@
 			</effect_group>
 			<property name="NavObject" value="animaltracking_rabbit"/>
 		</entity_class>
+		
+		
 		
 		<entity_class name="animalTIGiantRabbit" extends="animalTIJackrabbit">
 			<property name="UserSpawnType" value="Menu"/>
@@ -1527,5 +1531,18 @@
 				<!-- Zombie HP scale -->
 			</effect_group>
 		</entity_class>
-	</append>
+	</append>	
+	
+	<conditional>
+			<if cond="game_version() &lt; version(1,1,2)">
+				<set xpath="//entity_class[@name='animalTILuckyRabbit']/effect_group[@name='Base Effects']/triggered_effect/@target_material_name">RABBIT_diff_spec</set>
+				<set xpath="//entity_class[@name='animalTIJackrabbit']/property[@name='Prefab']/@value">/Entities/Animals/Rabbit/RABBIT</set>
+				<remove xpath="//entity_class[@name='animalTIJackrabbit']/property[@name='AvatarController']"/>
+			</if>
+			<else>
+				<set xpath="//entity_class[@name='animalTILuckyRabbit']/effect_group[@name='Base Effects']/triggered_effect/@target_material_name">Rabbit</set>
+				<set xpath="//entity_class[@name='animalTIJackrabbit']/property[@name='Prefab']/@value">/Entities/Animals/Rabbit/animalRabbitPrefab</set>
+			</else>
+		</conditional>		
 </HellsJanitor>
+
