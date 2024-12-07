@@ -167,6 +167,18 @@ animalChickenHostile,entityclasses,Entity,"Murder Turkey"
 animalTICoyote,entityclasses,Entity,"Killyote"
 zombieTITormentScreamer,entityclasses,Entity,"Torment Witch"
 
+TwitchAction_SpawnToughCommand,twitch,Actions,#spawn_tough
+TwitchAction_SpawnTough,twitch,Actions,Tough Zombie
+TwitchAction_SpawnToughDesc,twitch,Actions,Spawns a random tough zombie.
+
+TwitchAction_SpawnFeralCommand,twitch,Actions,#spawn_feral
+TwitchAction_SpawnFeral,twitch,Actions,Feral Zombie
+TwitchAction_SpawnFeralDesc,twitch,Actions,Spawns a random feral zombie.
+
+TwitchAction_SpawnRadCommand,twitch,Actions,#spawn_rad
+TwitchAction_SpawnRad,twitch,Actions,Radiated Zombie
+TwitchAction_SpawnRadDesc,twitch,Actions,Spawns a random radiated zombie.
+
 TwitchAction_SpawnZombieLimoCommand,twitch,Actions,#zombie_limo
 TwitchAction_SpawnZombieLimo,twitch,Actions,Canadian Eh?
 TwitchAction_SpawnZombieLimoDesc,twitch,Actions,Spawns a Legendary Canadian zombie.

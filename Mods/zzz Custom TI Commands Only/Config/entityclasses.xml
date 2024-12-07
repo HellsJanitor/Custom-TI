@@ -1049,24 +1049,50 @@
 			</effect_group>
 		</entity_class>
 		
-		<!-- Vulture Bat -->
-		<entity_class name="animalTIZombieVultureBat" extends="animalZombieVulture">
-			<!-- hardcoded to use the vomit attack if isRadiated=true -->
+		<!-- Vulture Bat -->		
+		<entity_class name="animalTIZombieVultureBat" extends="animalTemplateHostile">
+			<property name="Class" value="EntityVulture"/>
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="EntityFlags" value="animal,zombie"/>
+			<property name="EntityType" value="Zombie"/>
 			<property name="Tags" value="entity,animal,zombie,hostile,radiated,vulture,bat"/>
-			<property name="Radiated" value=""/>
+			<property name="AvatarController" value="AvatarAnimalController"/>
+			<property name="ModelType" value="Standard"/>
+			<property name="HasRagdoll" value="true"/>
+			<property name="PhysicsBody" value="vulture"/>
+			<property name="Mass" value="35"/>
+			<property name="Mesh" value="#@modfolder:Resources/ittybittybat.unity3d?VampireBat"/>
 			<property name="SizeScale" value=".15"/>
-			<property name="HasRagdoll" value="false"/>
 			<property name="TimeStayAfterDeath" value="1"/>
-			<!-- Gameplay -->
-			<property name="MoveSpeed" value="1.15"/>
-			<property name="MoveSpeedAggro" value="1.7, 2.0"/>
-			<!-- Used when player in vehicle -->
-			<property name="MaxTurnSpeed" value="250"/>
+
+			<property name="AITask-1" value=""/>
+			<property name="AITarget-1" value=""/>
+
+			<property name="SoundRandom" value="vultureroam"/>
+			<property name="SoundAlert" value="vulturealert"/>
+			<property name="SoundHurt" value="vulturepain"/>
+			<property name="SoundDeath" value="vulturedeath"/>
+			<property name="SoundAttack" value="vultureattack"/>
+			<property name="SoundSense" value="vulturesense"/>
+			<property name="SoundGiveUp" value="vulturegiveup"/>
+
+			<!-- Stealth -->
+			<property name="SightRange" value="70"/>
+
+			<!-- Gameplay  -->
+			<property name="MoveSpeed" value="1"/>
+			<property name="MoveSpeedAggro" value="2.1, 2.1"/> <!-- Used when player in vehicle -->
+			<property name="MaxTurnSpeed" value="190"/>
+
 			<property name="HandItem" value="meleeHandZombieBat"/>
 			<property name="ExperienceGain" value="200"/>
 			<property name="TintColor" value="#000000"/>
 			<property name="TintShaderProperties" value="_Color"/>
-			<!-- XP grunt radiated -->
+			<property name="Immunity" value="sickness;disease;wellness"/> <!-- bleeding; -->
+
+			<property name="DismemberMultiplierLegs" value="0"/>
+			<property name="PainResistPerHit" value="-1"/> <!-- no pain -->			
+
 			<effect_group name="Base Effects">
 				<passive_effect name="HealthMax" operation="base_set" value="60"/>
 				<passive_effect name="HealthMax" operation="perc_set" value="1"/>

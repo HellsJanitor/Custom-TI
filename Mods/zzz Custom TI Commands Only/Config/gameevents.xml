@@ -42,6 +42,22 @@
 	
 	<!-- *** spawns *** -->
 	<append xpath="/gameevents">
+	
+		<action_sequence name="spawn_tough" template="spawn_single">
+			<variable name="zombiename" value="zombieBiker,zombieLumberjack,zombieFemaleFat,zombieFatHawaiian,zombieBowler,zombieFatCop,zombieSoldier,zombieMutated,zombieSpider" />
+			<variable name="alertsound" value="zombiemalealert" />
+		</action_sequence>
+		
+		<action_sequence name="spawn_feral_mix" template="spawn_single">
+			<variable name="zombiename" value="zombieArleneFeral,zombieBoeFeral,zombieJoeFeral,zombieLabFeral,zombieDarleneFeral,zombieMarleneFeral,zombieYoFeral,zombieSteveFeral,zombieBusinessManFeral,zombieNurseFeral,zombieSkateboarderFeral,zombiePartyGirlFeral,zombieJanitorFeral,zombieInmateFeral,zombieFemaleFatFeral,zombieLumberjackFeral,zombieSpiderFeral,zombieFatHawaiianFeral,zombieSoldierFeral,zombieBikerFeral" />
+			<variable name="alertsound" value="zombieferalalert" />
+		</action_sequence>
+		
+		<action_sequence name="spawn_rad_mix" template="spawn_single">
+			<variable name="zombiename" value="zombieArleneRadiated,zombieBoeRadiated,zombieJoeRadiated,zombieLabRadiated,zombieDarleneRadiated,zombieMarleneRadiated,zombieYoRadiated,zombieSteveRadiated,zombieSkateboarderRadiated,zombieJanitorRadiated,zombieInmateRadiated,zombieFemaleFatRadiated,zombieLumberjackRadiated,zombieSpiderRadiated,zombieSoldierRadiated,zombieBikerRadiated" />
+			<variable name="alertsound" value="zombieferalalert" />
+		</action_sequence>
+	
 		<action_sequence name="spawn_zombie_limo" template="spawn_single">
 			<variable name="zombiename" value="zombieTILimo"/>
 			<variable name="alertsound" value="zombieferalalert"/>
@@ -1929,7 +1945,7 @@
 			<action class="SpawnEntity">
 				<property name="phase" value="0"/>
 				<property name="entity_names" value="animalTIZombieVultureBat"/>
-				<property name="spawn_count" value="5"/>
+				<property name="spawn_count" value="3"/>
 				<property name="air_spawn" value="true"/>
 				<property name="add_to_group" value="zombies"/>
 				<property name="safe_spawn" value="true"/>
@@ -2036,22 +2052,23 @@
 				<property name="entity_radius" value="6"/>
 			</action>
 			
-			<!-- <action class="Kill"> -->
-				<!-- <property name="phase" value="2"/> -->
-			<!-- </action> -->
-			
-			<!-- <action class="RemoveEntities"> -->
-				<!-- <property name="phase" value="3" /> -->
-				<!-- <property name="target_group" value="lootbags" /> -->
-			<!-- </action> -->
-			
-			<action class="ReplaceEntities">
-				<property name="time" value="5" />
-				<property name="phase" value="2" />
-				<property name="entity_names" value="animalRabbit" />
-				<property name="single_choice" value="true" />
+			<action class="Kill">
+				<property name="phase" value="2"/>
 				<property name="target_group" value="lootbags" />
 			</action>
+			
+			<action class="RemoveEntities">
+				<property name="phase" value="3" />
+				<property name="target_group" value="lootbags" />
+			</action>
+			
+			<!-- <action class="ReplaceEntities"> -->
+				<!-- <property name="time" value="5" /> -->
+				<!-- <property name="phase" value="2" /> -->
+				<!-- <property name="entity_names" value="animalRabbit" /> -->
+				<!-- <property name="single_choice" value="true" /> -->
+				<!-- <property name="target_group" value="lootbags" /> -->
+			<!-- </action> -->
 			
 		</action_sequence>
 		
