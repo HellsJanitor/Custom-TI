@@ -14,6 +14,9 @@
 
 3. Run the game, and connect your account to Twitch as usually
 
+>[!TIP]
+>I recommend playing with progression ==OFF==. These custom actions are brutal if chat can't gift you top-tier weapons and gear.
+
 4. Slay some zombies!!
 
 >[!IMPORTANT]
