@@ -10,7 +10,7 @@
 >[!NOTE]
 >Alternatively, *delete* the vanilla `Mods` folder, and extract the downloaded .zip to your game folder
 
-![Screenshot 2024-12-08 014853](https://github.com/user-attachments/assets/1a0ff076-ab3d-47a3-8d92-87eae5fde842)
+![Screenshot 2024-12-08 014853](https://github.com/user-attachments/assets/87af3a57-20c1-4283-8eaf-1ef2d228eb44)
 
 4. Run the game, and connect your account to Twitch as usually
 
