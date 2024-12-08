@@ -114,13 +114,13 @@ All commands are as configurable as vanilla commands, via integration's menu. **
 |'#electrocuted'|Gives the player a small shock|
 |'#clumsy_fighter'|Makes the player occasionally fall down while fighting|
 |'#hard_mode'|Makes zombies **much** tougher|
-|'#bog_of_eternal_stench'|`MULTIPLAYER ONLY` Infects nearby players|
+|'#bog_of_eternal_stench'|:red_circle:MULTIPLAYER ONLY:red_circle: Infects nearby players|
 |'#walk_it_off'|Player must walk, or take damage|
 |'#weak_knees'|Makes the player vulnerable to fall damage|
 |'#hangover'|Stuns the player, blurs the screen, and reduces food|
 |'#berserk'|Increases player's run speed and attack damage. Removes Jonah's Rage if active|
 |'#ring_of_love'|Heals all enemies in range|
-|'#ring_of_love_team'|`MULTIPLAYER ONLY` Heals all players in range|
+|'#ring_of_love_team'|:red_circle:MULTIPLAYER ONLY:red_circle: Heals all players in range|
 |'#high_stakes'|If the player dies with this effect active, they lose **all** their gear. Cannot be used while Sudden Death is active|
 |'#fly_like_a_bird'|Launches the player into the air|
 |'#junkyard'|Spawns a bunch of exploding barrels and cars around the player|
