@@ -29,10 +29,13 @@ No special extension required - the mod works with the 7 Days to Die Twitch Inte
 All commands are as configurable as vanilla commands, via integration's menu. **All** actions are enabled by default, but prices can be adjusted, and actions disabled if required
 
 # List of custom actions
+## Streamer-specific chat commands
+
+'#playerreset'  Chat command used to reset all player & map data
+
+'#give_up'						Chat command used to kill all spawns in a 150 block radius
 
 ## Spawns
-
-'#give_up'						Chat command used by the streamer exclusively, to kill all spawns in a 150 block radius
 
 '#spawn_zombie_limo'			Spawns a passive aggressive zombie, which spits explosive snowballs
 
@@ -209,6 +212,12 @@ All commands are as configurable as vanilla commands, via integration's menu. **
 '#banished'						Teleports the player, and removes all map data, backpacks, landclaims and spawn points
 
 '#horde_arena'					Spawns increasingly difficult waves of zombies, with a final reward for the player for beating every wave
+
+'#powerless' All zombies in range are more damage resistant
+
+'#chicken_out' Turns all nearby zombies into chickens
+
+'#fowl_play' Evolves all chickens into Murder Turkeys
 
 ## Credits
 
