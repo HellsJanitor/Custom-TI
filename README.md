@@ -93,8 +93,6 @@ All commands are as configurable as vanilla commands, via integration's menu. **
 |'#cops_and_strippers'|Spawns a horde of Cops and Party Girls|
 |'#perdition'|Opens the bowels of Hell ...|
 |'#furmidable_felines'|Spawns a group of Mountain Lions, Thunder Cats and Killer Kittens|
-|'#wight_fright'|Turns all nearby zombies into Wights|
-|'#bear_scare'|Turns all nearby zombies into Bears|
 
 ## Buffs/Debuffs
 
@@ -135,6 +133,8 @@ All commands are as configurable as vanilla commands, via integration's menu. **
 |'#powerless'|All zombies in range are more damage resistant|
 |'#chicken_out'|Turns all nearby zombies into chickens|
 |'#fowl_play'|Evolves all chickens into Murder Turkeys|
+|'#wight_fright'|Turns all nearby zombies into Wights|
+|'#bear_scare'|Turns all nearby zombies into Bears|
 
 ## Credits
 
