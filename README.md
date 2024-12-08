@@ -5,7 +5,7 @@
 
 1. Click the green "code" button, and then select "download zip"
 
-2. Find the downloaded zip, and extract the files to your 7 Days to Die 'Mods' folder (usually located at \steamapps\common\7 Days To Die\Mods)
+2. Find the downloaded .zip, and **OVERWRITE** the `Mods` folder in your 7 Days to Die parent folder (usually located at \steamapps\common\7 Days To Die) with the `Mods` folder from the .zip
 
 3. Run the game, and connect your account to Twitch as usually
 
