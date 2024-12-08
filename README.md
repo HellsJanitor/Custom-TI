@@ -7,12 +7,15 @@
 
 2. Find the downloaded .zip, and **OVERWRITE** the `Mods` folder in your 7 Days to Die parent folder (usually located at \steamapps\common\7 Days To Die) with the `Mods` folder from the .zip
 
-3. Run the game, and connect your account to Twitch as usually
-
-4. Slay some zombies!!
-
 >[!NOTE]
->The mod requires EAC to be **disabled**, and if used in a multiplayer environment, **must** be installed on client **and** server
+>Alternatively, *delete* the vanilla `Mods` folder, and extract the downloaded .zip to your game folder
+
+4. Run the game, and connect your account to Twitch as usually
+
+5. Slay some zombies!!
+
+>[!IMPORTANT]
+>The mod requires EAC to be **DISABLED**, and if used in a multiplayer environment, **MUST** be installed on client **and** server
 
 ### Overview
 
