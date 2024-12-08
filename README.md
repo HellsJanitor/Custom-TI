@@ -12,9 +12,9 @@
 
 ![Screenshot 2024-12-08 014853](https://github.com/user-attachments/assets/87af3a57-20c1-4283-8eaf-1ef2d228eb44)
 
-4. Run the game, and connect your account to Twitch as usually
+3. Run the game, and connect your account to Twitch as usually
 
-5. Slay some zombies!!
+4. Slay some zombies!!
 
 >[!IMPORTANT]
 >The mod requires EAC to be **DISABLED**, and if used in a multiplayer environment, **MUST** be installed on client **and** server
