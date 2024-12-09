@@ -148,6 +148,7 @@ All commands are as configurable as vanilla commands, via integration's menu. **
 |'#nerf'|Lowers attack speed, damage & reload time, worse aim, and takes damage when missing attacks|
 |'#broken_soul'|Breaks player's leg, and persists after death|
 |'#fumigation'|Player's current location is irradiated for 60 seconds|
+|'#haywire'|Causes all demolition zombies to explode|
 
 ## Credits
 

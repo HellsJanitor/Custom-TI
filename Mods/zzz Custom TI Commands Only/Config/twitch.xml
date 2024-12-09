@@ -3093,6 +3093,22 @@
 		<property name="presets" value="casual,standard,hardcore" />		
 	</action>
 	
+	<action name="twitch_haywire">
+		<property name="title" value="Haywire" />
+		<property name="command" value="#haywire" />
+		<property name="command_key" value="TwitchAction_HaywireCommand" />
+		<property name="title_key" value="TwitchAction_Haywire" />
+		<property name="description_key" value="TwitchAction_HaywireDesc" />
+		<property name="category" value="Special" />
+		<property name="event_name" value="haywire" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="300" />
+		<property name="cooldown" value="300" />
+		<property name="cooldown_blocked" value="false" />
+		<property name="is_positive" value="false" />
+		<property name="presets" value="casual,standard,hardcore" />		
+	</action>
+	
 	<action name="twitch_horde_arena">
 		<property name="title" value="Horde Arena" />
 		<property name="command" value="#horde_arena" />

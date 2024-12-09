@@ -9,6 +9,7 @@
 	</insertafter>
 	
 	<append xpath="/entity_classes/entity_class[@name='animalChicken']/property[@name='Tags']/@value">,chickenpassive</append>
+	<append xpath="/entity_classes/entity_class[@name='zombieDemolition']/property[@name='Tags']/@value">,haywire</append>
 	
 	<append xpath="/entity_classes">
 		<entity_class name="mm_MedicalSupplyCrate" extends="sc_General">
@@ -1301,7 +1302,8 @@
 			<property name="DismemberMultiplierArms" value="0"/>
 			<property name="DismemberMultiplierLegs" value="0"/>
 			<property name="AITask-1" value="RangedAttackTarget" data="itemType=1;cooldown=1;duration=2"/>
-			<property name="AITask-2" value=""/>
+			<property name="AITask-2" value="Territorial"/>
+			<property name="AITask-3" value=""/>
 			<!-- Marks end, so we don't inheirit -->
 			<property name="HandItem" value="meleeHandAnimalAirRaid"/>
 			

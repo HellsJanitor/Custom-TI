@@ -308,14 +308,12 @@
 		<property name="Extends" value="meleeHandZombieCop"/>
 		<property name="CreativeMode" value="None"/>
 		<property class="Action0">
-			<property name="DamageEntity" value="1"/>
-			<property name="DamageBlock" value="1"/>
-			<property name="Range" value="1.85"/>
+			<property name="Magazine_items" value="ammoTIProjectileAirRaid"/>
 		</property>
 		<property class="Action1">
 			<property name="Magazine_items" value="ammoTIProjectileAirRaid"/>
 		</property>
-		<effect_group name="meleeHandTIFragGirl" tiered="false">
+		<effect_group name="meleeHandAnimalAirRaid" tiered="false">
 			<passive_effect name="ModSlots" operation="base_set" value="0"/>
 			<passive_effect name="MagazineSize" operation="base_set" value="1"/>
 			<passive_effect name="BurstRoundCount" operation="base_set" value="1"/>
@@ -331,16 +329,15 @@
 		
 		<property class="Action1">
 			<property name="Class" value="Projectile"/>
-			<property name="Explosion.ParticleIndex" value="21"/>
-			<property name="Explosion.BlockDamage" value="20"/>
-			<property name="Explosion.EntityDamage" value="10"/>
-			<property name="Explosion.RadiusBlocks" value="4"/>
-			<property name="Explosion.RadiusEntities" value="4"/>
-			<property name="Explosion.DamageBonus.stone" value="3"/>
-			<property name="Explosion.DamageBonus.metal" value="3"/>
-			<property name="Explosion.DamageBonus.earth" value="5"/>
-			<property name="Explosion.DamageBonus.wood" value="5"/>
+			<property name="Explosion.ParticleIndex" value="12"/>
+			<property name="Explosion.RadiusBlocks" value="2.8"/>
+			<property name="Explosion.RadiusEntities" value="2.8"/>
+			<property name="Explosion.DamageBonus.stone" value="10"/>
+			<property name="Explosion.DamageBonus.metal" value="10"/>
+			<property name="Explosion.DamageBonus.earth" value="1"/>
+			<property name="Explosion.DamageBonus.wood" value="10"/>
 			<property name="Explosion.DamageBonus.water" value="0"/>
+			<property name="Explosion.BlastPower" value="100"/>
 			<property name="Velocity" value="20"/>
 			<property name="FlyTime" value="1"/>
 			<property name="LifeTime" value="20"/>

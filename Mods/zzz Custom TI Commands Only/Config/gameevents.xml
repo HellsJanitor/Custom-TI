@@ -69,33 +69,7 @@
 		<!-- *** hard reset of all player data *** -->
 		<action_sequence name="player_hard_reset">
 			<property name="allow_user_trigger" value="true"/>
-			<property name="action_type" value="Game"/>
-			
-			<!-- <action class="EmptyContainers"> -->
-			<!-- <property name="phase" value="1" /> -->
-			<!-- <property name="targeting_type" value="Distance" /> -->
-			<!-- <property name="max_distance" value="6000" /> -->
-			<!-- <property name="new_name" value=" " /> -->
-			<!-- <property name="include_inputs" value="true" /> -->
-			<!-- <property name="include_outputs" value="true" /> -->
-			<!-- <property name="include_fuel" value="true" /> -->
-			<!-- <property name="include_tools" value="true" /> -->
-			<!-- </action> -->
-			
-			<!-- <action class="EmptyContainers"> -->
-			<!-- <property name="phase" value="2" /> -->
-			<!-- <property name="targeting_type" value="SafeZone" /> -->
-			<!-- <property name="new_name" value=" " /> -->
-			<!-- <property name="include_inputs" value="true" /> -->
-			<!-- <property name="include_outputs" value="true" /> -->
-			<!-- <property name="include_fuel" value="true" /> -->
-			<!-- <property name="include_tools" value="true" /> -->
-			<!-- </action> -->
-			
-			<!-- <action class="DestroySafeZone"> -->
-			<!-- <property name="phase" value="3" /> -->
-			<!-- <property name="destruction_type" value="LandClaimOnly" /> -->
-			<!-- </action> -->
+			<property name="action_type" value="Game"/>			
 			
 			<action class="SetScreenEffect">
 				<property name="phase" value="4"/>
@@ -1603,10 +1577,10 @@
 				<property name="air_spawn" value="true"/>
 				<property name="add_to_group" value="airraid"/>
 				<property name="safe_spawn" value="true"/>
-				<property name="min_distance" value="5"/>
-				<property name="max_distance" value="5"/>
+				<property name="min_distance" value="15"/>
+				<property name="max_distance" value="20"/>
 				<property name="spawn_type" value="NearPosition"/>
-				<property name="yoffset" value="2"/>
+				<property name="yoffset" value="10"/>
 			</action>
 			
 			<action class="RageZombies">
@@ -2403,6 +2377,32 @@
 			<!-- <property name="target_group" value="lootbags" /> -->
 			<!-- </action> -->
 			
+		</action_sequence>
+		
+		<!-- *** haywire *** -->
+		<action_sequence name="haywire">
+			<property name="category" value="twitch_actions"/>
+			<property name="allow_while_dead" value="true"/>
+			
+			<action class="AddSpawnedEntitiesToGroup">
+				<property name="phase" value="0"/>
+				<property name="group_name" value="haywire"/>
+				<property name="entity_tags" value="haywire"/>
+				<property name="target_only" value="false"/>
+			</action>
+			
+			<action class="AddEntitiesToGroup">
+				<property name="phase" value="0"/>
+				<property name="group_name" value="haywire"/>
+				<property name="entity_tags" value="haywire"/>
+				<property name="target_only" value="false"/>
+			</action>
+			
+			<action class="PrimeEntity">
+				<property name="phase" value="1" />
+				<property name="target_group" value="haywire" />
+				<property name="override_time" value="1" />
+			</action>			
 		</action_sequence>
 		
 		<!-- *** Horde Arena *** -->

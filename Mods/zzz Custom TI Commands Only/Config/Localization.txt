@@ -474,6 +474,9 @@ TwitchAction_BrokenSoulDesc,twitch,Actions,"Breaks the player's leg, and persist
 TwitchAction_BuffFumigationCommand,twitch,Actions,#fumigation
 TwitchAction_BuffFumigation,twitch,Actions,Fumigation
 TwitchAction_BuffFumigationDesc,twitch,Actions,"Adds a toxic area of effect for 60 seconds at the player's location."
+TwitchAction_HaywireCommand,twitch,Actions,#haywire
+TwitchAction_Haywire,twitch,Actions,Haywire
+TwitchAction_HaywireDesc,twitch,Actions,"Causes all Demoltion zombies to explode."
 
 TwitchAction_GiveUpCommand,twitch,Actions,#give_up
 TwitchAction_GiveUp,twitch,Actions,Give Up
