@@ -39,6 +39,31 @@
 			<property name="LootListAlive" value="mm_FakeAmmoSupplyCrate"/>
 		</entity_class>
 		
+		<!-- *** "static" entity spawn test *** -->
+		<entity_class name="StaticSpawner" extends="zombieTemplateSlimFemale">
+			<property name="UserSpawnType" value="Menu"/>
+			<property name="SizeScale" value="0.01"/>
+			<property name="LootDropProb" value="-1"/>
+			<property name="TimeStayAfterDeath" value="1"/>
+			<property name="DeadBodyHitPoints" value="1"/>
+			
+			<property name="SoundRandom" value=""/>
+			<property name="SoundAlert" value=""/>
+			<property name="SoundAttack" value=""/>
+			<property name="SoundHurt" value=""/>
+			<property name="SoundDeath" value=""/>
+			<property name="SoundSense" value=""/>
+	
+			<effect_group name="Base Effects">
+				<passive_effect name="HealthMax" operation="base_set" value="60"/>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" value="1" duration="0"/>
+			</effect_group>
+			<effect_group>
+				<triggered_effect trigger="onSelfFirstSpawn" action="AnimatorSetInt" property="WalkType" value="4"/>
+				<triggered_effect trigger="onSelfFirstSpawn" action="AddBuff" buff="buffTIRadiationTrigger" />
+			</effect_group>
+		</entity_class>
+		
 		<entity_class name="zombieTILimo" extends="zombieFatCopFeral">
 			<property name="UserSpawnType" value="Menu"/>
 			<property name="SizeScale" value="1.1"/>
@@ -441,6 +466,7 @@
 			<!-- XP strong radiated -->
 			<property name="SizeScale" value="1.2"/>
 			<property name="HandItem" value="meleeHandZombieSwampThing"/>
+			<property name="LootDropEntityClass" value="EntityLootContainerBoss"/>
 			<effect_group name="Base Effects">
 				<passive_effect name="HealthMax" operation="base_set" value="3600"/>
 				<passive_effect name="HealthMax" operation="perc_set" value="1"/>
@@ -483,6 +509,7 @@
 			<property name="AITarget-1" value=""/>
 			<property name="NavObject" value="mm_shaman"/>
 			<property name="TimeStayAfterDeath" value="1"/>
+			<property name="LootDropEntityClass" value="EntityLootContainerBoss"/>
 			<effect_group name="Base Effects">
 				<passive_effect name="HealthMax" operation="base_set" value="782"/>
 				<passive_effect name="HealthMax" operation="perc_set" value="1"/>
@@ -543,6 +570,7 @@
 			<property name="HandItem" value="meleeTIHandZombieDecoy"/>
 			<property name="ExperienceGain" value="1000"/>
 			<property name="LootDropProb" value=".03"/>
+			<property name="LootDropEntityClass" value="EntityLootContainerBoss"/>
 			<!-- Feral -->
 			<effect_group name="Base Effects">
 				<passive_effect name="HealthMax" operation="base_set" value="800"/>
@@ -677,6 +705,7 @@
 			<!-- XP strong radiated -->
 			<property name="SizeScale" value="1.5"/>
 			<property name="Buffs" value="buffTIRingOfPainMummy"/>
+			<property name="LootDropEntityClass" value="EntityLootContainerBoss"/>
 			<effect_group name="Base Effects">
 				<triggered_effect trigger="onSelfFirstSpawn" action="ReplaceMaterial, MaterialModifier" target_material_name="HD_Wight_Radiated" replace_material="#@modfolder:Resources/wood.unity3d?p_wood"/>
 				<passive_effect name="HealthMax" operation="base_set" value="2200"/>
@@ -742,6 +771,7 @@
 			<property name="ExperienceGain" value="750"/>
 			<!-- XP grunt feral -->
 			<property name="LootDropProb" value=".03"/>
+			<property name="LootDropEntityClass" value="EntityLootContainerBoss"/>
 			<!-- Feral -->
 			<effect_group name="Base Effects">
 				<passive_effect name="HealthMax" operation="base_set" value="4000"/>
@@ -862,6 +892,7 @@
 			<property name="ExperienceGain" value="6666"/>
 			<!-- XP grunt -->
 			<property name="LootDropProb" value="1"/>
+			<property name="LootDropEntityClass" value="EntityLootContainerBoss"/>
 			<!-- Whether it drops a loot bag on death or not. -->
 			<effect_group name="Base Effects">
 				<passive_effect name="HealthMax" operation="base_set" value="6666"/>
@@ -1257,6 +1288,31 @@
 			</effect_group>
 		</entity_class>
 		
+		<entity_class name="animalTIAirRaid" extends="animalZombieVulture">
+			<property name="SizeScale" value="0.1"/>
+			<!-- Gameplay -->
+			<property name="MoveSpeed" value="0.8"/>
+			<property name="MoveSpeedAggro" value="2.1, 2.1"/>
+			<!-- Used when player in vehicle -->
+			<property name="MaxTurnSpeed" value="190"/>
+			<property name="SightRange" value="150"/>
+			<property name="Immunity" value="sickness;disease;wellness;heat;bleeding"/>
+			<property name="DismemberMultiplierHead" value="0"/>
+			<property name="DismemberMultiplierArms" value="0"/>
+			<property name="DismemberMultiplierLegs" value="0"/>
+			<property name="AITask-1" value="RangedAttackTarget" data="itemType=1;cooldown=1;duration=2"/>
+			<property name="AITask-2" value=""/>
+			<!-- Marks end, so we don't inheirit -->
+			<property name="HandItem" value="meleeHandAnimalAirRaid"/>
+			
+			<effect_group name="Base Effects">
+				<passive_effect name="BuffResistance" operation="base_set" value="2" tags="buffBurningZombie"/>
+				<passive_effect name="HealthMax" operation="base_set" value="5"/>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" value="1" duration="0"/>
+				<!-- Zombie HP scale -->
+			</effect_group>
+		</entity_class>
+				
 		<entity_class name="animalTIZombieBear" extends="animalZombieBear">
 			<property name="SizeScale" value="1.25"/>
 			<!-- Gameplay -->
@@ -1358,9 +1414,7 @@
 				<!-- Animal HP scale -->
 			</effect_group>
 			<property name="NavObject" value="animaltracking_rabbit"/>
-		</entity_class>
-		
-		
+		</entity_class>		
 		
 		<entity_class name="EntityLootContainerTILuckyRabbit">
 			<property name="HideInSpawnMenu" value="true"/>
@@ -1425,9 +1479,7 @@
 				<!-- Animal HP scale -->
 			</effect_group>
 			<property name="NavObject" value="animaltracking_rabbit"/>
-		</entity_class>
-		
-		
+		</entity_class>		
 		
 		<entity_class name="animalTIGiantRabbit" extends="animalTIJackrabbit">
 			<property name="UserSpawnType" value="Menu"/>

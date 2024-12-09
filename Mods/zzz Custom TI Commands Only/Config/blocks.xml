@@ -32,7 +32,7 @@
 		<block name="mineTIAirFilter">
 			<property name="Extends" value="mineCandyTin"/>
 			<property name="CreativeMode" value="None"/>
-			<property name="Model" value="#Other/Items?Weapons/Explosive/trapMineAirFilter_01Prefab.prefab"/>
+			<property name="Model" value="@:Other/Items/Weapons/Explosive/trapMineAirFilter_01Prefab.prefab"/>
 			<property name="Stacknumber" value="10"/>
 			<!-- STK explosives -->
 			<property name="MaxDamage" value="6"/>

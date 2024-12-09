@@ -1,6 +1,17 @@
 <configs>
+	<append xpath="/items/item[@name='medicalPlasterCast']/effect_group[@name='Primary Action']">
+		<triggered_effect trigger="onSelfPrimaryActionEnd" action="AddBuff" buff="buffLegCast">
+			<requirement name="HasBuff" buff="buffSoulBroken"/>
+		</triggered_effect>
+	</append>
+	
+	<append xpath="/items/item[@name='medicalPlasterCast']/effect_group[@name='Secondary Action']">
+		<triggered_effect trigger="onSelfSecondaryActionEnd" action="AddBuff" target="other" buff="buffLegCast">
+			<requirement name="HasBuff" target="other" buff="buffSoulBroken"/>
+		</triggered_effect>
+	</append>
+	
 	<append xpath="/items" >
-
 	<item name="meleeHandTIAnimalZombieChicken">
 		<property name="Extends" value="meleeHandMaster"/>
 		<property name="CreativeMode" value="None"/>
@@ -278,6 +289,51 @@
 			<property name="Explosion.ParticleIndex" value="5"/>
 			<property name="Explosion.BlockDamage" value="1200"/>
 			<property name="Explosion.EntityDamage" value="200"/>
+			<property name="Explosion.RadiusBlocks" value="4"/>
+			<property name="Explosion.RadiusEntities" value="4"/>
+			<property name="Explosion.DamageBonus.stone" value="3"/>
+			<property name="Explosion.DamageBonus.metal" value="3"/>
+			<property name="Explosion.DamageBonus.earth" value="5"/>
+			<property name="Explosion.DamageBonus.wood" value="5"/>
+			<property name="Explosion.DamageBonus.water" value="0"/>
+			<property name="Velocity" value="20"/>
+			<property name="FlyTime" value="1"/>
+			<property name="LifeTime" value="20"/>
+			<property name="Gravity" value="-10"/>
+			<property name="CollisionRadius" value=".5"/>
+		</property>
+	</item>
+	
+	<item name="meleeHandAnimalAirRaid">
+		<property name="Extends" value="meleeHandZombieCop"/>
+		<property name="CreativeMode" value="None"/>
+		<property class="Action0">
+			<property name="DamageEntity" value="1"/>
+			<property name="DamageBlock" value="1"/>
+			<property name="Range" value="1.85"/>
+		</property>
+		<property class="Action1">
+			<property name="Magazine_items" value="ammoTIProjectileAirRaid"/>
+		</property>
+		<effect_group name="meleeHandTIFragGirl" tiered="false">
+			<passive_effect name="ModSlots" operation="base_set" value="0"/>
+			<passive_effect name="MagazineSize" operation="base_set" value="1"/>
+			<passive_effect name="BurstRoundCount" operation="base_set" value="1"/>
+			<passive_effect name="SpreadDegreesVertical" operation="base_set" value="1"/>
+			<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="2"/>
+		</effect_group>
+	</item>
+
+	<item name="ammoTIProjectileAirRaid">
+		<property name="Meshfile" value="@:Other/Items/Weapons/Ranged/TimedCharge/timedChargePrefab.prefab"/>
+		<property name="Material" value="MDynamite"/>
+		<property name="CreativeMode" value="None"/>		
+		
+		<property class="Action1">
+			<property name="Class" value="Projectile"/>
+			<property name="Explosion.ParticleIndex" value="21"/>
+			<property name="Explosion.BlockDamage" value="20"/>
+			<property name="Explosion.EntityDamage" value="10"/>
 			<property name="Explosion.RadiusBlocks" value="4"/>
 			<property name="Explosion.RadiusEntities" value="4"/>
 			<property name="Explosion.DamageBonus.stone" value="3"/>
@@ -638,7 +694,7 @@
 		</effect_group>
 	</item>
 
-	<!-- Timed Charge used for air raids. -->
+	<!-- Timed Charge used for meteor shower. -->
 	<item name="thrownTITimedChargeShower">
 		<property name="Tags" value="ammo,weapon,attPerception,perkDemolitionsExpert"/>
 		<property name="ItemTypeIcon" value="explosion"/>

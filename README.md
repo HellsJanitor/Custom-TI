@@ -143,6 +143,11 @@ All commands are as configurable as vanilla commands, via integration's menu. **
 |'#fowl_play'|Evolves all chickens into Murder Turkeys|
 |'#wight_fright'|Turns all nearby zombies into Wights|
 |'#bear_scare'|Turns all nearby zombies into Bears|
+|'#amnesia'|Resets all perks and books|
+|'#endgame'|Maxes out player's gamestage|
+|'#nerf'|Lowers attack speed, damage & reload time, worse aim, and takes damage when missing attacks|
+|'#broken_soul'|Breaks player's leg, and persists after death|
+|'#fumigation'|Player's current location is irradiated for 60 seconds|
 
 ## Credits
 

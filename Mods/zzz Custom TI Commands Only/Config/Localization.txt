@@ -88,6 +88,13 @@ buffTIHighStakesMainName,buffs,Buff,"High Stakes"
 buffTIHighStakesMainDesc,buffs,Buff,"The stakes couldn't be higher ...\n\nIf you die, you lose everything!"
 buffTIFreshMeatName,buffs,Buff,"Fresh Meat"
 buffTIFreshMeatDesc,buffs,Buff,"You smell irrestible!\n\nAll zombies are enraged and will target you."
+buffTIEndGameMain,buffs,Buff,"End Game"
+buffTIEndGameMainName,buffs,Buff,"End Game"
+buffTIEndGameMainDesc,buffs,Buff,"You have MAXIMUM Game Stage.\n\nI don't know how you're gonna manage this ..."
+buffSoulBroken,buffs,Buff,"Broken Soul"
+buffSoulBrokenName,buffs,Buff,"Broken Soul"
+buffSoulBrokenDesc,buffs,Buff,"This is a really bad break.\n\nEven death won't fix it ..."
+buffSoulBrokenTooltip,buffs,Buff,"Your soul is broken ..."
 
 thrownTIAmmoPipeBomb,items,Gun,"Pipe Bomb (Ammo)"
 thrownTIAmmoPipeBombDesc,items,Gun,"Make pipe bombs with gunpowder, pipes & mischief.\nLight with [action:local:Secondary]\nThrow with [action:local:Primary]"
@@ -452,6 +459,21 @@ TwitchAction_SpawnRandomZombieDesc,twitch,Actions,"Spawns a horde of random zomb
 TwitchAction_SpawnRandomLegendaryZombieCommand,twitch,Actions,#legendary_zombie_grab_bag
 TwitchAction_SpawnRandomLegendaryZombie,twitch,Actions,Legendary Zombie Grab Bag
 TwitchAction_SpawnRandomLegendaryZombieDesc,twitch,Actions,"Spawns a random Legendary zombie."
+TwitchAction_BuffEndgameCommand,twitch,Actions,#endgame
+TwitchAction_BuffEndgame,twitch,Actions,Endgame
+TwitchAction_BuffEndgameDesc,twitch,Actions,"Maxes out the player's gamestage."
+TwitchAction_ActionAmnesiaCommand,twitch,Actions,#amnesia
+TwitchAction_ActionAmnesia,twitch,Actions,Amnesia
+TwitchAction_ActionAmnesiaDesc,twitch,Actions,"Resets all skill points and books."
+TwitchAction_NerfCommand,twitch,Actions,#nerf
+TwitchAction_Nerf,twitch,Actions,Nerf
+TwitchAction_NerfDesc,twitch,Actions,"Nerfs the player. Lowers attack speed, damage & reload time, worse aim, and takes damage when missing attacks."
+TwitchAction_BrokenSoulCommand,twitch,Actions,#broken_soul
+TwitchAction_BrokenSoul,twitch,Actions,Broken Soul
+TwitchAction_BrokenSoulDesc,twitch,Actions,"Breaks the player's leg, and persists on death."
+TwitchAction_BuffFumigationCommand,twitch,Actions,#fumigation
+TwitchAction_BuffFumigation,twitch,Actions,Fumigation
+TwitchAction_BuffFumigationDesc,twitch,Actions,"Adds a toxic area of effect for 60 seconds at the player's location."
 
 TwitchAction_GiveUpCommand,twitch,Actions,#give_up
 TwitchAction_GiveUp,twitch,Actions,Give Up

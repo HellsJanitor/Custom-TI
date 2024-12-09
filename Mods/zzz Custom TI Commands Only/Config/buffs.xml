@@ -1,4 +1,91 @@
 <configs>
+	<insertafter xpath="/buffs/buff[@name='buffLegCast']/effect_group/triggered_effect[@buff='buffLegBroken']">
+		<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffSoulBroken"/>
+	</insertafter>
+	
+	<set xpath="/buffs/buff[@name='buffBrokenLimbStatus']">
+		<stack_type value="replace"/>
+		<duration value="0"/>
+
+		<effect_group>
+			<!-- If leg or arm is splinted, set status to 1 -->
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="brokenLimbStatus" operation="set" value="1">
+				<requirement name="HasBuff" buff="buffLegSplinted"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="brokenLimbStatus" operation="set" value="1">
+				<requirement name="HasBuff" buff="buffArmSplinted"/></triggered_effect>
+			<!-- If leg or arm is broken, set status to 2 -->
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="brokenLimbStatus" operation="set" value="2">
+				<requirement name="HasBuff" buff="buffLegBroken"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="brokenLimbStatus" operation="set" value="1">
+				<requirement name="HasBuff" buff="buffSoulBroken"/></triggered_effect>	
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="brokenLimbStatus" operation="set" value="2">
+				<requirement name="HasBuff" buff="buffArmBroken"/></triggered_effect>
+			<!-- When stacking, reset status -->
+			<triggered_effect trigger="onSelfBuffStack" action="RemoveCVar" cvar="brokenLimbStatus">
+				<requirement name="ProgressionLevel" progression_name="perkPhysician" operation="LTE" value="0"/>
+			</triggered_effect>
+			<!-- When stacking and if splinted, set status to 1 -->
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="brokenLimbStatus" operation="set" value="1">
+				<requirement name="HasBuff" buff="buffLegSplinted"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="brokenLimbStatus" operation="set" value="1">
+				<requirement name="HasBuff" buff="buffArmSplinted"/></triggered_effect>
+			<!-- When stacking and if broken, set status to 2 -->
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="brokenLimbStatus" operation="set" value="2">
+				<requirement name="HasBuff" buff="buffLegBroken"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="brokenLimbStatus" operation="set" value="1">
+				<requirement name="HasBuff" buff="buffSoulBroken"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="brokenLimbStatus" operation="set" value="2">
+				<requirement name="HasBuff" buff="buffArmBroken"/></triggered_effect>
+			<!-- Heal leg sprains if physician perk level 1 -->
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="brokenLimbStatus" operation="set" value="2">
+				<requirement name="ProgressionLevel" progression_name="perkPhysician" operation="GTE" value="1"/>
+				<requirement name="HasBuff" buff="buffLegSprained"/>
+			</triggered_effect>
+			<!-- Heal arm sprains if physician perk level 1 -->
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="brokenLimbStatus" operation="set" value="2">
+				<requirement name="ProgressionLevel" progression_name="perkPhysician" operation="GTE" value="1"/>
+				<requirement name="HasBuff" buff="buffArmSprained"/>
+			</triggered_effect>
+			<!-- On update, reset status -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveCVar" cvar="brokenLimbStatus">
+				<requirement name="ProgressionLevel" progression_name="perkPhysician" operation="LTE" value="0"/>
+			</triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveCVar" cvar="brokenLimbStatus">
+				<requirement name="!HasBuff" buff="buffLegSprained"/>
+				<requirement name="!HasBuff" buff="buffArmSprained"/>
+			</triggered_effect>
+			<!-- On update, if splinted, set status to 1 -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="brokenLimbStatus" operation="set" value="1">
+				<requirement name="HasBuff" buff="buffLegSplinted"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="brokenLimbStatus" operation="set" value="1">
+				<requirement name="HasBuff" buff="buffArmSplinted"/></triggered_effect>
+			<!-- On update, if broken, set status to 2 -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="brokenLimbStatus" operation="set" value="2">
+				<requirement name="HasBuff" buff="buffLegBroken"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="brokenLimbStatus" operation="set" value="1">
+				<requirement name="HasBuff" buff="buffSoulBroken"/></triggered_effect>	
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="brokenLimbStatus" operation="set" value="2">
+				<requirement name="HasBuff" buff="buffArmBroken"/></triggered_effect>
+			<!-- Heal leg sprains if physician perk level 1 -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="brokenLimbStatus" operation="set" value="2">
+				<requirement name="ProgressionLevel" progression_name="perkPhysician" operation="GTE" value="1"/>
+				<requirement name="HasBuff" buff="buffLegSprained"/>
+			</triggered_effect>
+			<!-- Heal arm sprains if physician perk level 1 -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="brokenLimbStatus" operation="set" value="2">
+				<requirement name="ProgressionLevel" progression_name="perkPhysician" operation="GTE" value="1"/>
+				<requirement name="HasBuff" buff="buffArmSprained"/>
+			</triggered_effect>
+
+			<!-- If status LTE 0, remove buff -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffBrokenLimbStatus">
+				<requirement name="CVarCompare" cvar="brokenLimbStatus" operation="LTE" value="0"/>
+			</triggered_effect>
+			
+		</effect_group>
+	
+	</set>
+	
 	<append xpath="/buffs">
 		<!-- frozen (slow) debuff -->
 		<buff name="buffFrozen_Slow" showonhud="true" name_key="buffElementFreezingName" description_key="buffElementFreezingDesc" tooltip_key="buffElementFreezingTooltip" icon="ui_game_symbol_cold" icon_color="255,0,0" icon_blink="true">
@@ -74,12 +161,94 @@
 			</effect_group>
 		</buff> -->
 		
+		<!-- Broken Soul -->
+		<buff name="buffSoulBroken" name_key="buffSoulBrokenName" description_key="buffSoulBrokenDesc" tooltip_key="buffSoulBrokenTooltip" icon="ui_game_symbol_brokenbone" icon_color="255,0,0" remove_on_death="false">
+		<damage_type value="break"/>
+		<stack_type value="replace"/>
+		<duration value="0"/>
+		<display_value value=".legHurtDurationDisplay"/>
+		<display_value_format value="time"/>
+		<tags value="broken_soul" />
+
+		<effect_group>
+			<!-- Blinks the display -->
+			<passive_effect name="BuffBlink" operation="base_set" value="2" duration="0,3" tags="buffSoulBroken"/>
+			<!-- Handlers for other leg buffs -->
+			<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffBrokenLimbStatus"/>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffLegSplinted"/>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffLegCast"/>
+			<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffLegSprained"/>
+			<!-- Setup or stack counters -->
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar="$legHurtCounter" operation="set" value="7208">
+				<requirement name="CVarCompare" cvar="$legHurtCounter" operation="LT" value="7208"/></triggered_effect>
+			<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar="$legHurtCounter" operation="set" value="7208">
+				<requirement name="CVarCompare" cvar="$legHurtCounter" operation="LT" value="7208"/></triggered_effect>
+			<!-- If not running, decrease counter with natural healing -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$legHurtCounter" operation="subtract" value="@$critHitNaturalHealingRate">
+				<requirement name="!EntityHasMovementTag" tags="running"/></triggered_effect>
+			<!-- Reset -->
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveCVar" cvar="$legHurtCounter,.LegHurtHealthBlockage">
+				<requirement name="HoldingItemHasTags" tags="cast"/>
+				<requirement name="ProgressionLevel" progression_name="perkPhysician" operation="GTE" value="3"/>
+			</triggered_effect>
+		</effect_group>
+
+		<effect_group name="DisplayDuration">
+			<!-- Handlers for the display -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".legHurtDurationDisplay" operation="set" value="@$legHurtCounter"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".legHurtDurationDisplay" operation="divide" value="@$critHitNaturalHealingRate"/>
+			<triggered_effect trigger="onSelfBuffRemove" action="RemoveCVar" cvar=".legHurtDurationDisplay"/>
+		</effect_group>
+
+		<effect_group name="activity makes damaged legs worse">
+			<!-- If not consuming steroids... -->
+			<requirement name="!HasBuff" buff="buffDrugSteroids"/>
+				<!-- Jumping makes it worse -->
+				<triggered_effect trigger="onSelfJump" action="ModifyStats" stat="Health" operation="subtract" value="1"/>
+				<triggered_effect trigger="onSelfJump" action="ModifyCVar" cvar="$legHurtCounter" operation="add" value="20"/>
+				<triggered_effect trigger="onSelfJump" action="AddBuff" buff="buffLegGetsWorse"/>
+				<!-- Falling makes it worse -->
+				<triggered_effect trigger="onSelfFallImpact" action="ModifyCVar" cvar="$legHurtCounter" operation="add" value="20">
+					<requirement name="CVarCompare" cvar="_fallSpeed" operation="GTE" value=".07"/></triggered_effect>
+				<triggered_effect trigger="onSelfFallImpact" action="AddBuff" buff="buffLegGetsWorse">
+					<requirement name="CVarCompare" cvar="_fallSpeed" operation="GTE" value=".07"/></triggered_effect>
+				<!-- If running, make it worse -->
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$legHurtCounter" operation="add" value="2">
+					<requirement name="EntityHasMovementTag" tags="running"/></triggered_effect>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" buff="buffLegGetsWorse">
+					<requirement name="EntityHasMovementTag" tags="running"/></triggered_effect>
+				<!-- Clamp counter -->
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="$legHurtCounter" operation="set" value="7208">
+					<requirement name="CVarCompare" cvar="$legHurtCounter" operation="GT" value="7208"/>
+				</triggered_effect>
+		</effect_group>
+
+		<effect_group>
+			<!-- If counter LTE 0, reset counter, health blockage, and remove buff -->
+			<requirement name="CVarCompare" cvar="$legHurtCounter" operation="LTE" value="0"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveCVar" cvar="$legHurtCounter,.LegHurtHealthBlockage"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffSoulBroken"/>
+		</effect_group>
+
+		<effect_group>
+			<!-- Setup the max health blockage based on the remaining counter -->
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".LegHurtHealthBlockage" operation="set" value="@$legHurtCounter"/>
+			<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".LegHurtHealthBlockage" operation="divide" value="240"/> <!-- 30 @ 120m -->
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".LegHurtHealthBlockage" operation="set" value="@$legHurtCounter"/>
+			<triggered_effect trigger="onSelfBuffStart" action="ModifyCVar" cvar=".LegHurtHealthBlockage" operation="divide" value="240"/> <!-- 30 @ 120m -->
+			<passive_effect name="HealthMaxBlockage" operation="base_add" value="@.LegHurtHealthBlockage"/>
+			<!-- Slow movement and reduce jump strength -->
+			<passive_effect name="Mobility" operation="base_add" value="-.5"/>
+			<passive_effect name="JumpStrength" operation="perc_subtract" value="0.12"/>
+		</effect_group>
+	</buff>
+
 		<!-- Lost - huge teleport, and reset map data and waypoints -->
 		<buff name="buffTILost" hidden="true">
 			<duration value="1"/>
 			<effect_group>
 				<triggered_effect trigger="onSelfBuffStart" action="CallGameEvent" event="action_teleport_long" allow_client_call="true"/>
-				<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="action_lost" allow_client_call="true"/>
+				<triggered_effect trigger="onSelfBuffFinish" action="CallGameEvent" event="action_banished" allow_client_call="true"/>
 			</effect_group>
 		</buff>
 		
@@ -770,6 +939,34 @@
 		</buff>
 		
 		<!-- Fumigation - Take radiation damage in a fumigation area -->
+		
+		<buff name="buffTIRadiationTrigger">
+			<damage_type value="radiation"/>
+			<stack_type value="ignore"/>
+			<duration value="1000"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="AddBuff" target="selfAOE" range="40" buff="buffTIRadiationEffect">
+					<requirement name="EntityTagCompare" target="other" tags="player"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
+		<buff name="buffTIRadiationEffect" name_key="buffTIRadiationName" description_key="buffTIRadiationDesc" icon="ui_game_symbol_radiation" icon_color="215,28,10" icon_blink="true">
+			<damage_type value="radiation"/>
+			<stack_type value="replace"/>
+			<duration value="5"/>
+			<update_rate value=".5"/>
+			<effect_group>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyStats" stat="Health" operation="subtract" value="1"/>
+				<triggered_effect trigger="onSelfBuffStart" action="ModifyScreenEffect" effect_name="Radiation" intensity=".45" fade="2"/>
+				<triggered_effect trigger="onSelfDied" action="ModifyScreenEffect" effect_name="Radiation" intensity="0" fade="0"/>
+				<triggered_effect trigger="onSelfBuffRemove" action="ModifyScreenEffect" effect_name="Radiation" intensity="0" fade="2"/>
+				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar="infectionCounter" operation="add" value="25">
+					<requirement name="HasBuff" buff="buffInfectionMain"/>
+				</triggered_effect>
+			</effect_group>
+		</buff>
+		
 		<buff name="buffTIRadiation" name_key="buffTIRadiationName" description_key="buffTIRadiationDesc" icon="ui_game_symbol_radiation" icon_color="215,28,10" icon_blink="true">
 			<damage_type value="radiation"/>
 			<stack_type value="ignore"/>

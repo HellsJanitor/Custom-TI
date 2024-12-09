@@ -1112,6 +1112,30 @@
 		<cooldown_addition name="twitch_EmberPiles" time="30" />
 	</action>
 	
+	<action name="twitch_Cacti">
+		<property name="command" value="#cacti" />
+		<property name="command_key" value="TwitchAction_ActionCactiCommand" />
+		<property name="title_key" value="TwitchAction_ActionCacti" />
+		<property name="description_key" value="TwitchAction_ActionCactiDesc" />
+		<property name="category" value="Special,Blocks" />
+		<property name="display_category" value="Extras" />
+		<property name="start_gamestage" value="10" />
+		<property name="event_name" value="action_cacti" />
+		<property name="add_cooldown" value="true" />
+		<property name="cooldown_add_amount" value="60" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="300" />
+		<property name="special_requirement" value="NotSafe,NotOnVehicle" />
+		<property name="is_positive" value="false" />
+		<property name="delay_notify" value="true" />
+		<property name="cooldown" value="200" />
+		<property name="cooldown_blocked" value="true" />
+		
+		<cooldown_addition name="twitch_SpikeTraps" time="30" />
+		<cooldown_addition name="twitch_Minefield" time="30" />
+		<cooldown_addition name="twitch_EmberPiles" time="30" />
+	</action>
+	
 	<action name="twitch_DropToolbelt">
 		<property name="command" value="#drop_toolbelt" />
 		<property name="command_key" value="TwitchAction_ActionDropToolbeltCommand" />
@@ -2445,6 +2469,72 @@
 		<property name="presets" value="casual,standard,hardcore" />		
 	</action>
 	
+	<action name="twitch_buffFumigation">
+		<property name="title" value="Fumigation" />
+		<property name="command" value="#fumigation" />
+		<property name="command_key" value="TwitchAction_BuffFumigationCommand" />
+		<property name="title_key" value="TwitchAction_BuffFumigation" />
+		<property name="description_key" value="TwitchAction_BuffFumigationDesc" />
+		<property name="category" value="Debuffs" />
+		<property name="event_name" value="fumigation" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="250" />
+		<property name="cooldown" value="1" />
+		<property name="cooldown_blocked" value="false" />
+		<property name="is_positive" value="false" />
+		<property name="presets" value="casual,standard,hardcore" />		
+	</action>
+	
+	<action name="twitch_buffEndgame">
+		<property name="title" value="Endgame" />
+		<property name="command" value="#endgame" />
+		<property name="command_key" value="TwitchAction_BuffEndgameCommand" />
+		<property name="title_key" value="TwitchAction_BuffEndgame" />
+		<property name="description_key" value="TwitchAction_BuffEndgameDesc" />
+		<property name="category" value="Debuffs" />
+		<property name="event_name" value="buff_endgame" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="500" />
+		<property name="cooldown" value="1" />
+		<property name="cooldown_blocked" value="false" />
+		<property name="is_positive" value="false" />
+		<property name="presets" value="casual,standard,hardcore" />		
+	</action>
+	
+	<action name="twitch_buffMindWipe">
+		<property name="command" value="#mind_wipe" />
+		<property name="command_key" value="TwitchAction_ActionMindWipeCommand" />
+		<property name="title_key" value="TwitchAction_ActionMindWipe" />
+		<property name="description_key" value="TwitchAction_ActionMindWipeDesc" />
+		<property name="category" value="Special" />
+		<property name="display_category" value="Extras" />
+		<property name="start_gamestage" value="1" />
+		<property name="event_name" value="action_mind_wipe" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="750" />
+		<property name="cooldown" value="600" />
+		<property name="cooldown_blocked" value="true" />
+		
+		<cooldown_addition name="twitch_buffNewbie" time="300" />
+	</action>
+	
+	<action name="twitch_buffAmnesia">
+		<property name="command" value="#amnesia" />
+		<property name="command_key" value="TwitchAction_ActionAmnesiaCommand" />
+		<property name="title_key" value="TwitchAction_ActionAmnesia" />
+		<property name="description_key" value="TwitchAction_ActionAmnesiaDesc" />
+		<property name="category" value="Special" />
+		<property name="display_category" value="Extras" />
+		<property name="start_gamestage" value="1" />
+		<property name="event_name" value="action_amnesia" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="1000" />
+		<property name="cooldown" value="600" />
+		<property name="cooldown_blocked" value="true" />
+		
+		<cooldown_addition name="twitch_buffNewbie" time="300" />
+	</action>
+	
 	<action name="twitch_buffPoke">
 		<property name="title" value="Poke" />
 		<property name="command" value="#poke" />
@@ -2949,6 +3039,38 @@
 		<property name="event_name" value="action_hiccups" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="400" />
+		<property name="cooldown" value="300" />
+		<property name="cooldown_blocked" value="false" />
+		<property name="is_positive" value="false" />
+		<property name="presets" value="casual,standard,hardcore" />		
+	</action>
+	
+	<action name="twitch_nerf">
+		<property name="title" value="Nerf" />
+		<property name="command" value="#nerf" />
+		<property name="command_key" value="TwitchAction_NerfCommand" />
+		<property name="title_key" value="TwitchAction_Nerf" />
+		<property name="description_key" value="TwitchAction_NerfDesc" />
+		<property name="category" value="Debuffs" />
+		<property name="event_name" value="buff_nerf" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="500" />
+		<property name="cooldown" value="300" />
+		<property name="cooldown_blocked" value="false" />
+		<property name="is_positive" value="false" />
+		<property name="presets" value="casual,standard,hardcore" />		
+	</action>
+	
+	<action name="twitch_broken_soul">
+		<property name="title" value="Broken Soul" />
+		<property name="command" value="#broken_soul" />
+		<property name="command_key" value="TwitchAction_BrokenSoulCommand" />
+		<property name="title_key" value="TwitchAction_BrokenSoul" />
+		<property name="description_key" value="TwitchAction_BrokenSoulDesc" />
+		<property name="category" value="Debuffs" />
+		<property name="event_name" value="buff_broken_soul" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="200" />
 		<property name="cooldown" value="300" />
 		<property name="cooldown_blocked" value="false" />
 		<property name="is_positive" value="false" />
