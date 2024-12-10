@@ -89,52 +89,37 @@
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
-	<action name="twitch_toughZombie" >
+	<action name="twitch_toughZombie" extends="twitch_normalZombie">
 		<property name="command" value="#spawn_tough" />
 		<property name="command_key" value="TwitchAction_SpawnToughCommand" />
 		<property name="title_key" value="TwitchAction_SpawnTough" />
+		<property name="description_key" value="TwitchAction_SpawnToughDesc" />
 		<property name="category" value="Spawns" />
 		<property name="event_name" value="spawn_tough" />
 		<property name="default_cost" value="375" />
 		<property name="point_type" value="SP" />
-		<property name="enabled" value="true" />
-		<property name="description_key" value="TwitchAction_SpawnToughDesc" />
-		<property name="add_cooldown" value="true" />
-		<property name="cooldown_blocked" value="true" />
-		<property name="waiting_blocked" value="true" />
-		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
-	<action name="twitch_feralZombie" >
+	<action name="twitch_feralZombie" extends="twitch_normalZombie">
 		<property name="command" value="#spawn_feral" />
 		<property name="command_key" value="TwitchAction_SpawnFeralCommand" />
 		<property name="title_key" value="TwitchAction_SpawnFeral" />
-		<property name="category" value="Spawns" />
+		<property name="description_key" value="TwitchAction_SpawnFeralDesc" />
+		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_feral_mix" />
 		<property name="default_cost" value="500" />
 		<property name="point_type" value="SP" />
-		<property name="enabled" value="true" />
-		<property name="description_key" value="TwitchAction_SpawnFeralDesc" />
-		<property name="add_cooldown" value="true" />
-		<property name="cooldown_blocked" value="true" />
-		<property name="waiting_blocked" value="true" />
-		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
-	<action name="twitch_radZombie" >
+	<action name="twitch_radZombie" extends="twitch_normalZombie">
 		<property name="command" value="#spawn_rad" />
 		<property name="command_key" value="TwitchAction_SpawnRadCommand" />
 		<property name="title_key" value="TwitchAction_SpawnRad" />
-		<property name="category" value="Spawns" />
+		<property name="description_key" value="TwitchAction_SpawnRadDesc" />
+		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_rad_mix" />
 		<property name="default_cost" value="750" />
 		<property name="point_type" value="SP" />
-		<property name="enabled" value="true" />
-		<property name="description_key" value="TwitchAction_SpawnRadDesc" />
-		<property name="add_cooldown" value="true" />
-		<property name="cooldown_blocked" value="true" />
-		<property name="waiting_blocked" value="true" />
-		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
 	<action name="twitch_spawnWeapon1">
@@ -3070,7 +3055,7 @@
 		<property name="category" value="Debuffs" />
 		<property name="event_name" value="buff_broken_soul" />
 		<property name="point_type" value="Bits" />
-		<property name="default_cost" value="200" />
+		<property name="default_cost" value="500" />
 		<property name="cooldown" value="300" />
 		<property name="cooldown_blocked" value="false" />
 		<property name="is_positive" value="false" />
