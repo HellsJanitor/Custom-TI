@@ -476,7 +476,30 @@ TwitchAction_BuffFumigation,twitch,Actions,Fumigation
 TwitchAction_BuffFumigationDesc,twitch,Actions,"Adds a toxic area of effect for 60 seconds at the player's location."
 TwitchAction_HaywireCommand,twitch,Actions,#haywire
 TwitchAction_Haywire,twitch,Actions,Haywire
-TwitchAction_HaywireDesc,twitch,Actions,"Causes all Demoltion zombies to explode."
+TwitchAction_HaywireDesc,twitch,Actions,"Causes all Demolition zombies to explode."
+TwitchAction_SpawnRandomAnimalSmallCommand,twitch,Actions,#animal_grab_bag_small
+TwitchAction_SpawnRandomAnimalSmall,twitch,Actions,Small Animal Grab Bag
+TwitchAction_SpawnRandomAnimalSmallDesc,twitch,Actions,"Spawns a random small hostile animal."
+TwitchAction_GodsWrathCommand,twitch,Actions,#gods_wrath
+TwitchAction_GodsWrath,twitch,Actions,God's Wrath
+TwitchAction_GodsWrathDesc,twitch,Actions,"Kills all zombies in a 2000 block radius."
+TwitchAction_SupplyWeaponCommand1,twitch,Actions,#supply_weapon1
+TwitchAction_SupplyWeaponCommand2,twitch,Actions,#supply_weapon2
+TwitchAction_SupplyWeaponCommand3,twitch,Actions,#supply_weapon3
+TwitchAction_SupplyWeaponCommand4,twitch,Actions,#supply_weapon4
+TwitchAction_SupplyArmorCommand0,twitch,Actions,#supply_armor0
+TwitchAction_SupplyArmorCommand1,twitch,Actions,#supply_armor1
+TwitchAction_SupplyArmorCommand2,twitch,Actions,#supply_armor2
+TwitchAction_SupplyModsCommand1,twitch,Actions,#supply_mods1
+TwitchAction_SupplyModsCommand2,twitch,Actions,#supply_mods2
+TwitchAction_SupplyModsCommand3,twitch,Actions,#supply_mods3
+TwitchAction_SupplyToolCommand1,twitch,Actions,#supply_tool1
+TwitchAction_SupplyToolCommand2,twitch,Actions,#supply_tool2
+TwitchAction_SupplyToolCommand3,twitch,Actions,#supply_tool3
+TwitchAction_SupplyAmmoCommand0,twitch,Actions,#supply_ammo0
+TwitchAction_SupplyAmmoCommand1,twitch,Actions,#supply_ammo1
+TwitchAction_SupplyAmmoCommand2,twitch,Actions,#supply_ammo2
+TwitchAction_SupplyAmmoCommand3,twitch,Actions,#supply_ammo3
 
 TwitchAction_GiveUpCommand,twitch,Actions,#give_up
 TwitchAction_GiveUp,twitch,Actions,Give Up

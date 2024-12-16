@@ -107,8 +107,8 @@
 			<effect_group name="Base Effects">
 				<triggered_effect trigger="onSelfDamagedOther" action="AddBuff" target="other" buff="buffFrozen_Slow"/>
 				<triggered_effect trigger="onProjectileImpact" action="AddBuff" target="other" buff="buffFrozen_Slow"/>
-				<passive_effect name="HealthMax" operation="base_set" value="980"/>
-				<passive_effect name="HealthMax" operation="perc_set" value="1"/>
+				<passive_effect name="HealthMax" operation="base_set" value="2500"/>
+				<passive_effect name="HealthChangeOT" operation="base_set" value="0.9"/>
 				<!-- Zombie HP scale -->
 				<triggered_effect trigger="onSelfFirstSpawn" action="ModifyCVar" target="self" cvar="EntityBoss" operation="set" value="1"/>
 			</effect_group>
@@ -134,7 +134,7 @@
 				<!-- Zombie HP scale -->
 				<passive_effect name="EntityDamage" operation="perc_add" value="1"/>
 				<!-- Boss damage -->
-				<passive_effect name="HealthChangeOT" operation="base_set" value="1.4"/>
+				<passive_effect name="HealthChangeOT" operation="base_set" value="0.9"/>
 				<!-- Boss regen, 1% -->
 				<triggered_effect trigger="onSelfFirstSpawn" action="ModifyCVar" target="self" cvar="EntityBoss" operation="set" value="1"/>
 			</effect_group>
@@ -157,7 +157,7 @@
 				<!-- Zombie HP scale -->
 				<passive_effect name="EntityDamage" operation="perc_add" value="1.1"/>
 				<!-- Boss damage -->
-				<passive_effect name="HealthChangeOT" operation="base_set" value="1.4"/>
+				<passive_effect name="HealthChangeOT" operation="base_set" value="0.9"/>
 				<!-- Boss regen, 1% -->
 				<triggered_effect trigger="onSelfFirstSpawn" action="ModifyCVar" target="self" cvar="EntityBoss" operation="set" value="1"/>
 			</effect_group>
@@ -187,7 +187,7 @@
 				<!-- Zombie HP scale -->
 				<passive_effect name="EntityDamage" operation="perc_add" value="1.1"/>
 				<!-- Boss damage -->
-				<passive_effect name="HealthChangeOT" operation="base_set" value="1.4"/>
+				<passive_effect name="HealthChangeOT" operation="base_set" value="0.9"/>
 				<!-- Boss regen, 1% -->
 				<triggered_effect trigger="onSelfFirstSpawn" action="ModifyCVar" target="self" cvar="EntityBoss" operation="set" value="1"/>
 			</effect_group>
@@ -208,7 +208,7 @@
 				<!-- Zombie HP scale -->
 				<passive_effect name="EntityDamage" operation="perc_add" value="1.25"/>
 				<!-- Boss damage -->
-				<passive_effect name="HealthChangeOT" operation="base_set" value="1.4"/>
+				<passive_effect name="HealthChangeOT" operation="base_set" value="0.9"/>
 				<!-- Boss regen, 1% -->
 				<triggered_effect trigger="onSelfFirstSpawn" action="ModifyCVar" target="self" cvar="EntityBoss" operation="set" value="1"/>
 			</effect_group>
@@ -349,7 +349,7 @@
 				<!-- Zombie HP scale -->
 				<passive_effect name="EntityDamage" operation="perc_add" value="1.5"/>
 				<!-- Boss damage -->
-				<passive_effect name="HealthChangeOT" operation="base_set" value="1.8"/>
+				<passive_effect name="HealthChangeOT" operation="base_set" value="0.9"/>
 				<!-- Boss regen, 1% -->
 				<triggered_effect trigger="onSelfFirstSpawn" action="ModifyCVar" target="self" cvar="EntityBoss" operation="set" value="1"/>
 			</effect_group>
@@ -374,7 +374,7 @@
 			<effect_group name="Base Effects">
 				<passive_effect name="HealthMax" operation="base_set" value="200"/>
 				<passive_effect name="HealthMax" operation="perc_set" value="1"/>
-				<passive_effect name="HealthChangeOT" operation="base_set" value="1.4"/>
+				<passive_effect name="HealthChangeOT" operation="base_set" value="0.9"/>
 			</effect_group>
 		</entity_class>
 		
@@ -396,7 +396,7 @@
 				<triggered_effect trigger="onSelfFirstSpawn" action="ReplaceMaterial, MaterialModifier" target_material_name="dynamic_feral_eye" replace_material="particleeffects/models/materials/gib_red.mat"/>
 				<passive_effect name="HealthMax" operation="base_set" value="200"/>
 				<passive_effect name="HealthMax" operation="perc_set" value="1"/>
-				<passive_effect name="HealthChangeOT" operation="base_set" value="1.4"/>
+				<passive_effect name="HealthChangeOT" operation="base_set" value="0.9"/>
 			</effect_group>
 		</entity_class>
 		
@@ -422,7 +422,7 @@
 				<passive_effect name="HealthMax" operation="base_set" value="1080"/>
 				<passive_effect name="HealthMax" operation="perc_set" value="1"/>
 				<passive_effect name="EntityDamage" operation="perc_add" value="1.5"/>
-				<passive_effect name="HealthChangeOT" operation="base_set" value="2"/>
+				<passive_effect name="HealthChangeOT" operation="base_set" value="1"/>
 			</effect_group>
 		</entity_class>
 		
@@ -474,7 +474,7 @@
 				<!-- Zombie HP scale -->
 				<passive_effect name="EntityDamage" operation="perc_add" value="1.5"/>
 				<!-- Boss damage -->
-				<passive_effect name="HealthChangeOT" operation="base_set" value="4"/>
+				<passive_effect name="HealthChangeOT" operation="base_set" value="2"/>
 				<!-- Boss regen, 1% -->
 				<triggered_effect trigger="onSelfFirstSpawn" action="ModifyCVar" target="self" cvar="EntityBoss" operation="set" value="1"/>
 			</effect_group>
@@ -515,7 +515,7 @@
 				<passive_effect name="HealthMax" operation="base_set" value="782"/>
 				<passive_effect name="HealthMax" operation="perc_set" value="1"/>
 				<!-- Zombie HP scale -->
-				<passive_effect name="HealthChangeOT" operation="base_set" value="5.5"/>
+				<passive_effect name="HealthChangeOT" operation="base_set" value="2.5"/>
 			</effect_group>
 			<effect_group>
 				<!-- <triggered_effect trigger="onSelfFirstSpawn" action="ReplaceMaterial, MaterialModifier" target_material_name="HD_Spider" replace_material="particleeffects/models/materials/p_dirt"/> -->
@@ -712,7 +712,7 @@
 				<passive_effect name="HealthMax" operation="base_set" value="2200"/>
 				<passive_effect name="HealthMax" operation="perc_set" value="1"/>
 				<!-- Zombie HP scale -->
-				<passive_effect name="HealthChangeOT" operation="base_set" value="4.2"/>
+				<passive_effect name="HealthChangeOT" operation="base_set" value="2.1"/>
 			</effect_group>
 		</entity_class>
 		
@@ -778,7 +778,7 @@
 				<passive_effect name="HealthMax" operation="base_set" value="4000"/>
 				<passive_effect name="HealthMax" operation="perc_set" value="1"/>
 				<passive_effect name="EntityDamage" operation="perc_add" value="1"/>
-				<passive_effect name="HealthChangeOT" operation="base_set" value="2.8"/>
+				<passive_effect name="HealthChangeOT" operation="base_set" value="2"/>
 				<!-- Boss regen, 1% -->
 			</effect_group>
 		</entity_class>
@@ -1340,7 +1340,7 @@
 				<passive_effect name="HealthMax" operation="base_set" value="3600"/>
 				<passive_effect name="HealthMax" operation="perc_set" value="1"/>
 				<!-- Zombie HP scale -->
-				<passive_effect name="HealthChangeOT" operation="base_set" value="2.8"/>
+				<passive_effect name="HealthChangeOT" operation="base_set" value="1.4"/>
 				<!-- Regen 2% -->
 			</effect_group>
 		</entity_class>

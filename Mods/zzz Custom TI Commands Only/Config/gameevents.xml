@@ -342,10 +342,10 @@
 				<property name="spawn_type" value="Position"/>
 			</action>
 
-			<action class="PlaySound">
-				<property name="sound" value="crawler_alert" param1="alertsound"/>
-				<property name="phase" value="1"/>
-			</action>
+			<!-- <action class="PlaySound"> -->
+				<!-- <property name="sound" value="crawler_alert" param1="alertsound"/> -->
+				<!-- <property name="phase" value="1"/> -->
+			<!-- </action> -->
 		</action_sequence>
 		
 		<action_sequence name="spawn_lich" template="spawn_single">
@@ -467,12 +467,12 @@
 		
 		<action_sequence name="spawn_jack_rabbit" template="spawn_single">
 			<variable name="zombiename" value="animalTIJackrabbit"/>
-			<variable name="alertsound" value="twitch_bad_buff"/>
+			<variable name="alertsound" value="twitch_bad_spawn"/>
 		</action_sequence>
 		
 		<action_sequence name="spawn_giant_rabbit" template="spawn_single">
 			<variable name="zombiename" value="animalTIGiantRabbit"/>
-			<variable name="alertsound" value="twitch_bad_buff"/>
+			<variable name="alertsound" value="twitch_bad_spawn"/>
 		</action_sequence>
 		
 		<action_sequence name="spawn_thunder_cat" template="spawn_single">
@@ -564,7 +564,7 @@
 			</action>
 			
 			<action class="PlaySound">
-				<property name="sound" value="twitch_bad_buff"/>
+				<property name="sound" value="twitch_bad_spawn"/>
 				<property name="phase" value="1"/>
 			</action>
 		</action_sequence>
@@ -572,7 +572,13 @@
 		<action_sequence name="group_maine_forest" template="spawn_group">
 			<variable name="zombiename" value="animalTIStag,animalTIJackrabbit,animalWolf,animalChickenHostile,animalCoyote,animalSnake,animalBoar"/>
 			<variable name="spawncount" value="10"/>
-			<variable name="alertsound" value="twitch_bad_buff"/>
+			<variable name="alertsound" value="twitch_bad_spawn"/>
+		</action_sequence>
+		
+		<action_sequence name="random_animal_small" template="spawn_group">
+			<variable name="zombiename" value="animalTIJackrabbit,animalWolf,animalChickenHostile,animalCoyote,animalSnake,animalZombieDog"/>
+			<variable name="spawncount" value="1"/>
+			<variable name="alertsound" value="twitch_bad_spawn"/>
 		</action_sequence>
 				
 		<action_sequence name="group_zoo">
@@ -638,7 +644,7 @@
 			</action>
 
 			<action class="PlaySound">
-				<property name="sound" value="twitch_bad_buff"/>
+				<property name="sound" value="twitch_bad_spawn"/>
 				<property name="phase" value="1"/>
 			</action>
 		</action_sequence>
@@ -1133,9 +1139,9 @@
 		<action_sequence name="action_banished">
 			<property name="category" value="twitch_actions"/>
 
-			<!-- <requirement class="InQuestZone"> -->
-				<!-- <property name="invert" value="true"/> -->
-			<!-- </requirement> -->
+			<requirement class="OnQuest" >
+				<property name="invert" value="true"/>
+			</requirement>
 			
 			<action class="ResetMap">
 				<property name="phase" value="3"/>
@@ -1678,27 +1684,32 @@
 		<!-- *** sequences for "special" spawns *** -->
 		<!-- Wight Fright -->
 		<action_sequence name="wight_fright">
+		
 			<requirement class="HasBuff">
 				<property name="buff_name" value="buffResAOETrigger"/>
 				<property name="invert" value="true"/>
 			</requirement>
+			
 			<action class="AddSpawnedEntitiesToGroup">
 				<property name="phase" value="0"/>
 				<property name="group_name" value="wightfright"/>
-				<property name="entity_tags" value="zombie"/>
+				<property name="entity_tags" value="walker"/>
 				<property name="target_only" value="false"/>
 			</action>
+			
 			<action class="AddEntitiesToGroup">
 				<property name="phase" value="0"/>
 				<property name="group_name" value="wightfright"/>
-				<property name="entity_tags" value="zombie"/>
+				<property name="entity_tags" value="walker"/>
 				<property name="max_distance" value="150"/>
 				<property name="target_only" value="false"/>
 			</action>
+			
 			<action class="Delay">
 				<property name="time" value="1"/>
 				<property name="phase" value="1"/>
 			</action>
+			
 			<action class="ReplaceEntities">
 				<property name="time" value="5"/>
 				<property name="phase" value="2"/>
@@ -1706,23 +1717,28 @@
 				<property name="single_choice" value="true"/>
 				<property name="target_group" value="wightfright"/>
 			</action>
+			
 			<action class="PlaySound">
 				<property name="phase" value="5"/>
 				<property name="sound" value="zombieferalalert"/>
 			</action>
+			
 			<action class="Delay">
 				<property name="time" value="1"/>
 				<property name="phase" value="6"/>
 			</action>
+			
 			<action class="RemoveBuff">
 				<property name="phase" value="7"/>
 				<property name="buff_name" value="buffShamanResurrect"/>
 			</action>
+			
 			<action class="RageZombies">
 				<property name="time" value="30"/>
 				<property name="speed_percent" value=".10"/>
 				<property name="target_group" value="wightfright"/>
 			</action>
+			
 			<action class="BeltTooltip">
 				<property name="text" value="Wight Fright Activated!"/>
 				<property name="phase" value="8"/>
@@ -1731,27 +1747,32 @@
 		
 		<!-- Bear Scare -->
 		<action_sequence name="bear_scare">
+		
 			<requirement class="HasBuff">
 				<property name="buff_name" value="buffResAOETrigger"/>
 				<property name="invert" value="true"/>
 			</requirement>
+			
 			<action class="AddSpawnedEntitiesToGroup">
 				<property name="phase" value="0"/>
 				<property name="group_name" value="bearscare"/>
-				<property name="entity_tags" value="zombie"/>
+				<property name="entity_tags" value="walker"/>
 				<property name="target_only" value="false"/>
 			</action>
+			
 			<action class="AddEntitiesToGroup">
 				<property name="phase" value="0"/>
 				<property name="group_name" value="bearscare"/>
-				<property name="entity_tags" value="zombie"/>
+				<property name="entity_tags" value="walker"/>
 				<property name="max_distance" value="150"/>
 				<property name="target_only" value="false"/>
 			</action>
+			
 			<action class="Delay">
 				<property name="time" value="1"/>
 				<property name="phase" value="1"/>
 			</action>
+			
 			<action class="ReplaceEntities">
 				<property name="time" value="5"/>
 				<property name="phase" value="2"/>
@@ -1759,23 +1780,28 @@
 				<property name="single_choice" value="true"/>
 				<property name="target_group" value="bearscare"/>
 			</action>
+			
 			<action class="PlaySound">
 				<property name="phase" value="5"/>
 				<property name="sound" value="bearalert"/>
 			</action>
+			
 			<action class="Delay">
 				<property name="time" value="1"/>
 				<property name="phase" value="6"/>
 			</action>
+			
 			<action class="RemoveBuff">
 				<property name="phase" value="7"/>
 				<property name="buff_name" value="buffShamanResurrect"/>
 			</action>
+			
 			<action class="RageZombies">
 				<property name="time" value="30"/>
 				<property name="speed_percent" value=".10"/>
 				<property name="target_group" value="bearscare"/>
 			</action>
+			
 			<action class="BeltTooltip">
 				<property name="text" value="Bear Scare Activated!"/>
 				<property name="phase" value="8"/>
@@ -2009,13 +2035,16 @@
 			<property name="allow_user_trigger" value="true"/>
 			<property name="action_type" value="Game"/>
 			<property name="category" value="twitch_actions"/>
+			
 			<action class="PlaySound">
 				<property name="sound" value="zombiefemalescoutalert"/>
 			</action>
+			
 			<action class="Delay">
 				<property name="time" value="2"/>
 				<property name="phase" value="0"/>
 			</action>
+			
 			<action class="SpawnEntity">
 				<property name="entity_names" value="zombieTITormentScreamer"/>
 				<property name="single_choice" value="true"/>
@@ -2030,9 +2059,10 @@
 				<requirement class="RandomRoll">
 					<property name="min_max" value="0,100"/>
 					<property name="operation" value="LTE"/>
-					<property name="value" value="50"/>
+					<property name="value" value="90"/>
 				</requirement>
 			</action>
+			
 			<action class="SpawnEntity">
 				<property name="entity_group" value="ScoutGSList"/>
 				<property name="spawn_count" value="5"/>
@@ -2043,11 +2073,13 @@
 				<property name="max_distance" value="30"/>
 				<property name="spawn_type" value="WanderingHorde"/>
 			</action>
+			
 			<action class="AddEntitiesToGroup">
 				<property name="phase" value="0"/>
 				<property name="group_name" value="zombies"/>
 				<property name="max_distance" value="30"/>
 			</action>
+			
 			<action class="RageZombies">
 				<property name="time" value="30"/>
 				<property name="speed_percent" value=".10"/>
@@ -2252,7 +2284,7 @@
 			<action class="SpawnEntity">
 				<property name="phase" value="0"/>
 				<property name="entity_names" value="animalTIZombieVultureBat"/>
-				<property name="spawn_count" value="3"/>
+				<property name="spawn_count" value="2"/>
 				<property name="air_spawn" value="true"/>
 				<property name="add_to_group" value="zombies"/>
 				<property name="safe_spawn" value="true"/>
@@ -3551,6 +3583,65 @@
 			<action class="Kill">
 				<property name="phase" value="3"/>
 				<property name="target_group" value="zombies"/>
+			</action>
+		</action_sequence>
+		
+		<!-- *** God's Wrath *** -->
+		<action_sequence name="gods_wrath">
+		<property name="action_type" value="Game"/>
+		
+			<requirement class="NearbyEntities">
+				<property name="max_distance" value="2000"/>
+			</requirement>
+			
+			<action class="AddSpawnedEntitiesToGroup">
+				<property name="phase" value="1"/>
+				<property name="group_name" value="zombies"/>
+				<property name="entity_tags" value="entity"/>
+				<property name="max_distance" value="2000"/>
+				<property name="target_only" value="false"/>
+			</action>
+			
+			<action class="AddEntitiesToGroup">
+				<property name="phase" value="2"/>
+				<property name="group_name" value="zombies"/>
+				<property name="entity_tags" value="entity"/>
+				<property name="max_distance" value="2000"/>
+				<property name="target_only" value="false"/>
+			</action>
+			
+			<action class="TwitchAddEntitiesToSpawned">
+				<property name="target_group" value="zombies"/>
+			</action>
+			
+			<action class="AddBuff">
+				<property name="phase" value="3" />
+				<property name="buff_name" value="twitch_blastresist" />
+				<property name="target_group" value="party" />
+			</action>
+			
+			<action class="ExplodeTarget">
+				<property name="phase" value="4" />
+				<property name="blast_power" value="75" />
+				<property name="block_damage" value="1" />
+				<property name="block_radius" value="4" />
+				<property name="entity_damage" value="5000" />
+				<property name="entity_radius" value="15" />
+			</action>
+
+			<action class="Kill">
+				<property name="phase" value="5"/>
+				<property name="target_group" value="zombies"/>
+			</action>
+			
+			<action class="Delay">
+				<property name="time" value="1" />
+				<property name="phase" value="3" />
+			</action>
+
+			<action class="RemoveBuff">
+				<property name="phase" value="6" />
+				<property name="buff_name" value="twitch_blastresist" />
 			</action>
 		</action_sequence>
 	</append>

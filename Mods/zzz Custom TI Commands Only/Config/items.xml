@@ -227,7 +227,7 @@
 
 			<triggered_effect trigger="onSelfAttackedOther" action="AddBuff" target="other" buff="buffBurningZombie" >
 				<requirement name="EntityTagCompare" tags="player"/>
-				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="50"/>
+				<requirement name="RandomRoll" seed_type="Random" min_max="0,100" operation="LTE" value="25"/>
 			</triggered_effect>
 		</effect_group>
 	</item>

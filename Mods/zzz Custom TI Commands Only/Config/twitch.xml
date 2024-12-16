@@ -89,7 +89,7 @@
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
-	<action name="twitch_toughZombie" extends="twitch_normalZombie">
+	<action name="twitch_toughZombie" >
 		<property name="command" value="#spawn_tough" />
 		<property name="command_key" value="TwitchAction_SpawnToughCommand" />
 		<property name="title_key" value="TwitchAction_SpawnTough" />
@@ -98,9 +98,13 @@
 		<property name="event_name" value="spawn_tough" />
 		<property name="default_cost" value="375" />
 		<property name="point_type" value="SP" />
+		<property name="add_cooldown" value="false" />
+		<property name="cooldown_blocked" value="true" />
+		<property name="waiting_blocked" value="true" />
+		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
-	<action name="twitch_feralZombie" extends="twitch_normalZombie">
+	<action name="twitch_feralZombie" >
 		<property name="command" value="#spawn_feral" />
 		<property name="command_key" value="TwitchAction_SpawnFeralCommand" />
 		<property name="title_key" value="TwitchAction_SpawnFeral" />
@@ -109,22 +113,30 @@
 		<property name="event_name" value="spawn_feral_mix" />
 		<property name="default_cost" value="500" />
 		<property name="point_type" value="SP" />
+		<property name="add_cooldown" value="false" />
+		<property name="cooldown_blocked" value="true" />
+		<property name="waiting_blocked" value="true" />
+		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
-	<action name="twitch_radZombie" extends="twitch_normalZombie">
+	<action name="twitch_radZombie" >
 		<property name="command" value="#spawn_rad" />
 		<property name="command_key" value="TwitchAction_SpawnRadCommand" />
 		<property name="title_key" value="TwitchAction_SpawnRad" />
 		<property name="description_key" value="TwitchAction_SpawnRadDesc" />
 		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_rad_mix" />
-		<property name="default_cost" value="750" />
+		<property name="default_cost" value="1000" />
 		<property name="point_type" value="SP" />
+		<property name="add_cooldown" value="false" />
+		<property name="cooldown_blocked" value="true" />
+		<property name="waiting_blocked" value="true" />
+		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
 	<action name="twitch_spawnWeapon1">
-		<property name="command" value="#supply_weapon" />
-		<property name="command_key" value="TwitchAction_SupplyWeaponCommand" />
+		<property name="command" value="#supply_weapon1" />
+		<property name="command_key" value="TwitchAction_SupplyWeaponCommand1" />
 		<property name="title_key" value="TwitchAction_SupplyWeapon1" />
 		<property name="description_key" value="TwitchAction_SupplyWeapon1Desc" />
 		<property name="category" value="Spawns,Supplies" />
@@ -137,111 +149,139 @@
 		<property name="presets" value="casual,standard" />
 	</action>
 	
-	<action name="twitch_spawnWeapon2" extends="twitch_spawnWeapon1">
-		<property name="command" value="#supply_weapon" />
-		<property name="command_key" value="TwitchAction_SupplyWeaponCommand" />
+	<action name="twitch_spawnWeapon2" >
+		<property name="command" value="#supply_weapon2" />
+		<property name="command_key" value="TwitchAction_SupplyWeaponCommand2" />
 		<property name="title_key" value="TwitchAction_SupplyWeapon2" />
 		<property name="description_key" value="TwitchAction_SupplyWeapon2Desc" />
-		<property name="start_gamestage" value="10" />
+		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_weapon1" />
-		<property name="point_type" value="Bits" />
+		<property name="point_type" value="Bits" />		
 		<property name="default_cost" value="150" />
+		<property name="category" value="Spawns,Supplies" />
+		<property name="is_positive" value="true" />
+		<property name="is_crate" value="true" />
 		<property name="cooldown" value="900" />
+		<property name="presets" value="casual,standard" />
 	</action>
 	
-	<action name="twitch_spawnWeapon3" extends="twitch_spawnWeapon1">
-		<property name="command" value="#supply_weapon" />
-		<property name="command_key" value="TwitchAction_SupplyWeaponCommand" />
+	<action name="twitch_spawnWeapon3" >
+		<property name="command" value="#supply_weapon3" />
+		<property name="command_key" value="TwitchAction_SupplyWeaponCommand3" />
 		<property name="title_key" value="TwitchAction_SupplyWeapon3" />
 		<property name="description_key" value="TwitchAction_SupplyWeapon3Desc" />
-		<property name="start_gamestage" value="50" />
+		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_weapon2" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="200" />
+		<property name="is_positive" value="true" />
+		<property name="is_crate" value="true" />
 		<property name="cooldown" value="900" />
+		<property name="presets" value="casual,standard" />
 	</action>
 	
-	<action name="twitch_spawnWeapon4" extends="twitch_spawnWeapon1">
-		<property name="command" value="#supply_weapon" />
-		<property name="command_key" value="TwitchAction_SupplyWeaponCommand" />
+	<action name="twitch_spawnWeapon4" >
+		<property name="command" value="#supply_weapon4" />
+		<property name="command_key" value="TwitchAction_SupplyWeaponCommand4" />
 		<property name="title_key" value="TwitchAction_SupplyWeapon4" />
 		<property name="description_key" value="TwitchAction_SupplyWeapon4Desc" />
-		<property name="start_gamestage" value="90" />
+		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_weapon3" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="300" />
+		<property name="is_positive" value="true" />
+		<property name="is_crate" value="true" />
 		<property name="cooldown" value="900" />
+		<property name="presets" value="casual,standard" />
 	</action>
 	
-	<action name="twitch_spawnArmor0" extends="twitch_spawnWeapon1">
-		<property name="command" value="#supply_armor" />
-		<property name="command_key" value="TwitchAction_SupplyArmorCommand" />
+	<action name="twitch_spawnArmor0" >
+		<property name="command" value="#supply_armor0" />
+		<property name="command_key" value="TwitchAction_SupplyArmorCommand0" />
 		<property name="title_key" value="TwitchAction_SupplyArmor1" />
 		<property name="description_key" value="TwitchAction_SupplyArmor1Desc" />
 		<property name="event_name" value="spawn_armor0" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="100" />
+		<property name="is_positive" value="true" />
+		<property name="is_crate" value="true" />
 		<property name="cooldown" value="900" />
+		<property name="presets" value="casual,standard" />
 	</action>
 	
-	<action name="twitch_spawnArmor1" extends="twitch_spawnWeapon1">
-		<property name="command" value="#supply_armor" />
-		<property name="command_key" value="TwitchAction_SupplyArmorCommand" />
+	<action name="twitch_spawnArmor1" >
+		<property name="command" value="#supply_armor1" />
+		<property name="command_key" value="TwitchAction_SupplyArmorCommand1" />
 		<property name="title_key" value="TwitchAction_SupplyArmor2" />
 		<property name="description_key" value="TwitchAction_SupplyArmor2Desc" />
-		<property name="start_gamestage" value="10" />
+		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_armor1" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="150" />
+		<property name="is_positive" value="true" />
+		<property name="is_crate" value="true" />
 		<property name="cooldown" value="900" />
+		<property name="presets" value="casual,standard" />
 	</action>
 	
-	<action name="twitch_spawnArmor2" extends="twitch_spawnWeapon1">
-		<property name="command" value="#supply_armor" />
-		<property name="command_key" value="TwitchAction_SupplyArmorCommand" />
+	<action name="twitch_spawnArmor2" >
+		<property name="command" value="#supply_armor2" />
+		<property name="command_key" value="TwitchAction_SupplyArmorCommand2" />
 		<property name="title_key" value="TwitchAction_SupplyArmor3" />
 		<property name="description_key" value="TwitchAction_SupplyArmor3Desc" />
-		<property name="start_gamestage" value="50" />
+		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_armor2" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="200" />
+		<property name="is_positive" value="true" />
+		<property name="is_crate" value="true" />
 		<property name="cooldown" value="900" />
+		<property name="presets" value="casual,standard" />
 	</action>
 	
-	<action name="twitch_spawnMods1" extends="twitch_spawnWeapon1">
-		<property name="command" value="#supply_mods" />
-		<property name="command_key" value="TwitchAction_SupplyModsCommand" />
+	<action name="twitch_spawnMods1">
+		<property name="command" value="#supply_mods1" />
+		<property name="command_key" value="TwitchAction_SupplyModsCommand1" />
 		<property name="title_key" value="TwitchAction_SupplyMods1" />
 		<property name="description_key" value="TwitchAction_SupplyMods1Desc" />
-		<property name="start_gamestage" value="6" />
+		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_mods1" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="100" />
+		<property name="is_positive" value="true" />
+		<property name="is_crate" value="true" />
 		<property name="cooldown" value="900" />
+		<property name="presets" value="casual,standard" />
 	</action>
 	
-	<action name="twitch_spawnMods2" extends="twitch_spawnWeapon1">
-		<property name="command" value="#supply_mods" />
-		<property name="command_key" value="TwitchAction_SupplyModsCommand" />
+	<action name="twitch_spawnMods2" >
+		<property name="command" value="#supply_mods2" />
+		<property name="command_key" value="TwitchAction_SupplyModsCommand2" />
 		<property name="title_key" value="TwitchAction_SupplyMods2" />
 		<property name="description_key" value="TwitchAction_SupplyMods2Desc" />
-		<property name="start_gamestage" value="16" />
+		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_mods2" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="125" />
+		<property name="is_positive" value="true" />
+		<property name="is_crate" value="true" />
 		<property name="cooldown" value="900" />
+		<property name="presets" value="casual,standard" />
 	</action>
 	
-	<action name="twitch_spawnMods3" extends="twitch_spawnWeapon1">
-		<property name="command" value="#supply_mods" />
-		<property name="command_key" value="TwitchAction_SupplyModsCommand" />
+	<action name="twitch_spawnMods3" >
+		<property name="command" value="#supply_mods3" />
+		<property name="command_key" value="TwitchAction_SupplyModsCommand3" />
 		<property name="title_key" value="TwitchAction_SupplyMods3" />
 		<property name="description_key" value="TwitchAction_SupplyMods3Desc" />
-		<property name="start_gamestage" value="56" />
+		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_mods3" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="150" />
+		<property name="is_positive" value="true" />
+		<property name="is_crate" value="true" />
 		<property name="cooldown" value="900" />
+		<property name="presets" value="casual,standard" />
 	</action>
 	
 	<action name="twitch_spawnUtility1" extends="twitch_spawnWeapon1">
@@ -262,7 +302,7 @@
 		<property name="command_key" value="TwitchAction_SupplyUtilityCommand" />
 		<property name="title_key" value="TwitchAction_SupplyUtility2" />
 		<property name="description_key" value="TwitchAction_SupplyUtility2Desc" />
-		<property name="start_gamestage" value="53" />
+		<property name="start_gamestage" value="10" />
 		<property name="event_name" value="spawn_utility2" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="125" />
@@ -270,40 +310,49 @@
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
-	<action name="twitch_spawnTool1" extends="twitch_spawnWeapon1">
-		<property name="command" value="#supply_tool" />
-		<property name="command_key" value="TwitchAction_SupplyToolCommand" />
+	<action name="twitch_spawnTool1" >
+		<property name="command" value="#supply_tool1" />
+		<property name="command_key" value="TwitchAction_SupplyToolCommand1" />
 		<property name="title_key" value="TwitchAction_SupplyTool1" />
 		<property name="description_key" value="TwitchAction_SupplyTool1Desc" />
-		<property name="start_gamestage" value="10" />
+		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_tool1" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="150" />
+		<property name="is_positive" value="true" />
+		<property name="is_crate" value="true" />
 		<property name="cooldown" value="900" />
+		<property name="presets" value="casual,standard" />
 	</action>
 	
-	<action name="twitch_spawnTool2" extends="twitch_spawnWeapon1">
-		<property name="command" value="#supply_tool" />
-		<property name="command_key" value="TwitchAction_SupplyToolCommand" />
+	<action name="twitch_spawnTool2">
+		<property name="command" value="#supply_tool2" />
+		<property name="command_key" value="TwitchAction_SupplyToolCommand2" />
 		<property name="title_key" value="TwitchAction_SupplyTool2" />
 		<property name="description_key" value="TwitchAction_SupplyTool2Desc" />
-		<property name="start_gamestage" value="50" />
+		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_tool2" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="200" />
+		<property name="is_positive" value="true" />
+		<property name="is_crate" value="true" />
 		<property name="cooldown" value="900" />
+		<property name="presets" value="casual,standard" />
 	</action>
 	
-	<action name="twitch_spawnTool3" extends="twitch_spawnWeapon1">
-		<property name="command" value="#supply_tool" />
-		<property name="command_key" value="TwitchAction_SupplyToolCommand" />
+	<action name="twitch_spawnTool3" >
+		<property name="command" value="#supply_tool3" />
+		<property name="command_key" value="TwitchAction_SupplyToolCommand3" />
 		<property name="title_key" value="TwitchAction_SupplyTool3" />
 		<property name="description_key" value="TwitchAction_SupplyTool3Desc" />
-		<property name="start_gamestage" value="90" />
+		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_tool3" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="250" />
+		<property name="is_positive" value="true" />
+		<property name="is_crate" value="true" />
 		<property name="cooldown" value="900" />
+		<property name="presets" value="casual,standard" />
 	</action>
 	
 	<action name="twitch_spawnMedicine1" extends="twitch_spawnWeapon1">
@@ -438,7 +487,7 @@
 		<property name="command_key" value="TwitchAction_SupplyBicycleCommand" />
 		<property name="title_key" value="TwitchAction_SupplyBicycle" />
 		<property name="description_key" value="TwitchAction_SupplyBicycleDesc" />
-		<property name="start_gamestage" value="5" />
+		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_bicycle" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="300" />
@@ -450,7 +499,7 @@
 		<property name="command_key" value="TwitchAction_SupplyMinibikeCommand" />
 		<property name="title_key" value="TwitchAction_SupplyMinibike" />
 		<property name="description_key" value="TwitchAction_SupplyMinibikeDesc" />
-		<property name="start_gamestage" value="30" />
+		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_minibike" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="400" />
@@ -462,7 +511,7 @@
 		<property name="command_key" value="TwitchAction_SupplyMotorcycleCommand" />
 		<property name="title_key" value="TwitchAction_SupplyMotorcycle" />
 		<property name="description_key" value="TwitchAction_SupplyMotorcycleDesc" />
-		<property name="start_gamestage" value="75" />
+		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_motorcycle" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="500" />
@@ -474,7 +523,7 @@
 		<property name="command_key" value="TwitchAction_Supply4x4Command" />
 		<property name="title_key" value="TwitchAction_Supply4x4" />
 		<property name="description_key" value="TwitchAction_Supply4x4Desc" />
-		<property name="start_gamestage" value="120" />
+		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_4x4" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="600" />
@@ -488,7 +537,7 @@
 		<property name="description_key" value="TwitchAction_SupplyGyroDesc" />
 		<property name="category" value="Spawns,Supplies" />
 		<property name="display_category" value="Extras" />
-		<property name="start_gamestage" value="10" />
+		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_gyro" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="1000" />
@@ -497,8 +546,8 @@
 	</action>
 	
 	<action name="twitch_AmmoCrate0" extends="twitch_spawnWeapon1">
-		<property name="command" value="#supply_ammo" />
-		<property name="command_key" value="TwitchAction_SupplyAmmoCommand" />
+		<property name="command" value="#supply_ammo0" />
+		<property name="command_key" value="TwitchAction_SupplyAmmoCommand0" />
 		<property name="title_key" value="TwitchAction_SupplyAmmo1" />
 		<property name="description_key" value="TwitchAction_SupplyAmmo1Desc" />
 		<property name="event_name" value="spawn_ammo1" />
@@ -509,11 +558,11 @@
 	</action>
 	
 	<action name="twitch_AmmoCrate1" extends="twitch_spawnWeapon1">
-		<property name="command" value="#supply_ammo" />
-		<property name="command_key" value="TwitchAction_SupplyAmmoCommand" />
+		<property name="command" value="#supply_ammo1" />
+		<property name="command_key" value="TwitchAction_SupplyAmmoCommand1" />
 		<property name="title_key" value="TwitchAction_SupplyAmmo2" />
 		<property name="description_key" value="TwitchAction_SupplyAmmo2Desc" />
-		<property name="start_gamestage" value="10" />
+		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_ammo2" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="100" />
@@ -522,11 +571,11 @@
 	</action>
 	
 	<action name="twitch_AmmoCrate2" extends="twitch_spawnWeapon1">
-		<property name="command" value="#supply_ammo" />
-		<property name="command_key" value="TwitchAction_SupplyAmmoCommand" />
+		<property name="command" value="#supply_ammo2" />
+		<property name="command_key" value="TwitchAction_SupplyAmmoCommand2" />
 		<property name="title_key" value="TwitchAction_SupplyAmmo3" />
 		<property name="description_key" value="TwitchAction_SupplyAmmo3Desc" />
-		<property name="start_gamestage" value="50" />
+		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_ammo3" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="125" />
@@ -535,11 +584,11 @@
 	</action>
 	
 	<action name="twitch_AmmoCrate3" extends="twitch_spawnWeapon1">
-		<property name="command" value="#supply_ammo" />
-		<property name="command_key" value="TwitchAction_SupplyAmmoCommand" />
+		<property name="command" value="#supply_ammo3" />
+		<property name="command_key" value="TwitchAction_SupplyAmmoCommand3" />
 		<property name="title_key" value="TwitchAction_SupplyAmmo4" />
 		<property name="description_key" value="TwitchAction_SupplyAmmo4Desc" />
-		<property name="start_gamestage" value="90" />
+		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="spawn_ammo4" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="175" />
@@ -2074,6 +2123,20 @@
 		<property name="enabled" value="true" />
 		<property name="default_cost" value="200" />
 	</action>
+	
+	<action name="twitch_random_animal_small" extends="twitch_normalZombie">
+		<property name="start_gamestage" value="1" />
+		<property name="title" value="Small Animal Grab Bag" />
+		<property name="command" value="#animal_grab_bag_small" />
+		<property name="command_key" value="TwitchAction_SpawnRandomAnimalSmallCommand" />
+		<property name="title_key" value="TwitchAction_SpawnRandomAnimalSmall" />
+		<property name="description_key" value="TwitchAction_SpawnRandomAnimalSmallDesc" />
+		<property name="category" value="Spawns" />
+		<property name="event_name" value="random_animal_small" />
+		<property name="point_type" value="SP" />
+		<property name="enabled" value="true" />
+		<property name="default_cost" value="250" />
+	</action>
 
 	<action name="twitch_random_legendary" extends="twitch_normalZombie">
 		<property name="start_gamestage" value="1" />
@@ -2332,7 +2395,7 @@
 		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="group_furmidable_felines" />
 		<property name="point_type" value="Bits" />
-		<property name="default_cost" value="750" />
+		<property name="default_cost" value="1000" />
 		<property name="is_positive" value="false" />
 		<property name="add_cooldown" value="true" />
 		<property name="cooldown_add_amount" value="50" />
@@ -2363,8 +2426,8 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
-		<property name="min_respawn_count" value="0" />
-		<property name="max_respawn_count" value="0" />
+		<property name="min_respawn_count" value="1" />
+		<property name="max_respawn_count" value="2" />
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
@@ -2386,8 +2449,8 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
-		<property name="min_respawn_count" value="0" />
-		<property name="max_respawn_count" value="0" />
+		<property name="min_respawn_count" value="1" />
+		<property name="max_respawn_count" value="2" />
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
@@ -2544,8 +2607,8 @@
 		<property name="description_key" value="TwitchAction_LightHealDesc" />
 		<property name="category" value="Buffs" />
 		<property name="event_name" value="buff_lightheal" />
-		<property name="point_type" value="Bits" />
-		<property name="default_cost" value="50" />
+		<property name="point_type" value="SP" />
+		<property name="default_cost" value="250" />
 		<property name="cooldown" value="300" />
 		<property name="cooldown_blocked" value="false" />
 		<property name="is_positive" value="true" />
@@ -3055,7 +3118,7 @@
 		<property name="category" value="Debuffs" />
 		<property name="event_name" value="buff_broken_soul" />
 		<property name="point_type" value="Bits" />
-		<property name="default_cost" value="500" />
+		<property name="default_cost" value="1500" />
 		<property name="cooldown" value="300" />
 		<property name="cooldown_blocked" value="false" />
 		<property name="is_positive" value="false" />
@@ -3104,6 +3167,22 @@
 		<property name="event_name" value="buff_horde_arena" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="1500" />
+		<property name="cooldown" value="300" />
+		<property name="cooldown_blocked" value="false" />
+		<property name="is_positive" value="false" />
+		<property name="presets" value="casual,standard,hardcore" />		
+	</action>
+	
+	<action name="twitch_gods_wrath">
+		<property name="title" value="God's Wrath" />
+		<property name="command" value="#gods_wrath" />
+		<property name="command_key" value="TwitchAction_GodsWrathCommand" />
+		<property name="title_key" value="TwitchAction_GodsWrath" />
+		<property name="description_key" value="TwitchAction_GodsWrathDesc" />
+		<property name="category" value="Buffs,Special" />
+		<property name="event_name" value="gods_wrath" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="3000" />
 		<property name="cooldown" value="300" />
 		<property name="cooldown_blocked" value="false" />
 		<property name="is_positive" value="false" />

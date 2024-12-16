@@ -101,6 +101,7 @@ All commands are as configurable as vanilla commands, via integration's menu. **
 |'#cops_and_strippers'|Spawns a horde of Cops and Party Girls|
 |'#perdition'|Opens the bowels of Hell ...|
 |'#furmidable_felines'|Spawns a group of Mountain Lions, Thunder Cats and Killer Kittens|
+|'#animal_grab_bag_small'|Spawns a random small hostile animal|
 
 ## Buffs/Debuffs
 
@@ -149,6 +150,7 @@ All commands are as configurable as vanilla commands, via integration's menu. **
 |'#broken_soul'|Breaks player's leg, and persists after death|
 |'#fumigation'|Player's current location is irradiated for 60 seconds|
 |'#haywire'|Causes all demolition zombies to explode|
+|'#gods_wrath'|Kills all spawned zombies in a 2000 block radius|
 
 ## Credits
 

@@ -80,11 +80,11 @@
 			<!-- If status LTE 0, remove buff -->
 			<triggered_effect trigger="onSelfBuffUpdate" action="RemoveBuff" buff="buffBrokenLimbStatus">
 				<requirement name="CVarCompare" cvar="brokenLimbStatus" operation="LTE" value="0"/>
-			</triggered_effect>
-			
-		</effect_group>
-	
+			</triggered_effect>			
+		</effect_group>	
 	</set>
+	
+	<set xpath="/buffs/buff[@name='twitch_buffNoHelp']/duration/@value">120</set>
 	
 	<append xpath="/buffs">
 		<!-- frozen (slow) debuff -->
@@ -426,7 +426,7 @@
 		<buff name="buffTISuddenDeath" hidden="true">
 			<duration value=".1"/>
 			<effect_group>
-				<requirement name="NotHasBuff" buff="buffTIHighStakesMain"/>
+				<!-- <requirement name="NotHasBuff" buff="buffTIHighStakesMain"/> -->
 				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" buff="buffTISuddenDeathMain"/>
 			</effect_group>
 		</buff>
