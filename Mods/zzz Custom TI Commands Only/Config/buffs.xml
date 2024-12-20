@@ -3,6 +3,8 @@
 		<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffSoulBroken"/>
 	</insertafter>
 	
+	<set xpath="/buffs/buff[@name='twitch_blastresist']/effect_group/passive_effect[@name='ExplosionIncomingDamage']/@value">-10</set>
+	
 	<set xpath="/buffs/buff[@name='buffBrokenLimbStatus']">
 		<stack_type value="replace"/>
 		<duration value="0"/>

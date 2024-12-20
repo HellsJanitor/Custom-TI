@@ -3600,6 +3600,7 @@
 				<property name="entity_tags" value="entity"/>
 				<property name="max_distance" value="2000"/>
 				<property name="target_only" value="false"/>
+				<property name="exclude_target" value="true" />
 			</action>
 			
 			<action class="AddEntitiesToGroup">
@@ -3608,10 +3609,12 @@
 				<property name="entity_tags" value="entity"/>
 				<property name="max_distance" value="2000"/>
 				<property name="target_only" value="false"/>
+				<property name="exclude_target" value="true" />
 			</action>
 			
 			<action class="TwitchAddEntitiesToSpawned">
 				<property name="target_group" value="zombies"/>
+				<property name="exclude_target" value="true" />
 			</action>
 			
 			<action class="AddBuff">
@@ -3625,8 +3628,10 @@
 				<property name="blast_power" value="75" />
 				<property name="block_damage" value="1" />
 				<property name="block_radius" value="4" />
-				<property name="entity_damage" value="5000" />
+				<property name="entity_damage" value="5" />
 				<property name="entity_radius" value="15" />
+				<property name="target_group" value="zombies"/>
+				<property name="exclude_target" value="true" />
 			</action>
 
 			<action class="Kill">
