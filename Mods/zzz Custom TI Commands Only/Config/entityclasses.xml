@@ -1337,7 +1337,7 @@
 			<drop event="Harvest" name="resourceLeather" count="1" tag="WasteTreasuresCompleteHarvest"/>
 			<drop event="Harvest" name="resourceBone" count="1" tag="WasteTreasuresCompleteHarvest"/>
 			<effect_group name="Base Effects">
-				<passive_effect name="HealthMax" operation="base_set" value="3600"/>
+				<passive_effect name="HealthMax" operation="base_set" value="2600"/>
 				<passive_effect name="HealthMax" operation="perc_set" value="1"/>
 				<!-- Zombie HP scale -->
 				<passive_effect name="HealthChangeOT" operation="base_set" value="1.4"/>
