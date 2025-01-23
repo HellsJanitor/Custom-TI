@@ -535,32 +535,32 @@
 			
 			<action class="SpawnEntity">
 				<property name="entity_names" value="zombieTIMarlene"/>
-				<property name="spawn_count" value="3" param1="spawncount"/>
-				<property name="air_spawn" value="false" param1="airspawn"/>
+				<property name="spawn_count" value="3" />
+				<property name="air_spawn" value="false" />
 			</action>
 			
 			<action class="SpawnEntity">
 				<property name="entity_names" value="zombieTISteve"/>
-				<property name="spawn_count" value="3" param1="spawncount"/>
-				<property name="air_spawn" value="false" param1="airspawn"/>
+				<property name="spawn_count" value="3" />
+				<property name="air_spawn" value="false" />
 			</action>
 			
 			<action class="SpawnEntity">
 				<property name="entity_names" value="zombieTISkateboarderLeader"/>
-				<property name="spawn_count" value="1" param1="spawncount"/>
-				<property name="air_spawn" value="false" param1="airspawn"/>
+				<property name="spawn_count" value="1" />
+				<property name="air_spawn" value="false" />
 			</action>
 
 			<action class="SpawnEntity">
 				<property name="entity_names" value="zombieTISkateboarderAltLeader"/>
-				<property name="spawn_count" value="1" param1="spawncount"/>
-				<property name="air_spawn" value="false" param1="airspawn"/>
+				<property name="spawn_count" value="1" />
+				<property name="air_spawn" value="false" />
 			</action>
 
 			<action class="SpawnEntity">
 				<property name="entity_names" value="zombieTISkateboarder"/>
-				<property name="spawn_count" value="1" param1="spawncount"/>
-				<property name="air_spawn" value="false" param1="airspawn"/>
+				<property name="spawn_count" value="1" />
+				<property name="air_spawn" value="false" />
 			</action>
 			
 			<action class="PlaySound">
@@ -2156,7 +2156,7 @@
 			<property name="category" value="twitch_actions"/>
 			
 			<action class="CallGameEvent">
-				<property name="game_events" value="spawn_snake,spawn_coyote,spawn_vulture,spawn_radvulture,spawn_boar,spawn_grace,spawn_dog,spawn_wolf,spawn_mountainlion,spawn_direwolf,spawn_bear,spawn_chicken,spawn_zombiebear,spawn_mutant_cub,spawn_anaconda,spawn_legendary_wolf,spawn_vulture_dog,spawn_danger_noodle,spawn_jack_rabbit,spawn_killer_kitten,spawn_legendary_bear"/>
+				<property name="game_events" value="spawn_snake,spawn_snake,spawn_snake,spawn_coyote,spawn_coyote,spawn_coyote,spawn_vulture,spawn_vulture,spawn_vulture,spawn_radvulture,spawn_boar,spawn_grace,spawn_dog,spawn_dog,spawn_dog,spawn_wolf,spawn_mountainlion,spawn_direwolf,spawn_bear,spawn_chicken,spawn_chicken,spawn_chicken,spawn_zombiebear,spawn_mutant_cub,spawn_anaconda,spawn_legendary_wolf,spawn_vulture_dog,spawn_danger_noodle,spawn_danger_noodle,spawn_danger_noodle,spawn_jack_rabbit,spawn_jack_rabbit,spawn_jack_rabbit,spawn_killer_kitten,spawn_legendary_bear"/>
 			</action>
 		</action_sequence>
 		

@@ -40,7 +40,7 @@
 		<property name="event_name" value="buff_sillysounds" />
 		<property name="default_cost" value="100" />
 		<property name="is_positive" value="true" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="150" />
 		<property name="presets" value="casual,standard,hardcore" />
 		
 		<cooldown_addition name="twitch_buffDeafen" time="150" />
@@ -59,7 +59,7 @@
 		<property name="event_name" value="action_dance_off" />
 		<property name="default_cost" value="150" />
 		<property name="is_positive" value="false" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 		<property name="cooldown_blocked" value="true" />
 		<property name="presets" value="casual,standard,hardcore" />
 		<property name="streamer_only" value="true" />
@@ -136,7 +136,7 @@
 		<property name="point_type" value="Bits" />
 		<property name="is_positive" value="true" />
 		<property name="is_crate" value="true" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 		<property name="presets" value="casual,standard" />
 	</action>
 	
@@ -149,7 +149,7 @@
 		<property name="event_name" value="spawn_weapon1" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="150" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 	</action>
 	
 	<action name="twitch_spawnWeapon3" extends="twitch_spawnWeapon1">
@@ -161,7 +161,7 @@
 		<property name="event_name" value="spawn_weapon2" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="200" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 	</action>
 	
 	<action name="twitch_spawnWeapon4" extends="twitch_spawnWeapon1">
@@ -173,7 +173,7 @@
 		<property name="event_name" value="spawn_weapon3" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="300" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 	</action>
 	
 	<action name="twitch_spawnArmor0" extends="twitch_spawnWeapon1">
@@ -184,7 +184,7 @@
 		<property name="event_name" value="spawn_armor0" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="100" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 	</action>
 	
 	<action name="twitch_spawnArmor1" extends="twitch_spawnWeapon1">
@@ -196,7 +196,7 @@
 		<property name="event_name" value="spawn_armor1" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="150" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 	</action>
 	
 	<action name="twitch_spawnArmor2" extends="twitch_spawnWeapon1">
@@ -208,7 +208,7 @@
 		<property name="event_name" value="spawn_armor2" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="200" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 	</action>
 	
 	<action name="twitch_spawnMods1" extends="twitch_spawnWeapon1">
@@ -220,7 +220,7 @@
 		<property name="event_name" value="spawn_mods1" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="100" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 	</action>
 	
 	<action name="twitch_spawnMods2" extends="twitch_spawnWeapon1">
@@ -232,7 +232,7 @@
 		<property name="event_name" value="spawn_mods2" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="125" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 	</action>
 	
 	<action name="twitch_spawnMods3" extends="twitch_spawnWeapon1">
@@ -244,7 +244,7 @@
 		<property name="event_name" value="spawn_mods3" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="150" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 	</action>
 	
 	<action name="twitch_spawnUtility1" extends="twitch_spawnWeapon1">
@@ -282,7 +282,7 @@
 		<property name="event_name" value="spawn_tool1" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="150" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 	</action>
 	
 	<action name="twitch_spawnTool2" extends="twitch_spawnWeapon1">
@@ -294,7 +294,7 @@
 		<property name="event_name" value="spawn_tool2" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="200" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 	</action>
 	
 	<action name="twitch_spawnTool3" extends="twitch_spawnWeapon1">
@@ -306,7 +306,7 @@
 		<property name="event_name" value="spawn_tool3" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="250" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 	</action>
 	
 	<action name="twitch_spawnMedicine1" extends="twitch_spawnWeapon1">
@@ -318,7 +318,7 @@
 		<property name="event_name" value="spawn_medicine1" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="100" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
@@ -331,7 +331,7 @@
 		<property name="event_name" value="spawn_medicine2" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="150" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
@@ -344,7 +344,7 @@
 		<property name="event_name" value="spawn_medicine3" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="200" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
@@ -583,7 +583,7 @@
 		<property name="event_name" value="spawn_explosives1" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="100" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 	</action>
 	
 	<action name="twitch_Explosives2" extends="twitch_spawnWeapon1">
@@ -595,7 +595,7 @@
 		<property name="event_name" value="spawn_explosives2" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="150" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 	</action>
 	
 	<action name="twitch_Explosives3" extends="twitch_spawnWeapon1">
@@ -607,7 +607,7 @@
 		<property name="event_name" value="spawn_explosives3" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="200" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 	</action>
 	
 	<action name="twitch_Explosives4" extends="twitch_spawnWeapon1">
@@ -619,7 +619,7 @@
 		<property name="event_name" value="spawn_explosives4" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="250" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 	</action>
 	
 	<action name="twitch_Robo1" extends="twitch_spawnWeapon1">
@@ -823,7 +823,7 @@
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="150" />
 		<property name="is_positive" value="false" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 		<property name="cooldown_blocked" value="true" />
 		<property name="presets" value="casual,standard,hardcore" />
 		
@@ -842,7 +842,7 @@
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="250" />
 		<property name="is_positive" value="false" />
-		<property name="cooldown" value="900" />
+		<property name="cooldown" value="300" />
 		<property name="cooldown_blocked" value="true" />
 		<property name="presets" value="standard,hardcore" />
 		<property name="streamer_only" value="true" />
@@ -1470,6 +1470,46 @@
 		<cooldown_addition name="twitch_hordeZombies" time="30" />
 		<cooldown_addition name="twitch_hordeZombiesFeral" time="30" />
 		<cooldown_addition name="twitch_hordeZombiesRad" time="30" />
+	</action>
+	
+	<action name="twitch_AutoPull">
+		<property name="command" value="#auto_pull" />
+		<property name="command_key" value="TwitchAction_BuffAutoPullCommand" />
+		<property name="title_key" value="TwitchAction_BuffAutoPull" />
+		<property name="description_key" value="TwitchAction_BuffAutoPullDesc" />
+		<property name="category" value="Special" />
+		<property name="start_gamestage" value="5" />
+		<property name="event_name" value="buff_autopull" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="300" />
+		<property name="is_positive" value="false" />
+		<property name="cooldown" value="600" />
+		<property name="special_requirement" value="HasSpawnedEntities" />
+		<property name="cooldown_blocked" value="true" />
+		<property name="vote_cooldown_add" value="60" />
+		<property name="presets" value="standard,hardcore" />
+		<property name="streamer_only" value="true" />
+		
+		<cooldown_addition name="twitch_PullZombies" time="120" />
+	</action>
+	
+	<action name="twitch_Bloodmoon">
+		<property name="command" value="#blood_moon" />
+		<property name="command_key" value="TwitchAction_ActionBloodmoonCommand" />
+		<property name="title_key" value="TwitchAction_ActionBloodmoon" />
+		<property name="description_key" value="TwitchAction_ActionBloodmoonDesc" />
+		<property name="category" value="Special,World" />
+		<property name="display_category" value="Extras" />
+		<property name="start_gamestage" value="25" />
+		<property name="event_name" value="action_set_hordenight" />
+		<property name="point_type" value="Bits" />
+		<property name="default_cost" value="4000" />
+		<property name="is_positive" value="false" />
+		<property name="cooldown" value="60" />
+		<property name="special_requirement" value="NotBloodmoonDay,EarlyDay" />
+		<property name="cooldown_blocked" value="true" />
+		<property name="ignore_discount" value="true" />
+		<property name="streamer_only" value="true" />
 	</action>
 	
 	<!-- *** streamer chat commands *** -->	
@@ -2209,7 +2249,7 @@
 		<property name="is_positive" value="false" />
 		<property name="add_cooldown" value="true" />
 		<property name="cooldown_add_amount" value="50" />
-		<property name="cooldown" value="30" />
+		<property name="cooldown" value="300" />
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
@@ -2233,7 +2273,7 @@
 		<property name="is_positive" value="false" />
 		<property name="add_cooldown" value="true" />
 		<property name="cooldown_add_amount" value="50" />
-		<property name="cooldown" value="30" />
+		<property name="cooldown" value="300" />
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
@@ -2257,7 +2297,7 @@
 		<property name="is_positive" value="false" />
 		<property name="add_cooldown" value="true" />
 		<property name="cooldown_add_amount" value="50" />
-		<property name="cooldown" value="30" />
+		<property name="cooldown" value="300" />
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
@@ -2305,7 +2345,7 @@
 		<property name="is_positive" value="false" />
 		<property name="add_cooldown" value="true" />
 		<property name="cooldown_add_amount" value="50" />
-		<property name="cooldown" value="30" />
+		<property name="cooldown" value="150" />
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
@@ -2329,7 +2369,7 @@
 		<property name="is_positive" value="false" />
 		<property name="add_cooldown" value="true" />
 		<property name="cooldown_add_amount" value="50" />
-		<property name="cooldown" value="30" />
+		<property name="cooldown" value="900" />
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
@@ -2353,7 +2393,7 @@
 		<property name="is_positive" value="false" />
 		<property name="add_cooldown" value="true" />
 		<property name="cooldown_add_amount" value="50" />
-		<property name="cooldown" value="30" />
+		<property name="cooldown" value="300" />
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
@@ -2418,7 +2458,7 @@
 		<property name="start_gamestage" value="1" />
 		<property name="event_name" value="chicken_out" />
 		<property name="point_type" value="Bits" />
-		<property name="default_cost" value="500" />
+		<property name="default_cost" value="2500" />
 		<property name="is_positive" value="true" />
 		<property name="add_cooldown" value="true" />
 		<property name="cooldown_add_amount" value="50" />
@@ -2481,7 +2521,7 @@
 		<property name="event_name" value="fumigation" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="250" />
-		<property name="cooldown" value="1" />
+		<property name="cooldown" value="120" />
 		<property name="cooldown_blocked" value="false" />
 		<property name="is_positive" value="false" />
 		<property name="presets" value="casual,standard,hardcore" />		
@@ -3136,7 +3176,7 @@
 		<property name="category" value="Buffs,Special" />
 		<property name="event_name" value="gods_wrath" />
 		<property name="point_type" value="Bits" />
-		<property name="default_cost" value="3000" />
+		<property name="default_cost" value="7500" />
 		<property name="cooldown" value="300" />
 		<property name="cooldown_blocked" value="false" />
 		<property name="is_positive" value="false" />

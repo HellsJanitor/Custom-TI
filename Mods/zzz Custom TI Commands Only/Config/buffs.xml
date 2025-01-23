@@ -1,4 +1,11 @@
 <configs>
+
+	<append xpath="/buffs/buff[@name='buffStatusCheck01']">
+		<effect_group>
+			<passive_effect name="GameStage" operation="base_add" value="50"/>
+		</effect_group>	
+	</append>
+	
 	<insertafter xpath="/buffs/buff[@name='buffLegCast']/effect_group/triggered_effect[@buff='buffLegBroken']">
 		<triggered_effect trigger="onSelfBuffStart" action="RemoveBuff" buff="buffSoulBroken"/>
 	</insertafter>
