@@ -491,10 +491,10 @@
 			<variable name="airspawn" value="false"/>
 			<variable name="zombiename" value="animalTILuckyRabbit"/>
 			<variable name="alertsound" value="rabbitpain"/>
-			<variable name="gamestage_extra1" value="30"/>
-			<variable name="spawncount_extra1" value="1"/>
-			<variable name="gamestage_extra2" value="150"/>
-			<variable name="spawncount_extra2" value="1"/>
+			<!-- <variable name="gamestage_extra1" value="30"/> -->
+			<!-- <variable name="spawncount_extra1" value="1"/> -->
+			<!-- <variable name="gamestage_extra2" value="150"/> -->
+			<!-- <variable name="spawncount_extra2" value="1"/> -->
 		</action_sequence>
 		
 		<action_sequence name="group_flying_snakes" template="spawn_group">
@@ -502,10 +502,10 @@
 			<variable name="airspawn" value="false"/>
 			<variable name="zombiename" value="animalTIFlyingSnake"/>
 			<variable name="alertsound" value="snakealert"/>
-			<variable name="gamestage_extra1" value="30"/>
-			<variable name="spawncount_extra1" value="2"/>
-			<variable name="gamestage_extra2" value="50"/>
-			<variable name="spawncount_extra2" value="3"/>
+			<!-- <variable name="gamestage_extra1" value="30"/> -->
+			<!-- <variable name="spawncount_extra1" value="2"/> -->
+			<!-- <variable name="gamestage_extra2" value="50"/> -->
+			<!-- <variable name="spawncount_extra2" value="3"/> -->
 		</action_sequence>
 		
 		<action_sequence name="group_bats" template="spawn_group">
@@ -513,10 +513,10 @@
 			<variable name="airspawn" value="false"/>
 			<variable name="zombiename" value="animalTIZombieVultureBat"/>
 			<variable name="alertsound" value="vulturealert"/>
-			<variable name="gamestage_extra1" value="30"/>
-			<variable name="spawncount_extra1" value="2"/>
-			<variable name="gamestage_extra2" value="50"/>
-			<variable name="spawncount_extra2" value="3"/>
+			<!-- <variable name="gamestage_extra1" value="30"/> -->
+			<!-- <variable name="spawncount_extra1" value="2"/> -->
+			<!-- <variable name="gamestage_extra2" value="50"/> -->
+			<!-- <variable name="spawncount_extra2" value="3"/> -->
 		</action_sequence>
 		
 		<!-- <action_sequence name="group_teen_rave" template="spawn_group">
