@@ -456,8 +456,14 @@
 				<triggered_effect trigger="onSelfBuffStack" action="ModifyCVar" cvar=".buffTISuddenDeathDuration" operation="add" value="60"/>
 				<triggered_effect trigger="onSelfBuffUpdate" action="ModifyCVar" cvar=".buffTISuddenDeathDuration" operation="add" value="-1"/>
 			</effect_group>
-			<effect_group>
-				<passive_effect name="PhysicalDamageResist" operation="base_add" value="-10000" tags="coredamageresist"/>
+			<!-- <effect_group> -->
+				<!-- <passive_effect name="PhysicalDamageResist" operation="base_add" value="-1000"/> -->
+				<!-- <passive_effect name="PhysicalDamageResist" operation="base_add" value="-1000" tags="coredamageresist"/> -->
+			<!-- </effect_group> -->
+			<effect_group>			
+				<triggered_effect trigger="onOtherAttackedSelf" action="ModifyStats" stat="Health" operation="subtract" value="99999999">
+				<requirement name="EntityTagCompare" target="other" tags="entity,zombie,hostile"/>			
+				</triggered_effect>			
 			</effect_group>
 		</buff>
 		

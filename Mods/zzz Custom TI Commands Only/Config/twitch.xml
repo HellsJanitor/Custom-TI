@@ -938,8 +938,8 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
-		<property name="min_respawn_count" value="1" />
-		<property name="max_respawn_count" value="1" />
+		<!-- <property name="min_respawn_count" value="1" /> -->
+		<!-- <property name="max_respawn_count" value="1" /> -->
 		<property name="respawn_count_type" value="BlocksOnly" />
 		
 		<cooldown_addition name="twitch_Minefield" time="30" />
@@ -965,8 +965,8 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
-		<property name="min_respawn_count" value="1" />
-		<property name="max_respawn_count" value="1" />
+		<!-- <property name="min_respawn_count" value="1" /> -->
+		<!-- <property name="max_respawn_count" value="1" /> -->
 		<property name="respawn_count_type" value="BlocksOnly" />
 		
 		<cooldown_addition name="twitch_Minefield" time="30" />
@@ -992,8 +992,8 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
-		<property name="min_respawn_count" value="1" />
-		<property name="max_respawn_count" value="1" />
+		<!-- <property name="min_respawn_count" value="1" /> -->
+		<!-- <property name="max_respawn_count" value="1" /> -->
 		<property name="respawn_count_type" value="BlocksOnly" />
 		
 		<cooldown_addition name="twitch_Minefield" time="30" />
@@ -1436,8 +1436,8 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
-		<property name="min_respawn_count" value="1" />
-		<property name="max_respawn_count" value="1" />
+		<!-- <property name="min_respawn_count" value="1" /> -->
+		<!-- <property name="max_respawn_count" value="1" /> -->
 		<property name="presets" value="standard,hardcore" />
 		<property name="show_in_action_list" value="false" />
 	</action>
@@ -1460,8 +1460,8 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
-		<property name="min_respawn_count" value="1" />
-		<property name="max_respawn_count" value="1" />
+		<!-- <property name="min_respawn_count" value="1" /> -->
+		<!-- <property name="max_respawn_count" value="1" /> -->
 		<property name="show_in_action_list" value="false" />
 		
 		<cooldown_addition name="twitch_hordeBoars" time="30" />
@@ -2181,8 +2181,8 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
-		<property name="min_respawn_count" value="1" />
-		<property name="max_respawn_count" value="1" />
+		<!-- <property name="min_respawn_count" value="1" /> -->
+		<!-- <property name="max_respawn_count" value="1" /> -->
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
@@ -2205,8 +2205,8 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
-		<property name="min_respawn_count" value="1" />
-		<property name="max_respawn_count" value="1" />
+		<!-- <property name="min_respawn_count" value="1" /> -->
+		<!-- <property name="max_respawn_count" value="1" /> -->
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
@@ -2229,8 +2229,8 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
-		<property name="min_respawn_count" value="1" />
-		<property name="max_respawn_count" value="1" />
+		<!-- <property name="min_respawn_count" value="1" /> -->
+		<!-- <property name="max_respawn_count" value="1" /> -->
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
@@ -2253,8 +2253,8 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
-		<property name="min_respawn_count" value="1" />
-		<property name="max_respawn_count" value="1" />
+		<!-- <property name="min_respawn_count" value="1" /> -->
+		<!-- <property name="max_respawn_count" value="1" /> -->
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
@@ -2277,8 +2277,8 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
-		<property name="min_respawn_count" value="1" />
-		<property name="max_respawn_count" value="1" />
+		<!-- <property name="min_respawn_count" value="1" /> -->
+		<!-- <property name="max_respawn_count" value="1" /> -->
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
@@ -2301,8 +2301,8 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
-		<property name="min_respawn_count" value="1" />
-		<property name="max_respawn_count" value="1" />
+		<!-- <property name="min_respawn_count" value="1" /> -->
+		<!-- <property name="max_respawn_count" value="1" /> -->
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
@@ -2325,8 +2325,8 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
-		<property name="min_respawn_count" value="1" />
-		<property name="max_respawn_count" value="1" />
+		<!-- <property name="min_respawn_count" value="1" /> -->
+		<!-- <property name="max_respawn_count" value="1" /> -->
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>	
 	
@@ -2349,8 +2349,8 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
-		<property name="min_respawn_count" value="1" />
-		<property name="max_respawn_count" value="1" />
+		<!-- <property name="min_respawn_count" value="1" /> -->
+		<!-- <property name="max_respawn_count" value="1" /> -->
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
@@ -2373,8 +2373,8 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
-		<property name="min_respawn_count" value="1" />
-		<property name="max_respawn_count" value="1" />
+		<!-- <property name="min_respawn_count" value="1" /> -->
+		<!-- <property name="max_respawn_count" value="1" /> -->
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
@@ -2397,8 +2397,8 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
-		<property name="min_respawn_count" value="1" />
-		<property name="max_respawn_count" value="1" />
+		<!-- <property name="min_respawn_count" value="1" /> -->
+		<!-- <property name="max_respawn_count" value="1" /> -->
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
@@ -2420,8 +2420,8 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
-		<property name="min_respawn_count" value="1" />
-		<property name="max_respawn_count" value="1" />
+		<!-- <property name="min_respawn_count" value="1" /> -->
+		<!-- <property name="max_respawn_count" value="1" /> -->
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
@@ -2443,8 +2443,8 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
-		<property name="min_respawn_count" value="1" />
-		<property name="max_respawn_count" value="1" />
+		<!-- <property name="min_respawn_count" value="1" /> -->
+		<!-- <property name="max_respawn_count" value="1" /> -->
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
@@ -2466,8 +2466,8 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
-		<property name="min_respawn_count" value="1" />
-		<property name="max_respawn_count" value="1" />
+		<!-- <property name="min_respawn_count" value="1" /> -->
+		<!-- <property name="max_respawn_count" value="1" /> -->
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
@@ -2489,8 +2489,8 @@
 		<property name="cooldown_blocked" value="true" />
 		<property name="waiting_blocked" value="true" />
 		<property name="vote_cooldown_add" value="30" />
-		<property name="min_respawn_count" value="1" />
-		<property name="max_respawn_count" value="1" />
+		<!-- <property name="min_respawn_count" value="1" /> -->
+		<!-- <property name="max_respawn_count" value="1" /> -->
 		<property name="presets" value="casual,standard,hardcore" />
 	</action>
 	
