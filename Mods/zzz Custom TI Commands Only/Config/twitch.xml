@@ -928,7 +928,7 @@
 		<property name="event_name" value="hordestone_normal" />
 		<property name="category" value="Spawns" />
 		<property name="display_category" value="Extras" />
-		<property name="start_gamestage" value="10" />
+		<property name="start_gamestage" value="50" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="500" />
 		<property name="is_positive" value="false" />
@@ -957,7 +957,7 @@
 		<property name="display_category" value="Extras" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="1000" />
-		<property name="start_gamestage" value="50" />
+		<property name="start_gamestage" value="75" />
 		<property name="is_positive" value="false" />
 		<property name="add_cooldown" value="true" />
 		<property name="cooldown_add_amount" value="150" />
@@ -982,7 +982,7 @@
 		<property name="event_name" value="hordestone_rads" />
 		<property name="category" value="Spawns" />
 		<property name="display_category" value="Extras" />
-		<property name="start_gamestage" value="90" />
+		<property name="start_gamestage" value="100" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="1500" />
 		<property name="is_positive" value="false" />
@@ -1425,10 +1425,10 @@
 		<property name="title_key" value="TwitchAction_SpawnGroupChickens" />
 		<property name="description_key" value="TwitchAction_SpawnGroupChickensDesc" />
 		<property name="category" value="Spawns" />
-		<property name="start_gamestage" value="10" />
+		<property name="start_gamestage" value="75" />
 		<property name="event_name" value="group_chickens" />
 		<property name="point_type" value="Bits" />
-		<property name="default_cost" value="400" />
+		<property name="default_cost" value="600" />
 		<property name="is_positive" value="false" />
 		<property name="add_cooldown" value="true" />
 		<property name="cooldown_add_amount" value="50" />
@@ -1450,7 +1450,7 @@
 		<property name="event_name" value="horde_chickens" />
 		<property name="category" value="Spawns" />
 		<property name="display_category" value="Extras" />
-		<property name="start_gamestage" value="10" />
+		<property name="start_gamestage" value="75" />
 		<property name="point_type" value="Bits" />
 		<property name="default_cost" value="1200" />
 		<property name="is_positive" value="false" />
